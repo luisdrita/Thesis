@@ -119,7 +119,7 @@
 
 			return temp;
 		}
-		// Copy paste operation. This is important because: I have an object x. I'd like to copy it as object y, such that changes to y do not modify x.
+		// It only returns the structure of the input object (not the content).
 
 		// ----------------------------------------- Algorithm -----------------------------------------
 		function init_status(graph, status, part) { // Aim of this function is to keep an up to date status of the
@@ -134,7 +134,6 @@
 			status['loops'] = {}; // Loop weight for each node.
 			status['total_weight'] = get_graph_size(graph); //  Sum of the property "weight" of all edges present in the vector edge (that comes from index.html)
 
-			// Only goal of next if condition is to update the status features above.
 			if (typeof part === 'undefined') { // No communities defined among the nodes.
 				graph.nodes.forEach(function (node, i) {
 					status.nodes_to_com[node] = i; // Attributing each node to a different community.
@@ -151,8 +150,8 @@
 					status.internals[i] = status.loops[node]; // This condition of if should be satisfied during community aggregation phase.
 					// i is used for community calculations and node for node specific variables.
 				});
-			} else { // In case there is a partition as function argument:
-				graph.nodes.forEach(function (node) { // There are status features that are node specific.
+			} else { // If communities are defined in the initial nodes
+				graph.nodes.forEach(function (node) {
 					var com = part[node];
 					status.nodes_to_com[node] = com;
 					var deg = get_degree_for_node(graph, node);
@@ -194,15 +193,15 @@
 				}
 			});
 
-			return result; // Modularity of a given partition. All info needed to calculate network partition is in status.
+			return result;
 		}
 
-		function __neighcom(node, graph, status) { // Communities in the neighborhood of a given node.
+		function __neighcom(node, graph, status) {
 
 			var weights = {};
-			var neighborhood = get_neighbours_of_node(graph, node);
+			var neighboorhood = get_neighbours_of_node(graph, node);
 
-			neighborhood.forEach(function (neighbour) {
+			neighboorhood.forEach(function (neighbour) {
 				if (neighbour !== node) {
 					var weight = graph._assoc_mat[node][neighbour] || 1; // weight is a number!
 					var neighbourcom = status.nodes_to_com[neighbour];
@@ -210,7 +209,7 @@
 				}
 			});
 
-			return weights; // Each value of the object correspond to the sum of the weights of the edges connecting node to the respective community they belong. Each key is a different community. Important for defining the weight of links between communities (step 2 of the algorithm).
+			return weights; // Each value of the 1D array correspond to the sum of the weights of the edges connecting node to the respective community they belong. Import for defining the weight of links between communities (step 2 of the algorithm)
 		}
 
 		function __insert(node, com, weight, status) {
@@ -227,7 +226,6 @@
 			status.nodes_to_com[node] = -1;
 		}
 
-		// After inserting or removing a node from a community is fundamental to update community ID.
 		function __renumber(dict) { // dict = status.nodes_to_com
 			var count = 0;
 			var ret = clone(dict); // Function output (deep copy)
