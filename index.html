@@ -309,7 +309,7 @@
   console.log('Input Node Data', node_data);
   console.log('Input Edge Data', edge_data);
 
-  let community = jInfomap().nodes(node_data).edges(edge_data);
+  let community = jLouvain().nodes(node_data).edges(edge_data);
 
   // Defining drawing area dimensions.
   let width = 600;
