@@ -7,7 +7,7 @@
 // propagation algorithms differ from each other on the basis of the update rule.
 
 // Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
-jLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
+jWeightedLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
     // names. They are always invoked (called) using the variable name.
 
@@ -38,9 +38,9 @@ jLabelPropagation = function () { // A function expression can be stored in a va
         edge_list.forEach(function (edge) {
             mat[edge.source] = mat[edge.source] || {}; // Important because many edges share the same nodes. And, in
             // order to include an element in a 2D matrix, we need to 1st create a
-            mat[edge.source][edge.target] = 1;
+            mat[edge.source][edge.target] = edge.weight;
             mat[edge.target] = mat[edge.target] || {};
-            mat[edge.target][edge.source] = 1;
+            mat[edge.target][edge.source] = edge.weight;
         });
         return mat; // It is not an array (1 object containing others): Object { 1: Object { 2: 3 }, 2: Object { 2: 3 } }
     }

@@ -12,7 +12,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
     let original_graph_edges; // Input in the core() of the algorithm.
     let original_graph = {}; // Input in the core() of the algorithm.
     let partition_init; // Input in the core() of the algorithm. May not be used (depending if it is used in the HTML file or not).
-    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge.
+    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. F
 
     // ----------------------------------------- Helpers -----------------------------------------
     function make_set(array) { // Receives array with repeated values. Returns one filtered (and ordered) with only the different ones.
@@ -61,10 +61,8 @@ jLouvain = function () { // A function expression can be stored in a variable. A
             return []; // Returns an empty array of neighbours.
         }
 
-        let neighbours = Object.keys(graph._assoc_mat[node]); // Returns the position of each value that exists:
+        return Object.keys(graph._assoc_mat[node]); // Returns the position of each value that exists:
         // var object1 = [2,,0,0,,2] -> Array ["0", "2", "3", "5"]
-
-        return neighbours;
     }
     // Printing an ARRAY with all neighbours of input node ID.
 
@@ -137,6 +135,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
     function init_status(graph, status, part) { // Aim of this function is to keep an up to date status of the
         // network through the following value calculations. Part refers only to an initial partition. It may not
         // receive this argument. In this case, first if condition (below) applies.
+        // Only needed because of community aggregation (update needed).
 
         // Defining Status
         status['nodes_to_com'] = {}; // Nodes linked to the communities they belong. Key: Value pair. It takes the
@@ -272,7 +271,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         status.nodes_to_com[node] = -1; // Important to renumber communities after removing an edge.
     }
 
-    // After inserting or removing a node from a community is fundamental to update community ID. When node is removed, it will be place in community -1.
+    // After inserting or removing a node from a community is fundamental to update community ID. When node is removed, it will be placed in community -1.
     function __renumber(dict) { // dict = status.nodes_to_com
         let count = 0;
         let ret = clone(dict); // Function output (deep copy)
@@ -379,7 +378,6 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         return partition; // partition = __renumber(status.nodes_to_com). A graph can be partitioned in different ways.
     }
 
-
     // Mother Function.
     function generate_dendogram(graph, part_init) {
         if (graph.edges.length === 0) { // In case we have a graph with no edges. Each node is a community.
@@ -392,7 +390,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         let status = {};
 
         init_status(original_graph, status, part_init);
-        let mod = __modularity(status); // Modularity before 1 level partition.
+        let mod; // Modularity before 1 level partition.
         let status_list = []; // Set of partitions: dendogram.
         __one_level(original_graph, status); // Computes 1 level of the communities dendogram. Current status to determine when to stop.
         let new_mod = __modularity(status); // Modularity after 1 level partition.

@@ -7,7 +7,7 @@
 // propagation algorithms differ from each other on the basis of the update rule.
 
 // Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
-jLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
+jLayeredLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
     // names. They are always invoked (called) using the variable name.
 
@@ -85,6 +85,24 @@ jLabelPropagation = function () { // A function expression can be stored in a va
         return a;
     }
 
+    function counter(obj) {
+
+        let nodes = Object.keys(obj);
+
+        let result = {};
+
+        nodes.forEach(function (node) {
+
+            let com = obj[node];
+
+            result[com] = result[com] + 1 || 1;
+
+        });
+
+        return result;
+
+    }
+
     // ----------------------------------------- Algorithm -----------------------------------------
     function __init_status(graph, status, part) { // Aim of this function is to keep an up to date status of the
         // network through the following value calculations. Part refers only to an initial partition. It may not
@@ -124,19 +142,39 @@ jLabelPropagation = function () { // A function expression can be stored in a va
         // the weight of links between communities (step 2 of the algorithm).
     }
 
-    function __dominates(node, graph, status) { // Communities in the neighborhood of a given node.
+    function __modifiedNeighCom(node, graph, status) { // Communities in the neighborhood of a given node.
 
         let neighbourWeights = __neighcom(node, graph, status);
 
-        return neighbourWeights[status.nodes_to_com[node]] === Math.max(neighbourWeights);
+        let communities = Object.keys(neighbourWeights);
+
+        let result = {};
+
+        let gamma = 0;
+
+        communities.forEach(function (com) {
+
+            result[com] = neighbourWeights[com] - gamma*(counter(status.nodes_to_com)[com]-neighbourWeights[com]);
+
+        });
+
+        return result;
+
+    }
+
+    function __dominates(node, graph, status) { // Communities in the neighborhood of a given node.
+
+        let result = __modifiedNeighCom(node, graph, status);
+
+        return result[status.nodes_to_com[node]] === Math.max(result);
 
     }
 
     function __dominantCommunity(node, graph, status) { // Communities in the neighborhood of a given node.
 
-        let neighbourWeights = __neighcom(node, graph, status);
+        let nrLabeledNodes = __modifiedNeighCom(node, graph, status);
 
-        let result = getAllKeys(neighbourWeights);
+        let result = getAllKeys(nrLabeledNodes);
 
         return result[Math.floor(Math.random()*(result.length))];
 
