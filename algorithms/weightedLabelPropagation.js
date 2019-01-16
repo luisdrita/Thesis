@@ -1,4 +1,4 @@
-// -------------------------------------------- Label Propagation Algorithm --------------------------------------------
+// --------------------------------------- Weighted Label Propagation Algorithm ---------------------------------------
 
 // The algorithms execute in rounds, and at the beginning of each
 // round every node has a label representing the cluster that the node currently belongs (at the beginning, every node
@@ -7,7 +7,7 @@
 // propagation algorithms differ from each other on the basis of the update rule.
 
 // Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
-jLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
+jWeightedLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
     // names. They are always invoked (called) using the variable name.
 
@@ -38,9 +38,9 @@ jLabelPropagation = function () { // A function expression can be stored in a va
         edge_list.forEach(function (edge) {
             mat[edge.source] = mat[edge.source] || {}; // Important because many edges share the same nodes. And, in
             // order to include an element in a 2D matrix, we need to 1st create a
-            mat[edge.source][edge.target] = 1;
+            mat[edge.source][edge.target] = edge.weight;
             mat[edge.target] = mat[edge.target] || {};
-            mat[edge.target][edge.source] = 1;
+            mat[edge.target][edge.source] = edge.weight;
         });
         return mat; // It is not an array (1 object containing others): Object { 1: Object { 2: 3 }, 2: Object { 2: 3 } }
     }
@@ -135,7 +135,6 @@ jLabelPropagation = function () { // A function expression can be stored in a va
     function __dominantCommunity(node, graph, status) { // Communities in the neighborhood of a given node.
 
         let neighbourWeights = __neighcom(node, graph, status);
-
         let result = getAllKeys(neighbourWeights);
 
         return result[Math.floor(Math.random()*(result.length))];
@@ -195,8 +194,6 @@ jLabelPropagation = function () { // A function expression can be stored in a va
 
             let next_nodes_to_com = status.nodes_to_com;
 
-            console.log(aux2);
-
             if(prev_nodes_to_com===next_nodes_to_com) {break;}
 
             aux2++;
@@ -213,20 +210,20 @@ jLabelPropagation = function () { // A function expression can be stored in a va
 
     };
 
-    core.nodes = function (nds) { // nodes are the input nodes coming from the HTML file.
-        if (nds.length > 0) { // Calling arguments of the function.
-            original_graph_nodes = nds; // Global variable.
+    core.nodes = function (nodes) { // nodes are the input nodes coming from the HTML file.
+        if (nodes.length > 0) { // Calling arguments of the function.
+            original_graph_nodes = nodes; // Global variable.
         }
 
         return core;
     };
 
-    core.edges = function (edgs) { // edges are the input edges coming from the HTML file.
+    core.edges = function (edges) { // edges are the input edges coming from the HTML file.
         if (typeof original_graph_nodes === 'undefined')
             throw 'Please provide the graph nodes first!';
 
-        if (edgs.length > 0) { // Calling arguments of the function.
-            original_graph_edges = edgs; // Global variable.
+        if (edges.length > 0) { // Calling arguments of the function.
+            original_graph_edges = edges; // Global variable.
             let assoc_mat = make_assoc_mat(edges);
             original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) data.
                 'nodes': original_graph_nodes,
@@ -239,35 +236,12 @@ jLabelPropagation = function () { // A function expression can be stored in a va
 
     };
 
-    core.partition_init = function (prrt) { // Initial partition input in index.html.
-        if (prrt.length > 0) { // Calling arguments of the function.
-            partition_init = prrt;
+    core.partition_init = function (partition) { // Initial partition input in index.html.
+        if (partition.length > 0) { // Calling arguments of the function.
+            partition_init = partition;
         }
         return core;
     };
 
     return core;
 };
-
-
-// Accessing a function without () will return the function definition instead of the function result.
-
-// (function () {
-//   var x = "Hello!!";      // I will invoke myself
-// })(); -> Self-Invoking Function
-
-// The code inside a function is not executed when the function is defined. The code inside a function is executed when the function is invoked.
-
-// Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
-// Hoisting applies to variable declarations and to function declarations.
-// Because of this, JavaScript functions can be called before they are declared:
-
-// A JavaScript method is a property containing a function definition:
-// var person = {
-//   firstName: "John",
-//   lastName : "Doe",
-//   id       : 5566,
-//   fullName : function() {
-//     return this.firstName + " " + this.lastName;
-//   }
-// };

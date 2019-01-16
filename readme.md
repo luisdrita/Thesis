@@ -20,6 +20,8 @@ bioinformaticians, and is designed to enable medical and research purposes.
 
 ### Benchmark
 
+Stanford Large Network Dataset Collection
+
 ### Visualization Interface
 
 Cytoscape.js
@@ -27,6 +29,8 @@ Cytoscape.js
 ### Status
 
 [16/01/2019] Every algorithm working like a charm;
+
+[17/01/2019] Improved code readability;
 
 [Next] Develop Interface;
 

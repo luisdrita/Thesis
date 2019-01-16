@@ -7,7 +7,7 @@
 // propagation algorithms differ from each other on the basis of the update rule.
 
 // Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
-jLayeredLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
+jLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
     // names. They are always invoked (called) using the variable name.
 
@@ -85,24 +85,6 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
         return a;
     }
 
-    function counter(obj) {
-
-        let nodes = Object.keys(obj);
-
-        let result = {};
-
-        nodes.forEach(function (node) {
-
-            let com = obj[node];
-
-            result[com] = result[com] + 1 || 1;
-
-        });
-
-        return result;
-
-    }
-
     // ----------------------------------------- Algorithm -----------------------------------------
     function __init_status(graph, status, part) { // Aim of this function is to keep an up to date status of the
         // network through the following value calculations. Part refers only to an initial partition. It may not
@@ -142,39 +124,19 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
         // the weight of links between communities (step 2 of the algorithm).
     }
 
-    function __modifiedNeighCom(node, graph, status) { // Communities in the neighborhood of a given node.
+    function __dominates(node, graph, status) { // Communities in the neighborhood of a given node.
 
         let neighbourWeights = __neighcom(node, graph, status);
 
-        let communities = Object.keys(neighbourWeights);
-
-        let result = {};
-
-        let gamma = 0;
-
-        communities.forEach(function (com) {
-
-            result[com] = neighbourWeights[com] - gamma*(counter(status.nodes_to_com)[com]-neighbourWeights[com]);
-
-        });
-
-        return result;
-
-    }
-
-    function __dominates(node, graph, status) { // Communities in the neighborhood of a given node.
-
-        let result = __modifiedNeighCom(node, graph, status);
-
-        return result[status.nodes_to_com[node]] === Math.max(result);
+        return neighbourWeights[status.nodes_to_com[node]] === Math.max(neighbourWeights);
 
     }
 
     function __dominantCommunity(node, graph, status) { // Communities in the neighborhood of a given node.
 
-        let nrLabeledNodes = __modifiedNeighCom(node, graph, status);
+        let neighbourWeights = __neighcom(node, graph, status);
 
-        let result = getAllKeys(nrLabeledNodes);
+        let result = getAllKeys(neighbourWeights);
 
         return result[Math.floor(Math.random()*(result.length))];
 
@@ -233,8 +195,6 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
             let next_nodes_to_com = status.nodes_to_com;
 
-            console.log(aux2);
-
             if(prev_nodes_to_com===next_nodes_to_com) {break;}
 
             aux2++;
@@ -251,20 +211,20 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
     };
 
-    core.nodes = function (nodes) { // nodes are the input nodes coming from the HTML file.
-        if (nodes.length > 0) { // Calling arguments of the function.
-            original_graph_nodes = nodes; // Global variable.
+    core.nodes = function (nds) { // nodes are the input nodes coming from the HTML file.
+        if (nds.length > 0) { // Calling arguments of the function.
+            original_graph_nodes = nds; // Global variable.
         }
 
         return core;
     };
 
-    core.edges = function (edges) { // edges are the input edges coming from the HTML file.
+    core.edges = function (edgs) { // edges are the input edges coming from the HTML file.
         if (typeof original_graph_nodes === 'undefined')
             throw 'Please provide the graph nodes first!';
 
-        if (edges.length > 0) { // Calling arguments of the function.
-            original_graph_edges = edges; // Global variable.
+        if (edgs.length > 0) { // Calling arguments of the function.
+            original_graph_edges = edgs; // Global variable.
             let assoc_mat = make_assoc_mat(edges);
             original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) data.
                 'nodes': original_graph_nodes,
@@ -277,35 +237,12 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
     };
 
-    core.partition_init = function (partition) { // Initial partition input in index.html.
-        if (partition.length > 0) { // Calling arguments of the function.
-            partition_init = partition;
+    core.partition_init = function (prrt) { // Initial partition input in index.html.
+        if (prrt.length > 0) { // Calling arguments of the function.
+            partition_init = prrt;
         }
         return core;
     };
 
     return core;
 };
-
-
-// Accessing a function without () will return the function definition instead of the function result.
-
-// (function () {
-//   var x = "Hello!!";      // I will invoke myself
-// })(); -> Self-Invoking Function
-
-// The code inside a function is not executed when the function is defined. The code inside a function is executed when the function is invoked.
-
-// Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
-// Hoisting applies to variable declarations and to function declarations.
-// Because of this, JavaScript functions can be called before they are declared:
-
-// A JavaScript method is a property containing a function definition:
-// var person = {
-//   firstName: "John",
-//   lastName : "Doe",
-//   id       : 5566,
-//   fullName : function() {
-//     return this.firstName + " " + this.lastName;
-//   }
-// };

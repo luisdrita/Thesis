@@ -1,4 +1,4 @@
-// -------------------------------------------- Label Propagation Algorithm --------------------------------------------
+// --------------------------------------- Layered Label Propagation Algorithm ----------------------------------------
 
 // The algorithms execute in rounds, and at the beginning of each
 // round every node has a label representing the cluster that the node currently belongs (at the beginning, every node
@@ -7,7 +7,7 @@
 // propagation algorithms differ from each other on the basis of the update rule.
 
 // Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
-jWeightedLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
+jLayeredLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
     // names. They are always invoked (called) using the variable name.
 
@@ -38,9 +38,9 @@ jWeightedLabelPropagation = function () { // A function expression can be stored
         edge_list.forEach(function (edge) {
             mat[edge.source] = mat[edge.source] || {}; // Important because many edges share the same nodes. And, in
             // order to include an element in a 2D matrix, we need to 1st create a
-            mat[edge.source][edge.target] = edge.weight;
+            mat[edge.source][edge.target] = 1;
             mat[edge.target] = mat[edge.target] || {};
-            mat[edge.target][edge.source] = edge.weight;
+            mat[edge.target][edge.source] = 1;
         });
         return mat; // It is not an array (1 object containing others): Object { 1: Object { 2: 3 }, 2: Object { 2: 3 } }
     }
@@ -85,6 +85,23 @@ jWeightedLabelPropagation = function () { // A function expression can be stored
         return a;
     }
 
+    function counter(obj) {
+
+        let nodes = Object.keys(obj);
+        let result = {};
+
+        nodes.forEach(function (node) {
+
+            let com = obj[node];
+
+            result[com] = result[com] + 1 || 1;
+
+        });
+
+        return result;
+
+    }
+
     // ----------------------------------------- Algorithm -----------------------------------------
     function __init_status(graph, status, part) { // Aim of this function is to keep an up to date status of the
         // network through the following value calculations. Part refers only to an initial partition. It may not
@@ -124,19 +141,39 @@ jWeightedLabelPropagation = function () { // A function expression can be stored
         // the weight of links between communities (step 2 of the algorithm).
     }
 
-    function __dominates(node, graph, status) { // Communities in the neighborhood of a given node.
+    function __modifiedNeighCom(node, graph, status) { // Communities in the neighborhood of a given node.
 
         let neighbourWeights = __neighcom(node, graph, status);
 
-        return neighbourWeights[status.nodes_to_com[node]] === Math.max(neighbourWeights);
+        let communities = Object.keys(neighbourWeights);
+
+        let result = {};
+
+        let gamma = 0.5;
+
+        communities.forEach(function (com) {
+
+            result[com] = neighbourWeights[com] - gamma*(counter(status.nodes_to_com)[com]-neighbourWeights[com]);
+
+        });
+
+        return result;
+
+    }
+
+    function __dominates(node, graph, status) { // Communities in the neighborhood of a given node.
+
+        let result = __modifiedNeighCom(node, graph, status);
+
+        return result[status.nodes_to_com[node]] === Math.max(result);
 
     }
 
     function __dominantCommunity(node, graph, status) { // Communities in the neighborhood of a given node.
 
-        let neighbourWeights = __neighcom(node, graph, status);
+        let nrLabeledNodes = __modifiedNeighCom(node, graph, status);
 
-        let result = getAllKeys(neighbourWeights);
+        let result = getAllKeys(nrLabeledNodes);
 
         return result[Math.floor(Math.random()*(result.length))];
 
@@ -195,8 +232,6 @@ jWeightedLabelPropagation = function () { // A function expression can be stored
 
             let next_nodes_to_com = status.nodes_to_com;
 
-            console.log(aux2);
-
             if(prev_nodes_to_com===next_nodes_to_com) {break;}
 
             aux2++;
@@ -248,26 +283,3 @@ jWeightedLabelPropagation = function () { // A function expression can be stored
 
     return core;
 };
-
-
-// Accessing a function without () will return the function definition instead of the function result.
-
-// (function () {
-//   var x = "Hello!!";      // I will invoke myself
-// })(); -> Self-Invoking Function
-
-// The code inside a function is not executed when the function is defined. The code inside a function is executed when the function is invoked.
-
-// Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
-// Hoisting applies to variable declarations and to function declarations.
-// Because of this, JavaScript functions can be called before they are declared:
-
-// A JavaScript method is a property containing a function definition:
-// var person = {
-//   firstName: "John",
-//   lastName : "Doe",
-//   id       : 5566,
-//   fullName : function() {
-//     return this.firstName + " " + this.lastName;
-//   }
-// };
