@@ -416,27 +416,28 @@
       .data(original_node_data)
       .style('fill', '#a30500');
   });
+  // Accessing a function without () will return the function definition instead of the function result.
+
+  // (function () {
+  //   var x = "Hello!!";      // I will invoke myself
+  // })(); -> Self-Invoking Function
+
+  // The code inside a function is not executed when the function is defined. The code inside a function is executed when the function is invoked.
+
+  // Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
+  // Hoisting applies to variable declarations and to function declarations.
+  // Because of this, JavaScript functions can be called before they are declared:
+
+  // A JavaScript method is a property containing a function definition:
+  // var person = {
+  //   firstName: "John",
+  //   lastName : "Doe",
+  //   id       : 5566,
+  //   fullName : function() {
+  //     return this.firstName + " " + this.lastName;
+  //   }
+  // };
   </script>
+
 </html>
 
-// Accessing a function without () will return the function definition instead of the function result.
-
-// (function () {
-//   var x = "Hello!!";      // I will invoke myself
-// })(); -> Self-Invoking Function
-
-// The code inside a function is not executed when the function is defined. The code inside a function is executed when the function is invoked.
-
-// Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
-// Hoisting applies to variable declarations and to function declarations.
-// Because of this, JavaScript functions can be called before they are declared:
-
-// A JavaScript method is a property containing a function definition:
-// var person = {
-//   firstName: "John",
-//   lastName : "Doe",
-//   id       : 5566,
-//   fullName : function() {
-//     return this.firstName + " " + this.lastName;
-//   }
-// };
