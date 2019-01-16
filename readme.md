@@ -23,3 +23,11 @@ bioinformaticians, and is designed to enable medical and research purposes.
 ### Visualization Interface
 
 Cytoscape.js
+
+### Status
+
+[16/01/2019] Every algorithm working like a charm;
+
+[Next] Develop Interface;
+
+[Next] Benchmark each one.

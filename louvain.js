@@ -14,6 +14,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
     let partition_init; // Input in the core() of the algorithm. May not be used (depending if it is used in the HTML file or not).
     let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. F
 
+
     // ----------------------------------------- Helpers -----------------------------------------
     function make_set(array) { // Receives array with repeated values. Returns one filtered (and ordered) with only the different ones.
         let set = {};
@@ -75,7 +76,9 @@ jLouvain = function () { // A function expression can be stored in a variable. A
     function get_graph_size(graph) {
         let size = 0;
         graph.edges.forEach(function (edge) {
+
             size += edge.weight;
+
         });
 
         return size;
@@ -200,41 +203,16 @@ jLouvain = function () { // A function expression can be stored in a variable. A
     function __modularity(status) { // Only with graph.status, it is possible to calculate the respective modularity.
         let links = status.total_weight; // Total weight of the graph's edges.
         let result = 0.0;
-        let result2;
         let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
-
-        let nodes = make_set(Object.keys(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
-        let mdl_a = 0;
-        let mdl_b = 0;
-        let mdl_c = 0;
-        let mdl_d = 0;
-
-        nodes.forEach(function (node) {
-
-            let gdegree = status.gdegrees[node] || 1; // CHECK THIS!!! I think it should be 1.
-            if (gdegree !== 0 && links !== 0) {
-                mdl_c = mdl_c + (gdegree/(2*links))*Math.log(gdegree/(2*links));
-            }
-
-        });
 
         communities.forEach(function (com) { // Iterating over all different communities.
             let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
             let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
             if (links !== 0) {
                 result = result + in_degree / links - Math.pow((degree / (2.0 * links)), 2);
-                mdl_b = mdl_b + ((degree - in_degree)/(2*links))*Math.log((degree - in_degree)/(2*links));
-                mdl_a = mdl_a + (degree - in_degree)/(2*links);
-                mdl_d = mdl_d + ((degree - in_degree)/(2*links) + degree/(2*links))*Math.log((degree - in_degree)/(2*links) + degree/(2*links));
             }
 
         });
-
-        if(mdl_a !== 0) {
-            result2 = mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d;
-
-        }
-        console.log(mdl_c);
 
         return result; // Modularity of a given partition (defined by status).
     }
@@ -297,6 +275,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
 
         let modif = true; // Modifications made in terms of community members.
         let cur_mod = __modularity(status); // Current modularity.
+        console.log(cur_mod);
         let new_mod = cur_mod; // New modularity value (between -1 and 1).
 
         while (modif) { // This cycle is not the one that removes or inserts nodes.
@@ -333,6 +312,9 @@ jLouvain = function () { // A function expression can be stored in a variable. A
                 }
             });
             new_mod = __modularity(status);
+            console.log(new_mod);
+
+
             if (new_mod - cur_mod < __MIN) { // var __MIN = 0.0000001; Even if best_com !== com_node, if new_mod - cur_mod < __MIN while
                 // cycle is broken (after executing 1 complete cycle of tries).
                 break;
@@ -394,6 +376,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         let status_list = []; // Set of partitions: dendogram.
         __one_level(original_graph, status); // Computes 1 level of the communities dendogram. Current status to determine when to stop.
         let new_mod = __modularity(status); // Modularity after 1 level partition.
+        console.log(status.degrees); ///////////////////////
         let partition = __renumber(status.nodes_to_com); // Decreasing number of communities due to __one_level.
         status_list.push(partition);
         mod = new_mod;

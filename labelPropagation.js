@@ -213,20 +213,20 @@ jLabelPropagation = function () { // A function expression can be stored in a va
 
     };
 
-    core.nodes = function (nodes) { // nodes are the input nodes coming from the HTML file.
-        if (nodes.length > 0) { // Calling arguments of the function.
-            original_graph_nodes = nodes; // Global variable.
+    core.nodes = function (nds) { // nodes are the input nodes coming from the HTML file.
+        if (nds.length > 0) { // Calling arguments of the function.
+            original_graph_nodes = nds; // Global variable.
         }
 
         return core;
     };
 
-    core.edges = function (edges) { // edges are the input edges coming from the HTML file.
+    core.edges = function (edgs) { // edges are the input edges coming from the HTML file.
         if (typeof original_graph_nodes === 'undefined')
             throw 'Please provide the graph nodes first!';
 
-        if (edges.length > 0) { // Calling arguments of the function.
-            original_graph_edges = edges; // Global variable.
+        if (edgs.length > 0) { // Calling arguments of the function.
+            original_graph_edges = edgs; // Global variable.
             let assoc_mat = make_assoc_mat(edges);
             original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) data.
                 'nodes': original_graph_nodes,
@@ -239,9 +239,9 @@ jLabelPropagation = function () { // A function expression can be stored in a va
 
     };
 
-    core.partition_init = function (partition) { // Initial partition input in index.html.
-        if (partition.length > 0) { // Calling arguments of the function.
-            partition_init = partition;
+    core.partition_init = function (prrt) { // Initial partition input in index.html.
+        if (prrt.length > 0) { // Calling arguments of the function.
+            partition_init = prrt;
         }
         return core;
     };

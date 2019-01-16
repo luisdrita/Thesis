@@ -1,6 +1,5 @@
 // -------------------------------------------- Infomap Algorithm --------------------------------------------
 
-
 // Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
 jInfomap = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
@@ -13,7 +12,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     let original_graph_edges; // Input in the core() of the algorithm.
     let original_graph = {}; // Input in the core() of the algorithm.
     let partition_init; // Input in the core() of the algorithm. May not be used (depending if it is used in the HTML file or not).
-    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. Useful for adding edges in community aggregation phase.
+    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. F
 
     // ----------------------------------------- Helpers -----------------------------------------
     function make_set(array) { // Receives array with repeated values. Returns one filtered (and ordered) with only the different ones.
@@ -47,23 +46,6 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         neighbours.forEach(function (neighbour) {
             let value = graph._assoc_mat[node][neighbour] || 1;
             if (node === neighbour) { // In case we are in community aggregation phase.
-                value *= 2;
-            }
-            weight += value;
-        });
-
-        return weight;
-    }
-    // Returns ki. Sum of the weights of all links connecting to i (including itself).
-
-    function modified_get_degree_for_node(graph, node) { // Node is a number ID. Graph is an object with 3 properties (nodes,
-        // edges and _assoc_mat)
-        let neighbours = graph._assoc_mat[node] ? Object.keys(graph._assoc_mat[node]) : []; // In case we are looking
-        // for a node not connected, it defines neighbours as an empty array.
-        let weight = 0;
-        neighbours.forEach(function (neighbour) {
-            let value = graph._assoc_mat[node][neighbour] || 1;
-            if (node === neighbour) { // In case we are in community aggregation phase.
                 value = 0;
             }
             weight += value;
@@ -81,7 +63,6 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         return Object.keys(graph._assoc_mat[node]); // Returns the position of each value that exists:
         // var object1 = [2,,0,0,,2] -> Array ["0", "2", "3", "5"]
-
     }
     // Printing an ARRAY with all neighbours of input node ID.
 
@@ -94,7 +75,9 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     function get_graph_size(graph) {
         let size = 0;
         graph.edges.forEach(function (edge) {
+
             size += edge.weight;
+
         });
 
         return size;
@@ -150,6 +133,17 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     }
     // Copy paste operation. This is important because: I have an object x. I'd like to copy it as object y, such that changes to y do not modify x.
 
+    function shuffle(a) {
+        let j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
+    }
+
     // ----------------------------------------- Algorithm -----------------------------------------
     function init_status(graph, status, part) { // Aim of this function is to keep an up to date status of the
         // network through the following value calculations. Part refers only to an initial partition. It may not
@@ -162,69 +156,32 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         status['internals'] = {}; // Sum of the weights of the links inside each community.
         status['degrees'] = {}; // Sum of the weights of the links incident in each community.
         status['gdegrees'] = {}; // Sum of the weights of the links incident in each node.
-        status['loops'] = {}; // Loop weight for each node.
         status['total_weight'] = get_graph_size(graph); //  Sum of the property "weight" of all edges present in the
         // vector edge (that comes from index.html)
-        status['alphadegrees'] = {}; // Sum of the weights of the links incident in each community.
 
         // Only goal of next if condition is to update the status features above.
         if (typeof part === 'undefined') { // No communities defined among the nodes.
             graph.nodes.forEach(function (node, i) {
                 status.nodes_to_com[node] = i; // Attributing each node to a different community.
                 let deg = get_degree_for_node(graph, node); // Sum of the weights of all links connecting to i.
-                let modified_deg = modified_get_degree_for_node(graph, node);
 
                 if (deg < 0)
                     throw 'Bad graph type, use positive weights!';
 
                 status.degrees[i] = deg; // Sum of the weights of the links incident in each community.
-                status.alphadegrees[i] = modified_deg;
                 status.gdegrees[node] = deg; // Sum of the weights of the links incident in each node.
                 // When every node is part of a different community, degrees = gdegrees.
 
-                status.loops[node] = get_edge_weight(graph, node, node) || 0; // Inner loop edge weight.
-                status.internals[i] = status.loops[node]; // This condition of if should be satisfied during community aggregation phase.
+                status.internals[i] = 0; // This condition of if should be satisfied during community aggregation phase.
                 // i is used for community calculations and node for node specific variables.
-            });
-        } else { // In case there is a partition as function argument. Never used!
-            graph.nodes.forEach(function (node) { // There are status features that are node specific.
-                let com = part[node];
-                status.nodes_to_com[node] = com;
-                let deg = get_degree_for_node(graph, node);
-                let modified_deg = modified_get_degree_for_node(graph, node);
-                status.degrees[com] = (status.degrees[com] || 0) + deg; // Sum of the weights of the links incident in
-                // each community is calculated by summing the weights of the edges incident in each node of the community.
-                status.alphadegrees[com] = (status.alphadegrees[com] || 0) + modified_deg;
-                status.gdegrees[node] = deg; // Sum of the weights of the links incident in each node.
-                let inc = 0.0;
-
-                let neighbours = get_neighbours_of_node(graph, node); // Printing all the neighbours of input node.
-                neighbours.forEach(function (neighbour) {
-                    let weight = graph._assoc_mat[node][neighbour];
-
-                    if (weight <= 0) {
-                        throw "Bad graph type, use positive weights";
-                    }
-
-                    if (part[neighbour] === com) { // Following calculations are done only if the neighbour belongs to
-                        // the same community as the input node under analysis.
-                        if (neighbour === node) {
-                            inc += weight;
-                        } else {
-                            inc += weight / 2.0; // Next time, neighbor will be the node and vice-versa.
-                        }
-                    }
-                });
-                status.internals[com] = (status.internals[com] || 0) + inc; // With inc we calculate the sum of the
-                // weights inside each community by summing the edges between connected nodes and belonging to the same community.
             });
         }
     }
 
-    /////////////////////////////////////////////////////////
-    function __mdl(status) { // Only with graph.status, it is possible to calculate the respective modularity.
+    function __modularity(status) { // Only with graph.status, it is possible to calculate the respective modularity.
         let links = status.total_weight; // Total weight of the graph's edges.
-        let result;
+        let result = 0.0;
+        let result2;
         let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
 
         let nodes = make_set(Object.keys(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
@@ -235,10 +192,9 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         nodes.forEach(function (node) {
 
-            let gdegree = status.gdegrees[node];
-            let finalgdegree = gdegree - 2*status.loops[node];
+            let gdegree = status.gdegrees[node] || 0; // CHECK THIS!!! I think it should be 1.
             if (links !== 0) {
-                mdl_c = mdl_c + (finalgdegree/(2*(links-status.loops[node])))*Math.log(finalgdegree/(2*(links-status.loops[node])));
+                mdl_c = mdl_c + (gdegree/(2*links))*Math.log(gdegree/(2*links));
             }
 
         });
@@ -246,20 +202,19 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         communities.forEach(function (com) { // Iterating over all different communities.
             let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
             let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
-            let alphadegree = status.alphadegrees[com] || 0; // Sum of the weights of the links incident in each community.
-
             if (links !== 0) {
+                result = result + in_degree / links - Math.pow((degree / (2.0 * links)), 2);
                 mdl_b = mdl_b + ((degree - 2*in_degree)/(2*links))*Math.log((degree - 2*in_degree)/(2*links));
                 mdl_a = mdl_a + (degree - 2*in_degree)/(2*links);
-                mdl_d = mdl_d + ((degree - 2*in_degree)/(2*links) + alphadegree/(2*links))*Math.log((degree - 2*in_degree)/(2*links) + alphadegree/(2*links));
+                mdl_d = mdl_d + ((degree - 2*in_degree)/(2*links) + degree/(2*links))*Math.log((degree - 2*in_degree)/(2*links) + degree/(2*links));
             }
+
         });
 
-            result = mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d;
+        result2 = mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d;
 
-        return result; // Modularity of a given partition (defined by status).
+        return result2; // Modularity of a given partition (defined by status).
     }
-    /////////////////////////////////////////////////////////
 
     function __neighcom(node, graph, status) { // Communities in the neighborhood of a given node.
 
@@ -277,23 +232,6 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         return weights; // Each value of the object correspond to the sum of the weights of the edges connecting
         // node to the respective community they belong. Each key is a different (ordered) community. Important for defining
         // the weight of links between communities (step 2 of the algorithm).
-    }
-
-    function __insert(node, com, weight, status) {
-        // Inserting a node in a community (connected by a given weight) and modifying graph status.
-        status.nodes_to_com[node] = +com; // Updating node community.
-        status.degrees[com] = (status.degrees[com] || 0) + (status.gdegrees[node] || 0); // Updating the sum of the edges incident in community c.
-        status.alphadegrees[com] = (status.alphadegrees[com] || 0) + (status.gdegrees[node] - 2*status.loops[node] || 0); // Updating the sum of the edges incident in community c.
-        status.internals[com] = (status.internals[com] || 0) + weight + (status.loops[node] || 0); // Updating the sum of internal edges.
-    }
-
-    function __remove(node, com, weight, status) {
-        // Removing node from community com and modifying status.
-        status.nodes_to_com[node] = -1; // Important to renumber communities after removing an edge.
-        status.degrees[com] = ((status.degrees[com] || 0) - (status.gdegrees[node] || 0));
-        status.alphadegrees[com] = ((status.degrees[com] || 0) - (status.gdegrees[node] - 2*status.loops[node]|| 0));
-        status.internals[com] = ((status.internals[com] || 0) - weight - (status.loops[node] || 0));
-
     }
 
     // After inserting or removing a node from a community is fundamental to update community ID. When node is removed, it will be placed in community -1.
@@ -318,54 +256,74 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         // in previous nodes will be assigned to future ones.
     }
 
-    /////////////////////////////////////////////////////////
-    function __one_level(graph, status) { //Computes one level of the communities dendogram (until community aggregation - not including).
+    function __one_level(graph, status) { //Computes one level of the communities dendogram (without community aggregation).
 
         let modif = true; // Modifications made in terms of community members.
-        let cur_overall_mod = __mdl(status);
-        let new_overall_mod = cur_overall_mod;
 
-        while (modif) { // This cycle is not the one that removes or inserts nodes.
-            cur_overall_mod = new_overall_mod;
+        let cur_mod = __modularity(status); // Current modularity.
+
+        let new_mod = cur_mod; // New modularity value (between -1 and 1).
+
+        while (modif && cur_mod>0) { // This cycle is not the one that removes or inserts nodes.
+            cur_mod = new_mod;
             modif = false; // Only if best community is different from the actual one, the cycle will proceed.
 
-            graph.nodes.forEach(function (node) {
+            let shuffledNodes = shuffle(graph.nodes);
+
+            shuffledNodes.forEach(function (node) {
                 let com_node = status.nodes_to_com[node]; // Returning community of the input node.
+                // /whole network specific.
                 let neigh_communities = __neighcom(node, graph, status); // Returning an array of the communities in the neighborhood of input node.
-                let cur_mod = __mdl(status); // Current modularity.
-                __remove(node, com_node, (neigh_communities[com_node] || 0.0), status); // function __remove(node, com, weight, status) {}. Status (which
+                 // function __remove(node, com, weight, status) {}. Status (which
                 // includes nodes_to_com) is updated (inside __remove).
+
+                status.degrees[com_node] = ((status.degrees[com_node] || 0) - (status.gdegrees[node] || 0));
+                status.internals[com_node] = ((status.internals[com_node] || 0) - (neigh_communities[com_node] || 0.0));
+                status.nodes_to_com[node] = -1; // Important to renumber communities after removing an edge.'
+
                 let best_com = com_node;
+                let best_increase = 0;
                 let neigh_communities_entries = Object.keys(neigh_communities); // Make iterable;
-
                 // Checking whether modularity increased by inserting removed node in each neighbor community (once at a time).
-                neigh_communities_entries.forEach(function (com) {
 
-                        __insert(node, com, neigh_communities[com] || 0, status);
-                    let new_mod = __mdl(status); // Current modularity.
-                        if (new_mod < cur_mod) { // Only the placement of the node in the community with higher increase will remain.
-                        cur_mod = new_mod; // Current modularity.
-                            best_com = com;
-                        }
-                        __remove(node, com, (neigh_communities[com] || 0.0), status);
+                neigh_communities_entries.forEach(function (com) {
+                    status.nodes_to_com[node] = +com; // Updating node community.
+                    status.degrees[com] = (status.degrees[com] || 0) + (status.gdegrees[node] || 0); // Updating the sum of the edges incident in community c.
+                    status.internals[com] = (status.internals[com] || 0) + (neigh_communities[com] || 0); // Updating the sum of internal edges.
+                    let incr = __modularity(status); // DeltaQ - Fundamental equation. This way,
+                    // it is only needed to calculate those 2 community specific values.
+
+                    if (Math.abs(incr) > Math.abs(best_increase)) { // Only the placement of the node in the community with higher increase will remain.
+                        best_increase = incr;
+                        best_com = com; // Identifying the community
+                        // the node fits the best.
+                    }
+
+                    status.degrees[com] = ((status.degrees[com] || 0) - (status.gdegrees[node] || 0));
+                    status.internals[com] = ((status.internals[com] || 0) - (neigh_communities[com] || 0));
+                    status.nodes_to_com[node] = -1;
 
                 });
 
-                __insert(node, best_com, neigh_communities[best_com] || 0, status);
+                status.nodes_to_com[node] = +best_com; // Updating node community.
+                status.degrees[best_com] = (status.degrees[best_com] || 0) + (status.gdegrees[node] || 0); // Updating the sum of the edges incident in community c.
+                status.internals[best_com] = (status.internals[best_com] || 0) + (neigh_communities[best_com] || 0); // Updating the sum of internal edges. // We insert the node in the
+                // community there was a greater global modularity improvement. Status (which includes nodes_to_com) is updated (inside __insert).
 
-                if (best_com !== com_node) {
+                if (best_com !== com_node || isNaN(new_mod)) {
                     modif = true; // Only in this situation the algorithm will keep looking for new ways of
                     // improving modularity (by inserting nodes into different communities).
                 }
             });
-            new_overall_mod = __mdl(status);
-            if (Math.abs(cur_overall_mod - new_overall_mod) < __MIN) { // var __MIN = 0.0000001; Even if best_com !== com_node, if new_mod - cur_mod < __MIN while
+            new_mod = __modularity(status);
+
+            if (new_mod - cur_mod < __MIN || isNaN(new_mod)) { // var __MIN = 0.0000001; Even if best_com !== com_node, if new_mod - cur_mod < __MIN while
                 // cycle is broken (after executing 1 complete cycle of tries).
                 break;
             }
+
         }
     }
-    /////////////////////////////////////////////////////////
 
     // Community aggregation:
     function induced_graph(partition, graph) { // partition = __renumber(status.nodes_to_com) | current_graph/induced_graph
@@ -413,13 +371,13 @@ jInfomap = function () { // A function expression can be stored in a variable. A
             });
             return part;
         }
-        let status = {}; // Creating status that will be input in init_status.
+        let status = {};
 
         init_status(original_graph, status, part_init);
         let mod; // Modularity before 1 level partition.
         let status_list = []; // Set of partitions: dendogram.
         __one_level(original_graph, status); // Computes 1 level of the communities dendogram. Current status to determine when to stop.
-        let new_mod = __mdl(status); // Modularity after 1 level partition.
+        let new_mod = __modularity(status); // Modularity after 1 level partition.
         let partition = __renumber(status.nodes_to_com); // Decreasing number of communities due to __one_level.
         status_list.push(partition);
         mod = new_mod;
@@ -427,11 +385,10 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         // after 1st pass. Community aggregation.
         init_status(current_graph, status); // Resetting status.
 
-        while (true) { // Keeps partitioning the graph until no significant modularity increase.
-            console.log(status_list[status_list.length-1]);
+        while (isNaN(__modularity(status)) === false) { // Keeps partitioning the graph until no significant modularity increase.
             __one_level(current_graph, status);
-            new_mod = __mdl(status);
-            if (Math.abs(new_mod - mod) < __MIN) {
+            new_mod = __modularity(status);
+            if (new_mod - mod < __MIN) {
                 break;
             }
 
@@ -488,26 +445,3 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     // Final output of Louvain algorithm.
     return core;
 };
-
-
-// Accessing a function without () will return the function definition instead of the function result.
-
-// (function () {
-//   var x = "Hello!!";      // I will invoke myself
-// })(); -> Self-Invoking Function
-
-// The code inside a function is not executed when the function is defined. The code inside a function is executed when the function is invoked.
-
-// Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
-// Hoisting applies to variable declarations and to function declarations.
-// Because of this, JavaScript functions can be called before they are declared:
-
-// A JavaScript method is a property containing a function definition:
-// var person = {
-//   firstName: "John",
-//   lastName : "Doe",
-//   id       : 5566,
-//   fullName : function() {
-//     return this.firstName + " " + this.lastName;
-//   }
-// };
