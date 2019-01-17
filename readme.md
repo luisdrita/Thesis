@@ -28,10 +28,16 @@ Cytoscape.js
 
 ### Status
 
-[16/01/2019] Every algorithm working like a charm;
+[21/12/2018] Louvain algorithm implemented;
+
+[13/01/2019] Label Propagation, Weighted Label Propagation and Layered Label Propagation algorithms implemented.
+
+[16/01/2019] Infomap algorithm implemented;
 
 [17/01/2019] Improved code readability;
 
-[Next] Develop Interface;
+[18/01/2019] Added compressed algorithms (for enhanced performance) - Credits to UglifyJS 3 (https://skalman.github.io/UglifyJS-online/); 
+
+[Next] Develop interface;
 
 [Next] Benchmark each one.

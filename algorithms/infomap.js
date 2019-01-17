@@ -1,18 +1,18 @@
 // -------------------------------------------- Infomap Algorithm --------------------------------------------
 
-// Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
 jInfomap = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
-    // names. They are always invoked (called) using the variable name.
+    // names. They are always invoked using the variable name.
+
     //Constants
-    let __MIN = 0.001; // Below this difference of actual versus previous modularity generate_dendogram() function stops.
+    let __MIN = 0.001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
 
     // Global Variables
     let original_graph_nodes; // Input in the core() of the algorithm.
     let original_graph_edges; // Input in the core() of the algorithm.
     let original_graph = {}; // Input in the core() of the algorithm.
-    let partition_init; // Input in the core() of the algorithm. May not be used (depending if it is used in the HTML file or not).
-    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. F
+    let partition_init; // Input in the core() of the algorithm. May not be used (depending on the user input).
+    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge.
 
     // ----------------------------------------- Helpers -----------------------------------------
     function make_set(array) { // Receives an array with repeated values. Returns one filtered (and ordered) with only the different ones.
@@ -21,7 +21,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
             set[d] = true;
         });
 
-        return Object.keys(set); // Object key receives an array or an object. It returns an array with the respective
+        return Object.keys(set); // Object.keys receives an array or an object. It returns an array with the respective
         // array's positions or keys, respectively. Moreover, it eliminates repeated values (present in array) in the final set.
     }
     // Set -> {{1: true}, {2: true}, {3: true}...} Returns an ARRAY of the keys (each key corresponds to a node).
@@ -45,7 +45,8 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         let weight = 0;
         neighbours.forEach(function (neighbour) {
             let value = graph._assoc_mat[node][neighbour] || 1;
-            if (node === neighbour) { // In case we have already performed 1 community aggregation step. Infomap algorithm does not not consider self-loops during execution.
+            if (node === neighbour) { // In case we have already performed 1 community aggregation step, Infomap
+                // algorithm does not not consider self-loops during execution.
                 value = 0;
             }
             weight += value;
@@ -53,24 +54,24 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         return weight;
     }
-    // Returns ki. Sum of the weights of all links connecting to i.
+    // Returns the sum of the weights of all links connecting to node (again, there are not self-links in Infomap).
 
     function get_neighbours_of_node(graph, node) {
-        if (typeof graph._assoc_mat[node] === 'undefined') { // In case we are looking for a node not connected. In
-            // other words, for an empty array inside the _assoc_mat array.
-            return []; // Returns an empty array of neighbours.
+        if (typeof graph._assoc_mat[node] === 'undefined') { // In case we are looking for a node not connected, the
+            // function returns an empty array.
+            return [];
         }
 
         return Object.keys(graph._assoc_mat[node]); // Returns the position of each value that exists:
         // [2,,0,0,,2] -> Array ["0", "2", "3", "5"]
     }
-    // Printing an ARRAY with all neighbours of input node ID.
+    // Prints an ARRAY with all neighbours of input node ID.
 
 
     function get_edge_weight(graph, node1, node2) {
         return graph._assoc_mat[node1] ? graph._assoc_mat[node1][node2] : undefined;
     }
-    // Returning specific weight of the edge defined by node1 and node2.
+    // Returns specific weight of the edge defined by node1 and node2.
 
     function get_graph_size(graph) {
         let size = 0;
@@ -80,7 +81,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         return size;
     }
-    // Returning the sum of the property "weight" of all edges present in graph.edges.
+    // Returns the sum of the property "weight" of all edges present in graph.edges.
 
     function add_edge_to_graph(graph, edge) { // Edge is an object that specifies the source node, target node, and weight.
         update_assoc_mat(graph, edge); // Updating assoc_mat with the new edge's weight.
@@ -146,10 +147,9 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
     // ----------------------------------------- Algorithm -----------------------------------------
     function init_status(graph, status, part) { // Aim of this function is to initialize network properties after Infomap
-        // algorithm execution or to update them after community aggregation phase.
+        // first execution or to update them after community aggregation.
         // Part refers to an initial partition that may be input by
-        // the user with the initial graph data. In this case, second if condition (below) applies. Otherwise, 1st
-        // condition is the only to be executed.
+        // the user with the initial graph data.
 
         // Defining Status
         status['nodes_to_com'] = {}; // Nodes linked to the communities they belong. Key: Value pair. It takes the
@@ -173,24 +173,55 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                 // When every node is part of a different community, degrees = gdegrees.
 
                 status.internals[i] = 0; // After community aggregation step (and at the beginning of infomap algorithm execution), community internals are set to 0.
-                // i is used for community calculations and node for node specific variables.
+                // Variable "i" is used for community assignments and "node" for node specific variables.
+            });
+        } else { // In case there is a partition as function argument:
+            graph.nodes.forEach(function (node) { // There are status features that are node specific.
+                let com = part[node];
+                status.nodes_to_com[node] = com;
+                let deg = get_degree_for_node(graph, node);
+                status.degrees[com] = (status.degrees[com] || 0) + deg; // Sum of the weights of the links incident in
+                // each community is calculated by summing the weights of the edges incident in each node of the community.
+                status.gdegrees[node] = deg; // Sum of the weights of the links incident in each node.
+                let inc = 0.0;
+
+                let neighbours = get_neighbours_of_node(graph, node); // Printing all the neighbours of input node.
+                neighbours.forEach(function (neighbour) {
+                    let weight = graph._assoc_mat[node][neighbour];
+
+                    if (weight <= 0) {
+                        throw "Bad graph type, use positive weights";
+                    }
+
+                    if (part[neighbour] === com) { // Following calculations are done only if the neighbour belongs to
+                        // the same community as the input node under analysis.
+                        if (neighbour === node) {
+                            inc = 0;
+                        } else {
+                            inc += weight / 2.0; // Next time, neighbor will be the node and vice-versa.
+                        }
+                    }
+                });
+                status.internals[com] = (status.internals[com] || 0) + inc; // With inc we calculate the sum of the
+                // weights inside each community by summing the edges between connected nodes and belonging to the same community.
             });
         }
+
     }
 
-    function __mdl(status) { // Only with graph.status, it is possible to calculate the respective modularity.
+    function __mdl(status) { // Minimum description length calculation. It is only needed status values to perform it.
         let links = status.total_weight; // Total weight of the graph's edges.
-        let result;
         let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
 
-        let nodes = make_set(Object.keys(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
+        let nodes = make_set(Object.keys(status.nodes_to_com)); // Array with all the (non-repeated & ordered) node IDs present in the graph.
+
+        // 4 integrating parts of the map equation.
         let mdl_a = 0;
         let mdl_b = 0;
         let mdl_c = 0;
         let mdl_d = 0;
 
-        nodes.forEach(function (node) {
-
+        nodes.forEach(function (node) { // Iterating over each node in the network.
             let gdegree = status.gdegrees[node] || 0;
             if (links !== 0) {
                 mdl_c = mdl_c + (gdegree/(2*links))*Math.log(gdegree/(2*links));
@@ -198,7 +229,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         });
 
-        communities.forEach(function (com) { // Iterating over all different communities.
+        communities.forEach(function (com) { // Iterating over each community in the network.
             let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
             let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
             if (links !== 0) {
@@ -209,8 +240,8 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         });
 
-        result = mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d;
-        return result; // Modularity of a given partition (defined by status).
+        return mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d; // Minimum description length of a given partition (defined by status).
+
     }
 
     function __neighcom(node, graph, status) { // Communities in the neighborhood of a given node.
@@ -220,18 +251,17 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         neighborhood.forEach(function (neighbour) {
             if (neighbour !== node) {
-                let weight = graph._assoc_mat[node][neighbour] || 1; // weight is a number!
+                let weight = graph._assoc_mat[node][neighbour] || 1; // weight is a number.
                 let neighbourcom = status.nodes_to_com[neighbour];
                 weights[neighbourcom] = (weights[neighbourcom] || 0) + weight; // weights is an array!
             }
         });
 
-        return weights; // Each value of the object correspond to the sum of the weights of the edges connecting
-        // node to the respective community they belong. Each key is a different (ordered) community. Important for defining
-        // the weight of links between communities (step 2 of the algorithm).
+        return weights; // Each key corresponds to a different community. The respective value is the sum of all links
+        // connecting "node" to other nodes present in the respective cluster.
     }
 
-    // After inserting or removing a node from a community is fundamental to update community ID. When node is removed, it will be placed in community -1.
+    // After inserting or removing a node from a community it is fundamental to update community ID. When node is removed, it will be placed in community -1.
     function __renumber(dict) { // dict = status.nodes_to_com
         let count = 0;
         let ret = clone(dict); // Function output (deep copy)

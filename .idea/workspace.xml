@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="MSc 3.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algorithms/infomap.js" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/infomap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infomap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/labelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layeredLabelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/louvain.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/weightedLabelPropagation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,47 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="311" column="28" selection-start-line="311" selection-start-column="28" selection-end-line="311" selection-end-column="28" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#p#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#a#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#figure#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithms/infomap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5760">
-              <caret line="384" column="112" selection-start-line="384" selection-start-column="102" selection-end-line="384" selection-end-column="112" />
+            <state relative-caret-position="330">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -69,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithms/labelPropagation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1922">
-              <caret line="201" column="9" selection-start-line="201" selection-start-column="9" selection-end-line="201" selection-end-column="9" />
+            <state relative-caret-position="220">
+              <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -78,67 +39,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithms/layeredLabelPropagation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2140">
+            <state relative-caret-position="2137">
               <caret line="233" selection-start-line="233" selection-end-line="233" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/algorithms/louvain.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="375" selection-start-line="375" selection-end-line="375" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/algorithms/weightedLabelPropagation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="450">
-                <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+              <first_editor relative-caret-position="480">
+                <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mtih.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="755">
-              <caret line="123" column="174" selection-start-line="123" selection-start-column="174" selection-end-line="123" selection-end-column="174" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#iframe#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#a#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -154,7 +68,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add_edge_to_graph</find>
       <find>edge_index</find>
       <find>max</find>
       <find>renumber</find>
@@ -184,6 +97,7 @@
       <find>console</find>
       <find>make_assoc_mat</find>
       <find>modularity</find>
+      <find>input</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -201,7 +115,6 @@
         <option value="$PROJECT_DIR$/index2.html" />
         <option value="$PROJECT_DIR$/louvain2.js" />
         <option value="$PROJECT_DIR$/louvain_mod.js" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/louvain.js" />
         <option value="$PROJECT_DIR$/infomap.js" />
         <option value="$PROJECT_DIR$/weightedLabelPropagation.js" />
@@ -213,6 +126,12 @@
         <option value="$PROJECT_DIR$/algorithms/weightedLabelPropagation.js" />
         <option value="$PROJECT_DIR$/algorithms/infomap.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/compressedAlgorithms/infomap.js" />
+        <option value="$PROJECT_DIR$/compressedAlgorithms/labelPropagation.js" />
+        <option value="$PROJECT_DIR$/compressedAlgorithms/layeredLabelPropagation.js" />
+        <option value="$PROJECT_DIR$/compressedAlgorithms/louvain.js" />
+        <option value="$PROJECT_DIR$/compressedAlgorithms/weightedLabelPropagation.js" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -323,7 +242,8 @@
       <workItem from="1547454376277" duration="12698000" />
       <workItem from="1547556640812" duration="26302000" />
       <workItem from="1547644285869" duration="250000" />
-      <workItem from="1547646886845" duration="7022000" />
+      <workItem from="1547646886845" duration="7337000" />
+      <workItem from="1547728161826" duration="7887000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -336,7 +256,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="305664000" />
+    <option name="totallyTimeSpent" value="313866000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -351,7 +280,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39937758" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32987553" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4996986" visible="true" weight="0.17842324" />
@@ -469,54 +398,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/louvain2.js" />
     <entry file="file://$PROJECT_DIR$/louvain_mod.js" />
-    <entry file="file://$PROJECT_DIR$/louvain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="445" column="2" selection-start-line="445" selection-start-column="2" selection-end-line="445" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infomap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6690">
-          <caret line="446" column="2" lean-forward="true" selection-start-line="446" selection-start-column="2" selection-end-line="446" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="450">
-            <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weightedLabelPropagation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3735">
-          <caret line="249" column="2" selection-start-line="249" selection-start-column="2" selection-end-line="249" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/labelPropagation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="249" column="2" selection-start-line="249" selection-start-column="2" selection-end-line="249" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layeredLabelPropagation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1701">
-          <caret line="287" column="2" selection-start-line="287" selection-start-column="2" selection-end-line="287" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/louvain.js" />
+    <entry file="file://$PROJECT_DIR$/infomap.js" />
+    <entry file="file://$PROJECT_DIR$/weightedLabelPropagation.js" />
+    <entry file="file://$PROJECT_DIR$/labelPropagation.js" />
+    <entry file="file://$PROJECT_DIR$/layeredLabelPropagation.js" />
     <entry file="file://$PROJECT_DIR$/mtih.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
+        <state relative-caret-position="1845">
           <caret line="123" column="174" selection-start-line="123" selection-start-column="174" selection-end-line="123" selection-end-column="174" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -541,45 +430,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithms/layeredLabelPropagation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2140">
-          <caret line="233" selection-start-line="233" selection-end-line="233" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algorithms/labelPropagation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1922">
-          <caret line="201" column="9" selection-start-line="201" selection-start-column="9" selection-end-line="201" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algorithms/louvain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="375" selection-start-line="375" selection-end-line="375" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algorithms/weightedLabelPropagation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algorithms/infomap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5760">
-          <caret line="384" column="112" selection-start-line="384" selection-start-column="102" selection-end-line="384" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="311" column="28" selection-start-line="311" selection-start-column="28" selection-end-line="311" selection-end-column="28" />
+        <state relative-caret-position="256">
+          <caret line="308" column="62" lean-forward="true" selection-start-line="308" selection-start-column="62" selection-end-line="308" selection-end-column="62" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -607,6 +461,86 @@
             <element signature="n#style#0;n#figure#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressedAlgorithms/layeredLabelPropagation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1976" selection-start-column="1976" selection-end-column="1976" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressedAlgorithms/weightedLabelPropagation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1766" selection-start-column="1766" selection-end-column="1766" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms/weightedLabelPropagation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms/louvain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="165" column="74" selection-start-line="165" selection-start-column="74" selection-end-line="165" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressedAlgorithms/labelPropagation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1748" selection-start-column="1748" selection-end-column="1748" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressedAlgorithms/infomap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4300" selection-start-column="4300" selection-end-column="4300" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressedAlgorithms/louvain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3843" selection-start-column="3843" selection-end-column="3843" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms/infomap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms/labelPropagation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithms/layeredLabelPropagation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2137">
+          <caret line="233" selection-start-line="233" selection-end-line="233" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="480">
+            <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

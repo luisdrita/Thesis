@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
       <title>Community Finding in Phylogenetic Networks</title>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="./algorithms/louvain.js"></script>
       <script type="text/javascript" src="./algorithms/labelPropagation.js"></script>
       <script type="text/javascript" src="./algorithms/weightedLabelPropagation.js"></script>
@@ -145,11 +145,11 @@
     <input type="button" value="Reset" id='reset_btn' style="margin-left: 50px"/>
     <input type="button" value="Run" id='comm_detect'/>
       <div class="dropdown">
-        <button class="dropbtn">Community Finding Algorithm</button>
+        <button id = dropbtn class="dropbtn">Community Finding Algorithm</button>
         <div class="dropdown-content">
-          <a href="#">Louvain</a>
-          <a href="#">Infomap</a>
-          <a href="#">Layered Label Propagation</a>
+          <a id = "louvain" onclick="louvain(this.id)">Louvain</a>
+          <a id = "infomap" onclick="infomap()">Infomap</a>
+          <a id = "llp" onclick="llp()">Layered Label Propagation</a>
         </div>
       </div>
       <input type="file" id="file" name="avatar" accept="image/png, image/jpeg">
@@ -300,6 +300,12 @@
   </body>
 
   <script>
+
+      function louvain(id) {
+          if(id === "louvain") {
+          document.getElementById(dropbtn).innerText = "Louvain";
+              }
+      }
 
   // Original node and edge data
   let node_data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60 , 61, 62, 63, 64, 65 , 66, 67, 68, 69, 70, 71, 72, 73];
