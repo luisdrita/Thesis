@@ -36,7 +36,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         return vals;
     }
     // Returns an ARRAY of the values of the input object (in the same initial order). hasOwnProperty returns true or
-    // false depending on the presence of such property in obj.
+    // false depending on the presence of such property in obj..
 
     function get_degree_for_node(graph, node) { // Node is a number ID. Graph is an object with 3 properties (nodes,
         // edges and _assoc_mat).
