@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Added Compressed Algorithms">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/infomap.js" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/infomap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/labelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/layeredLabelPropagation.js" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/layeredLabelPropagation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/louvain.js" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/louvain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/weightedLabelPropagation.js" beforeDir="false" afterPath="$PROJECT_DIR$/algorithms/weightedLabelPropagation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressedAlgorithms/labelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-    </list>
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -156,6 +146,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="original/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -304,7 +307,7 @@
       <workItem from="1547646886845" duration="7337000" />
       <workItem from="1547728161826" duration="8523000" />
       <workItem from="1547796011751" duration="3683000" />
-      <workItem from="1547820170770" duration="20632000" />
+      <workItem from="1547820170770" duration="20919000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -320,11 +323,18 @@
       <option name="project" value="LOCAL" />
       <updated>1547763099249</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Improved Code Robustness">
+      <created>1547858157375</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1547858157375</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="338817000" />
+    <option name="totallyTimeSpent" value="339104000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -337,7 +347,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -404,7 +413,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="MSc 3.0" />
     <MESSAGE value="Added Compressed Algorithms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Compressed Algorithms" />
+    <MESSAGE value="Improved Code Robustness" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved Code Robustness" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/example/example.html" />
