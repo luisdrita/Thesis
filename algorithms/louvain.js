@@ -1,31 +1,30 @@
 // -------------------------------------------- Louvain Algorithm --------------------------------------------
 
-// Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
-jLouvain = function () { // A function expression can be stored in a variable. After a function expression has been
-    // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
-    // names. They are always invoked (called) using the variable name.
-    //Constants
-    let __MIN = 0.0000001; // Below this difference of actual versus previous modularity generate_dendogram() function stops.
+jLouvain = function () { // A function expression can be stored in a variable. After it has been
+    // stored as variable, it can be used as a function. Functions stored in variables do not need
+    // names. They are always invoked using the variable name.
+
+    // Constants
+    let __MIN = 0.0000001; // Below this difference of actual versus previous modularity, Louvain algorithm iteration stops.
 
     // Global Variables
-    let original_graph_nodes; // Input in the core() of the algorithm.
-    let original_graph_edges; // Input in the core() of the algorithm.
-    let original_graph = {}; // Input in the core() of the algorithm.
-    let partition_init; // Input in the core() of the algorithm. May not be used (depending if it is used in the HTML file or not).
+    let original_graph_nodes; // Defined in the core() of the algorithm.
+    let original_graph_edges; // Defined in the core() of the algorithm.
+    let original_graph = {}; // Defined in the core() of the algorithm.
+    let partition_init; // Defined in the core() of the algorithm. May not be used (depending if it is used in the HTML file or not).
     let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. F
 
-
     // ----------------------------------------- Helpers -----------------------------------------
-    function make_set(array) { // Receives array with repeated values. Returns one filtered (and ordered) with only the different ones.
+    function make_set(array) { // Receives an array with repeated values. Returns one filtered (and ordered) with only the different ones.
         let set = {};
         array.forEach(function (d) {
             set[d] = true;
         });
 
-        return Object.keys(set); // Object key receives an array or an object. It returns an array with the respective
+        return Object.keys(set); // Object.keys receives an array or an object. It returns an array with the respective
         // array's position or keys, respectively. Moreover, it eliminates repeated values (present in array) in the final set.
     }
-    // Set -> {{1: true}, {2: true}, {3: true}...} Returns an ARRAY of the keys (each key corresponds to a node).
+    // Set -> {1: true, 2: true, 3: true...} Returns an ARRAY of the keys (each key corresponds to a node).
 
     function obj_values(obj) {
         let vals = [];
@@ -37,7 +36,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         return vals;
     }
     // Returns an ARRAY of the values of the input object (in the same initial order). hasOwnProperty returns true or
-    // false depending on the presence of such property in obj.
+    // false depending on the presence of such property in obj..
 
     function get_degree_for_node(graph, node) { // Node is a number ID. Graph is an object with 3 properties (nodes,
         // edges and _assoc_mat)
@@ -46,7 +45,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         let weight = 0;
         neighbours.forEach(function (neighbour) {
             let value = graph._assoc_mat[node][neighbour] || 1;
-            if (node === neighbour) { // In case we are in community aggregation phase.
+            if (node === neighbour) { // In case we have already performed community aggregation, graph._assoc_mat[node][neighbour] will be different of 0.
                 value *= 2;
             }
             weight += value;
@@ -54,24 +53,24 @@ jLouvain = function () { // A function expression can be stored in a variable. A
 
         return weight;
     }
-    // Returns ki. Sum of the weights of all links connecting to i (including itself).
+    // Returns the sum of the weights of all links connecting to node.
 
     function get_neighbours_of_node(graph, node) {
-        if (typeof graph._assoc_mat[node] === 'undefined') { // In case we are looking for a node not connected. In
-            // other words, for an empty array inside the _assoc_mat array.
-            return []; // Returns an empty array of neighbours.
+        if (typeof graph._assoc_mat[node] === 'undefined') { // In case we are looking for a node not connected, the
+            // function returns an empty array.
+            return [];
         }
 
         return Object.keys(graph._assoc_mat[node]); // Returns the position of each value that exists:
         // var object1 = [2,,0,0,,2] -> Array ["0", "2", "3", "5"]
     }
-    // Printing an ARRAY with all neighbours of input node ID.
+    // Prints an ARRAY with all neighbours of input node ID.
 
 
     function get_edge_weight(graph, node1, node2) {
         return graph._assoc_mat[node1] ? graph._assoc_mat[node1][node2] : undefined;
     }
-    // Returning specific weight of the edge defined by node1 and node2.
+    // Returns specific weight of the edge defined by node1 and node2.
 
     function get_graph_size(graph) {
         let size = 0;
@@ -83,30 +82,30 @@ jLouvain = function () { // A function expression can be stored in a variable. A
 
         return size;
     }
-    // Returning the sum of the property "weight" of all edges present in the vector edge (that comes from example.html)
+    // Returns the sum of the property "weight" of all edges present in graph.edges.
 
     function add_edge_to_graph(graph, edge) { // Edge is an object that specifies the source node, target node, and weight.
         update_assoc_mat(graph, edge); // Updating assoc_mat with the new edge's weight.
 
         if (edge_index[edge.source+'_'+edge.target]) { // There is no weight to update in edge_index.
             graph.edges[edge_index[edge.source+'_'+edge.target]].weight = edge.weight; // Because it is already in edges
-            // from example.html and edge_index (because of the next part). Update of the weight in example.html.
+            // from example.html and edge_index (because of the next part). Update the weight in graph.edges.
         } else {
-            graph.edges.push(edge); // Add to edges file of example.html.
+            graph.edges.push(edge); // Add edge to graph.edges.
             edge_index[edge.source+'_'+edge.target] = graph.edges.length - 1; // Update edge_index with new value.
         }
     }
-    // edge_index accumulates only the new edges that are added to edges (from index.html)
+    // edge_index accumulates only the new edges that are added to graph.edges.
 
     function make_assoc_mat(edge_list) {
         let mat = {}; // It is not an array. It is a list:
         // Object { {source: 3, target: 5, weight: 1.5}, {source: 1, target: 2, weight: 1.99}, {source: 30, target: 2, weight: 3.14} ...}
         edge_list.forEach(function (edge) {
-            mat[edge.source] = mat[edge.source] || {}; // Important because many edges share the same nodes. And, in
-            // order to include an element in a 2D matrix, we need to 1st create a
-            mat[edge.source][edge.target] = edge.weight;
+            mat[edge.source] = mat[edge.source] || {}; // Important because many edges share the same nodes. In
+            // order to include an element in a 2D matrix, we need to 1st create a list to insert it.
+            mat[edge.source][edge.target] = edge.weight || 1;
             mat[edge.target] = mat[edge.target] || {};
-            mat[edge.target][edge.source] = edge.weight;
+            mat[edge.target][edge.source] = edge.weight || 1;
         });
         return mat; // It is not an array (1 object containing others): Object { 1: Object { 2: 3 }, 2: Object { 2: 3 } }
     }
@@ -134,26 +133,37 @@ jLouvain = function () { // A function expression can be stored in a variable. A
     }
     // Copy paste operation. This is important because: I have an object x. I'd like to copy it as object y, such that changes to y do not modify x.
 
+    function shuffle(a) {
+        let j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
+    }
+    // Returns the input vector but randomly shuffled.
+
     // ----------------------------------------- Algorithm -----------------------------------------
-    function init_status(graph, status, part) { // Aim of this function is to keep an up to date status of the
-        // network through the following value calculations. Part refers only to an initial partition. It may not
-        // receive this argument. In this case, first if condition (below) applies.
-        // Only needed because of community aggregation (update needed).
+    function init_status(graph, status, part) { // Aim of this function is to initialize network properties after Infomap
+        // first execution or to update them after community aggregation.
+        // Part refers to an initial partition that may be input by
+        // the user with the initial graph data.
 
         // Defining Status
         status['nodes_to_com'] = {}; // Nodes linked to the communities they belong. Key: Value pair. It takes the
         // value of -1 if node is not assigned to a community.
-        status['internals'] = {}; // Sum of the weights of the links inside each community.
+        status['internals'] = {}; // Sum of the weights of all links inside a specified community.
         status['degrees'] = {}; // Sum of the weights of the links incident in each community.
         status['gdegrees'] = {}; // Sum of the weights of the links incident in each node.
         status['loops'] = {}; // Loop weight for each node.
-        status['total_weight'] = get_graph_size(graph); //  Sum of the property "weight" of all edges present in the
-        // vector edge (that comes from index.html)
+        status['total_weight'] = get_graph_size(graph); //  Sum of the property "weight" of all edges present in graph.
 
-        // Only goal of next if condition is to update the status features above.
-        if (typeof part === 'undefined') { // No communities defined among the nodes.
+        // Goal of next if condition is to update the status features above.
+        if (typeof part === 'undefined') { // No part input.
             graph.nodes.forEach(function (node, i) {
-                status.nodes_to_com[node] = i; // Attributing each node to a different community.
+                status.nodes_to_com[node] = i; // Each node belongs to a different community.
                 let deg = get_degree_for_node(graph, node); // Sum of the weights of all links connecting to i.
 
                 if (deg < 0)
@@ -165,7 +175,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
 
                 status.loops[node] = get_edge_weight(graph, node, node) || 0; // Inner loop edge weight.
                 status.internals[i] = status.loops[node]; // This condition of if should be satisfied during community aggregation phase.
-                // i is used for community calculations and node for node specific variables.
+                // Variable "i" is used for community assignments and "node" for node specific variables.
             });
         } else { // In case there is a partition as function argument:
             graph.nodes.forEach(function (node) { // There are status features that are node specific.
@@ -200,7 +210,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         }
     }
 
-    function __modularity(status) { // Only with graph.status, it is possible to calculate the respective modularity.
+    function __modularity(status) { // It is possible to calculate network's modularity only using graph.status.
         let links = status.total_weight; // Total weight of the graph's edges.
         let result = 0.0;
         let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
@@ -230,15 +240,14 @@ jLouvain = function () { // A function expression can be stored in a variable. A
             }
         });
 
-        return weights; // Each value of the object correspond to the sum of the weights of the edges connecting
-        // node to the respective community they belong. Each key is a different (ordered) community. Important for defining
-        // the weight of links between communities (step 2 of the algorithm).
+        return weights; // Each key corresponds to a different community. The respective value is the sum of all links
+        // connecting "node" to other nodes present in the respective cluster.
     }
 
     function __insert(node, com, weight, status) {
-        // Inserting a node in a community (connected by a given weight) and modifying graph status.
+        // Inserting a node in community com (connected by a given weight) and modifying graph status.
         status.nodes_to_com[node] = +com; // Updating node community.
-        status.degrees[com] = (status.degrees[com] || 0) + (status.gdegrees[node] || 0); // Updating the sum of the edges incident in community c.
+        status.degrees[com] = (status.degrees[com] || 0) + (status.gdegrees[node] || 0); // Updating the sum of the edges incident in community com.
         status.internals[com] = (status.internals[com] || 0) + weight + (status.loops[node] || 0); // Updating the sum of internal edges.
     }
 
@@ -249,7 +258,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         status.nodes_to_com[node] = -1; // Important to renumber communities after removing an edge.
     }
 
-    // After inserting or removing a node from a community is fundamental to update community ID. When node is removed, it will be placed in community -1.
+    // After inserting or removing a node from a community it is fundamental to update community ID. When node is removed, it will be placed in community -1.
     function __renumber(dict) { // dict = status.nodes_to_com
         let count = 0;
         let ret = clone(dict); // Function output (deep copy)
@@ -271,26 +280,27 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         // in previous nodes will be assigned to future ones.
     }
 
-    function __one_level(graph, status) { //Computes one level of the communities dendogram (without community aggregation).
+    function __one_level(graph, status) { // Computes one level of the communities dendogram (without including community aggregation).
 
         let modif = true; // Modifications made in terms of community members.
-        let cur_mod = __modularity(status); // Current modularity.
+        let cur_mod = __modularity(status); // Current modularity (between -1 and 1).
         let new_mod = cur_mod; // New modularity value (between -1 and 1).
 
         while (modif) { // This cycle is not the one that removes or inserts nodes.
             cur_mod = new_mod;
-            modif = false; // Only if best community is different from the actual one, the cycle will proceed.
+            modif = false; // Only if best community is different from the actual one, the cycle may proceed.
 
-            graph.nodes.forEach(function (node) {
+            let shuffledNodes = shuffle(graph.nodes);
+
+            shuffledNodes.forEach(function (node) {
                 let com_node = status.nodes_to_com[node]; // Returning community of the input node.
-                let degc_totw = (status.gdegrees[node] || 0) / (status.total_weight * 2.0); // To be used below. Defined here because it is node
-                // /whole network specific.
+                let degc_totw = (status.gdegrees[node] || 0) / (status.total_weight * 2.0); // To be used below. Defined here in order to avoid (unnecessary) repeated calculation.
                 let neigh_communities = __neighcom(node, graph, status); // Returning an array of the communities in the neighborhood of input node.
                 __remove(node, com_node, (neigh_communities[com_node] || 0.0), status); // function __remove(node, com, weight, status) {}. Status (which
                 // includes nodes_to_com) is updated (inside __remove).
                 let best_com = com_node;
                 let best_increase = 0;
-                let neigh_communities_entries = Object.keys(neigh_communities); // Make iterable;
+                let neigh_communities_entries = Object.keys(neigh_communities); // Make iterable.
 
                 // Checking whether modularity increased by inserting removed node in each neighbor community (once at a time).
                 neigh_communities_entries.forEach(function (com) {
@@ -312,16 +322,16 @@ jLouvain = function () { // A function expression can be stored in a variable. A
             });
             new_mod = __modularity(status);
 
-            if (new_mod - cur_mod < __MIN) { // var __MIN = 0.0000001; Even if best_com !== com_node, if new_mod - cur_mod < __MIN while
-                // cycle is broken (after executing 1 complete cycle of tries).
+            if (new_mod - cur_mod < __MIN) { // Even if best_com !== com_node, if new_mod - cur_mod < __MIN
+                // cycle is broken.
                 break;
             }
         }
     }
 
     // Community aggregation:
-    function induced_graph(partition, graph) { // partition = __renumber(status.nodes_to_com) | current_graph/induced_graph
-        let ret = {nodes: [], edges: [], _assoc_mat: {}}; // Output
+    function induced_graph(partition, graph) { // partition has status.nodes_to_com format.
+        let ret = {nodes: [], edges: [], _assoc_mat: {}}; // Output.
         let w_prec, weight;
 
         // Add nodes from partition values
@@ -332,7 +342,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
             weight = edge.weight || 1; // For every edge placed between the same 2 nodes, the final weight is summed.
             let com1 = partition[edge.source]; // Source node community.
             let com2 = partition[edge.target]; // Target node community.
-            w_prec = (get_edge_weight(ret, com1, com2) || 0); // get_edge_weight(graph, node1, node2) {}
+            w_prec = (get_edge_weight(ret, com1, com2) || 0); // get_edge_weight(graph, node1, node2) {}.
             let new_weight = (w_prec + weight); // new_weight is not summing to itself.
             add_edge_to_graph(ret, {'source': com1, 'target': com2, 'weight': new_weight}); // Inserting community aggregated edges.
         });
@@ -354,12 +364,12 @@ jLouvain = function () { // A function expression can be stored in a variable. A
             });
         }
 
-        return partition; // partition = __renumber(status.nodes_to_com). A graph can be partitioned in different ways.
+        return partition; // A graph can be partitioned in different ways.
     }
 
     // Mother Function.
     function generate_dendogram(graph, part_init) {
-        if (graph.edges.length === 0) { // In case we have a graph with no edges. Each node is a community.
+        if (graph.edges.length === 0) { // In case we have a graph with no edges. Each node is a different community.
             let part = {};
             graph.nodes.forEach(function (node) {
                 part[node] = node;
@@ -370,7 +380,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
 
         init_status(original_graph, status, part_init);
         let mod; // Modularity before 1 level partition.
-        let status_list = []; // Set of partitions: dendogram.
+        let status_list = []; // Set of partitions at different hierarchical levels: dendogram.
         __one_level(original_graph, status); // Computes 1 level of the communities dendogram. Current status to determine when to stop.
         let new_mod = __modularity(status); // Modularity after 1 level partition.
         let partition = __renumber(status.nodes_to_com); // Decreasing number of communities due to __one_level.
@@ -380,7 +390,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         // after 1st pass. Community aggregation.
         init_status(current_graph, status); // Resetting status.
 
-        while (true) { // Keeps partitioning the graph until no significant modularity increase.
+        while (true) { // Keeps partitioning the graph until no significant modularity increase occurs.
             __one_level(current_graph, status);
             new_mod = __modularity(status);
             if (new_mod - mod < __MIN) {
@@ -404,22 +414,22 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         return partition_at_level(dendogram, dendogram.length - 1);
     };
 
-    core.nodes = function (nds) { // nds are the input nodes coming from the html file.
-        if (nds.length > 0) { // Calling arguments of the function.
+    core.nodes = function (nds) { // nds are the input nodes from the network under analyses.
+        if (nds.length > 0) {
             original_graph_nodes = nds; // Global variable.
         }
 
         return core;
     };
 
-    core.edges = function (edgs) { // edgs are the input edges coming from the html file.
+    core.edges = function (edgs) { // edgs are the input edges coming from the network under analysis.
         if (typeof original_graph_nodes === 'undefined')
             throw 'Please provide the graph nodes first!';
 
-        if (edgs.length > 0) { // Calling arguments of the function.
+        if (edgs.length > 0) {
             original_graph_edges = edgs; // Global variable.
             let assoc_mat = make_assoc_mat(edgs);
-            original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) data.
+            original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) properties.
                 'nodes': original_graph_nodes,
                 'edges': original_graph_edges,
                 '_assoc_mat': assoc_mat
@@ -430,13 +440,13 @@ jLouvain = function () { // A function expression can be stored in a variable. A
 
     };
 
-    core.partition_init = function (prttn) { // Initial partition input in index.html (not present).
-        if (prttn.length > 0) { // Calling arguments of the function.
+    core.partition_init = function (prttn) { // Initial partition input coming from the network under analysis (optional).
+        if (prttn.length > 0) {
             partition_init = prttn;
         }
         return core;
     };
 
-    // Final output of Louvain algorithm.
+    // Output of Louvain algorithm.
     return core;
 };

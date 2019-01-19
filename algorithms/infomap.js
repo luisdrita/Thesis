@@ -5,7 +5,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     // names. They are always invoked using the variable name.
 
     //Constants
-    let __MIN = 0.001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
+    let __MIN = 0.0001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
 
     // Global Variables
     let original_graph_nodes; // Input in the core() of the algorithm.
@@ -24,7 +24,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         return Object.keys(set); // Object.keys receives an array or an object. It returns an array with the respective
         // array's positions or keys, respectively. Moreover, it eliminates repeated values (present in array) in the final set.
     }
-    // Set -> {{1: true}, {2: true}, {3: true}...} Returns an ARRAY of the keys (each key corresponds to a node).
+    // Set -> {1: true, 2: true, 3: true...} Returns an ARRAY of the keys (each key corresponds to a node).
 
     function obj_values(obj) {
         let vals = [];
@@ -63,7 +63,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         }
 
         return Object.keys(graph._assoc_mat[node]); // Returns the position of each value that exists:
-        // [2,,0,0,,2] -> Array ["0", "2", "3", "5"]
+        // [2,,0,0,,2] -> Array ["0", "2", "3", "5"].
     }
     // Prints an ARRAY with all neighbours of input node ID.
 
@@ -76,7 +76,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     function get_graph_size(graph) {
         let size = 0;
         graph.edges.forEach(function (edge) {
-            size += edge.weight;
+            size += (edge.weight || 1);
         });
 
         return size;
@@ -101,10 +101,10 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         // Object { {source: 3, target: 5, weight: 1.5}, {source: 1, target: 2, weight: 1.99}, {source: 30, target: 2, weight: 3.14} ...}
         edge_list.forEach(function (edge) {
             mat[edge.source] = mat[edge.source] || {}; // Important because many edges share the same nodes. In
-            // order to include an element in a 2D matrix, we need to 1st create a list.
-            mat[edge.source][edge.target] = edge.weight;
+            // order to include an element in a 2D matrix, we need to 1st create a list to insert it.
+            mat[edge.source][edge.target] = edge.weight || 1;
             mat[edge.target] = mat[edge.target] || {};
-            mat[edge.target][edge.source] = edge.weight;
+            mat[edge.target][edge.source] = edge.weight || 1;
         });
         return mat; // It is not an array (1 object containing others): Object { 1: Object { 2: 3 }, 2: Object { 2: 3 } }
     }
@@ -113,9 +113,9 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     function update_assoc_mat(graph, edge) {
         graph._assoc_mat[edge.source] = graph._assoc_mat[edge.source] || {}; // In case we are updating a node without
         // connections. Skip this step if updating weight value only.
-        graph._assoc_mat[edge.source][edge.target] = edge.weight;
+        graph._assoc_mat[edge.source][edge.target] = edge.weight; // After community aggregation there always are weighted edges.
         graph._assoc_mat[edge.target] = graph._assoc_mat[edge.target] || {};
-        graph._assoc_mat[edge.target][edge.source] = edge.weight;
+        graph._assoc_mat[edge.target][edge.source] = edge.weight; // After community aggregation there always are weighted edges.
     }
     // Matrix where i is the source and j the target node of the respective edge. The numeric value corresponds to the edge weight.
 
@@ -283,17 +283,16 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         // in previous nodes will be assigned to future ones.
     }
 
-    function __one_level(graph, status) { //Computes one level of the communities dendogram (without community aggregation).
+    function __one_level(graph, status) { // Computes one level of the communities dendogram (without community aggregation).
 
         let modif = true; // Modifications made in terms of community members.
 
-        let cur_mod = __mdl(status); // Current modularity.
-
-        let new_mod = cur_mod; // New modularity value (between -1 and 1).
+        let cur_mod = __mdl(status); // Current description length.
+        let new_mod = cur_mod; // New description length.
 
         while (modif) { // This cycle is not the one that removes or inserts nodes.
             cur_mod = new_mod;
-            modif = false; // Only if best community is different from the actual one, the cycle will proceed.
+            modif = false; // Only if best community is different from the actual one, the cycle may proceed.
 
             let shuffledNodes = shuffle(graph.nodes);
 
@@ -304,9 +303,9 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                  // function __remove(node, com, weight, status) {}. Status (which
                 // includes nodes_to_com) is updated (inside __remove).
 
-                status.degrees[com_node] = ((status.degrees[com_node] || 0) - (status.gdegrees[node] || 0));
-                status.internals[com_node] = ((status.internals[com_node] || 0) - (neigh_communities[com_node] || 0.0));
-                status.nodes_to_com[node] = -1; // Important to renumber communities after removing an edge.'
+                status.degrees[com_node] = (status.degrees[com_node] || 0) - (status.gdegrees[node] || 0);
+                status.internals[com_node] = (status.internals[com_node] || 0) - (neigh_communities[com_node] || 0);
+                status.nodes_to_com[node] = -1; // Updating node community.
 
                 let best_com = com_node;
                 let best_increase = 0;
@@ -332,20 +331,19 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
                 });
 
-                status.nodes_to_com[node] = +best_com; // Updating node community.
-                status.degrees[best_com] = (status.degrees[best_com] || 0) + (status.gdegrees[node] || 0); // Updating the sum of the edges incident in community c.
-                status.internals[best_com] = (status.internals[best_com] || 0) + (neigh_communities[best_com] || 0); // Updating the sum of internal edges. // We insert the node in the
-                // community there was a greater global modularity improvement. Status (which includes nodes_to_com) is updated (inside __insert).
+                status.nodes_to_com[node] = +best_com;
+                status.degrees[best_com] = (status.degrees[best_com] || 0) + (status.gdegrees[node] || 0);
+                status.internals[best_com] = (status.internals[best_com] || 0) + (neigh_communities[best_com] || 0);
 
                 if (best_com !== com_node || isNaN(new_mod)) {
                     modif = true; // Only in this situation the algorithm will keep looking for new ways of
-                    // improving modularity (by inserting nodes into different communities).
+                    // minimizing MAP equation.
                 }
             });
             new_mod = __mdl(status);
 
-            if (new_mod - cur_mod < __MIN || isNaN(new_mod)) { // var __MIN = 0.0000001; Even if best_com !== com_node, if new_mod - cur_mod < __MIN while
-                // cycle is broken (after executing 1 complete cycle of tries).
+            if (new_mod - cur_mod < __MIN || isNaN(new_mod)) { // Even if best_com !== com_node, if new_mod - cur_mod < __MIN
+                // cycle is broken.
                 break;
             }
 
@@ -353,8 +351,8 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     }
 
     // Community aggregation:
-    function induced_graph(partition, graph) { // partition = __renumber(status.nodes_to_com) | current_graph/induced_graph
-        let ret = {nodes: [], edges: [], _assoc_mat: {}}; // Output
+    function induced_graph(partition, graph) { // partition has status.nodes_to_com format.
+        let ret = {nodes: [], edges: [], _assoc_mat: {}}; // Output.
         let w_prec, weight;
 
         // Add nodes from partition values
@@ -365,7 +363,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
             weight = edge.weight || 1; // For every edge placed between the same 2 nodes, the final weight is summed.
             let com1 = partition[edge.source]; // Source node community.
             let com2 = partition[edge.target]; // Target node community.
-            w_prec = (get_edge_weight(ret, com1, com2) || 0); // get_edge_weight(graph, node1, node2) {}
+            w_prec = (get_edge_weight(ret, com1, com2) || 0); // get_edge_weight(graph, node1, node2) {}.
             let new_weight = (w_prec + weight); // new_weight is not summing to itself.
             add_edge_to_graph(ret, {'source': com1, 'target': com2, 'weight': new_weight}); // Inserting community aggregated edges.
         });
@@ -377,7 +375,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
     // Partitioning drawn dendogram at an input level.
     function partition_at_level(dendogram, level) {
-        let partition = clone(dendogram[0]); // partition = __renumber(status.nodes_to_com)
+        let partition = clone(dendogram[0]);
         for (let i = 1; i < level + 1; i++) { // If it is not possible to cut at the specified level, the function will
             // cut at the nearest below.
             Object.keys(partition).forEach(function (key) {
@@ -386,12 +384,12 @@ jInfomap = function () { // A function expression can be stored in a variable. A
             });
         }
 
-        return partition; // partition = __renumber(status.nodes_to_com). A graph can be partitioned in different ways.
+        return partition; // A graph can be partitioned in different ways.
     }
 
     // Mother Function.
     function generate_dendogram(graph, part_init) {
-        if (graph.edges.length === 0) { // In case we have a graph with no edges. Each node is a community.
+        if (graph.edges.length === 0) { // In case we have a graph with no edges. Each node is a different community.
             let part = {};
             graph.nodes.forEach(function (node) {
                 part[node] = node;
@@ -412,7 +410,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         // after 1st pass. Community aggregation.
         init_status(current_graph, status); // Resetting status.
 
-        while (isNaN(__mdl(status)) === false) { // Keeps partitioning the graph until no significant modularity increase.
+        while (isNaN(__mdl(status)) === false) { // Keeps partitioning the graph until no significant modularity increase occurs.
             __one_level(current_graph, status);
             new_mod = __mdl(status);
             if (new_mod - mod < __MIN) {
@@ -436,22 +434,22 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         return partition_at_level(dendogram, dendogram.length - 1);
     };
 
-    core.nodes = function (nds) { // nds are the input nodes coming from the html file.
-        if (nds.length > 0) { // Calling arguments of the function.
+    core.nodes = function (nds) { // nds are the input nodes from the network under analysis.
+        if (nds.length > 0) {
             original_graph_nodes = nds; // Global variable.
         }
 
         return core;
     };
 
-    core.edges = function (edgs) { // edgs are the input edges coming from the html file.
+    core.edges = function (edgs) { // edgs are the input edges coming from the network under analysis.
         if (typeof original_graph_nodes === 'undefined')
             throw 'Please provide the graph nodes first!';
 
-        if (edgs.length > 0) { // Calling arguments of the function.
+        if (edgs.length > 0) {
             original_graph_edges = edgs; // Global variable.
             let assoc_mat = make_assoc_mat(edgs);
-            original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) data.
+            original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) properties.
                 'nodes': original_graph_nodes,
                 'edges': original_graph_edges,
                 '_assoc_mat': assoc_mat
@@ -462,13 +460,13 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
     };
 
-    core.partition_init = function (prttn) { // Initial partition input in index.html (not present).
-        if (prttn.length > 0) { // Calling arguments of the function.
+    core.partition_init = function (prttn) { // Initial partition input coming from the network under analysis (optional).
+        if (prttn.length > 0) {
             partition_init = prttn;
         }
         return core;
     };
 
-    // Final output of Infomap algorithm.
+    // Output of Infomap algorithm.
     return core;
 };

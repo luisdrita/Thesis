@@ -38,6 +38,8 @@ Cytoscape.js
 
 [18/01/2019] Added compressed algorithms (for enhanced performance) - Credits to UglifyJS 3 (https://skalman.github.io/UglifyJS-online/); 
 
+[19/01/2019] Increased code robustness;
+
 [Next] Develop interface;
 
 [Next] Benchmark each one.

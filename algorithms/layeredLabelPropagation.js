@@ -6,7 +6,6 @@
 // chosen at random at the beginning of the round; the algorithm terminates as soon as no more updates take place. Label
 // propagation algorithms differ from each other on the basis of the update rule.
 
-// Self-Invoking Function (It is not anymore) -> Anonymous self-invoking function (function without name): (function () {...}) ()
 jLayeredLabelPropagation = function () { // A function expression can be stored in a variable. After a function expression has been
     // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
     // names. They are always invoked (called) using the variable name.
@@ -94,7 +93,7 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
             let com = obj[node];
 
-            result[com] = result[com] + 1 || 1;
+            result[com] = (result[com] || 0) + 1;
 
         });
 
@@ -207,8 +206,6 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
         __init_status(original_graph, status, part_init);
 
-        let aux2 = 0;
-
         while (true) { // This cycle is not the one that removes or inserts nodes.
             let aux = false;
 
@@ -234,8 +231,6 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
             if(prev_nodes_to_com===next_nodes_to_com) {break;}
 
-            aux2++;
-
         }
 
         return __renumber(status.nodes_to_com)
@@ -244,7 +239,7 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
     let core = function () {
 
-        return algorithmIteration(original_graph, partition_init); // Final output of the Label Propagation algorithm.
+        return algorithmIteration(original_graph, partition_init); // Final output of the Layered Label Propagation algorithm.
 
     };
 
