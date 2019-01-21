@@ -1,17 +1,22 @@
 // -------------------------------------------- Infomap Algorithm --------------------------------------------
 
-jInfomap = function () { // A function expression can be stored in a variable. After a function expression has been
-    // stored in a variable, the variable can be used as a function. Functions stored in variables do not need function
+// [Description]
+// The execution of this algorithm is also divided in 2 phases like in Louvain. Although, the optimization function is not the same.
+// This time, instead of maximizing network's modularity, the goal is to find the minimum description length of the network. To calculate
+// this quantity, map equation was used.
+
+jInfomap = function () { // A function expression can be stored in a variable. After it has been
+    // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
     //Constants
-    let __MIN = 0.0001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
+    let __MIN = 0.0000001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
 
     // Global Variables
-    let original_graph_nodes; // Input in the core() of the algorithm.
-    let original_graph_edges; // Input in the core() of the algorithm.
-    let original_graph = {}; // Input in the core() of the algorithm.
-    let partition_init; // Input in the core() of the algorithm. May not be used (depending on the user input).
+    let original_graph_nodes; // Defined in the core() of the algorithm.
+    let original_graph_edges; // Defined in the core() of the algorithm.
+    let original_graph = {}; // Defined in the core() of the algorithm.
+    let partition_init; // Defined in the core() of the algorithm. May not be used (depending on the user input).
     let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge.
 
     // ----------------------------------------- Helpers -----------------------------------------
@@ -67,7 +72,6 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     }
     // Prints an ARRAY with all neighbours of input node ID.
 
-
     function get_edge_weight(graph, node1, node2) {
         return graph._assoc_mat[node1] ? graph._assoc_mat[node1][node2] : undefined;
     }
@@ -108,7 +112,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         });
         return mat; // It is not an array (1 object containing others): Object { 1: Object { 2: 3 }, 2: Object { 2: 3 } }
     }
-    // make_assoc_mat is only used once in the core.edges (to create _assoc_mat). Do not forget even objects inside objects are key: value pairs.
+    // make_assoc_mat is used once in the core.edges (to create _assoc_mat). Do not forget even objects inside objects are key/value pairs.
 
     function update_assoc_mat(graph, edge) {
         graph._assoc_mat[edge.source] = graph._assoc_mat[edge.source] || {}; // In case we are updating a node without
@@ -175,7 +179,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                 status.internals[i] = 0; // After community aggregation step (and at the beginning of infomap algorithm execution), community internals are set to 0.
                 // Variable "i" is used for community assignments and "node" for node specific variables.
             });
-        } else { // In case there is a partition as function argument:
+        } else { // In case there is a partition as function argument.
             graph.nodes.forEach(function (node) { // There are status features that are node specific.
                 let com = part[node];
                 status.nodes_to_com[node] = com;
@@ -253,7 +257,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
             if (neighbour !== node) {
                 let weight = graph._assoc_mat[node][neighbour] || 1; // weight is a number.
                 let neighbourcom = status.nodes_to_com[neighbour];
-                weights[neighbourcom] = (weights[neighbourcom] || 0) + weight; // weights is an array!
+                weights[neighbourcom] = (weights[neighbourcom] || 0) + weight; // weights is an array.
             }
         });
 
@@ -287,11 +291,11 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         let modif = true; // Modifications made in terms of community members.
 
-        let cur_mod = __mdl(status); // Current description length.
-        let new_mod = cur_mod; // New description length.
+        let cur_mdl = __mdl(status); // Current description length.
+        let new_mdl = cur_mdl; // New description length.
 
         while (modif) { // This cycle is not the one that removes or inserts nodes.
-            cur_mod = new_mod;
+            cur_mdl = new_mdl;
             modif = false; // Only if best community is different from the actual one, the cycle may proceed.
 
             let shuffledNodes = shuffle(graph.nodes);
@@ -310,7 +314,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                 let best_com = com_node;
                 let best_increase = 0;
                 let neigh_communities_entries = Object.keys(neigh_communities); // Make iterable;
-                // Checking whether modularity increased by inserting removed node in each neighbor community (once at a time).
+                // Checking whether description length increased by inserting removed node in each neighbor community (once at a time).
 
                 neigh_communities_entries.forEach(function (com) {
                     status.nodes_to_com[node] = +com; // Updating node community.
@@ -335,14 +339,14 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                 status.degrees[best_com] = (status.degrees[best_com] || 0) + (status.gdegrees[node] || 0);
                 status.internals[best_com] = (status.internals[best_com] || 0) + (neigh_communities[best_com] || 0);
 
-                if (best_com !== com_node || isNaN(new_mod)) {
+                if (best_com !== com_node || isNaN(new_mdl)) {
                     modif = true; // Only in this situation the algorithm will keep looking for new ways of
                     // minimizing MAP equation.
                 }
             });
-            new_mod = __mdl(status);
+            new_mdl = __mdl(status);
 
-            if (new_mod - cur_mod < __MIN || isNaN(new_mod)) { // Even if best_com !== com_node, if new_mod - cur_mod < __MIN
+            if (new_mdl - cur_mdl < __MIN || isNaN(new_mdl)) { // Even if best_com !== com_node, if new_mdl - cur_mdl < __MIN
                 // cycle is broken.
                 break;
             }
@@ -399,28 +403,28 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         let status = {};
 
         init_status(original_graph, status, part_init);
-        let mod; // Modularity before 1 level partition.
+        let mdl; // Description length before 1 level partition.
         let status_list = []; // Set of partitions: dendogram.
         __one_level(original_graph, status); // Computes 1 level of the communities dendogram. Current status to determine when to stop.
-        let new_mod = __mdl(status); // Modularity after 1 level partition.
+        let new_mdl = __mdl(status); // Description length after 1 level partition.
         let partition = __renumber(status.nodes_to_com); // Decreasing number of communities due to __one_level.
         status_list.push(partition);
-        mod = new_mod;
+        mdl = new_mdl;
         let current_graph = induced_graph(partition, original_graph); // Graph that results from partitioning the original. Graph
         // after 1st pass. Community aggregation.
         init_status(current_graph, status); // Resetting status.
 
-        while (isNaN(__mdl(status)) === false) { // Keeps partitioning the graph until no significant modularity increase occurs.
+        while (isNaN(__mdl(status)) === false) { // Keeps partitioning the graph while minimum description length remains real.
             __one_level(current_graph, status);
-            new_mod = __mdl(status);
-            if (new_mod - mod < __MIN) {
+            new_mdl = __mdl(status);
+            if (new_mdl - mdl < __MIN) {
                 break;
             }
 
             partition = __renumber(status.nodes_to_com);
             status_list.push(partition);
 
-            mod = new_mod;
+            mdl = new_mdl;
             current_graph = induced_graph(partition, current_graph);
             init_status(current_graph, status);
         }
@@ -462,7 +466,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
     core.partition_init = function (prttn) { // Initial partition input coming from the network under analysis (optional).
         if (prttn.length > 0) {
-            partition_init = prttn;
+            partition_init = prttn; // Global variable.
         }
         return core;
     };

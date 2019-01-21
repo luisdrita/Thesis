@@ -1,7 +1,18 @@
 // -------------------------------------------- Louvain Algorithm --------------------------------------------
 
+// [Description]
+// This algorithm is divided in 2 phases: Modularity Optimization and Community Aggregation. Just after the first is
+// completed, the second takes place. Louvain will iteratively go through both until we get an optimized partition of the network.
+// Modularity Optimization - At the beginning of this phase, the algorithm will randomly order all the nodes in the network such that, one by one,
+// it will remove and insert it in a different community. This will continue until no significant variation in modularity is
+// achieved (given by a constant defined below - __MIN).
+// Community Aggregation - Before finalizing the first pass, every node belonging to the same community is merged into a single giant one and
+// the links connecting those will be formed by the sum of the ones previously connecting nodes present in each one of these communities. From now on,
+// there will also exist self-loops that represent the sum of all links in a given community (strictly connecting nodes inside of it) before being
+// collapsed into a single node.
+
 jLouvain = function () { // A function expression can be stored in a variable. After it has been
-    // stored as variable, it can be used as a function. Functions stored in variables do not need
+    // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
     // Constants
@@ -11,7 +22,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
     let original_graph_nodes; // Defined in the core() of the algorithm.
     let original_graph_edges; // Defined in the core() of the algorithm.
     let original_graph = {}; // Defined in the core() of the algorithm.
-    let partition_init; // Defined in the core() of the algorithm. May not be used (depending if it is used in the HTML file or not).
+    let partition_init; // Defined in the core() of the algorithm. May not be used (depending on the user input).
     let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. F
 
     // ----------------------------------------- Helpers -----------------------------------------
@@ -109,7 +120,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
         });
         return mat; // It is not an array (1 object containing others): Object { 1: Object { 2: 3 }, 2: Object { 2: 3 } }
     }
-    // make_assoc_mat is only used once in the core.edges (to create _assoc_mat). Do not forget even objects inside objects are key:value pairs.
+    // make_assoc_mat is used once in the core.edges (to create _assoc_mat). Do not forget even objects inside objects are key/value pairs.
 
     function update_assoc_mat(graph, edge) {
         graph._assoc_mat[edge.source] = graph._assoc_mat[edge.source] || {}; // In case we are updating a node without connections.
@@ -177,7 +188,7 @@ jLouvain = function () { // A function expression can be stored in a variable. A
                 status.internals[i] = status.loops[node]; // This condition of if should be satisfied during community aggregation phase.
                 // Variable "i" is used for community assignments and "node" for node specific variables.
             });
-        } else { // In case there is a partition as function argument:
+        } else { // In case there is a partition as function argument.
             graph.nodes.forEach(function (node) { // There are status features that are node specific.
                 let com = part[node];
                 status.nodes_to_com[node] = com;
