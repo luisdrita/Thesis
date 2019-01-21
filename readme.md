@@ -40,7 +40,7 @@ Cytoscape.js
 
 [19/01/2019] Increased code robustness;
 
-[21/01/2019] Testing algorithms with big data (1);
+[21/01/2019] Testing algorithms with big data (1) - Credits to SNAP (http://snap.stanford.edu/data/index.html#socnets);
 
 [Next] Develop interface;
 
