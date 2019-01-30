@@ -8,5 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="d3.v3" level="application" />
+    <orderEntry type="library" name="d3-force.v1" level="application" />
+    <orderEntry type="library" name="cytoscape" level="application" />
   </component>
 </module>
