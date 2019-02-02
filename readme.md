@@ -20,19 +20,19 @@ bioinformaticians, and is designed to enable medical and research purposes.
 
 ### Benchmark
 
-[Stanford Large Network Dataset Collection]()
+[Stanford Large Network Dataset Collection](http://snap.stanford.edu/data/index.html)
 
 ### Visualization Interface
 
-- Cytoscape.js;
+- [Cytoscape.js](http://js.cytoscape.org/);
 - [D3.js (Version 4 & SVG)](https://bl.ocks.org/pkerpedjiev/f2e6ebb2532dae603de13f0606563f5b);
 - [D3.js (Version 4 & Canvas)](https://bl.ocks.org/jodyphelan/5dc989637045a0f48418101423378fbd).
 
 ### User Guide
 
-1. Insert text file (.txt) with data in this [format]();
-2. Choose CF algorithm;
-3. Choose visualization interface;
+1. Insert text file (.txt) with data in this [format](https://github.com/warcraft12321/Thesis/blob/master/uploads/Input.txt) and "Input.txt" name. Or just use the standard file included in the app (for now), in other words, ignore the input field;
+2. Choose visualization interface;
+3. Choose CF algorithm;
 4. Run;
 5. Networks above are draggable, zoomable and pannable. 
 
@@ -56,8 +56,10 @@ Bruno Gonçalves ([IMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [21/01/2019] Testing algorithms with big data (1) - Credits to SNAP (http://snap.stanford.edu/data/index.html#socnets);
 
-[Next] Develop interface;
+[02/02/2019] Implemented D3.js (using Canvas and SVG) and Cytoscape.js interface;
 
-[Next] Benchmark each one.
+[Next] Benchmark algorithms;
+
+[Next] PHYLOViZ integration.
 
 
