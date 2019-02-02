@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Improved Code Robustness">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Improved Code Robustness" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -21,7 +16,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="-19">
               <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
             </state>
           </provider>
@@ -393,7 +388,7 @@
       <workItem from="1548763597635" duration="13617000" />
       <workItem from="1548849916692" duration="14957000" />
       <workItem from="1548939944467" duration="446000" />
-      <workItem from="1548991140108" duration="18909000" />
+      <workItem from="1548991140108" duration="19347000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -427,7 +422,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="551498000" />
+    <option name="totallyTimeSpent" value="551936000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -702,7 +697,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="-19">
           <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
         </state>
       </provider>
