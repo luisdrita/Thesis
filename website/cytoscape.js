@@ -13,8 +13,8 @@ function cytoscapeFunc(data) {
             {
                 selector: 'node',
                 style: {
-                    'background-color': '#666',
-                    'label': 'data(id)'
+                    'background-color': 'mapData(weight, 0, 50, blue, red)'
+                 /*   'label': 'data(id)' */
                 }
             },
 

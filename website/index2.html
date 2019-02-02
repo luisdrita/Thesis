@@ -308,26 +308,26 @@
 
           elements: {
               nodes: [{
-                  data: { id: 5 }
+                  data: { id: 5, weight: 20 }
 
               },
                   {
-                      data: { id: 20 },
+                      data: { id: 20, weight: 11 },
 
                   },
                   {
-                      data: { id: 22 },
+                      data: { id: 22, weight: 70 },
 
                   }
       ],
-              edges: [{data: { source: 5, target: 20, weight: 20 }},{data: { source: 22, target: 20, weight: 10 }}]
+              edges: [{data: { source: 5, target: 20}},{data: { source: 22, target: 20}}]
           },
 
           style: [ // the stylesheet for the graph
               {
                   selector: 'node',
                   style: {
-                      'background-color': '#666',
+                      'background-color': 'mapData(weight, 0, 100, blue, red)',
                      'label': 'data(id)'
                   }
               },

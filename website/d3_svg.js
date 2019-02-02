@@ -550,7 +550,7 @@
 
 })));
 
-function createV4SelectableForceDirectedGraph(svg, graph) {
+function d3svgFunc(svg, graph) {
     // if both d3v3 and d3v4 are loaded, we'll assume
     // that d3v4 is called d3v4, otherwise we'll assume
     // that d3v4 is the default (d3)

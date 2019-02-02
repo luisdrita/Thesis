@@ -2,62 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Improved Code Robustness">
-      <change beforePath="$PROJECT_DIR$/.idea/jLouvain-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jLouvain-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/infomap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/layeredLabelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/louvain.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithms/weightedLabelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/amr.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressedAlgorithms/infomap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressedAlgorithms/layeredLabelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressedAlgorithms/louvain.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressedAlgorithms/weightedLabelPropagation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/amr.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/imm.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/thesis.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/facebook.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/github.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/github.pxd/QuickLook/Icon.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/github.pxd/QuickLook/Preview.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/github.pxd/QuickLook/Thumbnail.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/github.pxd/metadata.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/gmail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/linkedin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/skype.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/MediaIcons/youtube.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/amr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/dna.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/fmul.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/imm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/ist.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/logo_insaflu_new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/luis.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/mtih.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/mtih2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/phyloviz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/poster.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/poster.pxd/QuickLook/Icon.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/poster.pxd/QuickLook/Preview.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/poster.pxd/QuickLook/Thumbnail.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/poster.pxd/data/E0D38A57-CD78-45EC-B08B-E94D1BB73597" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/poster.pxd/metadata.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/ul.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/amazon.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/message.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/message.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mtih.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/express/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/express/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/object.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thesis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/cytoscape.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/cytoscape.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/d3_canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/d3_canvas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/d3_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/d3_svg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/pages/amr.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/amr.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/pages/mtih.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/mtih.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/pages/thesis.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/thesis.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -73,27 +27,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1590">
-              <caret line="106" selection-start-line="106" selection-end-line="106" />
+            <state relative-caret-position="208">
+              <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1702">
-              <caret line="469" column="7" selection-start-line="469" selection-start-column="7" selection-end-line="469" selection-end-column="7" />
+            <state relative-caret-position="611">
+              <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -101,7 +60,40 @@
                 <element signature="n#style#0;n#p#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#a#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#a#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#figure#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/cytoscape.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="552" column="18" selection-start-line="552" selection-start-column="18" selection-end-line="552" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -109,8 +101,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="310" column="31" selection-start-line="310" selection-start-column="31" selection-end-line="310" selection-end-column="31" />
+            <state relative-caret-position="4905">
+              <caret line="327" column="35" selection-start-line="327" selection-start-column="35" selection-end-line="327" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -128,20 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>select</find>
-      <find>select20</find>
-      <find>can</find>
-      <find>col</find>
-      <find>height</find>
-      <find>fs</find>
-      <find>input</find>
-      <find>links</find>
-      <find>edge</find>
-      <find>infomapVar</find>
-      <find>nds</find>
-      <find>file</find>
-      <find>community</find>
-      <find>svg</find>
       <find>tooltip</find>
       <find>layeredlabel</find>
       <find>locked</find>
@@ -151,13 +129,27 @@
       <find>louvain</find>
       <find>graph</find>
       <find>graphDiv</find>
-      <find>cy</find>
       <find>cyto</find>
       <find>main</find>
       <find>cytoscapeFunc</find>
       <find>container</find>
       <find>algorithm</find>
       <find>dropdown-content</find>
+      <find>interface</find>
+      <find>type</find>
+      <find>alg</find>
+      <find>var</find>
+      <find>svg</find>
+      <find>url_cyto</find>
+      <find>url_run</find>
+      <find>url_reset</find>
+      <find>fetch</find>
+      <find>v4</find>
+      <find>init</find>
+      <find>graphCanvas</find>
+      <find>cy</find>
+      <find>helvetica</find>
+      <find>branding</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,10 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/louvain2.js" />
-        <option value="$PROJECT_DIR$/louvain_mod.js" />
-        <option value="$PROJECT_DIR$/louvain.js" />
-        <option value="$PROJECT_DIR$/infomap.js" />
         <option value="$PROJECT_DIR$/weightedLabelPropagation.js" />
         <option value="$PROJECT_DIR$/labelPropagation.js" />
         <option value="$PROJECT_DIR$/layeredLabelPropagation.js" />
@@ -236,13 +224,17 @@
         <option value="$PROJECT_DIR$/server_d3.js" />
         <option value="$PROJECT_DIR$/website_d3/index.html" />
         <option value="$PROJECT_DIR$/website_d3/cytoscape.js" />
-        <option value="$PROJECT_DIR$/website/index.html" />
-        <option value="$PROJECT_DIR$/website/pages/amr.html" />
-        <option value="$PROJECT_DIR$/website/pages/mtih.html" />
-        <option value="$PROJECT_DIR$/website/pages/thesis.html" />
-        <option value="$PROJECT_DIR$/website/index2.html" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/website/pages/thesis.html" />
+        <option value="$PROJECT_DIR$/website/pages/mtih.html" />
+        <option value="$PROJECT_DIR$/website/pages/amr.html" />
+        <option value="$PROJECT_DIR$/website/index2.html" />
+        <option value="$PROJECT_DIR$/website/cytoscape.js" />
+        <option value="$PROJECT_DIR$/website/license" />
+        <option value="$PROJECT_DIR$/website/d3_svg.js" />
+        <option value="$PROJECT_DIR$/website/d3_canvas.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/index.html" />
       </list>
     </option>
   </component>
@@ -256,6 +248,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,41 +267,10 @@
               <item name="cytoscape.js-tutorial-demo-gh-pages" type="462c0819:PsiDirectoryNode" />
               <item name="datasets" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
-              <item name="cytoscape.js-tutorial-demo-gh-pages" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="mod_algorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,7 +387,10 @@
       <workItem from="1548599366915" duration="251000" />
       <workItem from="1548601720234" duration="18592000" />
       <workItem from="1548679565223" duration="13957000" />
-      <workItem from="1548763597635" duration="12608000" />
+      <workItem from="1548763597635" duration="13617000" />
+      <workItem from="1548849916692" duration="14957000" />
+      <workItem from="1548939944467" duration="446000" />
+      <workItem from="1548991140108" duration="16853000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -459,7 +424,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="516177000" />
+    <option name="totallyTimeSpent" value="549442000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -472,8 +437,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2039072" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21123321" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -543,10 +509,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Improved Code Robustness" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website_d3_svg/miserables.with-ids.json" />
-    <entry file="file://$PROJECT_DIR$/website_d3_svg/algorithms/mod_infomap.js" />
-    <entry file="file://$PROJECT_DIR$/website_d3_canvas/data.json" />
-    <entry file="file://$PROJECT_DIR$/index2.html" />
     <entry file="file://$PROJECT_DIR$/website_d3_svg/d3v4-selectable-force-directed-graph.js" />
     <entry file="file://$PROJECT_DIR$/website_d3_svg/d3v4-brush-lite.js" />
     <entry file="file://$PROJECT_DIR$/object.json" />
@@ -573,102 +535,22 @@
     <entry file="file://$PROJECT_DIR$/website_d3_canvas/index.html" />
     <entry file="file://$PROJECT_DIR$/website_d3_svg/d3_svg.js" />
     <entry file="file://$PROJECT_DIR$/website_d3_svg/index.html" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/custom.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/custom.json" />
     <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/open-sans.css" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/tooltipster.bundle.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/skeleton.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1634" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/normalize.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1333" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-971" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/tooltipster.bundle.min.css" />
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/skeleton.css" />
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/normalize.css" />
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/font-awesome.css" />
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/js/index.js" />
     <entry file="file://$PROJECT_DIR$/website_d3/cytoscape2.js" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/index2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="136" column="150" selection-start-line="136" selection-start-column="150" selection-end-line="136" selection-end-column="150" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/social.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4482" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/genes.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35960">
-          <caret line="2599" column="13" selection-start-line="2599" selection-start-column="5" selection-end-line="2599" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_d3/d3_canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server_d3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_d3/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="341" lean-forward="true" selection-start-line="341" selection-end-line="341" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website_d3/cytoscape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website_cyto/index2.html" />
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/index.html" />
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/social.json" />
+    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/genes.json" />
+    <entry file="file://$PROJECT_DIR$/website_d3/d3_canvas.js" />
+    <entry file="file://$PROJECT_DIR$/server_d3.js" />
+    <entry file="file://$PROJECT_DIR$/website_d3/index.html" />
+    <entry file="file://$PROJECT_DIR$/website_d3/cytoscape.js" />
     <entry file="file://$PROJECT_DIR$/website/genes.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3901" />
@@ -699,31 +581,6 @@
         <state relative-caret-position="-19" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/amr.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/mtih.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/thesis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-573">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2790">
@@ -731,18 +588,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/pages/thesis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/pages/mtih.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/pages/amr.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="91" column="59" lean-forward="true" selection-start-line="91" selection-start-column="59" selection-end-line="91" selection-end-column="59" />
+          <folding>
+            <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/license">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/index2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="310" column="31" selection-start-line="310" selection-start-column="31" selection-end-line="310" selection-end-column="31" />
+        <state relative-caret-position="4905">
+          <caret line="327" column="35" selection-start-line="327" selection-start-column="35" selection-end-line="327" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="552" column="18" selection-start-line="552" selection-start-column="18" selection-end-line="552" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/cytoscape.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1702">
-          <caret line="469" column="7" selection-start-line="469" selection-start-column="7" selection-end-line="469" selection-end-column="7" />
+        <state relative-caret-position="611">
+          <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -750,21 +695,13 @@
             <element signature="n#style#0;n#p#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#3;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#2;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#a#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#a#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#figure#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1590">
-          <caret line="106" selection-start-line="106" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
         </state>
       </provider>
     </entry>

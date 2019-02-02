@@ -75,21 +75,21 @@ function readFile(type) {
 
         }
 
-        let final_node_data = Object.keys(node_data);
-
         switch (type) {
 
             case 'init':
                 result_reset["nodes"] = nodify(node_data, 1);
                 result_reset["links"] = obj;
 
-                result_cyto_reset["nodes"] = nodify(node_data, 2);
-                result_cyto_reset["links"] = obj_cyto;
+                result_cyto["nodes"] = nodify(node_data, 2);
+                result_cyto["links"] = obj_cyto;
 
+                result_cyto_reset["nodes"] = result_cyto["nodes"];
+                result_cyto_reset["links"] = result_cyto["links"];
                 break;
 
             case 'louvain':
-                community = louvain.louvainVar(final_node_data, obj);
+                community = louvain.louvainVar(Object.keys(node_data), obj);
 
                 result["nodes"] = nodify(community, 0);
                 result["links"] = obj;
@@ -100,7 +100,7 @@ function readFile(type) {
                 break;
 
             case 'infomap':
-                community = infomap.infomapVar(final_node_data, obj);
+                community = infomap.infomapVar(Object.keys(node_data), obj);
 
                 result["nodes"] = nodify(community, 0);
                 result["links"] = obj;
@@ -111,7 +111,7 @@ function readFile(type) {
                 break;
 
             case 'llp':
-                community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj);
+                community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(node_data), obj);
 
                 result["nodes"] = nodify(community, 0);
                 result["links"] = obj;
@@ -125,7 +125,7 @@ function readFile(type) {
 
 }
 
- readFile('init');
+readFile('init');
 
  // Standard algorithm when any is chosen.
 
@@ -144,20 +144,20 @@ app.get('/run/:id', function (req, res) { // This will run every time you send a
 app.get('/reset/:alg', function (req, res) { // This will run every time you send a request to localhost:3000/search.
 
         if(req.params.alg === "Cytoscape") {
-             res.send(result_cyto_reset);
+            return res.send(result_cyto_reset);
         } else {
-             res.send(result_reset); // Responding.
+            return res.send(result_reset); // Responding.
         }
 
 });
 
 app.get('/algorithm/:type', function (req, res) { // This will run every time you send a request to localhost:3000/search.
 
-        readFile(req.params.type);
+    console.log(req.params.type);
 
-    res.send();
+    readFile(req.params.type);
+
 });
-
 
 app.post('/upload', function (req, res){
 

@@ -1,11 +1,11 @@
-function initGraph(tempData){
+function d3canvasFunc(tempData){
 
     let height = 600; // window.innerHeight
     let graphWidth = 600; // window.innerWidth
 
     let radius = 5;
 
-    let context = graphCanvas.getContext('2d');
+    let context = canvas.getContext('2d');
 
 /*    let div = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -26,19 +26,18 @@ function initGraph(tempData){
 
 
     function zoomed() {
-        console.log("zooming")
         transform = d3.event.transform;
         simulationUpdate();
     }
 
-    d3.select(graphCanvas)
+    d3.select(canvas)
         .call(d3.drag().subject(dragsubject).on("start", dragstarted).on("drag", dragged).on("end",dragended))
         .call(d3.zoom().scaleExtent([1 / 10, 8]).on("zoom", zoomed))
 
 
 
     function dragsubject() {
-        var i,
+        let i,
             x = transform.invertX(d3.event.x),
             y = transform.invertY(d3.event.y),
             dx,
