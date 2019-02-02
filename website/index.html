@@ -345,19 +345,19 @@
             case "louvain":
 
                 document.getElementById("dropbtn").innerText = "Louvain";
-                fetch("http://localhost:3000/algorithm/" + id);
+                fetch("algorithm/" + id);
                 break;
 
             case "infomap":
 
                 document.getElementById("dropbtn").innerText = "Infomap";
-                fetch("http://localhost:3000/algorithm/" + id);
+                fetch("algorithm/" + id);
                 break;
 
             case "llp":
 
                 document.getElementById("dropbtn").innerText = "LLP";
-                fetch("http://localhost:3000/algorithm/" + id);
+                fetch("algorithm/" + id);
                 break;
 
             case 'svg':
@@ -370,7 +370,7 @@
                 canvas = d3.select('#graphDiv').append('svg');
                 svg = d3.select('#graphDiv');
 
-                fetch("http://localhost:3000/reset/undefined").then(function(res) {
+                fetch("reset/undefined").then(function(res) {
 
                     return res.json();
 
@@ -394,7 +394,7 @@
                     .attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
-                fetch("http://localhost:3000/reset/undefined").then(function(res) {
+                fetch("reset/undefined").then(function(res) {
 
                     return res.json();
 
@@ -411,7 +411,7 @@
                 d3.select('canvas').remove();
 
                 // Now send a request to your Node program
-                fetch("http://localhost:3000/reset/Cytoscape").then(function(res) {
+                fetch("reset/Cytoscape").then(function(res) {
 
                     return res.json();
 
@@ -431,7 +431,7 @@
 
         let view = document.getElementById("dropbtn_interface").innerText;
 
-        fetch("http://localhost:3000/run/" + view).then(function (res) {
+        fetch("run/" + view).then(function (res) {
             // Res will be a Response object.
             // Use res.text() or res.json() to get the information that the Node program sent.
 
@@ -472,7 +472,7 @@
 
         document.getElementById("dropbtn").innerText = "Algorithm";
 
-        fetch("http://localhost:3000/reset/" + view).then(function(res) {
+        fetch("reset/" + view).then(function(res) {
             // Res will be a Response object.
             // Use res.text() or res.json() to get the information that the Node program sent.
             return res.json();

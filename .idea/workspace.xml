@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Improved Code Robustness">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/cytoscape.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/cytoscape.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/d3_canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/d3_canvas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/d3_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/d3_svg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index2.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/amr.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/amr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/mtih.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/mtih.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/thesis.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/thesis.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,20 +18,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+            <state relative-caret-position="15">
+              <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+            <state relative-caret-position="120">
+              <caret line="8" column="21" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -84,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="465">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -92,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="-716">
               <caret line="552" column="18" selection-start-line="552" selection-start-column="18" selection-end-line="552" selection-end-column="18" />
             </state>
           </provider>
@@ -120,8 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tooltip</find>
-      <find>layeredlabel</find>
       <find>locked</find>
       <find>grabbable</find>
       <find>selected</find>
@@ -150,6 +151,8 @@
       <find>cy</find>
       <find>helvetica</find>
       <find>branding</find>
+      <find>fs</find>
+      <find>http</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,8 +187,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/weightedLabelPropagation.js" />
-        <option value="$PROJECT_DIR$/labelPropagation.js" />
         <option value="$PROJECT_DIR$/layeredLabelPropagation.js" />
         <option value="$PROJECT_DIR$/compressedAlgorithms/infomap.js" />
         <option value="$PROJECT_DIR$/compressedAlgorithms/labelPropagation.js" />
@@ -224,7 +225,6 @@
         <option value="$PROJECT_DIR$/server_d3.js" />
         <option value="$PROJECT_DIR$/website_d3/index.html" />
         <option value="$PROJECT_DIR$/website_d3/cytoscape.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/website/pages/thesis.html" />
         <option value="$PROJECT_DIR$/website/pages/mtih.html" />
         <option value="$PROJECT_DIR$/website/pages/amr.html" />
@@ -234,6 +234,9 @@
         <option value="$PROJECT_DIR$/website/d3_svg.js" />
         <option value="$PROJECT_DIR$/website/d3_canvas.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/website/index.html" />
       </list>
     </option>
@@ -254,16 +257,16 @@
           <expand>
             <path>
               <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
+              <item name="cf" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
+              <item name="cf" type="462c0819:PsiDirectoryNode" />
               <item name="cytoscape.js-tutorial-demo-gh-pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CF" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CF" type="462c0819:PsiDirectoryNode" />
+              <item name="cf" type="462c0819:PsiDirectoryNode" />
               <item name="cytoscape.js-tutorial-demo-gh-pages" type="462c0819:PsiDirectoryNode" />
               <item name="datasets" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -390,7 +393,7 @@
       <workItem from="1548763597635" duration="13617000" />
       <workItem from="1548849916692" duration="14957000" />
       <workItem from="1548939944467" duration="446000" />
-      <workItem from="1548991140108" duration="16853000" />
+      <workItem from="1548991140108" duration="18909000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -424,7 +427,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="549442000" />
+    <option name="totallyTimeSpent" value="551498000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -437,7 +440,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21123321" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -620,13 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/license">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -641,38 +636,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="552" column="18" selection-start-line="552" selection-start-column="18" selection-end-line="552" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/cytoscape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+        <state relative-caret-position="120">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -702,6 +676,34 @@
             <element signature="n#style#0;n#h2#0;n#a#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#figure#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/cytoscape.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-716">
+          <caret line="552" column="18" selection-start-line="552" selection-start-column="18" selection-end-line="552" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
         </state>
       </provider>
     </entry>
