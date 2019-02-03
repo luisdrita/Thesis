@@ -6,12 +6,12 @@
 // in the complete network. In fact, both algorithm versions are equivalent whenever this factor is considered 0.
 
 
-jLayeredLabelPropagation_mod = function (nds,edgs) { // A function expression can be stored in a variable. After it has been
+jLayeredLabelPropagation_mod = function (nds, edgs, gamma_input) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
     //Constant
-    let gamma = 0.5;
+    let gamma = gamma_input;
 
     // Global Variables
     let original_graph_nodes; // Defined in the core() of the algorithm.

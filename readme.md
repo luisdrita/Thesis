@@ -63,4 +63,7 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [Next] PHYLOViZ integration.
 
+### Screenshot
+
+![Community_Finding Screenshot](./website/img/communityFinding.png)
 

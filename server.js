@@ -14,7 +14,7 @@ app.use(express.static('website'));
 app.listen(process.env.PORT || 3000);
 
 let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {};
-let community, node_data, obj, obj_cyto;
+let community, node_data, obj, obj_cyto, gamma_var;
 
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
@@ -41,13 +41,13 @@ function nodify (final_node_data, state) { // Used in fs.readFile in order to pu
 
         case 2:
         keys.forEach(function (key) {
-            result_aux.push({data: {id: key, weight: 0}})
+            result_aux.push({data: {id: key, weight: 0, label: "aaa"}, classes: "top-left"})
         });
         break;
 
         case 3:
         keys.forEach(function (key) {
-            result_aux.push({data: {id: key, weight: final_node_data[key]}});
+            result_aux.push({data: {id: key, weight: final_node_data[key], label: "2"}, classes: "top-left"});
         });
 
     }
@@ -111,7 +111,7 @@ function readFile(type) {
                 break;
 
             case 'llp':
-                community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj);
+                community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
 
                 result["nodes"] = nodify(community, 0);
                 result["links"] = obj;
@@ -166,7 +166,19 @@ app.post('/upload', function (req, res){
     form.parse(req);
 
     form.on('fileBegin', function (name, file){
-        file.path = __dirname + '/uploads/' + file.name;
+        file.path = __dirname + '/uploads/' + "Input.txt"; // file.name substituted by Input.txt
+    });
+
+});
+
+app.post('/gamma', function (req, res){
+
+    let form = new formidable.IncomingForm();
+
+    form.parse(req);
+
+    form.on('fileBegin', function (name, file){
+        file.path = __dirname + '/uploads/' + "Input.txt"; // file.name substituted by Input.txt
     });
 
 });

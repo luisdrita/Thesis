@@ -565,7 +565,7 @@ function d3svgFunc(svg, graph) {
 
     var svg = d3v4.select('svg')
         .attr('width', parentWidth)
-        .attr('height', parentHeight)
+        .attr('height', parentHeight);
 
     // remove any previous graphs
     svg.selectAll('.g-main').remove();
@@ -576,12 +576,12 @@ function d3svgFunc(svg, graph) {
     var rect = gMain.append('rect')
         .attr('width', parentWidth)
         .attr('height', parentHeight)
-        .style('fill', 'white')
+        .style('fill', 'white');
 
     var gDraw = gMain.append('g');
 
-    var zoom = d3v4.zoom()
-        .on('zoom', zoomed)
+    var zoom = d3v4.zoom().scaleExtent([1/10, 10])
+        .on('zoom', zoomed);
 
     gMain.call(zoom);
 
@@ -810,7 +810,7 @@ function d3svgFunc(svg, graph) {
     }
 
     var texts = ['Use the scroll wheel to zoom',
-        'Hold the shift key to select nodes']
+        'Hold the shift key to select nodes'];
 
     svg.selectAll('text')
         .data(texts)
@@ -821,4 +821,4 @@ function d3svgFunc(svg, graph) {
         .text(function(d) { return d; });
 
     return graph;
-};
+}

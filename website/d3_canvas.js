@@ -20,7 +20,7 @@ function d3canvasFunc(tempData){
             return d.id;
         }))
         .alphaTarget(0)
-        .alphaDecay(0.05)
+        .alphaDecay(0.05);
 
     let transform = d3.zoomIdentity;
 
@@ -32,7 +32,7 @@ function d3canvasFunc(tempData){
 
     d3.select(canvas)
         .call(d3.drag().subject(dragsubject).on("start", dragstarted).on("drag", dragged).on("end",dragended))
-        .call(d3.zoom().scaleExtent([1 / 10, 8]).on("zoom", zoomed))
+        .call(d3.zoom().scaleExtent([1 / 10, 10]).on("zoom", zoomed));
 
 
 

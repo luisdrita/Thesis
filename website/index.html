@@ -40,7 +40,7 @@
             stroke: #999;
         }
 
-        .dropbtn, #reset_btn, #comm_detect, #file{
+        .dropbtn, #reset_btn, #comm_detect, #file, #gamma{
             background-color: black;
             color: white;
             padding: 10px;
@@ -89,16 +89,12 @@
 
         .container2 p{
             float: left;
-            border-style: dotted;
-            border-color: white;
             width: 50%;
             margin-left: 25%;
         }
 
         #socialMedia{
             display:block;
-            border-style: dashed;
-            border-color: white;
             float:right;
             margin-top:0.5%;
             margin-right: 25px;
@@ -108,8 +104,8 @@
         .container2 {
             width:100%;
             overflow:hidden;
-            border-style: dotted;
-            border-color: white;
+            border-style: solid;
+            border-color: black;
             text-align: center;
 
         }
@@ -121,7 +117,7 @@
     </style>
 </head>
 
-<body style="border-style: solid; border-color: transparent; margin: auto">
+<body style="margin: auto;">
 
 <header>
 
@@ -152,7 +148,7 @@
 
     </div>
 
-    <p style="border-style: dashed; border-color: black; margin-top: 7%; text-align: center; font-size: 45px;">Community Finding in Phylogenetic Networks</p>
+    <p style="margin-top: 7%; text-align: center; font-size: 45px;">Community Finding in Phylogenetic Networks</p>
 
 </header>
 
@@ -165,7 +161,7 @@
     </div>
 
     <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 50px; border-style: solid">
-        <input type="button" value="Reset" id='reset_btn' style="margin-left: 50px;"/>
+        <input type="button" value="Reset" id='reset_btn' style="margin-left: 5px;"/>
         <input type="button" value="Run" id='comm_detect'/>
         <div class="dropdown">
             <button id = dropbtn class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
@@ -175,6 +171,11 @@
                 <a id = "llp" onclick="rename(this.id)" style="cursor: pointer">Layered Label Propagation</a>
             </div>
         </div>
+
+        <div class="dropdown" id = "gamma" style="display: none">
+            Resolution: <input type="range" name="points" min="0" max="100">
+        </div>
+
         <div class="dropdown">
             <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center">Interface</button>
             <div id = "dropdown-content_interface" class="dropdown-content">
@@ -183,10 +184,13 @@
                 <a id = "cytoscape" onclick="rename(this.id)" style="cursor: pointer">Cytoscape</a>
             </div>
         </div>
-        <form action="/upload" enctype="multipart/form-data" method="post" id = "file" style="float: right;">
-            <input class = "uploads" type="file" name="upload" accept=".txt">
-            <input class = "uploads" type="submit" value="Upload">
+
+        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="width: 100px">
+            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;">
+            <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
+            <input class = "uploads" type="submit" value="Upload" style="margin-left: 15px;">
         </form>
+
     </div>
 
 </div>
@@ -273,7 +277,7 @@
     </div>
 </div>
 
-<div style="display: block; width: 90%; border-style: solid; float: left; margin-left: 75px; margin-top: 20px;">
+<div style="display: block; width: 90%; border-style: solid; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
     <h2 style="text-align: center; font-size: 30px">EIT Health</h2>
     <div style="margin: auto;">
         <figure style="float: left;">
@@ -289,7 +293,7 @@
             <p style="text-align: justify"> As a Master of Technological Innovation in Health student, I was invited to present a poster
                 about my Master Thesis and to
                 talk about my past academic achievements. During my speech, I was still able to suggest new ways of
-                improving this European program, powered by EIT Health (a body of the European Union). </p>
+                improving this European program, powered by EIT Health (a body of the EU). </p>
 
         </div>
 
@@ -321,9 +325,6 @@
         <a href = "https://www.linkedin.com/in/lu%C3%ADs-rita-750302122/" target="_blank" rel="noopener noreferrer">
             <img src = "./img/MediaIcons/linkedin.png" width="25" style="margin-right: 5%" alt="LinkedIn">
         </a>
-        <a href = "" target="_blank" rel="noopener noreferrer">
-            <img src = "./img/MediaIcons/youtube.png" width="25" style="margin-right: 5%" alt="Youtube">
-        </a>
         <a href = "mailto:luis20dr@gmail.com">
             <img src = "./img/MediaIcons/gmail.png" width="25" style="margin-right: 5%" alt="Gmail">
         </a>
@@ -345,18 +346,21 @@
             case "louvain":
 
                 document.getElementById("dropbtn").innerText = "Louvain";
+                document.getElementById("gamma").style.display = "none";
                 fetch("algorithm/" + id);
                 break;
 
             case "infomap":
 
                 document.getElementById("dropbtn").innerText = "Infomap";
+                document.getElementById("gamma").style.display = "none";
                 fetch("algorithm/" + id);
                 break;
 
             case "llp":
 
                 document.getElementById("dropbtn").innerText = "LLP";
+                document.getElementById("gamma").style.display = "inline-block";
                 fetch("algorithm/" + id);
                 break;
 

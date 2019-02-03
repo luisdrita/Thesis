@@ -4,6 +4,18 @@ function cytoscapeFunc(data) {
 
         container: document.getElementById('graphDiv'), // container to render in
 
+     /*   zoomingEnabled: false, */
+
+        minZoom: 0.1,
+
+        maxZoom: 10,
+
+     /*   hideEdgesOnViewport: true, */
+
+    /*    textureOnViewport: true, */
+
+        pixelRatio: 1,
+
         elements: {
             nodes: data.nodes,
             edges: data.links
@@ -13,8 +25,8 @@ function cytoscapeFunc(data) {
             {
                 selector: 'node',
                 style: {
-                    'background-color': 'mapData(weight, 0, 50, blue, red)'
-                 /*   'label': 'data(id)' */
+                    'background-color': 'mapData(weight, 0, 200, blue, red)',
+                    'label': 'data(id)'
                 }
             },
 
@@ -24,7 +36,8 @@ function cytoscapeFunc(data) {
                     'width': 3,
                     'line-color': '#ccc',
                     'target-arrow-color': '#ccc',
-                    'target-arrow-shape': 'triangle'
+                    'target-arrow-shape': 'triangle',
+                    'curve-style': 'haystack'
                 }
             }
         ],
@@ -114,10 +127,32 @@ function cytoscapeFunc(data) {
         minTemp: 1.0,
 
         // Pass a reference to weaver to use threads for calculations
-        weaver: false
+        weaver: false,
+
     };
 
     let layout = cy.layout( options );
     layout.start();
+
+    cy.$('node').on('mouseover', function(evt){
+
+        evt.style.label = "qwe";
+c
+        // console.log( 'tap ' + evt.target.id() );
+    });
+
+    cy.on('mouseover', 'node', function(event) {
+        var node = event.cyTarget;
+        node.qtip({
+            content: 'hello',
+            show: {
+                event: event.type,
+                ready: true
+            },
+            hide: {
+                event: 'mouseout unfocus'
+            }
+        }, event);
+    });
 
 }
