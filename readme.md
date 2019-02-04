@@ -61,7 +61,7 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [04/02/19] Louvain algorithm bug corrected. Enhanced interface. User is now able to provide input of several parameters;
 
-[Next] Benchmark algorithms.
+[Next] Benchmark algorithms;
 
 [Next] PHYLOViZ integration.
 

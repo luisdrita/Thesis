@@ -4,93 +4,7 @@
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Version 2.0">
       <change afterPath="$PROJECT_DIR$/Input_fim.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/uploads/amazon.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/css/font-awesome.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/css/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/css/normalize.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/css/open-sans.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/css/skeleton.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/css/tooltipster.bundle.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/datasets/custom.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/datasets/genes.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/datasets/social.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/FontAwesome.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Bold-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Bold-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Bold-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Bold-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-BoldItalic-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-BoldItalic-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-BoldItalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-BoldItalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBold-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBold-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBold-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBold-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBoldItalic-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBoldItalic-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBoldItalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-ExtraBoldItalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Italic-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Italic-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Italic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Italic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Light-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Light-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Light-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Light-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-LightItalic-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-LightItalic-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-LightItalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-LightItalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Regular-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Regular-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Regular-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Regular-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Semibold-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Semibold-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Semibold-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-Semibold-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-SemiboldItalic-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-SemiboldItalic-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-SemiboldItalic-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/OpenSans-SemiboldItalic-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/fontawesome-webfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/fontawesome-webfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/fontawesome-webfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/fontawesome-webfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/fonts/fontawesome-webfont.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/js/cola.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/js/cytoscape-cola.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/js/cytoscape.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/js/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/js/jquery-3.1.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/js/tooltipster.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/stylesheets/custom.cycss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/stylesheets/fancy.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cytoscape.js-tutorial-demo-gh-pages/stylesheets/plain.cycss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_final.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/cytoscape.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/cytoscape.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/d3_canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/d3_canvas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/facebook.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/github.pxd/QuickLook/Icon.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/github.pxd/QuickLook/Preview.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/github.pxd/QuickLook/Thumbnail.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/github.pxd/metadata.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/skype.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/youtube.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index_final.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/website/input/amazon.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/amr.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/amr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/mtih.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/mtih.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/thesis.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/thesis.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -509,7 +423,7 @@
       <workItem from="1548991140108" duration="20527000" />
       <workItem from="1549115241992" duration="17424000" />
       <workItem from="1549158836307" duration="1806000" />
-      <workItem from="1549197229100" duration="29129000" />
+      <workItem from="1549197229100" duration="29609000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -560,11 +474,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549160667604</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Version 2.0">
+      <created>1549245380253</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1549245380253</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="601475000" />
+    <option name="totallyTimeSpent" value="601955000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
