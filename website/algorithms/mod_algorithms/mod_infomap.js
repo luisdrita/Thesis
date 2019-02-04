@@ -5,12 +5,12 @@
 // This time, instead of maximizing network's modularity, the goal is to find the minimum description length of the network. To calculate
 // this quantity, map equation was used.
 
-jInfomap_mod = function (nds,edgs) { // A function expression can be stored in a variable. After it has been
+jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
     //Constants
-    let __MIN = 0.0000001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
+    //let __MIN = 0.0000001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
 
     // Global Variables
     let original_graph_nodes; // Defined in the core() of the algorithm.

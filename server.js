@@ -14,7 +14,7 @@ app.use(express.static('website'));
 app.listen(process.env.PORT || 3000);
 
 let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {};
-let community, node_data, obj, obj_cyto, gamma_var;
+let community, node_data, obj, obj_cyto;
 
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
@@ -41,20 +41,20 @@ function nodify (final_node_data, state) { // Used in fs.readFile in order to pu
 
         case 2:
         keys.forEach(function (key) {
-            result_aux.push({data: {id: key, weight: 0, label: "aaa"}, classes: "top-left"})
+            result_aux.push({data: {id: key, weight: 5}})
         });
         break;
 
         case 3:
         keys.forEach(function (key) {
-            result_aux.push({data: {id: key, weight: final_node_data[key], label: "2"}, classes: "top-left"});
+            result_aux.push({data: {id: key, weight: final_node_data[key]}});
         });
 
     }
     return result_aux; // Previously, I used parseInt to convert the key string to an integer.
 }
 
-function readFile(type) {
+function readFile(type, gamma_var, cyto) {
 
     fs.readFile('./uploads/Input.txt', 'utf8', function (err, data) {
 
@@ -64,14 +64,15 @@ function readFile(type) {
         obj_cyto = [];
         node_data = {};
 
-        let splitted = data.toString().split("\n");
+        let split = data.toString().split("\n");
 
         for (let i = 0; i < 100; i++) {
-            let splitLine = splitted[i].split("\t");
+            let splitLine = split[i].split("\t");
             node_data[splitLine[0]] = true;
             node_data[splitLine[1]] = true;
             obj.push(edge(splitLine[0], splitLine[1]));
-            obj_cyto.push({data: edge(splitLine[0], splitLine[1])});
+
+            if (cyto==="true") obj_cyto.push({data: edge(splitLine[0], splitLine[1])});
 
         }
 
@@ -89,35 +90,42 @@ function readFile(type) {
                 break;
 
             case 'louvain':
-                community = louvain.louvainVar(final_node_data, obj);
+                community = louvain.louvainVar(final_node_data, obj, gamma_var);
 
-                result["nodes"] = nodify(community, 0);
-                result["links"] = obj;
+                if(cyto==="true") {
+                    result_cyto["nodes"] = nodify(community, 3);
+                    result_cyto["links"] = obj_cyto;
 
-                result_cyto["nodes"] = nodify(community, 3);
-                result_cyto["links"] = obj_cyto;
+                } else {
+                    result["nodes"] = nodify(community, 0);
+                    result["links"] = obj;
+                }
 
                 break;
 
             case 'infomap':
-                community = infomap.infomapVar(final_node_data, obj);
+                community = infomap.infomapVar(final_node_data, obj, gamma_var);
 
-                result["nodes"] = nodify(community, 0);
-                result["links"] = obj;
-
-                result_cyto["nodes"] = nodify(community, 3);
-                result_cyto["links"] = obj_cyto;
+                if(cyto==="true") {
+                    result_cyto["nodes"] = nodify(community, 3);
+                    result_cyto["links"] = obj_cyto;
+                } else {
+                    result["nodes"] = nodify(community, 0);
+                    result["links"] = obj;
+                }
 
                 break;
 
             case 'llp':
                 community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
 
-                result["nodes"] = nodify(community, 0);
-                result["links"] = obj;
-
-                result_cyto["nodes"] = nodify(community, 3);
-                result_cyto["links"] = obj_cyto;
+                if(cyto==="true") {
+                    result_cyto["nodes"] = nodify(community, 3);
+                    result_cyto["links"] = obj_cyto;
+                } else {
+                    result["nodes"] = nodify(community, 0);
+                    result["links"] = obj;
+                }
 
         }
 
@@ -125,14 +133,13 @@ function readFile(type) {
 
 }
 
- readFile('init');
+readFile('init', 0, "true");
 
  // Standard algorithm when any is chosen.
 
 app.get('/run/:id', function (req, res) { // This will run every time you send a request to localhost:3000/search.
 
     if(req.params.id === "Cytoscape") {
-
         res.send(result_cyto);
 
     } else {
@@ -151,34 +158,21 @@ app.get('/reset/:alg', function (req, res) { // This will run every time you sen
 
 });
 
-app.get('/algorithm/:type', function (req, res) { // This will run every time you send a request to localhost:3000/search.
+app.get('/algorithm/:type/gamma/:val/cytoscape/:cyto', function (req, res) { // This will run every time you send a request to localhost:3000/search.
 
-        readFile(req.params.type);
+        readFile(req.params.type, req.params.val, req.params.cyto);
 
     res.send();
 });
 
-
-app.post('/upload', function (req, res){
-
-    let form = new formidable.IncomingForm();
-
-    form.parse(req);
-
-    form.on('fileBegin', function (name, file){
-        file.path = __dirname + '/uploads/' + "Input.txt"; // file.name substituted by Input.txt
-    });
-
-});
-
-app.post('/gamma', function (req, res){
+app.post('/upload', function (req, res) {
 
     let form = new formidable.IncomingForm();
 
     form.parse(req);
 
     form.on('fileBegin', function (name, file){
-        file.path = __dirname + '/uploads/' + "Input.txt"; // file.name substituted by Input.txt
+        file.path = __dirname + '/uploads/' + "Input2.txt"; // file.name substituted by Input.txt
     });
 
 });

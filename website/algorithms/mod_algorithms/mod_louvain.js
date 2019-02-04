@@ -11,12 +11,12 @@
 // there will also exist self-loops that represent the sum of all links in a given community (strictly connecting nodes inside of it) before being
 // collapsed into a single node.
 
-jLouvain_mod = function (nds,edgs) { // A function expression can be stored in a variable. After it has been
+jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
     // Constants
-    let __MIN = 0.0000001; // Below this difference of actual versus previous modularity, Louvain algorithm iteration stops.
+   // let __MIN = 0.0000001; // Below this difference of actual versus previous modularity, Louvain algorithm iteration stops.
 
     // Global Variables
     let original_graph_nodes; // Defined in the core() of the algorithm.
@@ -229,7 +229,7 @@ jLouvain_mod = function (nds,edgs) { // A function expression can be stored in a
         communities.forEach(function (com) { // Iterating over all different communities.
             let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
             let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
-            if (links !== 0) {
+            if (links > 0) {
                 result = result + in_degree / links - Math.pow((degree / (2.0 * links)), 2);
             }
 
@@ -370,7 +370,8 @@ jLouvain_mod = function (nds,edgs) { // A function expression can be stored in a
             // cut at the nearest below.
             Object.keys(partition).forEach(function (key) {
                 let node = key;
-                partition[node] = dendogram[i][key]; // CHANGE: com -> key. Once there is an init_status() before
+                let com = partition[key];
+                partition[node] = dendogram[i][com]; // CHANGE: com -> key. Once there is an init_status() before
                 // partition_at_level(), it is the same. var com = partition[key];
             });
         }

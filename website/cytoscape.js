@@ -25,13 +25,20 @@ function cytoscapeFunc(data) {
             {
                 selector: 'node',
                 style: {
-                    'background-color': 'mapData(weight, 0, 200, blue, red)',
+                    'background-color': function (ele) {
+
+                        let r = 255*Math.abs(Math.sin(ele.data().weight));
+                        let g = 255*Math.abs(Math.sin(ele.data().weight + 1));
+                        let b = 255*Math.abs(Math.sin(ele.data().weight + 2));
+                        return 'rgb(' + r + ',' + g + ',' + b + ')';
+
+                    },
                     'label': 'data(id)'
                 }
             },
 
             {
-                selector: 'edge',
+                selector: 'edge', /* mapData(weight, 0, 20, blue, red) */
                 style: {
                     'width': 3,
                     'line-color': '#ccc',
@@ -69,7 +76,6 @@ function cytoscapeFunc(data) {
         // All nodes animated by default on animate enabled
         // Non-animated nodes are positioned immediately when the layout starts
         animateFilter: function ( node, i ){ return true; },
-
 
         // The layout animates only after this many milliseconds for animate:true
         // (prevents flashing on fast runs)
@@ -131,17 +137,19 @@ function cytoscapeFunc(data) {
 
     };
 
-    let layout = cy.layout( options );
+    let layout = cy.layout(options);
     layout.start();
 
+    /*
     cy.$('node').on('mouseover', function(evt){
 
         evt.style.label = "qwe";
 c
         // console.log( 'tap ' + evt.target.id() );
     });
+    */
 
-    cy.on('mouseover', 'node', function(event) {
+ /*   cy.on('mouseover', 'node', function(event) {
         var node = event.cyTarget;
         node.qtip({
             content: 'hello',
@@ -154,5 +162,7 @@ c
             }
         }, event);
     });
+
+    */
 
 }

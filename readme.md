@@ -1,5 +1,5 @@
 # MSc Thesis 
-##### https://mscthesis.herokuapp.com/
+##### [https://mscthesis.herokuapp.com/](https://mscthesis.herokuapp.com/)
 
 ## Community Finding (CF) in Phylogenetic Trees using PHYLOViZ Online
 
@@ -43,21 +43,23 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 ### Status
 
-[21/12/2018] Louvain algorithm implemented;
+[21/12/18] Louvain algorithm implemented;
 
-[13/01/2019] Label Propagation, Weighted Label Propagation and Layered Label Propagation algorithms implemented.
+[13/01/19] Label Propagation, Weighted Label Propagation and Layered Label Propagation algorithms implemented.
 
-[16/01/2019] Infomap algorithm implemented;
+[16/01/19] Infomap algorithm implemented;
 
-[17/01/2019] Improved code readability;
+[17/01/19] Improved code readability;
 
-[18/01/2019] Added compressed algorithms (for enhanced performance) - Credits to UglifyJS 3 (https://skalman.github.io/UglifyJS-online/); 
+[18/01/19] Added compressed algorithms (for enhanced performance) - Credits to [UglifyJS 3](https://skalman.github.io/UglifyJS-online/); 
 
-[19/01/2019] Increased code robustness;
+[19/01/19] Increased code robustness;
 
-[21/01/2019] Testing algorithms with big data (1) - Credits to SNAP (http://snap.stanford.edu/data/index.html#socnets);
+[21/01/19] Testing algorithms with big data (1) - Credits to [SNAP](http://snap.stanford.edu/data/index.html#socnets);
 
-[02/02/2019] Implemented D3.js (using Canvas and SVG) and Cytoscape.js interface;
+[02/02/19] Implemented D3.js (using Canvas and SVG) and Cytoscape.js interface. App deployed to a web server - Credits to [Heroku](https://dashboard.heroku.com/);
+
+[04/02/19] Louvain algorithm bug corrected. Enhanced interface. User is now able to provide input of several parameters;
 
 [Next] Benchmark algorithms;
 

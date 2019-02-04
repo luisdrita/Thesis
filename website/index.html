@@ -56,6 +56,7 @@
         .dropdown {
             position: relative;
             display: inline-block;
+            height: 20px;
         }
 
         .dropdown-content {
@@ -96,7 +97,7 @@
         #socialMedia{
             display:block;
             float:right;
-            margin-top:0.5%;
+            margin-top:0.75%;
             margin-right: 25px;
             width: 150px;
         }
@@ -117,7 +118,7 @@
     </style>
 </head>
 
-<body style="margin: auto;">
+<body style="margin: auto; position: relative">
 
 <header>
 
@@ -152,6 +153,18 @@
 
 </header>
 
+<div style="position: fixed; right: 0; top: 200px; width: 200px; height: 200px; background-color: black; opacity: 0.8">
+    <div style="color: white; position: absolute; top: 5px; right: 15px;font-size: 25px; cursor: pointer" onclick="this.parentElement.style.display = 'none'">x</div>
+    <h2 style="color: white; text-align: center; font-size: 22px">Guide</h2>
+    <ol style="color: white; line-height: 30px; font-size: 14px">
+        <li>Upload File (<a href="https://github.com/warcraft12321/Thesis/blob/master/uploads/Input.txt" style="color: #1d68ca; text-decoration: none" target="_blank" rel="noopener noreferrer">Format</a>)</li>
+        <li>Choose View</li>
+        <li>Select Algorithm</li>
+        <li>Run</li>
+    </ol>
+</div>
+
+
 <div id="main" style="border-style: solid; width: 45%; float: right; margin-right: 75px;">
 
     <h2 style="text-align: center; font-size: 30px" >Implementation</h2>
@@ -160,7 +173,7 @@
 
     </div>
 
-    <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 50px; border-style: solid">
+    <div id="content_wrapper" style=" width:50%; margin: auto; margin-top: 50px; border-style: solid; border-color: transparent; position: relative;">
         <input type="button" value="Reset" id='reset_btn' style="margin-left: 5px;"/>
         <input type="button" value="Run" id='comm_detect'/>
         <div class="dropdown">
@@ -172,8 +185,8 @@
             </div>
         </div>
 
-        <div class="dropdown" id = "gamma" style="display: none">
-            Resolution: <input type="range" name="points" min="0" max="100">
+        <div class="dropdown" id = "gamma" style="display: none;">
+            <div id = "range_label" style="display: inline-block">Resolution:</div> <input type="range" id = "gamma2" name="points" min="0" max="100" onmouseup="rename_aux()">
         </div>
 
         <div class="dropdown">
@@ -185,10 +198,9 @@
             </div>
         </div>
 
-        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="width: 100px">
-            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;">
+        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="width: auto; position: absolute; bottom: 0; margin-left: 5px">
+            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="makeSubmit()">
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
-            <input class = "uploads" type="submit" value="Upload" style="margin-left: 15px;">
         </form>
 
     </div>
@@ -337,6 +349,32 @@
 
     let canvas, svg, cy;
 
+    function makeSubmit () {
+        document.getElementById("file").submit();
+    }
+
+    function rename_aux () {
+        switch (document.getElementById("dropbtn").innerText) {
+
+            case "Louvain":
+
+                rename("louvain");
+
+                break;
+
+            case "Infomap":
+
+                rename("infomap");
+
+                break;
+
+            case "LLP":
+
+                rename("llp");
+
+        }
+    }
+
     rename('svg');
 
     function rename(id) {
@@ -346,29 +384,32 @@
             case "louvain":
 
                 document.getElementById("dropbtn").innerText = "Louvain";
-                document.getElementById("gamma").style.display = "none";
-                fetch("algorithm/" + id);
+                document.getElementById("gamma").style.display = "inline-block";
+                document.getElementById("range_label").innerText = "Max. Var:";
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape"));
                 break;
 
             case "infomap":
 
                 document.getElementById("dropbtn").innerText = "Infomap";
-                document.getElementById("gamma").style.display = "none";
-                fetch("algorithm/" + id);
+                document.getElementById("gamma").style.display = "inline-block";
+                document.getElementById("range_label").innerText = "Max. Var:";
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape"));
                 break;
 
             case "llp":
 
                 document.getElementById("dropbtn").innerText = "LLP";
+                document.getElementById("range_label").innerText = "Resolution:";
                 document.getElementById("gamma").style.display = "inline-block";
-                fetch("algorithm/" + id);
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value)/(document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape"));
                 break;
 
             case 'svg':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (SVG)";
+
                 d3.select('canvas').remove();
                 d3.select('svg').remove();
-
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 canvas = d3.select('#graphDiv').append('svg');
@@ -388,9 +429,9 @@
 
             case 'canvas':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (Canvas)";
+
                 d3.select('svg').remove();
                 d3.select('canvas').remove();
-
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 canvas = d3.select('#graphDiv').append('canvas')
@@ -411,8 +452,10 @@
 
             case 'cytoscape':
                 document.getElementById("dropbtn_interface").innerText = "Cytoscape";
+
                 d3.select('svg').remove();
                 d3.select('canvas').remove();
+                if(typeof cy !== 'undefined') cy.destroy();
 
                 // Now send a request to your Node program
                 fetch("reset/Cytoscape").then(function(res) {
@@ -424,8 +467,6 @@
                     cytoscapeFunc(jsonData);
 
                 });
-
-                break;
 
         }
     }
@@ -461,8 +502,6 @@
 
                     cytoscapeFunc(jsonData);
 
-                    break;
-
             }
 
         });
@@ -475,6 +514,7 @@
         let view = document.getElementById("dropbtn_interface").innerText;
 
         document.getElementById("dropbtn").innerText = "Algorithm";
+        document.getElementById("gamma").style.display = "none";
 
         fetch("reset/" + view).then(function(res) {
             // Res will be a Response object.

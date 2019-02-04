@@ -57,6 +57,8 @@ function d3canvasFunc(tempData){
         }
     }
 
+
+
     function dragstarted() {
         if (!d3.event.active) simulation.alphaTarget(0.3).restart();
         d3.event.subject.fx = transform.invertX(d3.event.x);
@@ -106,6 +108,7 @@ function d3canvasFunc(tempData){
             context.arc(d.x, d.y, radius, 0, 2 * Math.PI, true);
             context.fillStyle = color(d.group);
             context.fill();
+
         });
 
         context.restore();
