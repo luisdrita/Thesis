@@ -1,5 +1,5 @@
 # MSc Thesis 
-##### [https://mscthesis.herokuapp.com/](https://mscthesis.herokuapp.com/)
+[https://mscthesis.herokuapp.com/](https://mscthesis.herokuapp.com/) (please, allow a few seconds for the website to load)
 
 ## Community Finding (CF) in Phylogenetic Trees using PHYLOViZ Online
 
@@ -21,7 +21,10 @@ bioinformaticians, and is designed to enable medical and research purposes.
 
 ### Benchmark
 
-[Stanford Large Network Dataset Collection](http://snap.stanford.edu/data/index.html)
+- Testing networks: [Stanford Large Network Dataset Collection](http://snap.stanford.edu/data/index.html);
+- Congruence calculations: Adjusted Rand and Adjusted Wallace;
+- Diversity measures: Simpson's Index of Diversity;
+- Speed test: comparison on the time required by each algorithm to return the communities present in a given network.
 
 ### Visualization Interface
 

@@ -66,7 +66,7 @@ function readFile(type, gamma_var, cyto) {
 
         let split = data.toString().split("\n");
 
-        for (let i = 0; i < 100; i++) {
+        for (let i = 1; i < 100; i++) {
             let splitLine = split[i].split("\t");
             node_data[splitLine[0]] = true;
             node_data[splitLine[1]] = true;

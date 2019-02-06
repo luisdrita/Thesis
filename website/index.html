@@ -8,6 +8,7 @@
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.22/cytoscape.js"></script> <!-- Using Content Delivery Network (CDN). -->
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
 
     <link href='d3v4-selectable-zoomable-force-directed-graph.css'>
 
@@ -115,6 +116,74 @@
             font-family: Helvetica;
         }
 
+        /* Customize the label (the container) */
+        .container {
+            display: inline-block;
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 15px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default checkbox */
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: black;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
     </style>
 </head>
 
@@ -153,9 +222,9 @@
 
 </header>
 
-<div style="position: fixed; right: 0; top: 200px; width: 200px; height: 200px; background-color: black; opacity: 0.8">
+<div style="position: fixed; right: 0; top: 200px; width: 200px; height: 200px; background-color: black; opacity: 0.8; border-bottom-left-radius: 15px; border-top-left-radius: 15px;">
     <div style="color: white; position: absolute; top: 5px; right: 15px;font-size: 25px; cursor: pointer" onclick="this.parentElement.style.display = 'none'">x</div>
-    <h2 style="color: white; text-align: center; font-size: 22px">Guide</h2>
+    <h2 style="color: white; text-align: center; font-size: 22px;">Guide</h2>
     <ol style="color: white; line-height: 30px; font-size: 14px">
         <li>Upload File (<a href="https://github.com/warcraft12321/Thesis/blob/master/uploads/Input.txt" style="color: #1d68ca; text-decoration: none" target="_blank" rel="noopener noreferrer">Format</a>)</li>
         <li>Choose View</li>
@@ -173,8 +242,8 @@
 
     </div>
 
-    <div id="content_wrapper" style=" width:50%; margin: auto; margin-top: 50px; border-style: solid; border-color: transparent; position: relative;">
-        <input type="button" value="Reset" id='reset_btn' style="margin-left: 5px;"/>
+    <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 50px; border-style: solid; border-color: black; position: relative; text-align: center">
+        <input type="button" value="Reset" id='reset_btn'/>
         <input type="button" value="Run" id='comm_detect'/>
         <div class="dropdown">
             <button id = dropbtn class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
@@ -198,10 +267,15 @@
             </div>
         </div>
 
-        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="width: auto; position: absolute; bottom: 0; margin-left: 5px">
+        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="width: auto; position: relative; bottom: 0; margin-bottom: 0">
             <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="makeSubmit()">
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
         </form>
+
+        <label class="container">Overlapping
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
 
     </div>
 
@@ -246,7 +320,17 @@
     <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>∆</mml:mo><mml:mi>M</mml:mi><mml:mo>=</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced><mml:mo>-</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced></mml:math>
 </div>
 
-<div style="display: block; width: 90%; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+<div style="display: none; width: 90%; height: 500px; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+    <h2 style="text-align: center; font-size: 30px">Results</h2>
+    <div style="margin: auto; text-align: center;">
+        <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
+        <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
+        <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
+
+    </div>
+</div>
+
+<div class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
     <h2 style="text-align: center; font-size: 30px">Web Tools</h2>
     <div style="margin: auto;">
         <figure style="float: left; margin-left: 5%">
@@ -289,7 +373,7 @@
     </div>
 </div>
 
-<div style="display: block; width: 90%; border-style: solid; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
+<div class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
     <h2 style="text-align: center; font-size: 30px">EIT Health</h2>
     <div style="margin: auto;">
         <figure style="float: left;">
