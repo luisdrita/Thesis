@@ -8,13 +8,17 @@ const infomap = require('./website/algorithms/mod_algorithms/mod_infomap');
 const louvain = require('./website/algorithms/mod_algorithms/mod_louvain');
 const layeredLabelPropagation = require('./website/algorithms/mod_algorithms/mod_layeredLabelPropagation');
 
+// Importing Benchmarking Libraries
+const girvan = require('./website/benchmark/girvan-newman');
+const lfr = require('./website/benchmark/lancichinetti-fortunato-radicchi');
+
 const app = express();
 
 app.use(express.static('website'));
 app.listen(process.env.PORT || 3000);
 
 let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {};
-let community, node_data, obj, obj_cyto;
+let community, node_data, obj, obj_cyto, girvan_bench;
 
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
@@ -29,13 +33,13 @@ function nodify (final_node_data, state) { // Used in fs.readFile in order to pu
 
         case 0:
         keys.forEach(function (key) {
-            result_aux.push({"id": key, "group": final_node_data[key]})
+            result_aux.push({id: key, group: final_node_data[key]})
         });
         break;
 
         case 1:
         keys.forEach(function (key) {
-            result_aux.push({"id": key, "group": 1})
+            result_aux.push({id: key, group: 1})
         });
         break;
 
@@ -86,6 +90,8 @@ function readFile(type, gamma_var, cyto) {
 
                 result_cyto_reset["nodes"] = nodify(node_data, 2);
                 result_cyto_reset["links"] = obj_cyto;
+
+                girvan_bench = girvan.girvanVar(0.1);
 
                 break;
 
@@ -152,6 +158,13 @@ app.get('/reset/:alg', function (req, res) { // This will run every time you sen
 
         if(req.params.alg === "Cytoscape") {
              res.send(result_cyto_reset);
+
+        } else if (req.params.alg === "Girvan") {
+            res.send(girvan_bench);
+
+        } else if (req.params.alg === "LFR") {
+            res.send(result_cyto_reset);
+
         } else {
              res.send(result_reset); // Responding.
         }
@@ -176,3 +189,7 @@ app.post('/upload', function (req, res) {
     });
 
 });
+
+// Benchmark
+
+console.log(lfr.lfrVar(3, 2, 100, 0.2));

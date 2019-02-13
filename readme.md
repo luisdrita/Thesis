@@ -20,11 +20,20 @@ bioinformaticians, and is designed to enable medical and research purposes.
 - Layered label propagation.
 
 ### Benchmark
+#### Synthetic Networks
+- Girvan-Newman and Lancichinetti-Fortunato-Radicchi networks.
 
-- Testing networks: [Stanford Large Network Dataset Collection](http://snap.stanford.edu/data/index.html);
-- Congruence calculations: Adjusted Rand and Adjusted Wallace;
-- Diversity measures: Simpson's Index of Diversity;
-- Speed test: comparison on the time required by each algorithm to return the communities present in a given network.
+#### Real Networks
+- [Stanford Large Network Dataset Collection](http://snap.stanford.edu/data/index.html);
+- [Network Repository](http://networkrepository.com/).
+
+#### Benchmarking Parameters
+##### Accuracy
+- Congruence calculations: [Adjusted Rand](http://www.comparingpartitions.info/?link=Tool) and [Adjusted Wallace](http://www.comparingpartitions.info/?link=Tool);
+- Diversity measures: [Simpson's Index of Diversity](http://www.comparingpartitions.info/?link=Tool);
+
+##### Speed
+- Comparison on the time required by each algorithm to return the communities present in a given network.
 
 ### Visualization Interface
 
@@ -63,6 +72,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 [02/02/19] Implemented D3.js (using Canvas and SVG) and Cytoscape.js interface. App deployed to a web server - Credits to [Heroku](https://dashboard.heroku.com/);
 
 [04/02/19] Louvain algorithm bug corrected. Enhanced interface. User is now able to provide input of several parameters;
+
+[12/02/19] Implemented 2 algorithms that generate Girvan-Newman and Lancichinetti-Fortunato-Radicchi synthetic networks;
 
 [Next] Benchmark algorithms;
 

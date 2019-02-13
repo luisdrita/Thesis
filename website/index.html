@@ -41,16 +41,13 @@
             stroke: #999;
         }
 
-        .dropbtn, #reset_btn, #comm_detect, #file, #gamma{
+        .dropbtn, #reset_btn, #comm_detect, #file, #gamma, .container{
             background-color: black;
             color: white;
             padding: 10px;
             font-size: 14px;
             border: none;
             border-radius: 10px;
-        }
-
-        .dropbtn:hover, #reset_btn:hover, #comm_detect:hover, .uploads:hover{
             cursor: pointer;
         }
 
@@ -118,15 +115,8 @@
 
         /* Customize the label (the container) */
         .container {
-            display: inline-block;
             position: relative;
             padding-left: 35px;
-            cursor: pointer;
-            font-size: 15px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
 
         /* Hide the browser's default checkbox */
@@ -222,7 +212,7 @@
 
 </header>
 
-<div style="position: fixed; right: 0; top: 200px; width: 200px; height: 200px; background-color: black; opacity: 0.8; border-bottom-left-radius: 15px; border-top-left-radius: 15px;">
+<div style="position: fixed; right: 0; top: 200px; width: 200px; height: 200px; background-color: black; opacity: 0.8; border-bottom-left-radius: 15px; border-top-left-radius: 15px; z-index: 1">
     <div style="color: white; position: absolute; top: 5px; right: 15px;font-size: 25px; cursor: pointer" onclick="this.parentElement.style.display = 'none'">x</div>
     <h2 style="color: white; text-align: center; font-size: 22px;">Guide</h2>
     <ol style="color: white; line-height: 30px; font-size: 14px">
@@ -272,8 +262,8 @@
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
         </form>
 
-        <label class="container">Overlapping
-            <input type="checkbox">
+        <label class="container" style="color: white; height: 100%">Benchmark
+            <input id = "myCheck" type="checkbox">
             <span class="checkmark"></span>
         </label>
 
@@ -320,7 +310,7 @@
     <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>∆</mml:mo><mml:mi>M</mml:mi><mml:mo>=</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced><mml:mo>-</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced></mml:math>
 </div>
 
-<div style="display: none; width: 90%; height: 500px; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+<div style="display: block; width: 90%; height: 500px; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
     <h2 style="text-align: center; font-size: 30px">Results</h2>
     <div style="margin: auto; text-align: center;">
         <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
@@ -499,7 +489,16 @@
                 canvas = d3.select('#graphDiv').append('svg');
                 svg = d3.select('#graphDiv');
 
-                fetch("reset/undefined").then(function(res) {
+                let checked = document.getElementById("myCheck").checked;
+                let fetchy;
+
+                if (checked) {
+                    fetchy = "Girvan";
+                } else {
+                    fetchy = "undefined";
+                }
+
+                fetch("reset/" + fetchy).then(function(res) {
 
                     return res.json();
 
@@ -558,37 +557,41 @@
     // Action on clicking in the Run button.
     d3.select('#comm_detect').on('click', function(){
 
-        let view = document.getElementById("dropbtn_interface").innerText;
+        if (document.getElementById("dropbtn").innerText !== "Algorithm") {
 
-        fetch("run/" + view).then(function (res) {
-            // Res will be a Response object.
-            // Use res.text() or res.json() to get the information that the Node program sent.
+            let view = document.getElementById("dropbtn_interface").innerText;
 
-            return res.json();
+            fetch("run/" + view).then(function (res) {
+                // Res will be a Response object.
+                // Use res.text() or res.json() to get the information that the Node program sent.
 
-        }).then(function (jsonData) {
+                return res.json();
 
-            switch (view) {
+            }).then(function (jsonData) {
 
-                case "D3.js (SVG)":
+                switch (view) {
 
-                    d3svgFunc(svg, jsonData);
+                    case "D3.js (SVG)":
 
-                    break;
+                        d3svgFunc(svg, jsonData);
 
-                case "D3.js (Canvas)":
+                        break;
 
-                    d3canvasFunc(jsonData);
+                    case "D3.js (Canvas)":
 
-                    break;
+                        d3canvasFunc(jsonData);
 
-                case "Cytoscape":
+                        break;
 
-                    cytoscapeFunc(jsonData);
+                    case "Cytoscape":
 
-            }
+                        cytoscapeFunc(jsonData);
 
-        });
+                }
+
+            });
+
+        }
 
     });
 
