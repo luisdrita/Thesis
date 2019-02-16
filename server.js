@@ -18,7 +18,7 @@ app.use(express.static('website'));
 app.listen(process.env.PORT || 3000);
 
 let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {};
-let community, node_data, obj, obj_cyto, girvan_bench;
+let community, node_data, obj, obj_cyto, girvan_bench, girvan_bench_cyto;
 
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
@@ -91,8 +91,8 @@ function readFile(type, gamma_var, cyto) {
                 result_cyto_reset["nodes"] = nodify(node_data, 2);
                 result_cyto_reset["links"] = obj_cyto;
 
-                girvan_bench = girvan.girvanVar(0.1);
-
+                girvan_bench = girvan.girvanVar(0.1, "false", 16);
+                girvan_bench_cyto = girvan.girvanVar(0.1, "true", 16);
                 break;
 
             case 'louvain':
@@ -156,18 +156,27 @@ app.get('/run/:id', function (req, res) { // This will run every time you send a
 
 app.get('/reset/:alg', function (req, res) { // This will run every time you send a request to localhost:3000/search.
 
-        if(req.params.alg === "Cytoscape") {
-             res.send(result_cyto_reset);
+    switch (req.params.alg) {
 
-        } else if (req.params.alg === "Girvan") {
-            res.send(girvan_bench);
-
-        } else if (req.params.alg === "LFR") {
+        case "Cytoscape":
             res.send(result_cyto_reset);
+            break;
 
-        } else {
-             res.send(result_reset); // Responding.
-        }
+        case "Girvan":
+            res.send(girvan_bench);
+            break;
+
+        case "LFR":
+            res.send(result_cyto_reset);
+            break;
+
+        case "Girvan_Cytoscape":
+            res.send(girvan_bench_cyto);
+            break;
+
+        case "undefined":
+            res.send(result_reset);
+    }
 
 });
 
@@ -192,4 +201,4 @@ app.post('/upload', function (req, res) {
 
 // Benchmark
 
-console.log(lfr.lfrVar(3, 2, 100, 0.2));
+// console.log(lfr.lfrVar(3, 2, 100, 0.2));

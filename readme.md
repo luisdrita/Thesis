@@ -77,7 +77,9 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [Next] Benchmark algorithms;
 
-[Next] PHYLOViZ integration.
+[Next] PHYLOViZ integration;
+
+[Next] Thesis writing.
 
 ### Screenshot
 

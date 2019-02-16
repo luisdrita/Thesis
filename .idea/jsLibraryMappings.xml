@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{cytoscape, d3-force.v1, d3.v3, infinite-scroll.pkgd}" />
+    <file url="PROJECT" libraries="{aos, cytoscape, d3-force.v1, d3.v3, infinite-scroll.pkgd}" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

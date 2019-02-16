@@ -9,8 +9,11 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.22/cytoscape.js"></script> <!-- Using Content Delivery Network (CDN). -->
     <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 
     <link href='d3v4-selectable-zoomable-force-directed-graph.css'>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script src="d3_svg.js"></script>
     <script src="d3_canvas.js"></script>
@@ -18,27 +21,19 @@
 
     <style>
 
-        .links line {
-            stroke: #999;
-            stroke-opacity: 0.6;
-        }
-
-        .nodes circle {
-            stroke: #fff;
-            stroke-width: 1.5px;
-        }
-
         text {
             font-family: sans-serif;
             font-size: 10px;
         }
 
         circle {
+            stroke: #fff;
             stroke-width: 1.5px;
         }
 
         line {
             stroke: #999;
+            stroke-opacity: 0.6;
         }
 
         .dropbtn, #reset_btn, #comm_detect, #file, #gamma, .container{
@@ -235,7 +230,7 @@
     <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 50px; border-style: solid; border-color: black; position: relative; text-align: center">
         <input type="button" value="Reset" id='reset_btn'/>
         <input type="button" value="Run" id='comm_detect'/>
-        <div class="dropdown">
+        <div class="dropdown" id = "dropdown">
             <button id = dropbtn class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
                 <a id = "louvain" onclick="rename(this.id)" style="cursor: pointer">Louvain</a>
@@ -258,12 +253,12 @@
         </div>
 
         <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="width: auto; position: relative; bottom: 0; margin-bottom: 0">
-            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="makeSubmit()">
+            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="makeSubmit();">
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
         </form>
 
         <label class="container" style="color: white; height: 100%">Benchmark
-            <input id = "myCheck" type="checkbox">
+            <input id = "myCheck" type="checkbox" onchange="rename_aux2();">
             <span class="checkmark"></span>
         </label>
 
@@ -310,7 +305,7 @@
     <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>∆</mml:mo><mml:mi>M</mml:mi><mml:mo>=</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced><mml:mo>-</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced></mml:math>
 </div>
 
-<div style="display: block; width: 90%; height: 500px; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; height: 500px; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
     <h2 style="text-align: center; font-size: 30px">Results</h2>
     <div style="margin: auto; text-align: center;">
         <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
@@ -320,7 +315,7 @@
     </div>
 </div>
 
-<div class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
     <h2 style="text-align: center; font-size: 30px">Web Tools</h2>
     <div style="margin: auto;">
         <figure style="float: left; margin-left: 5%">
@@ -363,7 +358,7 @@
     </div>
 </div>
 
-<div class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
     <h2 style="text-align: center; font-size: 30px">EIT Health</h2>
     <div style="margin: auto;">
         <figure style="float: left;">
@@ -421,10 +416,15 @@
 
 <script>
 
+    AOS.init();
+
     let canvas, svg, cy;
 
     function makeSubmit () {
         document.getElementById("file").submit();
+
+        rename(document.getElementById("dropbtn_interface").innerText);
+
     }
 
     function rename_aux () {
@@ -447,11 +447,51 @@
                 rename("llp");
 
         }
+
+    }
+
+    function rename_aux2 () {
+
+        switch (document.getElementById("dropbtn_interface").innerText) {
+
+            case "D3.js (SVG)":
+
+                rename("svg");
+
+                break;
+
+            case "D3.js (Canvas)":
+
+                rename("canvas");
+
+                break;
+
+            case "Cytoscape":
+
+                rename("cytoscape");
+
+        }
+
+        if(document.getElementById("comm_detect").style.display === "none") {
+
+            document.getElementById("comm_detect").style.display = "inline-block";
+            document.getElementById("dropdown").style.display = "inline-block";
+            document.getElementById("file").style.display = "inline-block";
+        } else {
+            document.getElementById("comm_detect").style.display = "none";
+            document.getElementById("dropdown").style.display = "none";
+            document.getElementById("file").style.display = "none";
+            document.getElementById("gamma").style.display = "none";
+        }
+
     }
 
     rename('svg');
 
     function rename(id) {
+
+        let checked = document.getElementById("myCheck").checked;
+        let fetchy;
 
         switch(id) {
 
@@ -489,9 +529,6 @@
                 canvas = d3.select('#graphDiv').append('svg');
                 svg = d3.select('#graphDiv');
 
-                let checked = document.getElementById("myCheck").checked;
-                let fetchy;
-
                 if (checked) {
                     fetchy = "Girvan";
                 } else {
@@ -522,13 +559,19 @@
                     .attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
-                fetch("reset/undefined").then(function(res) {
+                if (checked) {
+                    fetchy = "Girvan";
+                } else {
+                    fetchy = "undefined";
+                }
+
+                fetch("reset/" + fetchy).then(function(res) {
 
                     return res.json();
 
                 }).then(function(jsonData) {
-                    d3canvasFunc(jsonData);
 
+                    d3canvasFunc(jsonData);
                 });
 
                 break;
@@ -541,14 +584,20 @@
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 // Now send a request to your Node program
-                fetch("reset/Cytoscape").then(function(res) {
+
+                if (checked) {
+                    fetchy = "Girvan_Cytoscape";
+                } else {
+                    fetchy = "Cytoscape";
+                }
+
+                fetch("reset/" + fetchy).then(function(res) {
 
                     return res.json();
 
                 }).then(function(jsonData) {
 
                     cytoscapeFunc(jsonData);
-
                 });
 
         }
@@ -598,39 +647,15 @@
     // Action on clicking in the Reset button. All nodes have their colours reset to a standard one.
     d3.select('#reset_btn').on('click', function() {
 
-        let view = document.getElementById("dropbtn_interface").innerText;
-
         document.getElementById("dropbtn").innerText = "Algorithm";
         document.getElementById("gamma").style.display = "none";
+        document.getElementById("myCheck").checked = false;
 
-        fetch("reset/" + view).then(function(res) {
-            // Res will be a Response object.
-            // Use res.text() or res.json() to get the information that the Node program sent.
-            return res.json();
+        rename_aux2();
 
-        }).then(function(jsonData) {
-
-            switch (view) {
-
-                case "D3.js (SVG)":
-
-                    d3svgFunc(svg, jsonData);
-
-                    break;
-
-                case "D3.js (Canvas)":
-
-                    d3canvasFunc(jsonData);
-
-                    break;
-
-                case "Cytoscape":
-
-                    cytoscapeFunc(jsonData);
-
-            }
-
-        });
+        document.getElementById("comm_detect").style.display = "inline-block";
+        document.getElementById("dropdown").style.display = "inline-block";
+        document.getElementById("file").style.display = "inline-block";
 
     });
 

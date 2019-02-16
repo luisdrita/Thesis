@@ -809,9 +809,6 @@ function d3svgFunc(svg, graph) {
             })
     }
 
-    var texts = ['Use the scroll wheel to zoom',
-        'Hold the shift key to select nodes'];
-
     svg.selectAll('text')
         .data(texts)
         .enter()
