@@ -257,7 +257,7 @@
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
         </form>
 
-        <label class="container" style="color: white; height: 100%">Benchmark
+        <label class="container" style="color: white; height: 100%">GN Benchmark
             <input id = "myCheck" type="checkbox" onchange="rename_aux2();">
             <span class="checkmark"></span>
         </label>
@@ -418,6 +418,29 @@
 
     AOS.init();
 
+    AOS.init({
+        // Global settings:
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+        initClassName: 'aos-init', // class applied after initialization
+        animatedClassName: 'aos-animate', // class applied on animation
+        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+
+
+        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+        offset: 120, // offset (in px) from the original trigger point
+        delay: 0, // values from 0 to 3000, with step 50ms
+        duration: 400, // values from 0 to 3000, with step 50ms
+        easing: 'ease', // default easing for AOS animations
+        once: true, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+
+    });
+
     let canvas, svg, cy;
 
     function makeSubmit () {
@@ -472,16 +495,17 @@
 
         }
 
-        if(document.getElementById("comm_detect").style.display === "none") {
+        if(document.getElementById("file").style.display === "none") {
 
-            document.getElementById("comm_detect").style.display = "inline-block";
-            document.getElementById("dropdown").style.display = "inline-block";
             document.getElementById("file").style.display = "inline-block";
-        } else {
-            document.getElementById("comm_detect").style.display = "none";
-            document.getElementById("dropdown").style.display = "none";
-            document.getElementById("file").style.display = "none";
             document.getElementById("gamma").style.display = "none";
+            document.getElementById("dropbtn").innerText = "Algorithm";
+
+        } else {
+
+            document.getElementById("file").style.display = "none";
+
+
         }
 
     }
@@ -497,26 +521,44 @@
 
             case "louvain":
 
+                if (checked) {
+                    fetchy = "Girvan";
+                } else {
+                    fetchy = "undefined";
+                }
+
                 document.getElementById("dropbtn").innerText = "Louvain";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape"));
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
             case "infomap":
 
+                if (checked) {
+                    fetchy = "Girvan";
+                } else {
+                    fetchy = "undefined";
+                }
+
                 document.getElementById("dropbtn").innerText = "Infomap";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape"));
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
             case "llp":
 
+                if (checked) {
+                    fetchy = "Girvan";
+                } else {
+                    fetchy = "undefined";
+                }
+
                 document.getElementById("dropbtn").innerText = "LLP";
                 document.getElementById("range_label").innerText = "Resolution:";
                 document.getElementById("gamma").style.display = "inline-block";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value)/(document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape"));
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value)/(document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
             case 'svg':
@@ -622,6 +664,7 @@
 
                     case "D3.js (SVG)":
 
+                        console.log(jsonData);
                         d3svgFunc(svg, jsonData);
 
                         break;
@@ -653,8 +696,6 @@
 
         rename_aux2();
 
-        document.getElementById("comm_detect").style.display = "inline-block";
-        document.getElementById("dropdown").style.display = "inline-block";
         document.getElementById("file").style.display = "inline-block";
 
     });

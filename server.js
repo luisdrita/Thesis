@@ -58,7 +58,7 @@ function nodify (final_node_data, state) { // Used in fs.readFile in order to pu
     return result_aux; // Previously, I used parseInt to convert the key string to an integer.
 }
 
-function readFile(type, gamma_var, cyto) {
+function readFile(type, gamma_var, cyto, fet) {
 
     fs.readFile('./uploads/Input.txt', 'utf8', function (err, data) {
 
@@ -96,15 +96,29 @@ function readFile(type, gamma_var, cyto) {
                 break;
 
             case 'louvain':
+
                 community = louvain.louvainVar(final_node_data, obj, gamma_var);
 
-                if(cyto==="true") {
+                if(cyto==="true" && fet !== "Girvan") {
+
                     result_cyto["nodes"] = nodify(community, 3);
                     result_cyto["links"] = obj_cyto;
 
-                } else {
+                } else if (cyto==="true" && fet === "Girvan") {
+
+                    result_cyto["nodes"] = girvan_bench_cyto["nodes"];
+                    result_cyto["links"] = girvan_bench_cyto["links"];
+
+                } else if (cyto !== "true" && fet !== "Girvan") {
+
                     result["nodes"] = nodify(community, 0);
                     result["links"] = obj;
+
+                } else if (cyto !== "true" && fet === "Girvan") {
+
+                    result["nodes"] = girvan_bench["nodes"];
+                    result["links"] = girvan_bench["links"];
+
                 }
 
                 break;
@@ -112,12 +126,26 @@ function readFile(type, gamma_var, cyto) {
             case 'infomap':
                 community = infomap.infomapVar(final_node_data, obj, gamma_var);
 
-                if(cyto==="true") {
+                if(cyto==="true" && fet !== "Girvan") {
+
                     result_cyto["nodes"] = nodify(community, 3);
                     result_cyto["links"] = obj_cyto;
-                } else {
+
+                } else if (cyto==="true" && fet === "Girvan") {
+
+                    result_cyto["nodes"] = girvan_bench_cyto["nodes"];
+                    result_cyto["links"] = girvan_bench_cyto["links"];
+
+                } else if (cyto !== "true" && fet !== "Girvan") {
+
                     result["nodes"] = nodify(community, 0);
                     result["links"] = obj;
+
+                } else if (cyto !== "true" && fet === "Girvan") {
+
+                    result["nodes"] = girvan_bench["nodes"];
+                    result["links"] = girvan_bench["links"];
+
                 }
 
                 break;
@@ -125,12 +153,26 @@ function readFile(type, gamma_var, cyto) {
             case 'llp':
                 community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
 
-                if(cyto==="true") {
+                if(cyto==="true" && fet !== "Girvan") {
+
                     result_cyto["nodes"] = nodify(community, 3);
                     result_cyto["links"] = obj_cyto;
-                } else {
+
+                } else if (cyto==="true" && fet === "Girvan") {
+
+                    result_cyto["nodes"] = girvan_bench_cyto["nodes"];
+                    result_cyto["links"] = girvan_bench_cyto["links"];
+
+                } else if (cyto !== "true" && fet !== "Girvan") {
+
                     result["nodes"] = nodify(community, 0);
                     result["links"] = obj;
+
+                } else if (cyto !== "true" && fet === "Girvan") {
+
+                    result["nodes"] = girvan_bench["nodes"];
+                    result["links"] = girvan_bench["links"];
+
                 }
 
         }
@@ -139,7 +181,7 @@ function readFile(type, gamma_var, cyto) {
 
 }
 
-readFile('init', 0, "true");
+readFile('init', 0, "true", "undefined");
 
  // Standard algorithm when any is chosen.
 
@@ -180,9 +222,9 @@ app.get('/reset/:alg', function (req, res) { // This will run every time you sen
 
 });
 
-app.get('/algorithm/:type/gamma/:val/cytoscape/:cyto', function (req, res) { // This will run every time you send a request to localhost:3000/search.
+app.get('/algorithm/:type/gamma/:val/cytoscape/:cyto/fetchy/:fet', function (req, res) { // This will run every time you send a request to localhost:3000/search.
 
-        readFile(req.params.type, req.params.val, req.params.cyto);
+        readFile(req.params.type, req.params.val, req.params.cyto, req.params.fet);
 
     res.send();
 });
