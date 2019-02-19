@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="GN Network">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/gn.png" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/gn.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,19 +26,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+        <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="1177">
+              <caret line="638" column="13" selection-start-line="638" selection-start-column="9" selection-end-line="638" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -47,19 +38,10 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="529">
-                <caret line="77" column="62" selection-start-line="77" selection-start-column="62" selection-end-line="77" selection-end-column="62" />
+              <first_editor relative-caret-position="609">
+                <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9570">
-              <caret line="638" column="13" selection-start-line="638" selection-start-column="9" selection-end-line="638" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -168,6 +150,9 @@
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
     <favorite-branches>
       <branch-storage>
         <map>
@@ -453,7 +438,7 @@
       <workItem from="1550319733232" duration="113000" />
       <workItem from="1550412967087" duration="1394000" />
       <workItem from="1550493218921" duration="6547000" />
-      <workItem from="1550575372430" duration="4379000" />
+      <workItem from="1550575372430" duration="5412000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -553,11 +538,32 @@
       <option name="project" value="LOCAL" />
       <updated>1550597009799</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Docker Status">
+      <created>1550598927487</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1550598927487</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Docker Status">
+      <created>1550599005944</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1550599005944</updated>
+    </task>
+    <task id="LOCAL-00017" summary="GN Network">
+      <created>1550600417856</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1550600417856</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="657177000" />
+    <option name="totallyTimeSpent" value="658210000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -572,7 +578,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26862028" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26862028" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -585,7 +591,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32987553" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32987553" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.497558" visible="true" weight="0.17842324" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.497558" visible="true" weight="0.17842324" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502442" side_tool="true" weight="0.17842324" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32987553" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -645,7 +651,9 @@
     <MESSAGE value="Version 2.0" />
     <MESSAGE value="Benchmark GN" />
     <MESSAGE value="Docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Docker" />
+    <MESSAGE value="Docker Status" />
+    <MESSAGE value="GN Network" />
+    <option name="LAST_COMMIT_MESSAGE" value="GN Network" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/algorithms/mod_louvain.js" />
@@ -801,13 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9570">
-          <caret line="638" column="13" selection-start-line="638" selection-start-column="9" selection-end-line="638" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/benchmark/girvan-newman.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -867,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
-          <caret line="175" column="17" selection-start-line="175" selection-start-column="17" selection-end-line="175" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -881,11 +875,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2625">
+          <caret line="175" column="17" selection-start-line="175" selection-start-column="17" selection-end-line="175" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1177">
+          <caret line="638" column="13" selection-start-line="638" selection-start-column="9" selection-end-line="638" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="529">
-            <caret line="77" column="62" selection-start-line="77" selection-start-column="62" selection-end-line="77" selection-end-column="62" />
+          <first_editor relative-caret-position="609">
+            <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
           </first_editor>
           <second_editor />
         </state>
