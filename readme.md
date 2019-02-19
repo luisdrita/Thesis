@@ -75,7 +75,7 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [12/02/19] Implemented 2 algorithms that generate Girvan-Newman and Lancichinetti-Fortunato-Radicchi synthetic networks;
 
-[19/02/19] Docker;
+[19/02/19] Docker.
 
 [Next] Benchmark algorithms;
 
