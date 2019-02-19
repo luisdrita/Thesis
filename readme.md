@@ -88,3 +88,7 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 ![Community_Finding Screenshot](./website/img/communityFinding.png)
 
 Fig. 1 - Amazon product co-purchasing network (10 000 samples) and detected communities. Using D3.js, SVG and Layered Label Propagation algorithm.
+
+![Community_Finding Screenshot](./website/img/gn.png)
+
+Fig. 2 - Girvan-Newman synthetic network. Using D3.js and SVG.
