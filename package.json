@@ -5,7 +5,9 @@
     "express": "^4.16.4",
     "formidable": "latest",
     "fs": "0.0.1-security",
-    "npm": "^6.7.0"
+    "html2canvas": "^1.0.0-alpha.12",
+    "npm": "^6.7.0",
+    "pug": "^2.0.3"
   },
   "engines": {
     "node": "9.8.0"

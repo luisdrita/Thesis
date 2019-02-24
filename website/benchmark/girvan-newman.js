@@ -10,6 +10,7 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     // Global Variables
     let nodes = [];
     let edges = [];
+    let communities = [];
     let result = {};
 
     // ----------------------------------------- Helpers -----------------------------------------
@@ -35,6 +36,23 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
             } else {
                 nodes[i] = {id: i, group: 4};
+
+            }
+        }
+
+        for (let i = 0; i < 128; i++) {
+
+            if (i < 31) {
+                communities[i] = 1;
+
+            } else if (i < 63) {
+                communities[i] = 2;
+
+            } else if (i < 95) {
+                communities[i] = 3;
+
+            } else {
+                communities[i] = 4;
 
             }
         }
@@ -95,6 +113,7 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
     result["nodes"] = nodes;
     result ["links"] = edges;
+    result["communities"] = communities;
 
     return result;
 

@@ -29,7 +29,7 @@ bioinformaticians, and is designed to enable medical and research purposes.
 
 #### Benchmarking Parameters
 ##### Accuracy
-- Congruence calculations: [Adjusted Rand](http://www.comparingpartitions.info/?link=Tool) and [Adjusted Wallace](http://www.comparingpartitions.info/?link=Tool);
+- Congruence calculations: [Adjusted Rand](http://www.comparingpartitions.info/?link=Tool), [Adjusted Wallace](http://www.comparingpartitions.info/?link=Tool) and [Normalized Mutual Information](http://www.comparingpartitions.info/?link=Tool);
 - Diversity measures: [Simpson's Index of Diversity](http://www.comparingpartitions.info/?link=Tool);
 
 ##### Speed
@@ -77,7 +77,7 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [19/02/19] Image of thesis app uploaded to [Docker Hub repo](https://cloud.docker.com/repository/docker/warcraft12321/thesis). Link between GitHub and Docker Hub established;
 
-[Next] Benchmark algorithms;
+[24/02/19] First results were obtained applying different benchmarking techniques;
 
 [Next] PHYLOViZ integration;
 

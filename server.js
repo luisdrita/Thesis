@@ -20,6 +20,32 @@ app.listen(process.env.PORT || 3000);
 let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {};
 let community, node_data, obj, obj_cyto, girvan_bench, girvan_bench_cyto;
 
+let str = "";
+let final_arr = [];
+
+function arrayToString(multi_array) {
+
+    for (let ij = 0; ij < multi_array.length; ij++) {
+        str += ("Method" + ij);
+        str += "\t";
+    }
+    str += "\n";
+
+    for (let j = 0; j < multi_array[0].length; j++) {
+
+        for (let i = 0; i < multi_array.length; i++) {
+
+            str += multi_array[i][j];
+
+            str += "\t";
+
+        }
+
+        str += "\n";
+
+    }
+}
+
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
 }
@@ -93,13 +119,17 @@ function readFile(type, gamma_var, cyto, fet) {
 
                 girvan_bench = girvan.girvanVar(0.1, "false", 16);
                 girvan_bench_cyto = girvan.girvanVar(0.1, "true", 16);
+
+                result["communities"] = girvan_bench["communities"];
+                final_arr.push(result["communities"]);
+
                 break;
 
             case 'louvain':
 
-                community = louvain.louvainVar(final_node_data, obj, gamma_var);
-
                 if(cyto==="true" && fet !== "Girvan") {
+
+                    community = louvain.louvainVar(final_node_data, obj, gamma_var);
 
                     result_cyto["nodes"] = nodify(community, 3);
                     result_cyto["links"] = obj_cyto;
@@ -111,22 +141,31 @@ function readFile(type, gamma_var, cyto, fet) {
 
                 } else if (cyto !== "true" && fet !== "Girvan") {
 
+                    community = louvain.louvainVar(final_node_data, obj, gamma_var);
+
                     result["nodes"] = nodify(community, 0);
                     result["links"] = obj;
 
                 } else if (cyto !== "true" && fet === "Girvan") {
 
-                    result["nodes"] = girvan_bench["nodes"];
+                    community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+
+                    result["nodes"] = nodify(community, 0);
                     result["links"] = girvan_bench["links"];
+
+                    final_arr.push(Object.values(community));
+
+                //    fs.writeFile("./girvanLouvain.txt", arrayToString(result["communities"]));
 
                 }
 
                 break;
 
             case 'infomap':
-                community = infomap.infomapVar(final_node_data, obj, gamma_var);
 
                 if(cyto==="true" && fet !== "Girvan") {
+
+                    community = infomap.infomapVar(final_node_data, obj, gamma_var);
 
                     result_cyto["nodes"] = nodify(community, 3);
                     result_cyto["links"] = obj_cyto;
@@ -138,22 +177,31 @@ function readFile(type, gamma_var, cyto, fet) {
 
                 } else if (cyto !== "true" && fet !== "Girvan") {
 
+                    community = infomap.infomapVar(final_node_data, obj, gamma_var);
+
                     result["nodes"] = nodify(community, 0);
                     result["links"] = obj;
 
                 } else if (cyto !== "true" && fet === "Girvan") {
 
-                    result["nodes"] = girvan_bench["nodes"];
+                    community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+
+                    console.log(community);
+
+                    result["nodes"] = nodify(community, 0);
                     result["links"] = girvan_bench["links"];
+
+                    final_arr.push(Object.values(community));
 
                 }
 
                 break;
 
             case 'llp':
-                community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
 
                 if(cyto==="true" && fet !== "Girvan") {
+
+                    community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
 
                     result_cyto["nodes"] = nodify(community, 3);
                     result_cyto["links"] = obj_cyto;
@@ -165,13 +213,21 @@ function readFile(type, gamma_var, cyto, fet) {
 
                 } else if (cyto !== "true" && fet !== "Girvan") {
 
+                    community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
+
                     result["nodes"] = nodify(community, 0);
                     result["links"] = obj;
 
                 } else if (cyto !== "true" && fet === "Girvan") {
 
-                    result["nodes"] = girvan_bench["nodes"];
+                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], 1);
+
+                    result["nodes"] = nodify(community, 0);
                     result["links"] = girvan_bench["links"];
+
+                    final_arr.push(Object.values(community));
+
+                //    fs.writeFile("./girvanLouvain.txt", str);
 
                 }
 
@@ -194,6 +250,9 @@ app.get('/run/:id', function (req, res) { // This will run every time you send a
         res.send(result); // Responding.
     }
 
+    arrayToString(final_arr);
+    fs.writeFile("./benchmark_data/llp_gamma1_mix0.txt", str);
+
 });
 
 app.get('/reset/:alg', function (req, res) { // This will run every time you send a request to localhost:3000/search.
@@ -203,7 +262,6 @@ app.get('/reset/:alg', function (req, res) { // This will run every time you sen
         case "Cytoscape":
             res.send(result_cyto_reset);
             break;
-
         case "Girvan":
             res.send(girvan_bench);
             break;
@@ -242,5 +300,20 @@ app.post('/upload', function (req, res) {
 });
 
 // Benchmark
+
+/*
+
+function ola () {
+    for (let i = 0; i < 11; i++) {
+        readFile('llp', i/10, "false", "Girvan");
+        console.log(str);
+    }
+
+    fs.writeFile("./girvanLouvain.txt", str);
+}
+
+*/
+
+
 
 // console.log(lfr.lfrVar(3, 2, 100, 0.2));
