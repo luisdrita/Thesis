@@ -79,6 +79,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [24/02/19] First results were obtained applying different benchmarking techniques;
 
+[02/03/19] GN benchmark network algorithm corrected. It now accepts different mixing parameters and node degrees. JSON Zachary's karate club network created.
+
 [Next] PHYLOViZ integration;
 
 [Next] Thesis writing.
@@ -91,4 +93,9 @@ Fig. 1 - Amazon product co-purchasing network (10 000 samples) and detected comm
 
 ![Community_Finding Screenshot](./website/img/gn.png)
 
-Fig. 2 - Girvan-Newman synthetic network. Using D3.js and SVG.
+Fig. 2 - Girvan-Newman synthetic network. 
+N = 128 | mix = 0.1 | k = 16 | Interface: D3.js & SVG.
+
+![Community_Finding Screenshot](./website/img/karate.png)
+
+Fig. 3 - Zachary's karate club network (JSON file in the repo).
