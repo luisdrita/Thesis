@@ -14,7 +14,7 @@ function cytoscapeFunc(data) {
 
     /*    textureOnViewport: true, */
 
-        pixelRatio: 1,
+        pixelRatio: 2,
 
         elements: {
             nodes: data.nodes,

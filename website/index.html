@@ -11,164 +11,14 @@
     <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <link href='d3v4-selectable-zoomable-force-directed-graph.css'>
+    <link href='./style/d3v4-selectable-zoomable-force-directed-graph.css'>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href='./style/index.css' rel="stylesheet">
 
     <script src="d3_svg.js"></script>
     <script src="d3_canvas.js"></script>
     <script src="cytoscape.js"></script>
 
-    <style>
-
-        text {
-            font-family: sans-serif;
-            font-size: 10px;
-        }
-
-        circle {
-            stroke: #fff;
-            stroke-width: 1.5px;
-        }
-
-        line {
-            stroke: #999;
-            stroke-opacity: 0.6;
-        }
-
-        .dropbtn, #reset_btn, #comm_detect, #file, #gamma, .container{
-            background-color: black;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            height: 20px;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {background-color: black; color: white;}
-
-        .dropdown:hover .dropdown-content {display: block;}
-
-        .dropdown:hover .dropbtn {background-color: black;}
-
-        footer {
-            display: block;
-            color:#ffffff;
-            background-color: #000000;
-            text-align: center;
-        }
-
-        .container2 p{
-            float: left;
-            width: 50%;
-            margin-left: 25%;
-        }
-
-        #socialMedia{
-            display:block;
-            float:right;
-            margin-top:0.75%;
-            margin-right: 25px;
-            width: 150px;
-        }
-
-        .container2 {
-            width:100%;
-            overflow:hidden;
-            border-style: solid;
-            border-color: black;
-            text-align: center;
-
-        }
-
-        body {
-            font-family: Helvetica;
-        }
-
-        /* Customize the label (the container) */
-        .container {
-            position: relative;
-            padding-left: 35px;
-        }
-
-        /* Hide the browser's default checkbox */
-        .container input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-
-        /* Create a custom checkbox */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 5px;
-        }
-
-        /* On mouse-over, add a grey background color */
-        .container:hover input ~ .checkmark {
-            background-color: #ccc;
-        }
-
-        /* When the checkbox is checked, add a blue background */
-        .container input:checked ~ .checkmark {
-            background-color: black;
-        }
-
-        /* Create the checkmark/indicator (hidden when not checked) */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-
-        /* Show the checkmark when checked */
-        .container input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        /* Style the checkmark/indicator */
-        .container .checkmark:after {
-            left: 9px;
-            top: 5px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-        }
-
-    </style>
 </head>
 
 <body style="margin: auto; position: relative">
@@ -256,13 +106,16 @@
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
         </form>
 
-        <label class="container" style="color: white; height: 100%">GN Benchmark
-            <input id = "myCheck" type="checkbox" onchange="rename_aux2();">
-            <span class="checkmark"></span>
-        </label>
-
+        <div class="dropdown">
+            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center">Network</button>
+            <div id = "dropdown-content_network" class="dropdown-content">
+                <a id = "gn" onclick="rename_aux2(this.id)" style="cursor: pointer">Girvan-Newman</a>
+                <a id = "lfr" onclick="rename_aux2(this.id)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
+                <a id = "amazon" onclick="rename_aux2(this.id)" style="cursor: pointer">Amazon</a>
+                <a id = "karate" onclick="rename_aux2(this.id)" style="cursor: pointer">Zachary's Karate Club</a>
+            </div>
+        </div>
     </div>
-
 </div>
 
 <div style="float: left; border-style: solid; width: 44%; margin-left: 75px;">
@@ -306,18 +159,18 @@
 
 
 
-<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; height: 550px; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
     <h2 style="text-align: center; font-size: 30px">Results</h2>
     <div style="margin: auto; text-align: center;">
-        <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
-        <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
-        <div style="width: 50px; height: 5px; background-color: grey; cursor: pointer; border-radius: 5px; margin: auto; display: inline-block"></div>
+        <div id = "left" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+        <div id = "center" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+        <div id = "right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
 
     </div>
 
 
-    <svg width='600' height='350'></svg>
-    <div id='tooltip' style='position:absolute; border-style: solid; padding:5px;'></div>
+    <svg id = "svgg" width='600' height='350'></svg>
+ <!--   <div id='tooltip' style='position:absolute; border-style: solid; padding:5px;'></div> -->
 
     <div style="float: right; width: 500px; margin-right: 150px; margin-top: 150px; line-height: 30px">The optimal gamma parameter, in Layered Label Propagation algorithm, varies widely accordingly to network properties. Girvan-Newman benchmark network was used with different mixing parameters.</div>
 
@@ -422,120 +275,46 @@
 
 </body>
 
-<script>
-
-    // Define margins, dimensions, and some line colors
-    const margin = {top: 40, right: 120, bottom: 30, left: 150};
-    const width = 600 - margin.left - margin.right;
-    const height = 350 - margin.top - margin.bottom;
-
-    // Define the scales and tell D3 how to draw the line
-    const x = d3.scaleLinear().domain([0, 1]).range([0, width]);
-    const y = d3.scaleLinear().domain([0, 1]).range([height, 0]);
-    const line = d3.line().x(d => x(d.year)).y(d => y(d.population));
-
-    const chart = d3.select('svg').append('g')
-        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-    const tooltip = d3.select('#tooltip');
-    const tooltipLine = chart.append('line');
-
-    // Add the axes and a title
-    const xAxis = d3.axisBottom(x).tickFormat(d3.format('.4'));
-    const yAxis = d3.axisLeft(y).tickFormat(d3.format('.2s'));
-    chart.append('g').call(yAxis);
-    chart.append('g').attr('transform', 'translate(0,' + height + ')').call(xAxis);
-    chart.append('text').html('Gamma Choice').attr('x', 200);
-
-    // Load the data and draw a chart
-    let states, tipBox;
-    d3.json('nmi_gamma.json', d => {
-        states = d;
-
-        chart.selectAll()
-            .data(states).enter()
-            .append('path')
-            .attr('fill', 'none')
-            .attr('stroke', d => d.color)
-            .attr('stroke-width', 2)
-            .datum(d => d.history)
-            .attr('d', line);
-
-        chart.selectAll()
-            .data(states).enter()
-            .append('text')
-            .html(d => d.name)
-            .attr('fill', d => d.color)
-            .attr('alignment-baseline', 'middle')
-            .attr('x', width)
-            .attr('dx', '.5em')
-            .attr('y', d => y(d.currentPopulation));
-
-        tipBox = chart.append('rect')
-            .attr('width', width)
-            .attr('height', height)
-            .attr('opacity', 0)
-            .on('mousemove', drawTooltip)
-            .on('mouseout', removeTooltip);
-    })
-
-    function removeTooltip() {
-        if (tooltip) tooltip.style('display', 'none');
-        if (tooltipLine) tooltipLine.attr('stroke', 'none');
-    }
-
-    function drawTooltip() {
-        const year = Math.floor((x.invert(d3.mouse(tipBox.node())[0]) + 5) / 10) * 10;
-
-        states.sort((a, b) => {
-            return b.history.find(h => h.year === year).population - a.history.find(h => h.year === year).population;
-        })
-
-        tooltipLine.attr('stroke', 'black')
-            .attr('x1', x(year))
-            .attr('x2', x(year))
-            .attr('y1', 0)
-            .attr('y2', height);
-
-        tooltip.html(year)
-            .style('display', 'block')
-            .style('left', d3.event.pageX + 20)
-            .style('top', d3.event.pageY - 20)
-            .selectAll()
-            .data(states).enter()
-            .append('div')
-            .style('color', d => d.color)
-            .html(d => d.name + ': ' + d.history.find(h => h.year === year).population);
-    }
-
-</script>
+<script src="results.js"></script>
+<script src="infinite_scrolling.js"></script>
 
 <script>
 
-    AOS.init();
+    function change (id){
 
-    AOS.init({
-        // Global settings:
-        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-        startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-        initClassName: 'aos-init', // class applied after initialization
-        animatedClassName: 'aos-animate', // class applied on animation
-        useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-        disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-        debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-        throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+        switch (id) {
 
+            case "left":
 
-        // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-        offset: 120, // offset (in px) from the original trigger point
-        delay: 0, // values from 0 to 3000, with step 50ms
-        duration: 400, // values from 0 to 3000, with step 50ms
-        easing: 'ease', // default easing for AOS animations
-        once: true, // whether animation should happen only once - while scrolling down
-        mirror: false, // whether elements should animate out while scrolling past them
-        anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+                document.getElementById("left").style.backgroundColor = "white";
+                document.getElementById("center").style.backgroundColor = "black";
+                document.getElementById("right").style.backgroundColor = "black";
 
-    });
+                results('./benchmark_data/data_visualized/nmi_mix.json');
+
+                break;
+
+            case "center":
+
+                document.getElementById("left").style.backgroundColor = "black";
+                document.getElementById("center").style.backgroundColor = "white";
+                document.getElementById("right").style.backgroundColor = "black";
+
+                results('./benchmark_data/data_visualized/nmi_mix.json');
+
+                break;
+
+            case "right":
+
+                document.getElementById("left").style.backgroundColor = "black";
+                document.getElementById("center").style.backgroundColor = "black";
+                document.getElementById("right").style.backgroundColor = "white";
+
+                results('./benchmark_data/data_visualized/nmi_mix.json');
+        }
+    }
+
+    results('./benchmark_data/data_visualized/nmi_mix.json');
 
     let canvas, svg, cy;
 
@@ -569,7 +348,25 @@
 
     }
 
-    function rename_aux2 () {
+    function rename_aux2 (network) {
+
+        switch (network) {
+
+            case "gn":
+                document.getElementById("dropbtn_network").innerText = "GN";
+                break;
+
+            case "lfr":
+                document.getElementById("dropbtn_network").innerText = "LFR";
+                break;
+
+            case "amazon":
+                document.getElementById("dropbtn_network").innerText = "Amazon";
+                break;
+
+            case "karate":
+                document.getElementById("dropbtn_network").innerText = "Karate";
+        }
 
         switch (document.getElementById("dropbtn_interface").innerText) {
 
@@ -588,10 +385,9 @@
             case "Cytoscape":
 
                 rename("cytoscape");
-
         }
 
-        if(document.getElementById("file").style.display === "none") {
+        if (document.getElementById("file").style.display === "none") {
 
             document.getElementById("file").style.display = "inline-block";
             document.getElementById("gamma").style.display = "none";
@@ -600,27 +396,39 @@
         } else {
 
             document.getElementById("file").style.display = "none";
-
-
         }
-
     }
 
     rename('svg');
+    rename_aux2('amazon');
 
     function rename(id) {
 
-        let checked = document.getElementById("myCheck").checked;
+        let network = document.getElementById("dropbtn_network").innerText;
         let fetchy;
 
         switch(id) {
 
             case "louvain":
 
-                if (checked) {
-                    fetchy = "Girvan";
-                } else {
-                    fetchy = "undefined";
+                switch (network) {
+
+                    case "GN":
+                        fetchy = "GN";
+                        break;
+
+                    case "LFR":
+                        fetchy = "LFR";
+                        break;
+
+                    case "Amazon":
+                        fetchy = "Amazon";
+                        break;
+
+                    case "Karate":
+                        fetchy = "Karate";
+                        break;
+
                 }
 
                 document.getElementById("dropbtn").innerText = "Louvain";
@@ -631,10 +439,24 @@
 
             case "infomap":
 
-                if (checked) {
-                    fetchy = "Girvan";
-                } else {
-                    fetchy = "undefined";
+                switch (network) {
+
+                    case "GN":
+                        fetchy = "GN";
+                        break;
+
+                    case "LFR":
+                        fetchy = "LFR";
+                        break;
+
+                    case "Amazon":
+                        fetchy = "Amazon";
+                        break;
+
+                    case "Karate":
+                        fetchy = "Karate";
+                        break;
+
                 }
 
                 document.getElementById("dropbtn").innerText = "Infomap";
@@ -645,34 +467,62 @@
 
             case "llp":
 
-                if (checked) {
-                    fetchy = "Girvan";
-                } else {
-                    fetchy = "undefined";
+                switch (network) {
+
+                    case "GN":
+                        fetchy = "GN";
+                        break;
+
+                    case "LFR":
+                        fetchy = "LFR";
+                        break;
+
+                    case "Amazon":
+                        fetchy = "Amazon";
+                        break;
+
+                    case "Karate":
+                        fetchy = "Karate";
                 }
 
                 document.getElementById("dropbtn").innerText = "LLP";
                 document.getElementById("range_label").innerText = "Resolution:";
                 document.getElementById("gamma").style.display = "inline-block";
-                    fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
             case 'svg':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (SVG)";
+                document.getElementById("dropbtn").innerText = "Algorithm";
+                document.getElementById("gamma").style.display = "none";
 
+                d3.select('#svggg').remove();
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
-                canvas = d3.select('#graphDiv').append('svg');
+                canvas = d3.select('#graphDiv').append('svg').attr('id', 'svggg');
                 svg = d3.select('#graphDiv');
 
-                if (checked) {
-                    fetchy = "Girvan";
-                } else {
-                    fetchy = "undefined";
+                switch (network) {
+
+                    case "GN":
+                        fetchy = "GN";
+                        break;
+
+                    case "LFR":
+                        fetchy = "LFR";
+                        break;
+
+                    case "Amazon":
+                        fetchy = "Amazon";
+                        break;
+
+                    case "Karate":
+                        fetchy = "Karate";
+
                 }
 
-                fetch("reset/" + fetchy).then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + "false").then(function(res) {
 
                     return res.json();
 
@@ -686,6 +536,8 @@
 
             case 'canvas':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (Canvas)";
+                document.getElementById("dropbtn").innerText = "Algorithm";
+                document.getElementById("gamma").style.display = "none";
 
                 d3.select('svg').remove();
                 d3.select('canvas').remove();
@@ -696,13 +548,27 @@
                     .attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
-                if (checked) {
-                    fetchy = "Girvan";
-                } else {
-                    fetchy = "undefined";
+                switch (network) {
+
+                    case "GN":
+                        fetchy = "GN";
+                        break;
+
+                    case "LFR":
+                        fetchy = "LFR";
+                        break;
+
+                    case "Amazon":
+                        fetchy = "Amazon";
+                        break;
+
+                    case "Karate":
+                        fetchy = "Karate";
+                        break;
+
                 }
 
-                fetch("reset/" + fetchy).then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + "false").then(function(res) {
 
                     return res.json();
 
@@ -715,6 +581,8 @@
 
             case 'cytoscape':
                 document.getElementById("dropbtn_interface").innerText = "Cytoscape";
+                document.getElementById("dropbtn").innerText = "Algorithm";
+                document.getElementById("gamma").style.display = "none";
 
                 d3.select('svg').remove();
                 d3.select('canvas').remove();
@@ -722,13 +590,26 @@
 
                 // Now send a request to your Node program
 
-                if (checked) {
-                    fetchy = "Girvan_Cytoscape";
-                } else {
-                    fetchy = "Cytoscape";
-                }
+                switch (network) {
 
-                fetch("reset/" + fetchy).then(function(res) {
+                    case "GN":
+                        fetchy = "GN";
+                        break;
+
+                    case "LFR":
+                        fetchy = "LFR";
+                        break;
+
+                    case "Amazon":
+                        fetchy = "Amazon";
+                        break;
+
+                    case "Karate":
+                        fetchy = "Karate";
+                        break;
+
+                }
+                fetch("reset/" + fetchy + "/cytoscape/" + "true").then(function(res) {
 
                     return res.json();
 
@@ -787,9 +668,8 @@
 
         document.getElementById("dropbtn").innerText = "Algorithm";
         document.getElementById("gamma").style.display = "none";
-        document.getElementById("myCheck").checked = false;
 
-        rename_aux2();
+        rename_aux2("");
 
         document.getElementById("file").style.display = "inline-block";
 

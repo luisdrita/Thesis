@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="" />
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="GN Bench. Alg. Corrected">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.0_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.1_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.2_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.3_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.4_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.5_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.6_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.7_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.8_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma0.9_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0.1/llp_gamma1_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.1_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.2_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.3_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.4_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.5_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.6_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.7_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.8_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0.9_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma0_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/benchmark_data/mix_param0/llp_gamma1_mix0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark/girvan-newman.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark/lancichinetti-fortunato-radicchi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/cytoscape.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/cytoscape.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/d3_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/d3_svg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/d3v4-selectable-zoomable-force-directed-graph.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/file/thesis.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/website/file/thesis.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/nmi_gamma.json" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,17 +50,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2572">
-              <caret line="253" column="45" selection-start-line="253" selection-start-column="45" selection-end-line="253" selection-end-column="45" />
+            <state relative-caret-position="1096">
+              <caret line="122" column="48" lean-forward="true" selection-start-line="122" selection-start-column="48" selection-end-line="122" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/nmi_gamma.json">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/karate_club_cyto.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
+            <state relative-caret-position="1785">
+              <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -34,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="321" column="283" selection-start-line="321" selection-start-column="283" selection-end-line="321" selection-end-column="283" />
+            <state relative-caret-position="989">
+              <caret line="524" column="53" selection-start-line="524" selection-start-column="53" selection-end-line="524" selection-end-column="53" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -60,7 +94,11 @@
                 <element signature="n#style#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#label#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#1;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#2;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#3;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -72,61 +110,58 @@
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/benchmark/girvan-newman.js">
+        <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
-              <caret line="90" selection-start-line="90" selection-end-line="90" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/readme.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="444">
-                <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js">
+        <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1012">
-              <caret line="13" column="41" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="41" />
+            <state relative-caret-position="278">
+              <caret line="565" column="33" selection-start-line="565" selection-start-column="33" selection-end-line="565" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js">
+        <entry file="file://$PROJECT_DIR$/website/results.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="348" column="41" selection-start-line="348" selection-start-column="36" selection-end-line="348" selection-end-column="41" />
+            <state relative-caret-position="231">
+              <caret line="28" column="17" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js">
+        <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/mod_girvan-newman.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2895">
-              <caret line="193" column="53" selection-start-line="193" selection-start-column="53" selection-end-line="193" selection-end-column="53" />
+            <state relative-caret-position="1233">
+              <caret line="319" selection-start-line="319" selection-end-line="319" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/karate_club.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1665">
+              <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -144,36 +179,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>texts</find>
-      <find>text</find>
-      <find>dropbtn</find>
-      <find>benchmark</find>
-      <find>results</find>
-      <find>impl</find>
-      <find>consol</find>
-      <find>console</find>
-      <find>louvain</find>
-      <find>MIN</find>
-      <find>console.lo</find>
-      <find>mix</find>
-      <find>gamma2</find>
-      <find>min</find>
-      <find>state</find>
-      <find>__MIN</find>
-      <find>conso</find>
-      <find>llp</find>
-      <find>layer</find>
-      <find>ola</find>
-      <find>fs.wri</find>
-      <find>final_arr</find>
-      <find>population</find>
-      <find>run</find>
-      <find>year</find>
+      <find>key</find>
+      <find>index</find>
+      <find>nodes[</find>
+      <find>nodes</find>
+      <find>number_neighbour_different_nodes</find>
+      <find>avg_deg</find>
+      <find>mix_param</find>
+      <find>myCheck</find>
+      <find>rename_aux2</find>
+      <find>json</find>
+      <find>network</find>
+      <find>d3.js</find>
+      <find>undef</find>
+      <find>range_label</find>
       <find>gamma</find>
-      <find>NMI</find>
-      <find>arrayToString</find>
+      <find>results</find>
+      <find>select</find>
+      <find>sheet</find>
+      <find>append</find>
+      <find>result</find>
       <find>svg</find>
-      <find>ind</find>
+      <find>find</find>
+      <find>girvan_bench_cyto</find>
+      <find>karate_reset</find>
+      <find>nodes_num</find>
+      <find>cyto</find>
+      <find>edges</find>
+      <find>group</find>
+      <find>karate</find>
+      <find>weight</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,15 +247,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index2.html" />
-        <option value="$PROJECT_DIR$/algorithms/mod_infomap.js" />
-        <option value="$PROJECT_DIR$/algorithms/infomap.js" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/message.txt" />
-        <option value="$PROJECT_DIR$/website/index_original.html" />
-        <option value="$PROJECT_DIR$/website_d3_svg/Input.txt" />
-        <option value="$PROJECT_DIR$/Input.txt" />
-        <option value="$PROJECT_DIR$/website_d3_svg/miserables.with-ids.json" />
         <option value="$PROJECT_DIR$/website_d3_svg/d3v4-brush-lite.js" />
         <option value="$PROJECT_DIR$/server_d3_svg.js" />
         <option value="$PROJECT_DIR$/server_d3_canvas.js" />
@@ -244,31 +270,42 @@
         <option value="$PROJECT_DIR$/website/pages/amr.html" />
         <option value="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js" />
-        <option value="$PROJECT_DIR$/website/cytoscape.js" />
         <option value="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js" />
         <option value="$PROJECT_DIR$/website/benchmark/lancichinetti-fortunato-radicchi.js" />
         <option value="$PROJECT_DIR$/website/d3_canvas.js" />
-        <option value="$PROJECT_DIR$/website/d3_svg.js" />
         <option value="$PROJECT_DIR$/Dockerfile" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/website/benchmark/girvan-newman.js" />
         <option value="$PROJECT_DIR$/website/multiline_data.csv" />
         <option value="$PROJECT_DIR$/website/multiline.css" />
         <option value="$PROJECT_DIR$/website/multiline.js" />
         <option value="$PROJECT_DIR$/website/state-populations.json" />
-        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/benchmark/girvan-newman.js" />
         <option value="$PROJECT_DIR$/website/nmi_gamma.json" />
-        <option value="$PROJECT_DIR$/website/index.html" />
-        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/infinite_scrolling.js" />
+        <option value="$PROJECT_DIR$/website/benchmark_data/data_visualized/nmi_mix.json" />
+        <option value="$PROJECT_DIR$/website/benchmark_algorithms/girvan-newman.js" />
+        <option value="$PROJECT_DIR$/website/benchmark_algorithms/lancichinetti-fortunato-radicchi.js" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/website/style/index.css" />
+        <option value="$PROJECT_DIR$/website/benchmark_algorithms/karate_club.json" />
+        <option value="$PROJECT_DIR$/website/results.js" />
+        <option value="$PROJECT_DIR$/website/d3_svg.js" />
+        <option value="$PROJECT_DIR$/website/benchmark_algorithms/mod_girvan-newman.js" />
+        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/cytoscape.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/benchmark_algorithms/karate_club_cyto.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="x" value="846" />
+    <option name="y" value="23" />
+    <option name="width" value="834" />
+    <option name="height" value="963" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -276,7 +313,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,7 +342,7 @@
               <item name="cf" type="b2602c69:ProjectViewProjectNode" />
               <item name="cf" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="benchmark" type="462c0819:PsiDirectoryNode" />
+              <item name="benchmark_algorithms" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cf" type="b2602c69:ProjectViewProjectNode" />
@@ -318,12 +354,13 @@
               <item name="cf" type="b2602c69:ProjectViewProjectNode" />
               <item name="cf" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,6 +380,9 @@
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/website" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/website_d3_canvas" />
       <recent name="$PROJECT_DIR$/website" />
@@ -479,7 +519,17 @@
       <workItem from="1550748324090" duration="6101000" />
       <workItem from="1550802291044" duration="61000" />
       <workItem from="1550839633700" duration="369000" />
-      <workItem from="1550925837478" duration="25543000" />
+      <workItem from="1550925837478" duration="25797000" />
+      <workItem from="1551013930121" duration="17090000" />
+      <workItem from="1551095518211" duration="11511000" />
+      <workItem from="1551190056516" duration="24003000" />
+      <workItem from="1551267984659" duration="13179000" />
+      <workItem from="1551307875143" duration="11144000" />
+      <workItem from="1551353696421" duration="12489000" />
+      <workItem from="1551440917864" duration="9493000" />
+      <workItem from="1551568574564" duration="144000" />
+      <workItem from="1551635567401" duration="3364000" />
+      <workItem from="1551700989382" duration="58343000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -614,11 +664,32 @@
       <option name="project" value="LOCAL" />
       <updated>1550973276872</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Benchmark 1.0">
+      <created>1550973409498</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1550973409498</updated>
+    </task>
+    <task id="LOCAL-00021" summary="GN Bench. Alg. Corrected">
+      <created>1551483343819</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1551483343819</updated>
+    </task>
+    <task id="LOCAL-00022" summary="GN Bench. Alg. Corrected">
+      <created>1551483417560</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1551483417560</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="704673000" />
+    <option name="totallyTimeSpent" value="865687000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -631,9 +702,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2838828" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31990233" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -646,9 +716,10 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32987553" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32987553" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.497558" visible="true" weight="0.17842324" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.497558" visible="true" weight="0.18879668" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502442" side_tool="true" weight="0.17842324" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32987553" />
+      <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -709,20 +780,10 @@
     <MESSAGE value="Docker Status" />
     <MESSAGE value="GN Network" />
     <MESSAGE value="Benchmark 1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Benchmark 1.0" />
+    <MESSAGE value="GN Bench. Alg. Corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="GN Bench. Alg. Corrected" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/tooltipster.bundle.min.css" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/skeleton.css" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/normalize.css" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/css/font-awesome.css" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/js/index.js" />
-    <entry file="file://$PROJECT_DIR$/website_d3/cytoscape2.js" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/index2.html" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/index.html" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/social.json" />
-    <entry file="file://$PROJECT_DIR$/website_cyto/cytoscape.js-tutorial-demo-gh-pages/datasets/genes.json" />
-    <entry file="file://$PROJECT_DIR$/website_d3/d3_canvas.js" />
     <entry file="file://$PROJECT_DIR$/server_d3.js" />
     <entry file="file://$PROJECT_DIR$/website_d3/index.html" />
     <entry file="file://$PROJECT_DIR$/website_d3/cytoscape.js" />
@@ -813,39 +874,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/cytoscape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/synthetic_networks/mod_louvain.js" />
-    <entry file="file://$PROJECT_DIR$/website/benchmark/lancichinetti-fortunato-radicchi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1335">
-          <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/website/benchmark/lancichinetti-fortunato-radicchi.js" />
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9570">
-          <caret line="638" column="13" selection-start-line="638" selection-start-column="9" selection-end-line="638" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -865,83 +899,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/multiline_data.csv">
+    <entry file="file://$PROJECT_DIR$/website/multiline_data.csv" />
+    <entry file="file://$PROJECT_DIR$/website/multiline.css" />
+    <entry file="file://$PROJECT_DIR$/website/multiline.js" />
+    <entry file="file://$PROJECT_DIR$/website/state-populations.json" />
+    <entry file="file://$PROJECT_DIR$/website/mix_parameter.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/benchmark/girvan-newman.js" />
+    <entry file="file://$PROJECT_DIR$/website/nmi_gamma.json" />
+    <entry file="file://$PROJECT_DIR$/website/infinite_scrolling.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+        <state relative-caret-position="345">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/multiline.css">
+    <entry file="file://$PROJECT_DIR$/website/benchmark_data/data_visualized/nmi_gamma.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="105" column="1" selection-start-line="105" selection-start-column="1" selection-end-line="105" selection-end-column="1" />
+        <state relative-caret-position="15">
+          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/multiline.js">
+    <entry file="file://$PROJECT_DIR$/website/benchmark_data/data_visualized/nmi_mix.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="197" column="1" selection-start-line="197" selection-start-column="1" selection-end-line="197" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/state-populations.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1012">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="41" />
+        <state relative-caret-position="855">
+          <caret line="57" column="30" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="692">
           <caret line="348" column="41" selection-start-line="348" selection-start-column="36" selection-end-line="348" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js">
+    <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/lancichinetti-fortunato-radicchi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2895">
-          <caret line="193" column="53" selection-start-line="193" selection-start-column="53" selection-end-line="193" selection-end-column="53" />
+        <state relative-caret-position="1185">
+          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/mix_parameter.json">
+    <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/girvan-newman.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="378">
+            <caret line="85" column="473" selection-start-line="85" selection-start-column="473" selection-end-line="85" selection-end-column="473" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5422">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/style/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2190">
+          <caret line="146" column="1" selection-start-line="146" selection-start-column="1" selection-end-line="146" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/style/d3v4-selectable-zoomable-force-directed-graph.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/benchmark/girvan-newman.js">
+    <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        <state relative-caret-position="231">
+          <caret line="143" column="55" selection-start-line="143" selection-start-column="50" selection-end-line="143" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/nmi_gamma.json">
+    <entry file="file://$PROJECT_DIR$/website/results.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
+        <state relative-caret-position="231">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/website/d3_svg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2572">
-          <caret line="253" column="45" selection-start-line="253" selection-start-column="45" selection-end-line="253" selection-end-column="45" />
+        <state relative-caret-position="278">
+          <caret line="565" column="33" selection-start-line="565" selection-start-column="33" selection-end-line="565" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/cytoscape.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1083">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/d3_canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/karate_club.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1665">
+          <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="321" column="283" selection-start-line="321" selection-start-column="283" selection-end-line="321" selection-end-column="283" />
+        <state relative-caret-position="989">
+          <caret line="524" column="53" selection-start-line="524" selection-start-column="53" selection-end-line="524" selection-end-column="53" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -966,7 +1047,11 @@
             <element signature="n#style#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#label#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#3;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -978,23 +1063,34 @@
             <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="444">
-            <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/mod_girvan-newman.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1233">
+          <caret line="319" selection-start-line="319" selection-end-line="319" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1096">
+          <caret line="122" column="48" lean-forward="true" selection-start-line="122" selection-start-column="48" selection-end-line="122" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/benchmark_algorithms/karate_club_cyto.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="119" column="48" selection-start-line="119" selection-start-column="48" selection-end-line="119" selection-end-column="48" />
         </state>
       </provider>
     </entry>

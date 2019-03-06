@@ -55,6 +55,10 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 ### Status
 
+[05/10/18] [1st EIT Health Students Workshop for Master of Technological Innovation in Health](https://www.eithealth.eu/-/a-workshop-for-students-on-eit-health-mtih) (Madrid, Spain). Bursary awarded.
+
+[30/11/18 - 02/12/18] [Antimicrobial Resistance Hackathon 2018](http://eit-health.de/wp-content/uploads/2018/10/AMR_Hackathon_Flyer.pdf) (Heidelberg, Germany). Bursary awarded.
+
 [21/12/18] Louvain algorithm implemented;
 
 [13/01/19] Label Propagation, Weighted Label Propagation and Layered Label Propagation algorithms implemented.
@@ -78,6 +82,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 [19/02/19] Image of thesis app uploaded to [Docker Hub repo](https://cloud.docker.com/repository/docker/warcraft12321/thesis). Link between GitHub and Docker Hub established;
 
 [24/02/19] First results were obtained applying different benchmarking techniques;
+
+[01/03/19 - 03/03/19] [IMIM Industry & Innovation Day](http://eit-health.de/events/upcoming-events/imim-industry-innovation-day-2019/) (Mannheim, Germany). Poster presentation of master thesis to IMIM students (Heidelberg University, University Medical Center Groningen and Uppsala University students) and industry representatives (Roche, Merck, GeneWerk, EIT Health, Velabs, Cellzome, evid.one, EMBL...). Visit to Cubex 41 (start-up innovative center) was also included. Bursary awarded. 
 
 [02/03/19] GN benchmark network algorithm corrected. It now accepts different mixing parameters and node degrees. JSON Zachary's karate club network created.
 

@@ -1,0 +1,158 @@
+[
+  {
+    "name": "Mix Parameter = 0",
+    "show": true,
+    "color": "green",
+    "currentPopulation": 0.561,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.769
+      },
+      {
+        "year": 0.1,
+        "population": 0.741
+      },
+      {
+        "year": 0.2,
+        "population": 0.716
+      },
+      {
+        "year": 0.3,
+        "population": 0.680
+      },
+      {
+        "year": 0.4,
+        "population": 0.662
+      },
+      {
+        "year": 0.5,
+        "population": 0.607
+      },
+      {
+        "year": 0.6,
+        "population": 0.602
+      },
+      {
+        "year": 0.7,
+        "population": 0.603
+      },
+      {
+        "year": 0.8,
+        "population": 0.590
+      },
+      {
+        "year": 0.9,
+        "population": 0.588
+      },
+      {
+        "year": 1,
+        "population": 0.561
+      }
+    ]
+  },
+  {
+    "name": "Label Propagation",
+    "show": true,
+    "color": "yellow",
+    "currentPopulation": 0.146,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.800
+      },
+      {
+        "year": 0.1,
+        "population": 0.567
+      },
+      {
+        "year": 0.2,
+        "population": 0.292
+      },
+      {
+        "year": 0.3,
+        "population": 0.232
+      },
+      {
+        "year": 0.4,
+        "population": 0.206
+      },
+      {
+        "year": 0.5,
+        "population": 0.189
+      },
+      {
+        "year": 0.6,
+        "population": 0.175
+      },
+      {
+        "year": 0.7,
+        "population": 0.154
+      },
+      {
+        "year": 0.8,
+        "population": 0.160
+      },
+      {
+        "year": 0.9,
+        "population": 0.146
+      },
+      {
+        "year": 1,
+        "population": 0.146
+      }
+    ]
+  },
+  {
+    "name": "Layered Label Propagation",
+    "show": true,
+    "color": "red",
+    "currentPopulation": 0.191,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.631
+      },
+      {
+        "year": 0.1,
+        "population": 0.523
+      },
+      {
+        "year": 0.2,
+        "population": 0.399
+      },
+      {
+        "year": 0.3,
+        "population": 0.338
+      },
+      {
+        "year": 0.4,
+        "population": 0.299
+      },
+      {
+        "year": 0.5,
+        "population": 0.277
+      },
+      {
+        "year": 0.6,
+        "population": 0.243
+      },
+      {
+        "year": 0.7,
+        "population": 0.233
+      },
+      {
+        "year": 0.8,
+        "population": 0.219
+      },
+      {
+        "year": 0.9,
+        "population": 0.222
+      },
+      {
+        "year": 1,
+        "population": 0.191
+      }
+    ]
+  }
+]

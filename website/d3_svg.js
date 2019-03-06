@@ -563,7 +563,7 @@ function d3svgFunc(svg, graph) {
     let parentWidth = d3v4.select('svg').node().parentNode.clientWidth;
     let parentHeight = d3v4.select('svg').node().parentNode.clientHeight;
 
-    var svg = d3v4.select('svg')
+    var svg = d3v4.select('#svggg')
         .attr('width', parentWidth)
         .attr('height', parentHeight);
 
