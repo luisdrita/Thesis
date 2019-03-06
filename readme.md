@@ -87,6 +87,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [02/03/19] GN benchmark network algorithm corrected. It now accepts different mixing parameters and node degrees. JSON Zachary's karate club network created.
 
+[06/03/19] Thesis document improved. GN benchmark network algorithm - performance optimized. New features in the web tool;
+
 [Next] PHYLOViZ integration;
 
 [Next] Thesis writing.
