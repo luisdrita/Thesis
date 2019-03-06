@@ -55,9 +55,9 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 ### Status
 
-[05/10/18] [1st EIT Health Students Workshop for Master of Technological Innovation in Health](https://www.eithealth.eu/-/a-workshop-for-students-on-eit-health-mtih) (Madrid, Spain). Bursary awarded.
+[05/10/18] [1st EIT Health Students Workshop for Master of Technological Innovation in Health](https://www.eithealth.eu/-/a-workshop-for-students-on-eit-health-mtih) (Madrid, Spain). As a Master of Technological Innovation in Health student, I was invited to present a poster about my Master Thesis and to talk about my past academic achievements. During my speech, I was still able to suggest new ways of improving this European program, powered by EIT Health (a body of the EU). Bursary awarded.
 
-[30/11/18 - 02/12/18] [Antimicrobial Resistance Hackathon 2018](http://eit-health.de/wp-content/uploads/2018/10/AMR_Hackathon_Flyer.pdf) (Heidelberg, Germany). Bursary awarded.
+[30/11/18 - 02/12/18] [Antimicrobial Resistance Hackathon 2018](http://eit-health.de/wp-content/uploads/2018/10/AMR_Hackathon_Flyer.pdf) (Heidelberg, Germany). I was selected to participate in a 3-day Antimicrobial Resistance Hackathon organized by EIT Health Germany. At the beginning, we were divided in teams of 6/7 elements that would proceed to an AMR analysis of a different EU country. Bursary awarded.
 
 [21/12/18] Louvain algorithm implemented;
 
