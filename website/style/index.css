@@ -49,7 +49,9 @@ line {
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: black;}
+.dropdown:hover .dropbtn {background-color: black; box-shadow: 2px 2px 2px 2px grey;}
+
+#reset_btn:hover, #comm_detect:hover, #file:hover {box-shadow: 2px 2px 2px 2px grey;}
 
 footer {
     display: block;

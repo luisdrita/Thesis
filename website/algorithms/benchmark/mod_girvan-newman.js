@@ -328,22 +328,21 @@ console.log("Done");
         for (let i = 0; i < 128; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
 
             if (i < 32) {
-                nodes_cyto[i] = {data: {id: i, group: 1}};
+                nodes[i] = {data: {id: i, weight: 1}};
 
             } else if (i < 64) {
-                nodes_cyto[i] = {data: {id: i, group: 2}};
+                nodes[i] = {data: {id: i, weight: 2}};
 
             } else if (i < 96) {
-                nodes_cyto[i] = {data: {id: i, group: 3}};
+                nodes[i] = {data: {id: i, weight: 3}};
 
             } else {
-                nodes_cyto[i] = {data: {id: i, group: 4}};
+                nodes[i] = {data: {id: i, weight: 4}};
             }
         }
-
-        result["nodes"] = nodes_cyto;
     }
 
+    result["nodes"] = nodes;
     result["links"] = edges;
     result["communities"] = communities;
 

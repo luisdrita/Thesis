@@ -97,19 +97,19 @@ function cytoscapeFunc(data) {
         nodeDimensionsIncludeLabels: false,
 
         // Randomize the initial positions of the nodes (true) or use existing positions (false)
-        randomize: false,
+        randomize: true,
 
         // Extra spacing between components in non-compound graphs
         componentSpacing: 40,
 
         // Node repulsion (non overlapping) multiplier
-        nodeRepulsion: function( node ){ return 2048; },
+        nodeRepulsion: function( node ){ return 4048; },
 
         // Node repulsion (overlapping) multiplier
-        nodeOverlap: 4,
+        nodeOverlap: 16,
 
         // Ideal edge (non nested) length
-        idealEdgeLength: function( edge ){ return 32; },
+        idealEdgeLength: function( edge ){ return 64; },
 
         // Divisor to compute edge forces
         edgeElasticity: function( edge ){ return 32; },
@@ -118,7 +118,7 @@ function cytoscapeFunc(data) {
         nestingFactor: 1.2,
 
         // Gravity force (constant)
-        gravity: 1,
+        gravity: 0.5,
 
         // Maximum number of iterations to perform
         numIter: 1000,

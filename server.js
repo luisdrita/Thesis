@@ -1,33 +1,33 @@
-// Importing General Libraries.
+// Importing general libraries.
 const fs = require('fs');
 const express = require('express');
 const formidable = require('formidable');
 
-// Importing Community Finding Libraries.
+// Importing community finding libraries.
 const infomap = require('./website/algorithms/mod_algorithms/mod_infomap');
 const louvain = require('./website/algorithms/mod_algorithms/mod_louvain');
 const layeredLabelPropagation = require('./website/algorithms/mod_algorithms/mod_layeredLabelPropagation');
 
-// Importing Benchmarking Libraries
-const girvan = require('./website/benchmark_algorithms/mod_girvan-newman');
-const lfr = require('./website/benchmark_algorithms/lancichinetti-fortunato-radicchi');
+// Importing benchmarking libraries.
+const girvan = require('./website/algorithms/benchmark/mod_girvan-newman');
+const lfr = require('./website/algorithms/benchmark/lancichinetti-fortunato-radicchi');
 
-const karate = require('./website/benchmark_algorithms/karate_club.json');
-const karate_cyto = require('./website/benchmark_algorithms/karate_club_cyto.json');
-
-// console.log(json["nodes"]);
+// Importing Zachary's karate club network. Supporting Cytoscape.js and D3.js representation.
+const karate = require('./website/algorithms/benchmark/karate_club.json');
+const karate_cyto = require('./website/algorithms/benchmark/karate_club_cyto.json');
 
 const app = express();
 
 app.use(express.static('website'));
 app.listen(process.env.PORT || 3000);
 
+// Initializing global variables.
 let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {}, karate_reset = {}, karate_cyto_reset = {};
 let community, node_data, obj, obj_cyto, girvan_bench, girvan_bench_cyto;
-
 let str = "";
 let final_arr = [];
 
+// Converting array of arrays data to string representation. To be used to generate .txt docs for benchmark.
 function arrayToString(multi_array) {
 
     for (let ij = 0; ij < multi_array.length; ij++) {
@@ -51,10 +51,12 @@ function arrayToString(multi_array) {
     }
 }
 
+// Upon input of source and target nodes, it returns an edge with the right format.
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
 }
 
+// Upon input of a set of nodes, it returns an array with different format accordingly to a state value. It pretends to adjust to the type of visualization scheme and reset/run state.
 function nodify (final_node_data, state) { // Used in fs.readFile in order to push each node in Input.txt to an empty array.
 
     let result_aux = [];
@@ -89,6 +91,7 @@ function nodify (final_node_data, state) { // Used in fs.readFile in order to pu
     return result_aux; // Previously, I used parseInt to convert the key string to an integer.
 }
 
+// Reading input file from the interface. Converting data to arrays.
 function readFile(type, gamma_var, cyto, fet) {
 
     fs.readFile('./uploads/Input.txt', 'utf8', function (err, data) {
@@ -101,7 +104,7 @@ function readFile(type, gamma_var, cyto, fet) {
 
         let split = data.toString().split("\n");
 
-        for (let i = 1; i < 100; i++) {
+        for (let i = 1; i < 200; i++) {
             let splitLine = split[i].split("\t");
             node_data[splitLine[0]] = true;
             node_data[splitLine[1]] = true;
@@ -138,173 +141,187 @@ function readFile(type, gamma_var, cyto, fet) {
 
             case 'louvain':
 
-                if(cyto==="true" && fet === "Amazon") {
+                if(cyto==="true") {
 
-                    community = louvain.louvainVar(final_node_data, obj, gamma_var);
+                    switch (fet) {
 
-                    result_cyto["nodes"] = nodify(community, 3);
-                    result_cyto["links"] = obj_cyto;
+                        case "GN":
 
-                } else if (cyto==="true" && fet === "GN") {
+                            community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = girvan_bench_cyto["links"];
+                            break;
 
-                    community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                        case "Amazon":
 
-                    result_cyto["nodes"] = nodify(community, 3);
-                    result_cyto["links"] = girvan_bench["links"];
+                            community = louvain.louvainVar(final_node_data, obj, gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = obj_cyto;
+                            break;
 
-                } else if (cyto !== "true" && fet === "Amazon") {
+                        case "Karate":
 
-                    community = louvain.louvainVar(final_node_data, obj, gamma_var);
+                            community = louvain.louvainVar(Array.from({length: 34}, (v, k) => k+1), karate["links"], gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = karate_cyto["links"];
+                    }
 
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = obj;
+                } else {
 
-                } else if (cyto !== "true" && fet === "GN") {
+                    switch (fet) {
 
-                    community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                        case "GN":
 
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = girvan_bench["links"];
+                            community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = girvan_bench["links"];
+                            final_arr.push(Object.values(community));
+                        //    fs.writeFile("./girvanLouvain.txt", arrayToString(result["communities"]));
+                            break;
 
-                    final_arr.push(Object.values(community));
+                        case "Amazon":
 
-                //    fs.writeFile("./girvanLouvain.txt", arrayToString(result["communities"]));
+                            community = louvain.louvainVar(final_node_data, obj, gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = obj;
+                            break;
 
-                } else if (cyto !== "true" && fet === "Karate") {
+                        case "Karate":
 
-                    community = louvain.louvainVar(karate["nodes_numbers"], karate["links"], gamma_var);
-
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = karate["links"];
-
-                } else if (cyto === "true" && fet === "Karate") {
-
-                    community = louvain.louvainVar(karate["nodes_numbers"], karate["links"], gamma_var);
-
-                    result["nodes"] = nodify(community, 3);
-                    result["links"] = girvan_bench["links"];
-
+                            community = louvain.louvainVar(Array.from({length: 34}, (v, k) => k+1), karate["links"], gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = karate["links"];
+                    }
                 }
-
                 break;
 
             case 'infomap':
 
-                if(cyto==="true" && fet === "Amazon") {
+                if(cyto==="true") {
 
-                    community = infomap.infomapVar(final_node_data, obj, gamma_var);
+                    switch (fet) {
 
-                    result_cyto["nodes"] = nodify(community, 3);
-                    result_cyto["links"] = obj_cyto;
+                        case "GN":
 
-                } else if (cyto==="true" && fet === "GN") {
+                            community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = girvan_bench_cyto["links"];
+                            break;
 
-                    community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                        case "Amazon":
 
-                    result_cyto["nodes"] = nodify(community, 3);
-                    result_cyto["links"] = girvan_bench["links"];
+                            community = infomap.infomapVar(final_node_data, obj, gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = obj_cyto;
+                            break;
 
-                } else if (cyto !== "true" && fet === "Amazon") {
+                        case "Karate":
 
-                    community = infomap.infomapVar(final_node_data, obj, gamma_var);
+                            community = infomap.infomapVar(Array.from({length: 34}, (v, k) => k+1), karate["links"], gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = karate_cyto["links"];
+                    }
 
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = obj;
+                } else {
 
-                } else if (cyto !== "true" && fet === "GN") {
+                    switch (fet) {
 
-                    community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                        case "GN":
 
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = girvan_bench["links"];
+                            community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = girvan_bench["links"];
+                            final_arr.push(Object.values(community));
+                            break;
 
-                    final_arr.push(Object.values(community));
+                        case "Amazon":
 
-                } else if (cyto !== "true" && fet === "Karate") {
+                            community = infomap.infomapVar(final_node_data, obj, gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = obj;
+                            break;
 
-                    community = infomap.infomapVar(karate["nodes_numbers"], karate["links"], gamma_var);
+                        case "Karate":
 
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = karate["links"];
-
-                } else if (cyto === "true" && fet === "Karate") {
-
-                    community = infomap.infomapVar(karate["nodes_numbers"], karate["links"], gamma_var);
-
-                    result["nodes"] = karate["nodes"];
-                    result["links"] = karate["links"];
-
+                            community = infomap.infomapVar(Array.from({length: 34}, (v, k) => k+1), karate["links"], gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = karate["links"];
+                    }
                 }
 
                 break;
 
             case 'llp':
 
-                if(cyto==="true" && fet === "Amazon") {
+                if(cyto==="true") {
 
-                    community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
+                    switch (fet) {
 
-                    result_cyto["nodes"] = nodify(community, 3);
-                    result_cyto["links"] = obj_cyto;
+                        case "GN":
 
-                } else if (cyto==="true" && fet === "GN") {
+                            community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = girvan_bench_cyto["links"];
+                            break;
 
-                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                        case "Amazon":
 
-                    result_cyto["nodes"] = nodify(community, 3);
-                    result_cyto["links"] = girvan_bench["links"];
+                            community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = obj_cyto;
+                            break;
 
-                } else if (cyto !== "true" && fet === "Amazon") {
+                        case "Karate":
 
-                    community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
+                            community = layeredLabelPropagation.layeredLabelPropagationVar(Array.from({length: 34}, (v, k) => k+1), karate["links"], gamma_var);
+                            result_cyto["nodes"] = nodify(community, 3);
+                            result_cyto["links"] = karate_cyto["links"];
+                    }
 
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = obj;
+                } else {
 
-                } else if (cyto !== "true" && fet === "GN") {
+                    switch (fet) {
 
-                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                        case "GN":
 
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = girvan_bench["links"];
+                            community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = girvan_bench["links"];
+                            final_arr.push(Object.values(community));
+                        //    fs.writeFile("./girvanLouvain.txt", str);
+                            break;
 
-                    final_arr.push(Object.values(community));
+                        case "Amazon":
 
-                //    fs.writeFile("./girvanLouvain.txt", str);
+                            community = layeredLabelPropagation.layeredLabelPropagationVar(final_node_data, obj, gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = obj;
+                            break;
 
-                } else if (cyto !== "true" && fet === "Karate") {
+                        case "Karate":
 
-                    community = layeredLabelPropagation.layeredLabelPropagationVar(karate["nodes_numbers"], karate["links"], gamma_var);
-
-                    result["nodes"] = nodify(community, 0);
-                    result["links"] = karate["links"];
-
-                } else if (cyto === "true" && fet === "Karate") {
-
-                    community = layeredLabelPropagation.layeredLabelPropagationVar(karate["nodes_numbers"], karate["links"], gamma_var);
-
-                    result["nodes"] = karate["nodes"];
-                    result["links"] = karate["links"];
-
+                            community = layeredLabelPropagation.layeredLabelPropagationVar(Array.from({length: 34}, (v, k) => k+1), karate["links"], gamma_var);
+                            result["nodes"] = nodify(community, 0);
+                            result["links"] = karate["links"];
+                    }
                 }
-
         }
 
     });
 
 }
 
-readFile('init', 0, "true", "undefined");
+// Initial state of the application.
+readFile('init', 0, "", "");
 
- // Standard algorithm when any is chosen.
-
-app.get('/run/:id', function (req, res) { // This will run every time you send a request to localhost:3000/search.
+// Sending data back to interface that resulted from community finding process.
+app.get('/run/:id', function (req, res) {
 
     if(req.params.id === "Cytoscape") {
         res.send(result_cyto);
 
     } else {
-        res.send(result); // Responding.
+        res.send(result);
     }
 
     arrayToString(final_arr);
@@ -312,48 +329,61 @@ app.get('/run/:id', function (req, res) { // This will run every time you send a
 
 });
 
-app.get('/reset/:alg/cytoscape/:cyto', function (req, res) { // This will run every time you send a request to localhost:3000/search.
+// Resetting the application by clicking in the corresponding button in the interface.
+app.get('/reset/:alg/cytoscape/:cyto', function (req, res) {
 
-    switch (req.params.alg) {
+    if (req.params.cyto === "false") {
 
-        case "GN":
-            if(req.params.cyto === "false") {
+        switch (req.params.alg) {
+
+            case "GN":
+
                 res.send(girvan_bench);
-            } else {
-                res.send(girvan_bench_cyto);
-            }
-            break;
+                break;
+            /*   case "LFR":
+                   res.send(lfr_reset);
+                   break;
+       */
+            case "Amazon":
 
-     /*   case "LFR":
-            res.send(lfr_reset);
-            break;
-*/
-        case "Amazon":
-            if(req.params.cyto === "false") {
                 res.send(result_reset);
-            } else {
-                res.send(result_cyto_reset);
-            }
-            break;
+                break;
 
-        case "Karate":
-            if(req.params.cyto === "false") {
+            case "Karate":
+
                 res.send(karate_reset);
-            } else {
-                console.log(karate_cyto_reset);
-                res.send(karate_cyto_reset);
-            }
-    }
+        }
 
+    } else {
+
+        switch (req.params.alg) {
+
+            case "GN":
+
+                res.send(girvan_bench_cyto);
+                break;
+
+            case "Amazon":
+
+                res.send(result_cyto_reset);
+                break;
+
+            case "Karate":
+
+                res.send(karate_cyto_reset);
+        }
+    }
 });
 
-app.get('/algorithm/:type/gamma/:val/cytoscape/:cyto/fetchy/:fet', function (req, res) { // This will run every time you send a request to localhost:3000/search.
+// Sending data to community finding analysis. It will be dependent on the algorithm used, respective variable parameters, data visualization framework and network under study.
+app.get('/algorithm/:type/gamma/:val/cytoscape/:cyto/fetchy/:fet', function (req, res) {
 
         readFile(req.params.type, req.params.val, req.params.cyto, req.params.fet);
 
     res.send();
 });
 
+// To be executed upon file upload in the interface.
 app.post('/upload', function (req, res) {
 
     let form = new formidable.IncomingForm();

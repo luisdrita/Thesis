@@ -15,9 +15,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='./style/index.css' rel="stylesheet">
 
-    <script src="d3_svg.js"></script>
-    <script src="d3_canvas.js"></script>
-    <script src="cytoscape.js"></script>
+    <script src="./visualization/d3_svg.js"></script>
+    <script src="./visualization/d3_canvas.js"></script>
+    <script src="./visualization/cytoscape.js"></script>
 
 </head>
 
@@ -76,7 +76,7 @@
 
     </div>
 
-    <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 50px; border-style: solid; border-color: black; position: relative; text-align: center">
+    <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 25px; margin-bottom: 25px; border-style: solid; border-color: transparent; position: relative; text-align: center">
         <input type="button" value="Reset" id='reset_btn'/>
         <input type="button" value="Run" id='comm_detect'/>
         <div class="dropdown" id = "dropdown">
@@ -101,11 +101,6 @@
             </div>
         </div>
 
-        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="width: auto; position: relative; bottom: 0; margin-bottom: 0">
-            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="makeSubmit();">
-            <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
-        </form>
-
         <div class="dropdown">
             <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center">Network</button>
             <div id = "dropdown-content_network" class="dropdown-content">
@@ -115,6 +110,11 @@
                 <a id = "karate" onclick="rename_aux2(this.id)" style="cursor: pointer">Zachary's Karate Club</a>
             </div>
         </div>
+
+        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
+            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="makeSubmit();">
+            <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
+        </form>
     </div>
 </div>
 
@@ -386,7 +386,7 @@
 
                 rename("cytoscape");
         }
-
+/*
         if (document.getElementById("file").style.display === "none") {
 
             document.getElementById("file").style.display = "inline-block";
@@ -397,6 +397,7 @@
 
             document.getElementById("file").style.display = "none";
         }
+        */
     }
 
     rename('svg');
@@ -407,87 +408,52 @@
         let network = document.getElementById("dropbtn_network").innerText;
         let fetchy;
 
+        switch (network) {
+
+            case "GN":
+                fetchy = "GN";
+                break;
+
+            case "LFR":
+                fetchy = "LFR";
+                break;
+
+            case "Amazon":
+                fetchy = "Amazon";
+                break;
+
+            case "Karate":
+                fetchy = "Karate";
+                break;
+
+        }
+
         switch(id) {
 
             case "louvain":
 
-                switch (network) {
-
-                    case "GN":
-                        fetchy = "GN";
-                        break;
-
-                    case "LFR":
-                        fetchy = "LFR";
-                        break;
-
-                    case "Amazon":
-                        fetchy = "Amazon";
-                        break;
-
-                    case "Karate":
-                        fetchy = "Karate";
-                        break;
-
-                }
-
                 document.getElementById("dropbtn").innerText = "Louvain";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
-                fetch("algorithm/" + id + "/gamma/" + 0.0000001 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
+                document.getElementById("file").style.display = "none";
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
             case "infomap":
 
-                switch (network) {
-
-                    case "GN":
-                        fetchy = "GN";
-                        break;
-
-                    case "LFR":
-                        fetchy = "LFR";
-                        break;
-
-                    case "Amazon":
-                        fetchy = "Amazon";
-                        break;
-
-                    case "Karate":
-                        fetchy = "Karate";
-                        break;
-
-                }
-
                 document.getElementById("dropbtn").innerText = "Infomap";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000000000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
+                document.getElementById("file").style.display = "none";
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
             case "llp":
 
-                switch (network) {
-
-                    case "GN":
-                        fetchy = "GN";
-                        break;
-
-                    case "LFR":
-                        fetchy = "LFR";
-                        break;
-
-                    case "Amazon":
-                        fetchy = "Amazon";
-                        break;
-
-                    case "Karate":
-                        fetchy = "Karate";
-                }
-
                 document.getElementById("dropbtn").innerText = "LLP";
                 document.getElementById("range_label").innerText = "Resolution:";
                 document.getElementById("gamma").style.display = "inline-block";
+                document.getElementById("file").style.display = "none";
                 fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
@@ -503,26 +469,7 @@
                 canvas = d3.select('#graphDiv').append('svg').attr('id', 'svggg');
                 svg = d3.select('#graphDiv');
 
-                switch (network) {
-
-                    case "GN":
-                        fetchy = "GN";
-                        break;
-
-                    case "LFR":
-                        fetchy = "LFR";
-                        break;
-
-                    case "Amazon":
-                        fetchy = "Amazon";
-                        break;
-
-                    case "Karate":
-                        fetchy = "Karate";
-
-                }
-
-                fetch("reset/" + fetchy + "/cytoscape/" + "false").then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + false).then(function(res) {
 
                     return res.json();
 
@@ -539,7 +486,7 @@
                 document.getElementById("dropbtn").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
 
-                d3.select('svg').remove();
+                d3.select('#svggg').remove();
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
@@ -548,27 +495,7 @@
                     .attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
-                switch (network) {
-
-                    case "GN":
-                        fetchy = "GN";
-                        break;
-
-                    case "LFR":
-                        fetchy = "LFR";
-                        break;
-
-                    case "Amazon":
-                        fetchy = "Amazon";
-                        break;
-
-                    case "Karate":
-                        fetchy = "Karate";
-                        break;
-
-                }
-
-                fetch("reset/" + fetchy + "/cytoscape/" + "false").then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + false).then(function(res) {
 
                     return res.json();
 
@@ -584,32 +511,12 @@
                 document.getElementById("dropbtn").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
 
-                d3.select('svg').remove();
+                d3.select('#svggg').remove();
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 // Now send a request to your Node program
-
-                switch (network) {
-
-                    case "GN":
-                        fetchy = "GN";
-                        break;
-
-                    case "LFR":
-                        fetchy = "LFR";
-                        break;
-
-                    case "Amazon":
-                        fetchy = "Amazon";
-                        break;
-
-                    case "Karate":
-                        fetchy = "Karate";
-                        break;
-
-                }
-                fetch("reset/" + fetchy + "/cytoscape/" + "true").then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + true).then(function(res) {
 
                     return res.json();
 
