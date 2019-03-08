@@ -27,6 +27,8 @@ let community, node_data, obj, obj_cyto, girvan_bench, girvan_bench_cyto;
 let str = "";
 let final_arr = [];
 
+// ---------------------------------------------- Auxiliary Functions ----------------------------------------------
+
 // Converting array of arrays data to string representation. To be used to generate .txt docs for benchmark.
 function arrayToString(multi_array) {
 
@@ -51,6 +53,23 @@ function arrayToString(multi_array) {
     }
 }
 
+function consensusArray(multi_array) {
+
+    for (let j = 0; j < multi_array[0].length; j++) {
+
+        let count = [];
+
+        for (let i = 0; i < multi_array.length; i++) {
+
+            count[multi_array[i][j]] = count[multi_array[i][j]] + 1;
+
+
+
+        }
+
+    }
+}
+
 // Upon input of source and target nodes, it returns an edge with the right format.
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
@@ -65,31 +84,33 @@ function nodify (final_node_data, state) { // Used in fs.readFile in order to pu
     switch(state) {
 
         case 0:
-        keys.forEach(function (key) {
-            result_aux.push({id: key, group: final_node_data[key]})
-        });
-        break;
+            keys.forEach(function (key) {
+                result_aux.push({id: key, group: final_node_data[key]})
+            });
+            break;
 
         case 1:
-        keys.forEach(function (key) {
-            result_aux.push({id: key, group: 1})
-        });
-        break;
+            keys.forEach(function (key) {
+                result_aux.push({id: key, group: 1})
+            });
+            break;
 
         case 2:
-        keys.forEach(function (key) {
-            result_aux.push({data: {id: key, weight: 5}})
-        });
-        break;
+            keys.forEach(function (key) {
+                result_aux.push({data: {id: key, weight: 5}})
+            });
+            break;
 
         case 3:
-        keys.forEach(function (key) {
-            result_aux.push({data: {id: key, weight: final_node_data[key]}});
-        });
+            keys.forEach(function (key) {
+                result_aux.push({data: {id: key, weight: final_node_data[key]}});
+            });
 
     }
     return result_aux; // Previously, I used parseInt to convert the key string to an integer.
 }
+
+// ---------------------------------------------- Application ----------------------------------------------
 
 // Reading input file from the interface. Converting data to arrays.
 function readFile(type, gamma_var, cyto, fet) {
@@ -131,7 +152,7 @@ function readFile(type, gamma_var, cyto, fet) {
                 karate_cyto_reset["nodes"] = karate_cyto["nodes"];
                 karate_cyto_reset["links"] = karate_cyto["links"];
 
-                girvan_bench = girvan.girvanVar(0.1, false, 16);
+                girvan_bench = girvan.girvanVar(0.1, false, 16); ////////////////////////////////////////////////////////
                 girvan_bench_cyto = girvan.girvanVar(0.1, true, 16);
 
                 result["communities"] = girvan_bench["communities"];
@@ -172,11 +193,15 @@ function readFile(type, gamma_var, cyto, fet) {
 
                         case "GN":
 
-                            community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            for(let i = 0; i < 10; i++) {
+                                community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                                final_arr.push(Object.values(community));
+                            }
+
+
                             result["nodes"] = nodify(community, 0);
                             result["links"] = girvan_bench["links"];
-                            final_arr.push(Object.values(community));
-                        //    fs.writeFile("./girvanLouvain.txt", arrayToString(result["communities"]));
+
                             break;
 
                         case "Amazon":
@@ -231,7 +256,6 @@ function readFile(type, gamma_var, cyto, fet) {
                             community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
                             result["nodes"] = nodify(community, 0);
                             result["links"] = girvan_bench["links"];
-                            final_arr.push(Object.values(community));
                             break;
 
                         case "Amazon":
@@ -284,11 +308,15 @@ function readFile(type, gamma_var, cyto, fet) {
 
                         case "GN":
 
-                            community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                            for(let i = 0; i < 10; i++) { ///////////////////////////////////////////////////////////////
+                                community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var, 10000);
+                                final_arr.push(Object.values(community));
+                            }
+
+                          //  community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
                             result["nodes"] = nodify(community, 0);
                             result["links"] = girvan_bench["links"];
-                            final_arr.push(Object.values(community));
-                        //    fs.writeFile("./girvanLouvain.txt", str);
+                            //    fs.writeFile("./girvanLouvain.txt", str);
                             break;
 
                         case "Amazon":
@@ -306,13 +334,11 @@ function readFile(type, gamma_var, cyto, fet) {
                     }
                 }
         }
-
     });
-
 }
 
 // Initial state of the application.
-readFile('init', 0, "", "");
+readFile('init', 0, "true", "");
 
 // Sending data back to interface that resulted from community finding process.
 app.get('/run/:id', function (req, res) {
@@ -323,10 +349,11 @@ app.get('/run/:id', function (req, res) {
     } else {
         res.send(result);
     }
-
+/*
     arrayToString(final_arr);
-    fs.writeFile("./website/benchmark_data/llp_gamma0_mix1.txt", str);
-
+    fs.writeFile("./website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.9_mix0.1.txt", str); ////////////////////////////////////////////////////////////////
+    //    fs.writeFile("./girvanLouvain.txt", arrayToString(result["communities"]));
+*/
 });
 
 // Resetting the application by clicking in the corresponding button in the interface.
@@ -340,10 +367,7 @@ app.get('/reset/:alg/cytoscape/:cyto', function (req, res) {
 
                 res.send(girvan_bench);
                 break;
-            /*   case "LFR":
-                   res.send(lfr_reset);
-                   break;
-       */
+
             case "Amazon":
 
                 res.send(result_reset);
@@ -378,7 +402,7 @@ app.get('/reset/:alg/cytoscape/:cyto', function (req, res) {
 // Sending data to community finding analysis. It will be dependent on the algorithm used, respective variable parameters, data visualization framework and network under study.
 app.get('/algorithm/:type/gamma/:val/cytoscape/:cyto/fetchy/:fet', function (req, res) {
 
-        readFile(req.params.type, req.params.val, req.params.cyto, req.params.fet);
+    readFile(req.params.type, req.params.val, req.params.cyto, req.params.fet);
 
     res.send();
 });
@@ -390,7 +414,7 @@ app.post('/upload', function (req, res) {
 
     form.parse(req);
 
-    form.on('fileBegin', function (name, file){
+    form.on('fileBegin', function (name, file) {
         file.path = __dirname + '/uploads/' + "Input2.txt"; // file.name substituted by Input.txt
     });
 
@@ -410,7 +434,4 @@ function ola () {
 }
 
 */
-
-
-
 // console.log(lfr.lfrVar(3, 2, 100, 0.2));

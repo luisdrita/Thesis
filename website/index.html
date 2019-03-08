@@ -18,7 +18,6 @@
     <script src="./visualization/d3_svg.js"></script>
     <script src="./visualization/d3_canvas.js"></script>
     <script src="./visualization/cytoscape.js"></script>
-
 </head>
 
 <body style="margin: auto; position: relative">
@@ -67,7 +66,6 @@
         <li>Run</li>
     </ol>
 </div>
-
 
 <div id="main" style="border-style: solid; width: 45%; float: right; margin-right: 75px;">
 
@@ -158,9 +156,7 @@
     <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>∆</mml:mo><mml:mi>M</mml:mi><mml:mo>=</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced><mml:mo>-</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced></mml:math>
 </div>
 
-
-
-<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; border-bottom: transparent; border-right: transparent; border-left: transparent; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
     <h2 style="text-align: center; font-size: 30px">Results</h2>
     <div style="margin: auto; text-align: center;">
         <div id = "left" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
@@ -170,15 +166,18 @@
     </div>
 
 
-    <svg id = "svgg" width='600' height='350'></svg>
- <!--   <div id='tooltip' style='position:absolute; border-style: solid; padding:5px;'></div> -->
+    <svg id = "svgg" width='750' height='450' style="float: left;"></svg>
 
-    <div style="float: right; width: 500px; margin-right: 150px; margin-top: 150px; line-height: 30px">The optimal gamma parameter, in Layered Label Propagation algorithm, varies widely accordingly to network properties. Girvan-Newman benchmark network was used with different mixing parameters.</div>
+    <svg id = "svgggg" width='750' height='450' style="float: right;"></svg>
+
+    <!--   <div id='tooltip' style='position:absolute; border-style: solid; padding:5px;'></div> -->
+
+ <!--   <div style="float: right; width: 500px; margin-right: 150px; margin-top: 150px; line-height: 30px">The optimal gamma parameter, in Layered Label Propagation algorithm, varies widely accordingly to network properties. Girvan-Newman benchmark network was used with different mixing parameters.</div> -->
 
 </div>
 
-<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
-    <h2 style="text-align: center; font-size: 30px">Web Tools</h2>
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+    <h2 style="text-align: center; font-size: 30px;">Web Tools</h2>
     <div style="margin: auto;">
         <figure style="float: left; margin-left: 5%">
             <a href="https://online.phyloviz.net/index" target="_blank" rel="noopener noreferrer">
@@ -204,8 +203,7 @@
             </a>
             <p style="text-align: justify"> It is a bioinformatics free web-based suite that deals with primary data
                 (reads) towards the automatic generation of the output data that are actually the core first-line
-                “genetic requests” for effective and timely influenza laboratory surveillance (e.g., type and sub-type
-                gene and whole-genome consensus sequences, variants annotation, alignments and phylogenetic trees). Data
+                “genetic requests” for effective and timely influenza laboratory surveillance. Data
                 integration is continuously scalable, fitting the need for a real-time epidemiological surveillance
                 during the flu epidemics. </p>
 
@@ -216,11 +214,10 @@
                 <img src="./img/logo_insaflu_new.png" width="300px" alt="INSaFLU">
             </a>
         </figure>
-
     </div>
 </div>
 
-<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; border-style: solid; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
     <h2 style="text-align: center; font-size: 30px">EIT Health</h2>
     <div style="margin: auto;">
         <figure style="float: left;">
@@ -236,8 +233,7 @@
             <p style="text-align: justify"> As a Master of Technological Innovation in Health student, I was invited to present a poster
                 about my Master Thesis and to
                 talk about my past academic achievements. During my speech, I was still able to suggest new ways of
-                improving this European program, powered by EIT Health (a body of the EU). </p>
-
+                improving this European program, powered by EIT Health. </p>
         </div>
 
         <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
@@ -245,8 +241,7 @@
             <a href="./pages/amr.html" style="text-decoration-line: none">
                 <h2 style="color: grey;">AMR Hackathon 2018 (Heidelberg, Germany)</h2>
             </a>
-            <p style="text-align: justify"> I was selected to participate in a 3-day Antimicrobial Resistance Hackathon organized by EIT Health Germany. At
-                the beginning, we were divided in teams of 6/7 elements that would proceed to an AMR
+            <p style="text-align: justify"> Selected to participate in a 3-day Antimicrobial Resistance Hackathon organized by EIT Health Germany. We were divided in teams of 6/7 elements that would proceed to an AMR
                 analysis of a different EU country. </p>
         </div>
 
@@ -315,7 +310,9 @@
         }
     }
 
-    results('./benchmark_data/data_visualized/nmi_mix.json');
+    results('./benchmark_data/data_visualized/nmi_mix.json',"svgg");
+    results('./benchmark_data/data_visualized/nmi_gamma.json',"svgggg");
+    results('./benchmark_data/data_visualized/nmi_mix.json',"svggggg");
 
     let canvas, svg, cy;
 
@@ -323,7 +320,6 @@
         document.getElementById("file").submit();
 
         rename(document.getElementById("dropbtn_interface").innerText);
-
     }
 
     function rename_aux () {
@@ -344,9 +340,7 @@
             case "LLP":
 
                 rename("llp");
-
         }
-
     }
 
     function rename_aux2 (network) {
@@ -387,18 +381,6 @@
 
                 rename("cytoscape");
         }
-/*
-        if (document.getElementById("file").style.display === "none") {
-
-            document.getElementById("file").style.display = "inline-block";
-            document.getElementById("gamma").style.display = "none";
-            document.getElementById("dropbtn").innerText = "Algorithm";
-
-        } else {
-
-            document.getElementById("file").style.display = "none";
-        }
-        */
     }
 
     rename('svg');
@@ -425,8 +407,6 @@
 
             case "Karate":
                 fetchy = "Karate";
-                break;
-
         }
 
         switch(id) {
@@ -477,7 +457,6 @@
                 }).then(function(jsonData) {
 
                     d3svgFunc(svg, jsonData);
-
                 });
 
                 break;
@@ -525,7 +504,6 @@
 
                     cytoscapeFunc(jsonData);
                 });
-
         }
     }
 
@@ -562,13 +540,9 @@
                     case "Cytoscape":
 
                         cytoscapeFunc(jsonData);
-
                 }
-
             });
-
         }
-
     });
 
     // Action on clicking in the Reset button. All nodes have their colours reset to a standard one.

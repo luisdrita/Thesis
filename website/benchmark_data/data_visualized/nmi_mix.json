@@ -1,101 +1,101 @@
 [
   {
-    "name": "Mix Parameter = 0",
+    "name": "Louvain",
     "show": true,
-    "color": "green",
-    "currentPopulation": 0.561,
+    "color": "orange",
+    "currentPopulation": 0.002,
     "history": [
       {
         "year": 0,
-        "population": 0.769
+        "population": 1
       },
       {
         "year": 0.1,
-        "population": 0.741
+        "population": 0.989
       },
       {
         "year": 0.2,
-        "population": 0.716
+        "population": 0.978
       },
       {
         "year": 0.3,
-        "population": 0.680
+        "population": 0.906
       },
       {
         "year": 0.4,
-        "population": 0.662
+        "population": 0.915
       },
       {
         "year": 0.5,
-        "population": 0.607
+        "population": 0.175
       },
       {
         "year": 0.6,
-        "population": 0.602
+        "population": 0.068
       },
       {
         "year": 0.7,
-        "population": 0.603
+        "population": 0.005
       },
       {
         "year": 0.8,
-        "population": 0.590
+        "population": 0.001
       },
       {
         "year": 0.9,
-        "population": 0.588
+        "population": 0.005
       },
       {
         "year": 1,
-        "population": 0.561
+        "population": 0.002
       }
     ]
   },
   {
     "name": "Label Propagation",
     "show": true,
-    "color": "yellow",
+    "color": "lightblue",
     "currentPopulation": 0.146,
     "history": [
       {
         "year": 0,
-        "population": 0.800
+        "population": 0.857
       },
       {
         "year": 0.1,
-        "population": 0.567
+        "population": 0.782
       },
       {
         "year": 0.2,
-        "population": 0.292
+        "population": 0.744
       },
       {
         "year": 0.3,
-        "population": 0.232
+        "population": 0.529
       },
       {
         "year": 0.4,
-        "population": 0.206
+        "population": 0.377
       },
       {
         "year": 0.5,
-        "population": 0.189
+        "population": 0.269
       },
       {
         "year": 0.6,
-        "population": 0.175
+        "population": 0.196
       },
       {
         "year": 0.7,
-        "population": 0.154
+        "population": 0.173
       },
       {
         "year": 0.8,
-        "population": 0.160
+        "population": 0.156
       },
       {
         "year": 0.9,
-        "population": 0.146
+        "population": 0.142
       },
       {
         "year": 1,
@@ -106,52 +106,52 @@
   {
     "name": "Layered Label Propagation",
     "show": true,
-    "color": "red",
-    "currentPopulation": 0.191,
+    "color": "pink",
+    "currentPopulation": 0.180,
     "history": [
       {
         "year": 0,
-        "population": 0.631
+        "population": 0.685
       },
       {
         "year": 0.1,
-        "population": 0.523
+        "population": 0.633
       },
       {
         "year": 0.2,
-        "population": 0.399
+        "population": 0.608
       },
       {
         "year": 0.3,
-        "population": 0.338
+        "population": 0.524
       },
       {
         "year": 0.4,
-        "population": 0.299
+        "population": 0.489
       },
       {
         "year": 0.5,
-        "population": 0.277
+        "population": 0.377
       },
       {
         "year": 0.6,
-        "population": 0.243
+        "population": 0.305
       },
       {
         "year": 0.7,
-        "population": 0.233
+        "population": 0.271
       },
       {
         "year": 0.8,
-        "population": 0.219
+        "population": 0.246
       },
       {
         "year": 0.9,
-        "population": 0.222
+        "population": 0.224
       },
       {
         "year": 1,
-        "population": 0.191
+        "population": 0.180
       }
     ]
   }

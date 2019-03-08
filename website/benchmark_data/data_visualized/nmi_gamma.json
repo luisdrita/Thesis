@@ -2,48 +2,100 @@
   {
     "name": "Mix Parameter = 0",
     "show": true,
-    "color": "green",
-    "currentPopulation": 0.561,
+    "color": "orange",
+    "currentPopulation": 0.595,
     "history": [
       {
         "year": 0,
-        "population": 0.769
+        "population": 0.877
       },
       {
         "year": 0.1,
-        "population": 0.741
+        "population": 0.824
       },
       {
         "year": 0.2,
-        "population": 0.716
+        "population": 0.798
       },
       {
         "year": 0.3,
-        "population": 0.680
+        "population": 0.810
       },
       {
         "year": 0.4,
-        "population": 0.662
+        "population": 0.749
       },
       {
         "year": 0.5,
-        "population": 0.607
+        "population": 0.696
       },
       {
         "year": 0.6,
-        "population": 0.602
+        "population": 0.689
       },
       {
         "year": 0.7,
-        "population": 0.603
+        "population": 0.668
       },
       {
         "year": 0.8,
-        "population": 0.590
+        "population": 0.668
       },
       {
         "year": 0.9,
-        "population": 0.588
+        "population": 0.654
+      },
+      {
+        "year": 1,
+        "population": 0.595
+      }
+    ]
+  },
+  {
+    "name": "Mix Parameter = 0.1",
+    "show": true,
+    "color": "lightblue",
+    "currentPopulation": 0.505,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.804
+      },
+      {
+        "year": 0.1,
+        "population": 0.754
+      },
+      {
+        "year": 0.2,
+        "population": 0.733
+      },
+      {
+        "year": 0.3,
+        "population": 0.714
+      },
+      {
+        "year": 0.4,
+        "population": 0.675
+      },
+      {
+        "year": 0.5,
+        "population": 0.646
+      },
+      {
+        "year": 0.6,
+        "population": 0.631
+      },
+      {
+        "year": 0.7,
+        "population": 0.611
+      },
+      {
+        "year": 0.8,
+        "population": 0.607
+      },
+      {
+        "year": 0.9,
+        "population": 0.614
       },
       {
         "year": 1,
@@ -52,106 +104,54 @@
     ]
   },
   {
-    "name": "Mix Parameter = 0.1",
-    "show": true,
-    "color": "yellow",
-    "currentPopulation": 0.505,
-    "history": [
-      {
-        "year": 0,
-        "population": 0.530
-      },
-      {
-        "year": 0.1,
-        "population": 0.588
-      },
-      {
-        "year": 0.2,
-        "population": 0.570
-      },
-      {
-        "year": 0.3,
-        "population": 0.525
-      },
-      {
-        "year": 0.4,
-        "population": 0.532
-      },
-      {
-        "year": 0.5,
-        "population": 0.496
-      },
-      {
-        "year": 0.6,
-        "population": 0.518
-      },
-      {
-        "year": 0.7,
-        "population": 0.500
-      },
-      {
-        "year": 0.8,
-        "population": 0.516
-      },
-      {
-        "year": 0.9,
-        "population": 0.507
-      },
-      {
-        "year": 1,
-        "population": 0.505
-      }
-    ]
-  },
-  {
     "name": "Mix Parameter = 0.2",
     "show": true,
-    "color": "red",
+    "color": "pink",
     "currentPopulation": 0.400,
     "history": [
       {
         "year": 0,
-        "population": 0.284
+        "population": 0.755
       },
       {
         "year": 0.1,
-        "population": 0.399
+        "population": 0.708
       },
       {
         "year": 0.2,
-        "population": 0.368
+        "population": 0.688
       },
       {
         "year": 0.3,
-        "population": 0.405
+        "population": 0.668
       },
       {
         "year": 0.4,
-        "population": 0.406
+        "population": 0.630
       },
       {
         "year": 0.5,
-        "population": 0.376
+        "population": 0.608
       },
       {
         "year": 0.6,
-        "population": 0.412
+        "population": 0.586
       },
       {
         "year": 0.7,
-        "population": 0.416
+        "population": 0.584
       },
       {
         "year": 0.8,
-        "population": 0.425
+        "population": 0.588
       },
       {
         "year": 0.9,
-        "population": 0.404
+        "population": 0.594
       },
       {
         "year": 1,
-        "population": 0.400
+        "population": 0.541
       }
     ]
   }

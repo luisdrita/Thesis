@@ -6,7 +6,7 @@
 // in the complete network. In fact, both algorithm versions are equivalent whenever this factor is considered 0.
 
 
-jLayeredLabelPropagation_mod = function (nds, edgs, gamma) { // A function expression can be stored in a variable. After it has been
+jLayeredLabelPropagation_mod = function (nds, edgs, gamma, steps_input) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
@@ -15,6 +15,7 @@ jLayeredLabelPropagation_mod = function (nds, edgs, gamma) { // A function expre
     let original_graph_edges; // Defined in the core() of the algorithm.
     let original_graph = {}; // Defined in the core() of the algorithm.
     let partition_init; // Defined in the core() of the algorithm. May not be used (depending on the user input).
+    let steps = 0;
 
     // ----------------------------------------- Helpers -----------------------------------------
 
@@ -216,7 +217,9 @@ jLayeredLabelPropagation_mod = function (nds, edgs, gamma) { // A function expre
 
             let next_nodes_to_com = status.nodes_to_com;
 
-            if(prev_nodes_to_com===next_nodes_to_com) break;
+            steps++;
+
+            if(prev_nodes_to_com===next_nodes_to_com || steps === steps_input) break;
 
         }
 
