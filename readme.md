@@ -89,6 +89,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [06/03/19] Thesis document improved. GN benchmark network algorithm - performance optimized. New features in the web tool;
 
+[08/03/19] Added benchmark data;
+
 [Next] PHYLOViZ integration;
 
 [Next] Thesis writing.
