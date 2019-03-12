@@ -1,5 +1,5 @@
 
-function results(sheet, svg_input) {
+function results(sheet, svg_input, title) {
 
     // Define margins, dimensions, and some line colors
     const margin = {top: 40, right: 120, bottom: 50, left: 150};
@@ -22,7 +22,7 @@ function results(sheet, svg_input) {
     const yAxis = d3.axisLeft(y).tickFormat(d3.format('.2'));
     chart.append('g').call(yAxis);
     chart.append('g').attr('transform', 'translate(0,' + height + ')').call(xAxis);
-    chart.append('text').html('NMI x Mix Parameter').attr('x', 200);
+    chart.append('text').html(title).attr('x', 200);
 
 // Load the data and draw a chart
     let states, tipBox;

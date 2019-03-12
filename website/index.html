@@ -165,10 +165,40 @@
 
     </div>
 
+    <div id = "left_div" style="display: inline-block;">
 
     <svg id = "svgg" width='750' height='450' style="float: left;"></svg>
 
     <svg id = "svgggg" width='750' height='450' style="float: right;"></svg>
+
+    </div>
+
+    <div id = "center_div" style="display: none;">
+
+        <svg id = "svgggggg" width='750' height='450' style="float: left;"></svg>
+
+        <svg id = "svggggggg" width='750' height='450' style="float: right;"></svg>
+
+    </div>
+
+    <div id = "right_div" style="display: none;">
+
+        <figure style="float: left;">
+            <img src="img/karate.png" width='350' alt="Zachary's Karate Club Benchmark Network">
+            <figcaption style="text-align: center; margin-top: 25px;">Zachary's Karate Club Network</figcaption>
+        </figure>
+
+        <figure style="float: left; margin-left: 125px;">
+            <img src="img/gn.png" width='400' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
+            <figcaption style="text-align: center; margin-top: 25px;">Girvan Newman Benchmark Network</figcaption>
+        </figure>
+
+        <figure style="float: left; margin-left: 50px;">
+            <img src="img/gn.png" width='400' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
+            <figcaption style="text-align: center; margin-top: 25px;">Girvan Newman Benchmark Network</figcaption>
+        </figure>
+
+    </div>
 
     <!--   <div id='tooltip' style='position:absolute; border-style: solid; padding:5px;'></div> -->
 
@@ -276,7 +306,7 @@
 
 <script>
 
-    function change (id){
+    function change (id) {
 
         switch (id) {
 
@@ -286,7 +316,12 @@
                 document.getElementById("center").style.backgroundColor = "black";
                 document.getElementById("right").style.backgroundColor = "black";
 
-                results('./benchmark_data/data_visualized/nmi_mix.json');
+                document.getElementById("left_div").style.display = "inline-block";
+                document.getElementById("center_div").style.display = "none";
+                document.getElementById("right_div").style.display = "none";
+
+                results('./benchmark_data/data_visualized/nmi_mix.json',"svgg", "NMI x Mix Parameter");
+                results('./benchmark_data/data_visualized/nmi_gamma.json',"svgggg", "NMI Layered Label Propagation x Gamma Parameter");
 
                 break;
 
@@ -296,7 +331,12 @@
                 document.getElementById("center").style.backgroundColor = "white";
                 document.getElementById("right").style.backgroundColor = "black";
 
-                results('./benchmark_data/data_visualized/nmi_mix.json');
+                document.getElementById("left_div").style.display = "none";
+                document.getElementById("center_div").style.display = "inline-block";
+                document.getElementById("right_div").style.display = "none";
+
+                results('./benchmark_data/data_visualized/labelPropagation_vs_mix_vs_k.json',"svgggggg", "Label Propagation NMI x Mix Parameter");
+                results('./benchmark_data/data_visualized/louvain_vs_mix_vs_k.json',"svggggggg", "Louvain NMI x Mix Parameter");
 
                 break;
 
@@ -306,13 +346,16 @@
                 document.getElementById("center").style.backgroundColor = "black";
                 document.getElementById("right").style.backgroundColor = "white";
 
-                results('./benchmark_data/data_visualized/nmi_mix.json');
+                document.getElementById("left_div").style.display = "none";
+                document.getElementById("center_div").style.display = "none";
+                document.getElementById("right_div").style.display = "inline-block";
+
+
+
         }
     }
 
-    results('./benchmark_data/data_visualized/nmi_mix.json',"svgg");
-    results('./benchmark_data/data_visualized/nmi_gamma.json',"svgggg");
-    results('./benchmark_data/data_visualized/nmi_mix.json',"svggggg");
+    change("left");
 
     let canvas, svg, cy;
 
@@ -447,7 +490,7 @@
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
-                canvas = d3.select('#graphDiv').append('svg').attr('id', 'svggg');
+                d3.select('#graphDiv').append('svg').attr('id', 'svggg');
                 svg = d3.select('#graphDiv');
 
                 fetch("reset/" + fetchy + "/cytoscape/" + false).then(function(res) {
