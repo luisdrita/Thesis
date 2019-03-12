@@ -77,7 +77,7 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [04/02/19] Louvain algorithm bug corrected. Enhanced interface. User is now able to provide input of several parameters;
 
-[12/02/19] Implemented 2 algorithms that generate Girvan-Newman and Lancichinetti-Fortunato-Radicchi synthetic networks;
+[12/02/19] Implemented 1 algorithm that generate Girvan-Newman synthetic network;
 
 [19/02/19] Image of thesis app uploaded to [Docker Hub repo](https://cloud.docker.com/repository/docker/warcraft12321/thesis). Link between GitHub and Docker Hub established;
 
@@ -90,6 +90,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 [06/03/19] Thesis document improved. GN benchmark network algorithm - performance optimized. New features in the web tool;
 
 [08/03/19] Added benchmark data;
+
+[12/03/19] Added C++ code that generates Lancichinetti-Fortunato-Radicchi synthetic networks. Credits to [Santo Fortunato](https://sites.google.com/site/santofortunato/);
 
 [Next] PHYLOViZ integration;
 
