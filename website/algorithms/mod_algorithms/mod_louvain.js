@@ -77,7 +77,6 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
     }
     // Prints an ARRAY with all neighbours of input node ID.
 
-
     function get_edge_weight(graph, node1, node2) {
         return graph._assoc_mat[node1] ? graph._assoc_mat[node1][node2] : undefined;
     }
@@ -86,9 +85,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
     function get_graph_size(graph) {
         let size = 0;
         graph.edges.forEach(function (edge) {
-
             size += edge.weight;
-
         });
 
         return size;

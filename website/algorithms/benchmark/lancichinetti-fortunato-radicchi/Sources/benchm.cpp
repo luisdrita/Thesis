@@ -1597,7 +1597,7 @@ int print_network(deque<set<int> > & E, const deque<deque<int> > & member_list, 
 	
 
 
-	ofstream out1("network.dat");
+	ofstream out1("network.dat"); 
 	for (int u=0; u<E.size(); u++) {
 
 		set<int>::iterator itb=E[u].begin();

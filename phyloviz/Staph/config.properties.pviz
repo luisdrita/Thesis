@@ -1,0 +1,8 @@
+#Project Configuration File
+#Wed Mar 13 00:08:46 WET 2019
+population-foreign-key=0
+population-factory=net.phyloviz.core.util.PopulationFactory
+typing-factory=net.phyloviz.mlst.MLSTypingFactory
+typing-file=Staph.typing.csv
+population-file=Staph.isolate.csv
+dataset-name=Staph

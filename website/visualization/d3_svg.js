@@ -808,7 +808,7 @@ function d3svgFunc(svg, graph) {
                 d.fy = null;
             })
     }
-
+/*
     svg.selectAll('text')
         .data(texts)
         .enter()
@@ -816,6 +816,8 @@ function d3svgFunc(svg, graph) {
         .attr('x', 900)
         .attr('y', function(d,i) { return 470 + i * 18; })
         .text(function(d) { return d; });
+
+*/
 
     return graph;
 }

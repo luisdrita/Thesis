@@ -5,7 +5,7 @@
 // This time, instead of maximizing network's modularity, the goal is to find the minimum description length of the network. To calculate
 // this quantity, map equation was used.
 
-jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stored in a variable. After it has been
+jInfomap_mod = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
@@ -27,7 +27,7 @@ jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stor
         });
 
         return Object.keys(set); // Object.keys receives an array or an object. It returns an array with the respective
-        // array's positions or keys, respectively. Moreover, it eliminates repeated values (present in array) in the final set.
+        // array's position or keys, respectively. Moreover, it eliminates repeated values (present in array) in the final set.
     }
     // Set -> {1: true, 2: true, 3: true...} Returns an ARRAY of the keys (each key corresponds to a node).
 
@@ -52,7 +52,7 @@ jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stor
             let value = graph._assoc_mat[node][neighbour] || 1;
             if (node === neighbour) { // In case we have already performed 1 community aggregation step, Infomap
                 // algorithm does not not consider self-loops during execution.
-                value = 0;
+                value = 0; // DIFFERENT!!!!
             }
             weight += value;
         });
@@ -80,7 +80,7 @@ jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stor
     function get_graph_size(graph) {
         let size = 0;
         graph.edges.forEach(function (edge) {
-            size += (edge.weight || 1);
+            size += (edge.weight || 1); // SHOULD NOT BE NECESSARY!!!
         });
 
         return size;
@@ -244,6 +244,8 @@ jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stor
 
         });
 
+        console.log(mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d);
+
         return mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d; // Minimum description length of a given partition (defined by status).
 
     }
@@ -290,7 +292,6 @@ jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stor
     function __one_level(graph, status) { // Computes one level of the communities dendogram (without community aggregation).
 
         let modif = true; // Modifications made in terms of community members.
-
         let cur_mdl = __mdl(status); // Current description length.
         let new_mdl = cur_mdl; // New description length.
 
@@ -339,14 +340,14 @@ jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stor
                 status.degrees[best_com] = (status.degrees[best_com] || 0) + (status.gdegrees[node] || 0);
                 status.internals[best_com] = (status.internals[best_com] || 0) + (neigh_communities[best_com] || 0);
 
-                if (best_com !== com_node || isNaN(new_mdl)) {
+                if (best_com !== com_node) {
                     modif = true; // Only in this situation the algorithm will keep looking for new ways of
                     // minimizing MAP equation.
                 }
             });
             new_mdl = __mdl(status);
 
-            if (new_mdl - cur_mdl < __MIN || isNaN(new_mdl)) { // Even if best_com !== com_node, if new_mdl - cur_mdl < __MIN
+            if (new_mdl - cur_mdl < __MIN) { // Even if best_com !== com_node, if new_mdl - cur_mdl < __MIN
                 // cycle is broken.
                 break;
             }
@@ -414,7 +415,7 @@ jInfomap_mod = function (nds,edgs, __MIN) { // A function expression can be stor
         // after 1st pass. Community aggregation.
         init_status(current_graph, status); // Resetting status.
 
-        while (isNaN(__mdl(status)) === false) { // Keeps partitioning the graph while minimum description length remains real.
+        while (true) { // Keeps partitioning the graph while minimum description length remains real.
             __one_level(current_graph, status);
             new_mdl = __mdl(status);
             if (new_mdl - mdl < __MIN) {

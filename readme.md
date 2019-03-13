@@ -93,7 +93,7 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [12/03/19] Added C++ code that generates Lancichinetti-Fortunato-Radicchi synthetic networks. Credits to [Santo Fortunato](https://sites.google.com/site/santofortunato/);
 
-[Next] PHYLOViZ integration;
+[13/03/19] Started PHYLOViZ integration;
 
 [Next] Thesis writing.
 
@@ -111,3 +111,8 @@ N = 128 | mix = 0.1 | k = 16 | Interface: D3.js & SVG.
 ![Community_Finding Screenshot](./website/img/karate.png)
 
 Fig. 3 - Zachary's karate club network (JSON file in the repo).
+
+![Community_Finding Screenshot](./website/img/lfr.png)
+
+Fig. 4 - Lancichinetti-Fortunato-Radicchi Benchmark Network.
+N = 1000 | mix = 0.1 | avg_k = 15 | max_k = 50 | min_c = 20 | max_c = 50 | Interface: D3.js & SVG.
