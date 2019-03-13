@@ -6,10 +6,10 @@
 // Modularity Optimization - At the beginning of this phase, the algorithm will randomly order all the nodes in the network such that, one by one,
 // it will remove and insert it in a different community. This will continue until no significant variation in modularity is
 // achieved (given by a constant defined below - __MIN).
-// Community Aggregation - Before finalizing the first pass, every node belonging to the same community is merged into a single giant one and
-// the links connecting those will be formed by the sum of the ones previously connecting nodes present in each one of these communities. From now on,
+// Community Aggregation - After finalizing the first pass, every node belonging to the same community is merged into a single giant one and
+// the links connecting these will be formed by the sum of the ones previously connecting nodes from the same different communities. From now on,
 // there will also exist self-loops that represent the sum of all links in a given community (strictly connecting nodes inside of it) before being
-// collapsed into a single node.
+// collapsed into a single one.
 
 jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
@@ -119,7 +119,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
     }
     // make_assoc_mat is used once in the core.edges (to create _assoc_mat). Do not forget even objects inside objects are key/value pairs.
 
-    function update_assoc_mat(graph, edge) {
+    function update_assoc_mat(graph, edge) { // assoc_mat is not an array.
         graph._assoc_mat[edge.source] = graph._assoc_mat[edge.source] || {}; // In case we are updating a node without connections.
         graph._assoc_mat[edge.source][edge.target] = edge.weight;
         graph._assoc_mat[edge.target] = graph._assoc_mat[edge.target] || {};
@@ -154,7 +154,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
     // Returns the input vector but randomly shuffled.
 
     // ----------------------------------------- Algorithm -----------------------------------------
-    function init_status(graph, status, part) { // Aim of this function is to initialize network properties after Infomap
+    function init_status(graph, status, part) { // Aim of this function is to initialize network properties after Louvain
         // first execution or to update them after community aggregation.
         // Part refers to an initial partition that may be input by
         // the user with the initial graph data.
@@ -231,6 +231,10 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
             }
 
         });
+
+        let modularity = 1/(2*links)
+
+        console.log();
 
         return result; // Modularity of a given partition (defined by status).
     }
@@ -412,6 +416,8 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
             mod = new_mod;
             current_graph = induced_graph(partition, current_graph);
             init_status(current_graph, status);
+
+            console.log();
         }
 
         return status_list; // Dendogram is a set of ordered partitions.

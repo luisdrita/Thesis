@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="PHYLOViZ Integration 1.0">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emsdk/binaryen-tags.txt" beforeDir="false" afterPath="$PROJECT_DIR$/emsdk/binaryen-tags.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emsdk/emscripten-tags.txt" beforeDir="false" afterPath="$PROJECT_DIR$/emsdk/emscripten-tags.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emsdk/upstream/lkgr.json" beforeDir="false" afterPath="$PROJECT_DIR$/emsdk/upstream/lkgr.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/Sources/benchm.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/Sources/benchm.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/community.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/community.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/network.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/network.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/network.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/statistics.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/statistics.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/time_seed.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi/time_seed.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/visualization/d3_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/d3_svg.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,8 +24,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2790">
+            <state relative-caret-position="692">
               <caret line="186" column="16" selection-start-line="186" selection-start-column="16" selection-end-line="186" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="439">
+                <caret line="97" column="143" selection-start-line="97" selection-start-column="143" selection-end-line="97" selection-end-column="143" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -40,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3938">
+            <state relative-caret-position="7380">
               <caret line="492" column="45" selection-start-line="492" selection-start-column="39" selection-end-line="492" selection-end-column="45" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -111,17 +116,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4500">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="-344">
+              <caret line="294" column="41" selection-start-line="294" selection-start-column="41" selection-end-line="294" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2946">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            <state relative-caret-position="201">
+              <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -139,12 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>eit h</find>
-      <find>graphdiv</find>
-      <find>result_cyto_reset</find>
-      <find>change</find>
-      <find>final_arr</find>
-      <find>200</find>
       <find>100</find>
       <find>isnan</find>
       <find>links</find>
@@ -169,6 +168,12 @@
       <find>append</find>
       <find>console</find>
       <find>id</find>
+      <find>shoul</find>
+      <find>__modularity</find>
+      <find>graph.edges</find>
+      <find>update_assoc_mat</find>
+      <find>assoc_mat</find>
+      <find>_assoc_mat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -250,14 +255,14 @@
         <option value="$PROJECT_DIR$/website/benchmark_data/data_visualized/labelPropagation_vs_mix_vs_k.json" />
         <option value="$PROJECT_DIR$/website/benchmark_data/data_visualized/louvain_vs_mix_vs_k.json" />
         <option value="$PROJECT_DIR$/website/algorithms/benchmark/lancichinetti-fortunato-radicchi.js" />
-        <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/website/visualization/d3_svg.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js" />
         <option value="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js" />
+        <option value="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -508,7 +513,8 @@
       <workItem from="1552137553218" duration="1184000" />
       <workItem from="1552219384199" duration="14596000" />
       <workItem from="1552305156569" duration="10208000" />
-      <workItem from="1552394333944" duration="20431000" />
+      <workItem from="1552394333944" duration="20699000" />
+      <workItem from="1552480103785" duration="5836000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -720,11 +726,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552358730144</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="PHYLOViZ Integration 1.0">
+      <created>1552442808050</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1552442808051</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="969052000" />
+    <option name="totallyTimeSpent" value="975156000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -737,8 +750,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34737486" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35164836" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -751,7 +765,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32987553" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32987553" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.497558" visible="true" weight="0.18879668" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.497558" visible="true" weight="0.18879668" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502442" side_tool="true" weight="0.17842324" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32987553" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
@@ -822,7 +836,8 @@
     <MESSAGE value="Added Benchmark Results" />
     <MESSAGE value="Added LFR Code" />
     <MESSAGE value="Added Results" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Results" />
+    <MESSAGE value="PHYLOViZ Integration 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="PHYLOViZ Integration 1.0" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website/license" />
@@ -1005,16 +1020,6 @@
     <entry file="file://$PROJECT_DIR$/website/algorithms/benchmark/karate_club.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="629">
-            <caret line="117" column="98" selection-start-line="117" selection-start-column="98" selection-end-line="117" selection-end-column="98" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/benchmark/mod_girvan-newman.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1038,7 +1043,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3938">
+        <state relative-caret-position="7380">
           <caret line="492" column="45" selection-start-line="492" selection-start-column="39" selection-end-line="492" selection-end-column="45" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1107,22 +1112,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
+        <state relative-caret-position="692">
           <caret line="186" column="16" selection-start-line="186" selection-start-column="16" selection-end-line="186" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4500">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2946">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        <state relative-caret-position="201">
+          <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_louvain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-344">
+          <caret line="294" column="41" selection-start-line="294" selection-start-column="41" selection-end-line="294" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="439">
+            <caret line="97" column="143" selection-start-line="97" selection-start-column="143" selection-end-line="97" selection-end-column="143" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
