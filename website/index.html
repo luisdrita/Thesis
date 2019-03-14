@@ -20,7 +20,7 @@
     <script src="./visualization/cytoscape.js"></script>
 </head>
 
-<body style="margin: auto; position: relative">
+<body style="min-width: 1700px; margin: auto; position: relative">
 
 <header>
 
@@ -153,7 +153,6 @@
         is a method to extract communities from large networks created
         by Blondel et al. from the University of Louvain (affiliation of authors has given the method its name). The
         method is a greedy optimization method that appears to run in time O(nlog(n)).</p>
-    <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mo>∆</mml:mo><mml:mi>M</mml:mi><mml:mo>=</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mo>,</mml:mo><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub><mml:mo>+</mml:mo><mml:mn>2</mml:mn><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced><mml:mo>-</mml:mo><mml:mfenced open="[" close="]" separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">Σ</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mi>o</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup><mml:mo>-</mml:mo><mml:msup><mml:mrow><mml:mfenced separators="|"><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>i</mml:mi></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:mn>2</mml:mn><mml:mi>W</mml:mi></mml:mrow></mml:mfrac></mml:mrow></mml:mfenced></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msup></mml:mrow></mml:mfenced></mml:math>
 </div>
 
 <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; border-bottom: transparent; border-right: transparent; border-left: transparent; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
@@ -206,7 +205,7 @@
 
 </div>
 
-<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px;">
     <h2 style="text-align: center; font-size: 30px;">Web Tools</h2>
     <div style="margin: auto;">
         <figure style="float: left; margin-left: 5%">
@@ -247,9 +246,15 @@
     </div>
 </div>
 
-<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-left: 75px; margin-top: 20px; margin-bottom: 20px;">
+<div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-left: 75px; margin-bottom: 20px;">
     <h2 style="text-align: center; font-size: 30px">EIT Health</h2>
-    <div style="margin: auto;">
+    <div style="margin: auto; margin-bottom: 20px; text-align: center;">
+        <div id = "left_eit" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+        <div id = "center_eit" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+        <div id = "right_eit" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+    </div>
+
+    <div id = "left_div_eit" style="margin: auto;">
         <figure style="float: left;">
             <a href="pages/mtih.html">
                 <img src="./img/mtih.jpg" width="300px" alt="MTiH">
@@ -260,9 +265,9 @@
             <a href="pages/mtih.html" style="text-decoration-line: none">
                 <h2 style="color: grey;">1st Workshop MTiH (Madrid, Spain)</h2>
             </a>
-            <p style="text-align: justify"> As a Master of Technological Innovation in Health student, I was invited to present a poster
-                about my Master Thesis and to
-                talk about my past academic achievements. During my speech, I was still able to suggest new ways of
+            <p style="text-align: justify"> As a MTiH student, I was invited to present a poster
+                of my thesis and to
+                talk about past academic achievements. I was still able to suggest new ways of
                 improving this European program, powered by EIT Health. Bursary awarded.</p>
         </div>
 
@@ -282,6 +287,38 @@
         </figure>
 
     </div>
+
+    <div id = "center_div_eit" style="margin: auto; display: none;">
+        <figure style="float: left;">
+            <a href="pages/imim.html">
+                <img src="./img/imim.jpg" width="300px" alt="MTiH">
+            </a>
+        </figure>
+        <div style="float: left; width: 300px; line-height: 30px">
+
+            <a href="pages/imim.html" style="text-decoration-line: none">
+                <h2 style="color: grey;">IMIM Industry & Innovation Day (Mannheim, Germany)</h2>
+            </a>
+            <p style="text-align: justify"> Poster presentation of my MSc thesis to IMIM students and pharmaceutical industry representatives. Bursary awarded.</p>
+        </div>
+
+        <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
+
+            <a href="./pages/amr.html" style="text-decoration-line: none">
+                <h2 style="color: grey;">AMR Hackathon 2018 (Heidelberg, Germany)</h2>
+            </a>
+            <p style="text-align: justify"> Selected to participate in a 3-day Antimicrobial Resistance Hackathon organized by EIT Health Germany. We were divided in teams of 6/7 elements that would proceed to an AMR
+                analysis of a different EU country. Bursary awarded.</p>
+        </div>
+
+        <figure style="float: right; margin-right: 3%">
+            <a href="./pages/amr.html">
+                <img src="./img/amr.png" width="310px" alt="AMR Hackathon">
+            </a>
+        </figure>
+
+    </div>
+
 </div>
 
 <div class="container2" style="background-color: black; height: 50px; margin: auto">
@@ -316,7 +353,7 @@
                 document.getElementById("center").style.backgroundColor = "black";
                 document.getElementById("right").style.backgroundColor = "black";
 
-                document.getElementById("left_div").style.display = "inline-block";
+                document.getElementById("left_div").style.display = "block";
                 document.getElementById("center_div").style.display = "none";
                 document.getElementById("right_div").style.display = "none";
 
@@ -332,7 +369,7 @@
                 document.getElementById("right").style.backgroundColor = "black";
 
                 document.getElementById("left_div").style.display = "none";
-                document.getElementById("center_div").style.display = "inline-block";
+                document.getElementById("center_div").style.display = "block";
                 document.getElementById("right_div").style.display = "none";
 
                 results('./benchmark_data/data_visualized/labelPropagation_vs_mix_vs_k.json',"svgggggg", "Label Propagation NMI x Mix Parameter");
@@ -348,9 +385,44 @@
 
                 document.getElementById("left_div").style.display = "none";
                 document.getElementById("center_div").style.display = "none";
-                document.getElementById("right_div").style.display = "inline-block";
+                document.getElementById("right_div").style.display = "block";
+                break;
 
+            case "left_eit":
 
+                document.getElementById("left_eit").style.backgroundColor = "white";
+                document.getElementById("center_eit").style.backgroundColor = "black";
+                document.getElementById("right_eit").style.backgroundColor = "black";
+
+                document.getElementById("left_div_eit").style.display = "block";
+                document.getElementById("center_div_eit").style.display = "none";
+                document.getElementById("right_div_eit").style.display = "none";
+
+                break;
+
+            case "center_eit":
+
+                document.getElementById("left_eit").style.backgroundColor = "black";
+                document.getElementById("center_eit").style.backgroundColor = "white";
+                document.getElementById("right_eit").style.backgroundColor = "black";
+
+                document.getElementById("left_div_eit").style.display = "none";
+                document.getElementById("center_div_eit").style.display = "block";
+                document.getElementById("right_div_eit").style.display = "none";
+
+                break;
+
+            case "right_eit":
+
+                document.getElementById("left_eit").style.backgroundColor = "black";
+                document.getElementById("center_eit").style.backgroundColor = "black";
+                document.getElementById("right_eit").style.backgroundColor = "white";
+
+                document.getElementById("left_div_eit").style.display = "none";
+                document.getElementById("center_div_eit").style.display = "block";
+                document.getElementById("right_div_eit").style.display = "none";
+
+                break;
 
         }
     }
@@ -599,6 +671,8 @@
         document.getElementById("file").style.display = "inline-block";
 
     });
+
+    change("left_eit");
 
 </script>
 
