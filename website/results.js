@@ -1,4 +1,3 @@
-
 function results(sheet, svg_input, title) {
 
     // Define margins, dimensions, and some line colors

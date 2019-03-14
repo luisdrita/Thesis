@@ -55,13 +55,13 @@
 
 </header>
 
-<div style="position: fixed; right: 0; top: 200px; width: 200px; height: 225px; background-color: black; opacity: 0.8; border-bottom-left-radius: 15px; border-top-left-radius: 15px; z-index: 1">
+<div style="position: fixed; right: 0; top: 200px; width: 200px; height: 200px; background-color: black; opacity: 0.8; border-bottom-left-radius: 15px; border-top-left-radius: 15px; z-index: 1">
     <div style="color: white; position: absolute; top: 5px; right: 15px;font-size: 25px; cursor: pointer" onclick="this.parentElement.style.display = 'none'">x</div>
     <h2 style="color: white; text-align: center; font-size: 22px;">Guide</h2>
     <ol style="color: white; line-height: 30px; font-size: 14px">
-        <li>Pick Network (Amazon)</li>
+        <li>Pick Network</li>
         <!-- (<a href="https://github.com/warcraft12321/Thesis/blob/master/uploads/Input.txt" style="color: #1d68ca; text-decoration: none" target="_blank" rel="noopener noreferrer">Format</a>)-->
-        <li>Choose View (D3.js (SVG))</li>
+        <li>Choose View</li>
         <li>Select Algorithm</li>
         <li>Run</li>
     </ol>
@@ -76,8 +76,8 @@
     </div>
 
     <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 25px; margin-bottom: 25px; border-style: solid; border-color: transparent; position: relative; text-align: center">
-        <input type="button" value="Reset" id='reset_btn'/>
-        <input type="button" value="Run" id='comm_detect'/>
+        <button id='reset_btn'>Reset</button>
+        <button id='comm_detect'>Run</button>
         <div class="dropdown" id = "dropdown">
             <button id = dropbtn class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
@@ -396,7 +396,7 @@
 
                 document.getElementById("left_div_eit").style.display = "block";
                 document.getElementById("center_div_eit").style.display = "none";
-                document.getElementById("right_div_eit").style.display = "none";
+                // document.getElementById("right_div_eit").style.display = "none";
 
                 break;
 
@@ -408,7 +408,7 @@
 
                 document.getElementById("left_div_eit").style.display = "none";
                 document.getElementById("center_div_eit").style.display = "block";
-                document.getElementById("right_div_eit").style.display = "none";
+                // document.getElementById("right_div_eit").style.display = "none";
 
                 break;
 
@@ -420,7 +420,7 @@
 
                 document.getElementById("left_div_eit").style.display = "none";
                 document.getElementById("center_div_eit").style.display = "block";
-                document.getElementById("right_div_eit").style.display = "none";
+                // document.getElementById("right_div_eit").style.display = "none";
 
                 break;
 
