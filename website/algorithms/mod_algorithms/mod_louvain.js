@@ -23,7 +23,8 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
     let original_graph_edges; // Defined in the core() of the algorithm.
     let original_graph = {}; // Defined in the core() of the algorithm.
     let partition_init; // Defined in the core() of the algorithm. May not be used (depending on the user input).
-    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. F
+    let edge_index = {}; // edge_index[edge.source+'_'+edge.target] = ... Attributes an index to each edge. This index
+    // is the position of the edge in the graph.edges array.
 
     // ----------------------------------------- Helpers -----------------------------------------
     function make_set(array) { // Receives an array with repeated values. Returns one filtered (and ordered) with only the different ones.
@@ -50,7 +51,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
     // false depending on the presence of such property in obj..
 
     function get_degree_for_node(graph, node) { // Node is a number ID. Graph is an object with 3 properties (nodes,
-        // edges and _assoc_mat)
+        // edges and _assoc_mat). _assoc_mat is an object, not an array!
         let neighbours = graph._assoc_mat[node] ? Object.keys(graph._assoc_mat[node]) : []; // In case we are looking
         // for a node not connected, it defines neighbours as an empty array.
         let weight = 0;
@@ -220,6 +221,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
 
     function __modularity(status) { // It is possible to calculate network's modularity only using graph.status.
         let links = status.total_weight; // Total weight of the graph's edges.
+   //     console.log(links);
         let result = 0.0;
         let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
 
@@ -230,11 +232,43 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
                 result = result + in_degree / links - Math.pow((degree / (2.0 * links)), 2);
             }
 
+        //    console.log(links);
+
         });
 
-        let modularity = 1/(2*links)
+        // mdl
 
-        console.log();
+        let nodes = make_set(Object.keys(status.nodes_to_com)); // Array with all the (non-repeated & ordered) node IDs present in the graph.
+
+        // 4 integrating parts of the map equation.
+        let mdl_a = 0;
+        let mdl_b = 0;
+        let mdl_c = 0;
+        let mdl_d = 0;
+
+        nodes.forEach(function (node) { // Iterating over each node in the network.
+            let gdegree = status.gdegrees[node] || 0;
+         //   console.log(gdegree);
+            if (links > 0) {
+                mdl_c = mdl_c + (gdegree / (2 * links)) * Math.log(gdegree / (2 * links));
+            }
+        });
+
+        communities.forEach(function (com) { // Iterating over each community in the network.
+            let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
+            let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
+
+            if (links > 0) {
+
+                mdl_b = mdl_b + ((degree - 2 * in_degree) / (2 * links)) * Math.log((degree - 2 * in_degree) / (2 * links));
+                mdl_a = mdl_a + (degree - 2 * in_degree) / (2 * links);
+                mdl_d = mdl_d + ((degree - 2 * in_degree) / (2 * links) + degree / (2 * links)) * Math.log((degree - 2 * in_degree) / (2 * links) + degree / (2 * links));
+
+            }
+
+        });
+
+            console.log(mdl_a * Math.log(mdl_a) - 2 * mdl_b - mdl_c + mdl_d);
 
         return result; // Modularity of a given partition (defined by status).
     }
@@ -404,6 +438,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
         init_status(current_graph, status); // Resetting status.
 
         while (true) { // Keeps partitioning the graph until no significant modularity increase occurs.
+            console.log();
             __one_level(current_graph, status);
             new_mod = __modularity(status);
             if (new_mod - mod < __MIN) {
@@ -416,8 +451,6 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
             mod = new_mod;
             current_graph = induced_graph(partition, current_graph);
             init_status(current_graph, status);
-
-            console.log();
         }
 
         return status_list; // Dendogram is a set of ordered partitions.

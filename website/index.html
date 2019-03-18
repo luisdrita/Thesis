@@ -107,6 +107,7 @@
                 <a id = "lfr" onclick="rename_aux2(this.id)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
                 <a id = "amazon" onclick="rename_aux2(this.id)" style="cursor: pointer">Amazon</a>
                 <a id = "karate" onclick="rename_aux2(this.id)" style="cursor: pointer">Zachary's Karate Club</a>
+                <a id = "staph" onclick="rename_aux2(this.id)" style="cursor: pointer">Staph</a>
             </div>
         </div>
 
@@ -304,16 +305,15 @@
 
         <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
 
-            <a href="./pages/amr.html" style="text-decoration-line: none">
-                <h2 style="color: grey;">AMR Hackathon 2018 (Heidelberg, Germany)</h2>
+            <a href="./pages/aeicbas.html" style="text-decoration-line: none">
+                <h2 style="color: grey;">VII AEICBAS Biomedical Congress (Porto, Portugal)</h2>
             </a>
-            <p style="text-align: justify"> Selected to participate in a 3-day Antimicrobial Resistance Hackathon organized by EIT Health Germany. We were divided in teams of 6/7 elements that would proceed to an AMR
-                analysis of a different EU country. Bursary awarded.</p>
+            <p style="text-align: justify"> Thesis was classified in the top 20, in the scientific competition, of the Biomedical Congress.</p>
         </div>
 
         <figure style="float: right; margin-right: 3%">
-            <a href="./pages/amr.html">
-                <img src="./img/amr.png" width="310px" alt="AMR Hackathon">
+            <a href="./pages/aeicbas.html">
+                <img src="./img/aeicbas.png" width="310px" alt="AMR Hackathon">
             </a>
         </figure>
 
@@ -476,6 +476,10 @@
 
             case "karate":
                 document.getElementById("dropbtn_network").innerText = "Karate";
+                break;
+
+            case "staph":
+                document.getElementById("dropbtn_network").innerText = "Staph";
         }
 
         switch (document.getElementById("dropbtn_interface").innerText) {
@@ -522,6 +526,10 @@
 
             case "Karate":
                 fetchy = "Karate";
+                break;
+
+            case "Staph":
+                fetchy = "Staph";
         }
 
         switch(id) {

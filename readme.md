@@ -95,9 +95,13 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [13/03/19] Started PHYLOViZ integration;
 
-[14/03/19] C++ code (Lancichinetti-Fortunato-Radicchi network generator) running in JavaScript. Credits to [emscripten](https://emscripten.org/); 
+[14/03/19] C++ code (Lancichinetti-Fortunato-Radicchi network generator) running in JavaScript. Credits to [emscripten](https://emscripten.org/);
 
-[Next] Thesis writing;
+[14/03/19 - 15/03/19] [VII AEICBAS Biomedical Congress](http://abc.aeicbasup.pt/) (Porto, Portugal). Master thesis was classified in the top 20 in the scientific competition. This contest aimed to gather the best theses in the biomedical field.
+
+[18/03/19] Staphylococcus analysis started;
+
+[Next] Thesis writing.
 
 ### Screenshot
 

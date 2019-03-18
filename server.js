@@ -7,6 +7,7 @@ const formidable = require('formidable');
 const infomap = require('./website/algorithms/mod_algorithms/mod_infomap');
 const louvain = require('./website/algorithms/mod_algorithms/mod_louvain');
 const layeredLabelPropagation = require('./website/algorithms/mod_algorithms/mod_layeredLabelPropagation');
+const hamming = require('./website/algorithms/hamming');
 
 // Importing benchmarking libraries.
 const girvan = require('./website/algorithms/benchmark/mod_girvan-newman');
@@ -22,7 +23,7 @@ app.use(express.static('website'));
 app.listen(process.env.PORT || 3000);
 
 // Initializing global variables.
-let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {}, karate_reset = {}, karate_cyto_reset = {};
+let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {}, karate_reset = {}, karate_cyto_reset = {}, phylo_reset;
 let community, node_data, node_data_lfr, obj, obj_cyto, obj_lfr_com, obj_lfr, obj_lfr_cyto, girvan_bench, girvan_bench_cyto, final_lfr_bench, lfr_bench = {}, lfr_bench_cyto = {};
 let str = "";
 let final_arr = [];
@@ -477,7 +478,14 @@ app.get('/reset/:alg/cytoscape/:cyto', function (req, res) {
 
             case "Karate":
 
+                console.log(karate_reset);
                 res.send(karate_reset);
+                break;
+
+            case "Staph":
+
+                console.log(phylo_reset);
+                res.send(phylo_reset);
         }
 
     } else {
@@ -524,6 +532,28 @@ app.post('/upload', function (req, res) {
     form.on('fileBegin', function (name, file) {
         file.path = __dirname + '/uploads/' + "Input2.txt"; // file.name substituted by Input.txt
     });
+
+});
+
+fs.readFile('./uploads/phylo2.tsv', 'utf8', function (err, data) {
+
+    if (err) throw err;
+
+    obj = [];
+    node_data = {};
+
+    let split = data.toString().split("\n");
+
+    for (let i = 1; i < split.length-1; i++) {
+        let splitLine = split[i].split("\t");
+      //  obj.push(splitLine);
+        obj[i-1] = [];
+        for (let j = 1; j < splitLine.length; j++) {
+            obj[i-1].push(Number(splitLine[j]));
+        }
+    }
+
+    phylo_reset = hamming.hammingVar(obj, 1);
 
 });
 
