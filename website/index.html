@@ -81,38 +81,38 @@
         <div class="dropdown" id = "dropdown">
             <button id = dropbtn class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
-                <a id = "louvain" onclick="rename(this.id)" style="cursor: pointer">Louvain</a>
-                <a id = "infomap" onclick="rename(this.id)" style="cursor: pointer">Infomap</a>
-                <a id = "llp" onclick="rename(this.id)" style="cursor: pointer">Layered Label Propagation</a>
+                <a id = "Louvain" onclick="rename(this.id)" style="cursor: pointer">Louvain</a>
+                <a id = "Infomap" onclick="rename(this.id)" style="cursor: pointer">Infomap</a>
+                <a id = "LLP" onclick="rename(this.id)" style="cursor: pointer">Layered Label Propagation</a>
             </div>
         </div>
 
         <div class="dropdown" id = "gamma" style="display: none;">
-            <div id = "range_label" style="display: inline-block">Resolution:</div> <input type="range" id = "gamma2" name="points" min="0" max="100" onmouseup="rename_aux()">
+            <div id = "range_label" style="display: inline-block">Resolution:</div> <input type="range" id = "gamma2" name="points" min="0" max="100" onmouseup="rename(document.getElementById('dropbtn').innerText);">
         </div>
 
         <div class="dropdown">
             <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center">Interface</button>
             <div id = "dropdown-content_interface" class="dropdown-content">
-                <a id = "svg" onclick="rename(this.id)" style="cursor: pointer">D3.js (SVG)</a>
-                <a id = "canvas" onclick="rename(this.id)" style="cursor: pointer">D3.js (Canvas)</a>
-                <a id = "cytoscape" onclick="rename(this.id)" style="cursor: pointer">Cytoscape</a>
+                <a id = "D3.js (SVG)" onclick="rename(this.id)" style="cursor: pointer">D3.js (SVG)</a>
+                <a id = "D3.js (Canvas)" onclick="rename(this.id)" style="cursor: pointer">D3.js (Canvas)</a>
+                <a id = "Cytoscape" onclick="rename(this.id)" style="cursor: pointer">Cytoscape</a>
             </div>
         </div>
 
         <div class="dropdown">
             <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center">Network</button>
             <div id = "dropdown-content_network" class="dropdown-content">
-                <a id = "gn" onclick="rename_aux2(this.id)" style="cursor: pointer">Girvan-Newman</a>
-                <a id = "lfr" onclick="rename_aux2(this.id)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
-                <a id = "amazon" onclick="rename_aux2(this.id)" style="cursor: pointer">Amazon</a>
-                <a id = "karate" onclick="rename_aux2(this.id)" style="cursor: pointer">Zachary's Karate Club</a>
-                <a id = "staph" onclick="rename_aux2(this.id)" style="cursor: pointer">Staph</a>
+                <a id = "GN" onclick="rename_aux2(this.id)" style="cursor: pointer">Girvan-Newman</a>
+                <a id = "LFR" onclick="rename_aux2(this.id)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
+                <a id = "Amazon" onclick="rename_aux2(this.id)" style="cursor: pointer">Amazon</a>
+                <a id = "Karate" onclick="rename_aux2(this.id)" style="cursor: pointer">Zachary's Karate Club</a>
+                <a id = "Staph" onclick="rename_aux2(this.id)" style="cursor: pointer">Staph</a>
             </div>
         </div>
 
         <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
-            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="makeSubmit();">
+            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText);">
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
         </form>
     </div>
@@ -386,6 +386,7 @@
                 document.getElementById("left_div").style.display = "none";
                 document.getElementById("center_div").style.display = "none";
                 document.getElementById("right_div").style.display = "block";
+
                 break;
 
             case "left_eit":
@@ -421,9 +422,6 @@
                 document.getElementById("left_div_eit").style.display = "none";
                 document.getElementById("center_div_eit").style.display = "block";
                 // document.getElementById("right_div_eit").style.display = "none";
-
-                break;
-
         }
     }
 
@@ -431,137 +429,50 @@
 
     let canvas, svg, cy;
 
-    function makeSubmit () {
-        document.getElementById("file").submit();
-
-        rename(document.getElementById("dropbtn_interface").innerText);
-    }
-
-    function rename_aux () {
-        switch (document.getElementById("dropbtn").innerText) {
-
-            case "Louvain":
-
-                rename("louvain");
-
-                break;
-
-            case "Infomap":
-
-                rename("infomap");
-
-                break;
-
-            case "LLP":
-
-                rename("llp");
-        }
-    }
-
     function rename_aux2 (network) {
 
-        switch (network) {
+        document.getElementById("dropbtn_network").innerText = network;
+        rename(document.getElementById("dropbtn_interface").innerText);
 
-            case "gn":
-                document.getElementById("dropbtn_network").innerText = "GN";
-                break;
-
-            case "lfr":
-                document.getElementById("dropbtn_network").innerText = "LFR";
-                break;
-
-            case "amazon":
-                document.getElementById("dropbtn_network").innerText = "Amazon";
-                break;
-
-            case "karate":
-                document.getElementById("dropbtn_network").innerText = "Karate";
-                break;
-
-            case "staph":
-                document.getElementById("dropbtn_network").innerText = "Staph";
-        }
-
-        switch (document.getElementById("dropbtn_interface").innerText) {
-
-            case "D3.js (SVG)":
-
-                rename("svg");
-
-                break;
-
-            case "D3.js (Canvas)":
-
-                rename("canvas");
-
-                break;
-
-            case "Cytoscape":
-
-                rename("cytoscape");
-        }
     }
 
-    rename('svg');
-    rename_aux2('amazon');
+    rename('D3.js (SVG)');
+    rename_aux2('Amazon');
 
     function rename(id) {
 
-        let network = document.getElementById("dropbtn_network").innerText;
-        let fetchy;
-
-        switch (network) {
-
-            case "GN":
-                fetchy = "GN";
-                break;
-
-            case "LFR":
-                fetchy = "LFR";
-                break;
-
-            case "Amazon":
-                fetchy = "Amazon";
-                break;
-
-            case "Karate":
-                fetchy = "Karate";
-                break;
-
-            case "Staph":
-                fetchy = "Staph";
-        }
+        let fetchy = document.getElementById("dropbtn_network").innerText;
 
         switch(id) {
 
-            case "louvain":
+            case "Louvain":
 
                 document.getElementById("dropbtn").innerText = "Louvain";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
                 document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
+                fetch("algorithm/" + "louvain" + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
-            case "infomap":
+            case "Infomap":
 
                 document.getElementById("dropbtn").innerText = "Infomap";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
                 document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
+                fetch("algorithm/" + "infomap" + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
-            case "llp":
+            case "LLP":
 
                 document.getElementById("dropbtn").innerText = "LLP";
                 document.getElementById("range_label").innerText = "Resolution:";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
+                fetch("algorithm/" + "llp" + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
                 break;
 
-            case 'svg':
+            case 'D3.js (SVG)':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (SVG)";
                 document.getElementById("dropbtn").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
@@ -584,7 +495,7 @@
 
                 break;
 
-            case 'canvas':
+            case 'D3.js (Canvas)':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (Canvas)";
                 document.getElementById("dropbtn").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
@@ -609,7 +520,7 @@
 
                 break;
 
-            case 'cytoscape':
+            case 'Cytoscape':
                 document.getElementById("dropbtn_interface").innerText = "Cytoscape";
                 document.getElementById("dropbtn").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
@@ -631,7 +542,7 @@
     }
 
     // Action on clicking in the Run button.
-    d3.select('#comm_detect').on('click', function(){
+    d3.select('#comm_detect').on('click', function() {
 
         if (document.getElementById("dropbtn").innerText !== "Algorithm") {
 
@@ -649,7 +560,6 @@
 
                     case "D3.js (SVG)":
 
-                        console.log(jsonData);
                         d3svgFunc(svg, jsonData);
 
                         break;
@@ -674,7 +584,7 @@
         document.getElementById("dropbtn").innerText = "Algorithm";
         document.getElementById("gamma").style.display = "none";
 
-        rename_aux2("");
+        rename_aux2(document.getElementById("dropbtn_network").innerText);
 
         document.getElementById("file").style.display = "inline-block";
 

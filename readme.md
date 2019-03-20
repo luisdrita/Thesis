@@ -101,6 +101,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [18/03/19] Staphylococcus analysis started;
 
+[20/03/19] Website performance strongly optimized. Credits to [Pingdom](https://tools.pingdom.com/#5a6636fb35400000);
+
 [Next] Thesis writing.
 
 ### Screenshot

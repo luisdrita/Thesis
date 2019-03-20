@@ -64,8 +64,6 @@ jHamming = function (profile, nlv) {
     result["nodes"] = nodes;
     result["links"] = edges;
 
-    console.log(edges);
-
     return result;
 
 };
