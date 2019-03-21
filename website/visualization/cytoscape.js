@@ -67,19 +67,19 @@ function cytoscapeFunc(data) {
         animate: true,
 
         // Easing of the animation for animate:'end'
-        animationEasing: undefined,
+    /*    animationEasing: undefined, */ // Before: Not commented.
 
         // The duration of the animation for animate:'end'
-        animationDuration: undefined,
+    /*    animationDuration: undefined, */ // Before: Not commented.
 
         // A function that determines whether the node should be animated
         // All nodes animated by default on animate enabled
         // Non-animated nodes are positioned immediately when the layout starts
-        animateFilter: function ( node, i ){ return true; },
+    /*    animateFilter: function ( node, i ){ return true; }, */ // Before: Not commented.
 
         // The layout animates only after this many milliseconds for animate:true
         // (prevents flashing on fast runs)
-        animationThreshold: 250,
+    /*    animationThreshold: 250, */ // Before: Not commented.
 
         // Number of iterations between consecutive screen positions update
         refresh: 20,
@@ -121,7 +121,7 @@ function cytoscapeFunc(data) {
         gravity: 0.5,
 
         // Maximum number of iterations to perform
-        numIter: 1000,
+        numIter: 500, // Before: 1000
 
         // Initial temperature (maximum node displacement)
         initialTemp: 1000,

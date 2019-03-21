@@ -211,7 +211,7 @@
     <div style="margin: auto;">
         <figure style="float: left; margin-left: 5%">
             <a href="https://online.phyloviz.net/index" target="_blank" rel="noopener noreferrer">
-                <img src="./img/phyloviz.png" width="200px" alt="PHYLOViZ">
+                <img src="./img/phyloviz.png" width="200" alt="PHYLOViZ">
             </a>
         </figure>
         <div style="float: left; width: 300px; line-height: 30px">
@@ -241,7 +241,7 @@
 
         <figure style="float: right; margin-right: 3%">
             <a href="https://insaflu.insa.pt/" target="_blank" rel="noopener noreferrer">
-                <img src="./img/logo_insaflu_new.png" width="300px" alt="INSaFLU">
+                <img src="./img/logo_insaflu_new.png" width="300" alt="INSaFLU">
             </a>
         </figure>
     </div>
@@ -255,10 +255,10 @@
         <div id = "right_eit" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
     </div>
 
-    <div id = "left_div_eit" style="margin: auto;">
+    <div id = "left_eit_div" style="margin: auto;">
         <figure style="float: left;">
             <a href="pages/mtih.html">
-                <img src="./img/mtih.jpg" width="300px" alt="MTiH">
+                <img src="./img/mtih.jpg" width="300" alt="MTiH">
             </a>
         </figure>
         <div style="float: left; width: 300px; line-height: 30px">
@@ -283,16 +283,16 @@
 
         <figure style="float: right; margin-right: 3%">
             <a href="./pages/amr.html">
-                <img src="./img/amr.png" width="310px" alt="AMR Hackathon">
+                <img src="./img/amr.png" width="310" alt="AMR Hackathon">
             </a>
         </figure>
 
     </div>
 
-    <div id = "center_div_eit" style="margin: auto; display: none;">
+    <div id = "center_eit_div" style="margin: auto; display: none;">
         <figure style="float: left;">
             <a href="pages/imim.html">
-                <img src="./img/imim.jpg" width="300px" alt="MTiH">
+                <img src="./img/imim.jpg" width="300" alt="MTiH">
             </a>
         </figure>
         <div style="float: left; width: 300px; line-height: 30px">
@@ -313,7 +313,37 @@
 
         <figure style="float: right; margin-right: 3%">
             <a href="./pages/aeicbas.html">
-                <img src="./img/aeicbas.png" width="310px" alt="AMR Hackathon">
+                <img src="./img/aeicbas.png" width="310" alt="AMR Hackathon">
+            </a>
+        </figure>
+
+    </div>
+
+    <div id = "right_eit_div" style="margin: auto; display: none;">
+        <figure style="float: left;">
+            <a href="pages/imim.html">
+                <img src="./img/imim.jpg" width="300" alt="MTiH">
+            </a>
+        </figure>
+        <div style="float: left; width: 300px; line-height: 30px">
+
+            <a href="pages/imim.html" style="text-decoration-line: none">
+                <h2 style="color: grey;">IMIM Industry & Innovation Day (Mannheim, Germany)</h2>
+            </a>
+            <p style="text-align: justify"> Poster presentation of my MSc thesis to IMIM students and pharmaceutical industry representatives. Bursary awarded.</p>
+        </div>
+
+        <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
+
+            <a href="./pages/aeicbas.html" style="text-decoration-line: none">
+                <h2 style="color: grey;">VII AEICBAS Biomedical Congress (Porto, Portugal)</h2>
+            </a>
+            <p style="text-align: justify"> Thesis was classified in the top 20, in the scientific competition, of the Biomedical Congress.</p>
+        </div>
+
+        <figure style="float: right; margin-right: 3%">
+            <a href="./pages/aeicbas.html">
+                <img src="./img/aeicbas.png" width="310" alt="AMR Hackathon">
             </a>
         </figure>
 
@@ -345,17 +375,34 @@
 
     function change (id) {
 
+        if (id === "left" || id === "center" || id === "right") {
+
+            document.getElementById("left").style.backgroundColor = "black";
+            document.getElementById("center").style.backgroundColor = "black";
+            document.getElementById("right").style.backgroundColor = "black";
+
+            document.getElementById("left_div").style.display = "none";
+            document.getElementById("center_div").style.display = "none";
+            document.getElementById("right_div").style.display = "none";
+
+        } else {
+
+            document.getElementById("left_eit").style.backgroundColor = "black";
+            document.getElementById("center_eit").style.backgroundColor = "black";
+            document.getElementById("right_eit").style.backgroundColor = "black";
+
+            document.getElementById("left_eit_div").style.display = "none";
+            document.getElementById("center_eit_div").style.display = "none";
+            document.getElementById("right_eit_div").style.display = "none";
+
+        }
+
+        document.getElementById(id).style.backgroundColor = "white";
+        document.getElementById(id + "_div").style.display = "block";
+
         switch (id) {
 
             case "left":
-
-                document.getElementById("left").style.backgroundColor = "white";
-                document.getElementById("center").style.backgroundColor = "black";
-                document.getElementById("right").style.backgroundColor = "black";
-
-                document.getElementById("left_div").style.display = "block";
-                document.getElementById("center_div").style.display = "none";
-                document.getElementById("right_div").style.display = "none";
 
                 results('./benchmark_data/data_visualized/nmi_mix.json',"svgg", "NMI x Mix Parameter");
                 results('./benchmark_data/data_visualized/nmi_gamma.json',"svgggg", "NMI Layered Label Propagation x Gamma Parameter");
@@ -364,68 +411,17 @@
 
             case "center":
 
-                document.getElementById("left").style.backgroundColor = "black";
-                document.getElementById("center").style.backgroundColor = "white";
-                document.getElementById("right").style.backgroundColor = "black";
-
-                document.getElementById("left_div").style.display = "none";
-                document.getElementById("center_div").style.display = "block";
-                document.getElementById("right_div").style.display = "none";
-
                 results('./benchmark_data/data_visualized/labelPropagation_vs_mix_vs_k.json',"svgggggg", "Label Propagation NMI x Mix Parameter");
                 results('./benchmark_data/data_visualized/louvain_vs_mix_vs_k.json',"svggggggg", "Louvain NMI x Mix Parameter");
 
                 break;
 
             case "right":
-
-                document.getElementById("left").style.backgroundColor = "black";
-                document.getElementById("center").style.backgroundColor = "black";
-                document.getElementById("right").style.backgroundColor = "white";
-
-                document.getElementById("left_div").style.display = "none";
-                document.getElementById("center_div").style.display = "none";
-                document.getElementById("right_div").style.display = "block";
-
-                break;
-
-            case "left_eit":
-
-                document.getElementById("left_eit").style.backgroundColor = "white";
-                document.getElementById("center_eit").style.backgroundColor = "black";
-                document.getElementById("right_eit").style.backgroundColor = "black";
-
-                document.getElementById("left_div_eit").style.display = "block";
-                document.getElementById("center_div_eit").style.display = "none";
-                // document.getElementById("right_div_eit").style.display = "none";
-
-                break;
-
-            case "center_eit":
-
-                document.getElementById("left_eit").style.backgroundColor = "black";
-                document.getElementById("center_eit").style.backgroundColor = "white";
-                document.getElementById("right_eit").style.backgroundColor = "black";
-
-                document.getElementById("left_div_eit").style.display = "none";
-                document.getElementById("center_div_eit").style.display = "block";
-                // document.getElementById("right_div_eit").style.display = "none";
-
-                break;
-
-            case "right_eit":
-
-                document.getElementById("left_eit").style.backgroundColor = "black";
-                document.getElementById("center_eit").style.backgroundColor = "black";
-                document.getElementById("right_eit").style.backgroundColor = "white";
-
-                document.getElementById("left_div_eit").style.display = "none";
-                document.getElementById("center_div_eit").style.display = "block";
-                // document.getElementById("right_div_eit").style.display = "none";
         }
     }
 
-    change("left");
+    results('./benchmark_data/data_visualized/nmi_mix.json',"svgg", "NMI x Mix Parameter");
+    results('./benchmark_data/data_visualized/nmi_gamma.json',"svgggg", "NMI Layered Label Propagation x Gamma Parameter");
 
     let canvas, svg, cy;
 
@@ -504,9 +500,7 @@
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
-                canvas = d3.select('#graphDiv').append('canvas')
-                    .attr('width', 600 + 'px')
-                    .attr('height', 600 + 'px').node();
+                canvas = d3.select('#graphDiv').append('canvas').attr('width', 600 + 'px').attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
                 fetch("reset/" + fetchy + "/cytoscape/" + false).then(function(res) {
@@ -589,8 +583,6 @@
         document.getElementById("file").style.display = "inline-block";
 
     });
-
-    change("left_eit");
 
 </script>
 

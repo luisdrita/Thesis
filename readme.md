@@ -103,6 +103,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [20/03/19] Website performance strongly optimized. Credits to [Pingdom](https://tools.pingdom.com/#5a6636fb35400000);
 
+[21/03/19] Website performance optimized. Phylogenetic data analysis almost concluded;
+
 [Next] Thesis writing.
 
 ### Screenshot
