@@ -4,11 +4,11 @@
   "dependencies": {
     "express": "^4.16.4",
     "formidable": "latest",
-    "fs": "0.0.1-security",
+    "fs": "0.0.2",
     "html2canvas": "^1.0.0-alpha.12",
-    "npm": "^6.7.0",
-    "pug": "^2.0.3",
-    "require-emscripten": "^2.4.1"
+    "node-cmd": "^3.0.0",
+    "npm": "^6.9.0",
+    "npm-check-updates": "^3.1.1"
   },
   "engines": {
     "node": "9.8.0"
@@ -24,7 +24,7 @@
     "url": "git+https://github.com/warcraft12321/Thesis.git"
   },
   "author": "Luís Rita <luis20dr@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/warcraft12321/Thesis/issues"
   },

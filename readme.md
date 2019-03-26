@@ -105,6 +105,8 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [21/03/19] Website performance optimized. Phylogenetic data analysis almost concluded;
 
+[25/03/19] Phylogenetic data analysis improved. Results visualization working as intended;
+
 [Next] Thesis writing.
 
 ### Screenshot

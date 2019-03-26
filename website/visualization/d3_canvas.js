@@ -13,8 +13,8 @@ function d3canvasFunc(tempData){
 
     let simulation = d3.forceSimulation()
         .force("center", d3.forceCenter(graphWidth / 2, height / 2))
-        .force("x", d3.forceX(graphWidth / 2).strength(0.1))
-        .force("y", d3.forceY(height / 2).strength(0.1))
+        .force("x", d3.forceX(graphWidth / 2).strength(0.2))
+        .force("y", d3.forceY(height / 2).strength(0.2))
         .force("charge", d3.forceManyBody().strength(-70))
         .force("link", d3.forceLink().strength(1).id(function (d) {
             return d.id;
@@ -23,7 +23,6 @@ function d3canvasFunc(tempData){
         .alphaDecay(0.05);
 
     let transform = d3.zoomIdentity;
-
 
     function zoomed() {
         transform = d3.event.transform;

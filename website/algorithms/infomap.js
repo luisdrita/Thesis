@@ -5,12 +5,12 @@
 // This time, instead of maximizing network's modularity, the goal is to find the minimum description length of the network. To calculate
 // this quantity, map equation was used.
 
-jInfomap = function () { // A function expression can be stored in a variable. After it has been
+jInfomap_mod = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
     //Constants
-    let __MIN = 0.0000001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
+    //let __MIN = 0.0000001; // Below this difference of minimum description lengths, generate_dendogram() stops. And a tree is returned to the user.
 
     // Global Variables
     let original_graph_nodes; // Defined in the core() of the algorithm.
@@ -27,7 +27,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         });
 
         return Object.keys(set); // Object.keys receives an array or an object. It returns an array with the respective
-        // array's positions or keys, respectively. Moreover, it eliminates repeated values (present in array) in the final set.
+        // array's position or keys, respectively. Moreover, it eliminates repeated values (present in array) in the final set.
     }
     // Set -> {1: true, 2: true, 3: true...} Returns an ARRAY of the keys (each key corresponds to a node).
 
@@ -52,7 +52,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
             let value = graph._assoc_mat[node][neighbour] || 1;
             if (node === neighbour) { // In case we have already performed 1 community aggregation step, Infomap
                 // algorithm does not not consider self-loops during execution.
-                value = 0;
+                value *= 2; // DIFFERENT!!!!
             }
             weight += value;
         });
@@ -80,7 +80,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     function get_graph_size(graph) {
         let size = 0;
         graph.edges.forEach(function (edge) {
-            size += (edge.weight || 1);
+            size += edge.weight; // SHOULD NOT BE NECESSARY!!!
         });
 
         return size;
@@ -161,6 +161,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         status['internals'] = {}; // Sum of the weights of all links inside a specified community.
         status['degrees'] = {}; // Sum of the weights of the links incident in each community.
         status['gdegrees'] = {}; // Sum of the weights of the links incident in each node.
+        status['loops'] = {}; // Loop weight for each node.
         status['total_weight'] = get_graph_size(graph); //  Sum of the property "weight" of all edges present in graph.
 
         // Goal of next if condition is to update the status features above.
@@ -176,7 +177,8 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                 status.gdegrees[node] = deg; // Sum of the weights of the links incident in each node.
                 // When every node is part of a different community, degrees = gdegrees.
 
-                status.internals[i] = 0; // After community aggregation step (and at the beginning of infomap algorithm execution), community internals are set to 0.
+                status.loops[node] = get_edge_weight(graph, node, node) || 0; // Inner loop edge weight.
+                status.internals[i] = status.loops[node]; // After community aggregation step (and at the beginning of infomap algorithm execution), community internals are set to 0.
                 // Variable "i" is used for community assignments and "node" for node specific variables.
             });
         } else { // In case there is a partition as function argument.
@@ -200,7 +202,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                     if (part[neighbour] === com) { // Following calculations are done only if the neighbour belongs to
                         // the same community as the input node under analysis.
                         if (neighbour === node) {
-                            inc = 0;
+                            inc += weight;
                         } else {
                             inc += weight / 2.0; // Next time, neighbor will be the node and vice-versa.
                         }
@@ -213,7 +215,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
     }
 
-    function __mdl(status) { // Minimum description length calculation. It is only needed status values to perform it.
+    function __mdl222(status) { // Minimum description length calculation. It is only needed status values to perform it.
         let links = status.total_weight; // Total weight of the graph's edges.
         let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
 
@@ -227,8 +229,11 @@ jInfomap = function () { // A function expression can be stored in a variable. A
 
         nodes.forEach(function (node) { // Iterating over each node in the network.
             let gdegree = status.gdegrees[node] || 0;
-            if (links !== 0) {
-                mdl_c = mdl_c + (gdegree/(2*links))*Math.log(gdegree/(2*links));
+
+            if (links > 0) {
+
+                mdl_c = mdl_c + ((gdegree) / (2 * links)) * Math.log((gdegree) / (2 * links));
+
             }
 
         });
@@ -236,15 +241,40 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         communities.forEach(function (com) { // Iterating over each community in the network.
             let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
             let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
-            if (links !== 0) {
-                mdl_b = mdl_b + ((degree - 2*in_degree)/(2*links))*Math.log((degree - 2*in_degree)/(2*links));
-                mdl_a = mdl_a + (degree - 2*in_degree)/(2*links);
-                mdl_d = mdl_d + ((degree - 2*in_degree)/(2*links) + degree/(2*links))*Math.log((degree - 2*in_degree)/(2*links) + degree/(2*links));
+
+            if (links > 0) {
+
+                mdl_b = mdl_b + ((degree - 2 * in_degree) / (2 * links)) * Math.log((degree - 2 * in_degree) / (2 * links));
+                mdl_a = mdl_a + (degree - 2 * in_degree) / (2 * links);
+                mdl_d = mdl_d + ((degree - 2 * in_degree) / (2 * links) + degree / (2 * links)) * Math.log((degree - 2 * in_degree) / (2 * links) + degree / (2 * links));
+
             }
 
         });
 
+        console.log(mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d);
+
         return mdl_a*Math.log(mdl_a) - 2*mdl_b - mdl_c + mdl_d; // Minimum description length of a given partition (defined by status).
+
+    }
+
+    function __mdl22(status) { // Minimum description length calculation. It is only needed status values to perform it.
+        let links = status.total_weight; // Total weight of the graph's edges.
+        let result = 0.0;
+        let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
+
+        communities.forEach(function (com) { // Iterating over all different communities.
+            let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
+            let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
+            if (links > 0) {
+                result = result + in_degree / links - Math.pow((degree / (2.0 * links)), 2);
+            }
+
+        });
+
+        console.log(result);
+
+        return result; // Modularity of a given partition (defined by status).
 
     }
 
@@ -290,8 +320,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
     function __one_level(graph, status) { // Computes one level of the communities dendogram (without community aggregation).
 
         let modif = true; // Modifications made in terms of community members.
-
-        let cur_mdl = __mdl(status); // Current description length.
+        let cur_mdl = __mdl22(status); // Current description length.
         let new_mdl = cur_mdl; // New description length.
 
         while (modif) { // This cycle is not the one that removes or inserts nodes.
@@ -306,47 +335,48 @@ jInfomap = function () { // A function expression can be stored in a variable. A
                 let neigh_communities = __neighcom(node, graph, status); // Returning an array of the communities in the neighborhood of input node.
                  // function __remove(node, com, weight, status) {}. Status (which
                 // includes nodes_to_com) is updated (inside __remove).
+             //   let best_increase = __mdl22(status);
 
                 status.degrees[com_node] = (status.degrees[com_node] || 0) - (status.gdegrees[node] || 0);
-                status.internals[com_node] = (status.internals[com_node] || 0) - (neigh_communities[com_node] || 0);
+                status.internals[com_node] = (status.internals[com_node] || 0) - (neigh_communities[com_node] || 0) - (status.loops[node] || 0);
                 status.nodes_to_com[node] = -1; // Updating node community.
 
                 let best_com = com_node;
-                let best_increase = 0;
+                 let best_increase = 0;
                 let neigh_communities_entries = Object.keys(neigh_communities); // Make iterable;
                 // Checking whether description length increased by inserting removed node in each neighbor community (once at a time).
 
                 neigh_communities_entries.forEach(function (com) {
                     status.nodes_to_com[node] = +com; // Updating node community.
                     status.degrees[com] = (status.degrees[com] || 0) + (status.gdegrees[node] || 0); // Updating the sum of the edges incident in community c.
-                    status.internals[com] = (status.internals[com] || 0) + (neigh_communities[com] || 0); // Updating the sum of internal edges.
-                    let incr = __mdl(status); // DeltaQ - Fundamental equation. This way,
+                    status.internals[com] = (status.internals[com] || 0) + (neigh_communities[com] || 0) + (status.loops[node] || 0); // Updating the sum of internal edges.
+                    let incr = __mdl22(status); // DeltaQ - Fundamental equation. This way,
                     // it is only needed to calculate those 2 community specific values.
 
-                    if (Math.abs(incr) > Math.abs(best_increase)) { // Only the placement of the node in the community with higher increase will remain.
+                    if (incr > best_increase) { // Only the placement of the node in the community with higher increase will remain.
                         best_increase = incr;
                         best_com = com; // Identifying the community
                         // the node fits the best.
                     }
 
                     status.degrees[com] = ((status.degrees[com] || 0) - (status.gdegrees[node] || 0));
-                    status.internals[com] = ((status.internals[com] || 0) - (neigh_communities[com] || 0));
+                    status.internals[com] = (status.internals[com] || 0) - (neigh_communities[com] || 0) - (status.loops[node] || 0);
                     status.nodes_to_com[node] = -1;
 
                 });
 
                 status.nodes_to_com[node] = +best_com;
                 status.degrees[best_com] = (status.degrees[best_com] || 0) + (status.gdegrees[node] || 0);
-                status.internals[best_com] = (status.internals[best_com] || 0) + (neigh_communities[best_com] || 0);
+                status.internals[best_com] = (status.internals[best_com] || 0) + (neigh_communities[best_com] || 0) + (status.loops[node] || 0);
 
-                if (best_com !== com_node || isNaN(new_mdl)) {
+                if (best_com !== com_node) {
                     modif = true; // Only in this situation the algorithm will keep looking for new ways of
                     // minimizing MAP equation.
                 }
             });
-            new_mdl = __mdl(status);
+            new_mdl = __mdl22(status);
 
-            if (new_mdl - cur_mdl < __MIN || isNaN(new_mdl)) { // Even if best_com !== com_node, if new_mdl - cur_mdl < __MIN
+            if (new_mdl - cur_mdl < 0.00000001) { // Even if best_com !== com_node, if new_mdl - cur_mdl < __MIN
                 // cycle is broken.
                 break;
             }
@@ -406,7 +436,7 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         let mdl; // Description length before 1 level partition.
         let status_list = []; // Set of partitions: dendogram.
         __one_level(original_graph, status); // Computes 1 level of the communities dendogram. Current status to determine when to stop.
-        let new_mdl = __mdl(status); // Description length after 1 level partition.
+        let new_mdl = __mdl22(status); // Description length after 1 level partition.
         let partition = __renumber(status.nodes_to_com); // Decreasing number of communities due to __one_level.
         status_list.push(partition);
         mdl = new_mdl;
@@ -414,10 +444,10 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         // after 1st pass. Community aggregation.
         init_status(current_graph, status); // Resetting status.
 
-        while (isNaN(__mdl(status)) === false) { // Keeps partitioning the graph while minimum description length remains real.
+        while (true) { // Keeps partitioning the graph while minimum description length remains real.
             __one_level(current_graph, status);
-            new_mdl = __mdl(status);
-            if (new_mdl - mdl < __MIN) {
+            new_mdl = __mdl22(status);
+            if (new_mdl - mdl < 0.00000001) {
                 break;
             }
 
@@ -432,45 +462,24 @@ jInfomap = function () { // A function expression can be stored in a variable. A
         return status_list; // Dendogram is a set of ordered partitions.
     }
 
-    let core = function () {
-        let dendogram = generate_dendogram(original_graph, partition_init); // Global variables.
+    if (nds.length > 0) {
+        original_graph_nodes = nds; // Global variable.
+        original_graph_edges = edgs; // Global variable.
 
-        return partition_at_level(dendogram, dendogram.length - 1);
-    };
+        let assoc_mat = make_assoc_mat(edgs);
+        original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) properties.
+            'nodes': original_graph_nodes,
+            'edges': original_graph_edges,
+            '_assoc_mat': assoc_mat
+        };
+    }
 
-    core.nodes = function (nds) { // nds are the input nodes from the network under analysis.
-        if (nds.length > 0) {
-            original_graph_nodes = nds; // Global variable.
-        }
-
-        return core;
-    };
-
-    core.edges = function (edgs) { // edgs are the input edges coming from the network under analysis.
-        if (typeof original_graph_nodes === 'undefined')
-            throw 'Please provide the graph nodes first!';
-
-        if (edgs.length > 0) {
-            original_graph_edges = edgs; // Global variable.
-            let assoc_mat = make_assoc_mat(edgs);
-            original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) properties.
-                'nodes': original_graph_nodes,
-                'edges': original_graph_edges,
-                '_assoc_mat': assoc_mat
-            };
-        }
-
-        return core;
-
-    };
-
-    core.partition_init = function (prttn) { // Initial partition input coming from the network under analysis (optional).
-        if (prttn.length > 0) {
-            partition_init = prttn; // Global variable.
-        }
-        return core;
-    };
+    let dendogram = generate_dendogram(original_graph, partition_init); // Global variables.
 
     // Output of Infomap algorithm.
-    return core;
+    return partition_at_level(dendogram, dendogram.length - 1);
+};
+
+module.exports = {
+    infomapVar: jInfomap_mod
 };

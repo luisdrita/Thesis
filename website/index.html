@@ -11,7 +11,6 @@
     <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <link href='./style/d3v4-selectable-zoomable-force-directed-graph.css'>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='./style/index.css' rel="stylesheet">
 
@@ -167,17 +166,9 @@
 
     <div id = "left_div" style="display: inline-block;">
 
-    <svg id = "svgg" width='750' height='450' style="float: left;"></svg>
-
-    <svg id = "svgggg" width='750' height='450' style="float: right;"></svg>
-
     </div>
 
     <div id = "center_div" style="display: none;">
-
-        <svg id = "svgggggg" width='750' height='450' style="float: left;"></svg>
-
-        <svg id = "svggggggg" width='750' height='450' style="float: right;"></svg>
 
     </div>
 
@@ -185,25 +176,20 @@
 
         <figure style="float: left;">
             <img src="img/karate.png" width='350' alt="Zachary's Karate Club Benchmark Network">
-            <figcaption style="text-align: center; margin-top: 25px;">Zachary's Karate Club Network</figcaption>
+            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Zachary's Karate Club Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 125px;">
             <img src="img/gn.png" width='400' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
-            <figcaption style="text-align: center; margin-top: 25px;">Girvan Newman Benchmark Network</figcaption>
+            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Girvan Newman Benchmark Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 50px;">
             <img src="img/lfr.png" width='400' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
-            <figcaption style="text-align: center; margin-top: 25px;">Lancichinetti-Fortunato-Radicchi Benchmark Network</figcaption>
+            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Lancichinetti-Fortunato-Radicchi Benchmark Network</figcaption>
         </figure>
 
     </div>
-
-    <!--   <div id='tooltip' style='position:absolute; border-style: solid; padding:5px;'></div> -->
-
- <!--   <div style="float: right; width: 500px; margin-right: 150px; margin-top: 150px; line-height: 30px">The optimal gamma parameter, in Layered Label Propagation algorithm, varies widely accordingly to network properties. Girvan-Newman benchmark network was used with different mixing parameters.</div> -->
-
 </div>
 
 <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px;">
@@ -368,8 +354,8 @@
 
 </body>
 
-<script src="results.js"></script>
-<script src="infinite_scrolling.js"></script>
+<script src="./visualization/results.js"></script>
+<script src="./visualization/infinite_scrolling.js"></script>
 
 <script>
 
@@ -399,29 +385,12 @@
 
         document.getElementById(id).style.backgroundColor = "white";
         document.getElementById(id + "_div").style.display = "block";
-
-        switch (id) {
-
-            case "left":
-
-                results('./benchmark_data/data_visualized/nmi_mix.json',"svgg", "NMI x Mix Parameter");
-                results('./benchmark_data/data_visualized/nmi_gamma.json',"svgggg", "NMI Layered Label Propagation x Gamma Parameter");
-
-                break;
-
-            case "center":
-
-                results('./benchmark_data/data_visualized/labelPropagation_vs_mix_vs_k.json',"svgggggg", "Label Propagation NMI x Mix Parameter");
-                results('./benchmark_data/data_visualized/louvain_vs_mix_vs_k.json',"svggggggg", "Louvain NMI x Mix Parameter");
-
-                break;
-
-            case "right":
-        }
     }
 
-    results('./benchmark_data/data_visualized/nmi_mix.json',"svgg", "NMI x Mix Parameter");
-    results('./benchmark_data/data_visualized/nmi_gamma.json',"svgggg", "NMI Layered Label Propagation x Gamma Parameter");
+    results('./benchmark_data/data_visualized/csv/nmi_mix.csv',"svg1", "NMI x Mix Parameter", "#left_div");
+    results('./benchmark_data/data_visualized/csv/nmi_gamma.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div");
+    results('./benchmark_data/data_visualized/csv/labelPropagation_vs_mix_vs_k.csv',"svg3", "Label Propagation NMI x Mix Parameter", "#center_div");
+    results('./benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv',"svg4", "Louvain NMI x Mix Parameter", "#center_div");
 
     let canvas, svg, cy;
 

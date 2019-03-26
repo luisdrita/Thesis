@@ -1,25 +1,24 @@
+// ---------------------------------------------- Global Variables ----------------------------------------------
+
 // Importing general libraries.
 const fs = require('fs');
 const express = require('express');
 const formidable = require('formidable');
-
-//let requireEmscripten = require('require-emscripten');
-//let counter = requireEmscripten(__dirname + '/node_modules/require-emscripten/example/test.c')._foo;
-//__dirname + '/emsdk/emscripten/1.38.28/tests/lancichinetti-fortunato-radicchi/Sources/benchm.c'
+const cmd = require('node-cmd');
 
 // Importing community finding libraries.
-const infomap = require('./website/algorithms/mod_algorithms/mod_infomap');
-const louvain = require('./website/algorithms/mod_algorithms/mod_louvain');
-const layeredLabelPropagation = require('./website/algorithms/mod_algorithms/mod_layeredLabelPropagation');
+const infomap = require('./website/algorithms/infomap');
+const louvain = require('./website/algorithms/louvain');
+const layeredLabelPropagation = require('./website/algorithms/layeredLabelPropagation');
 const hamming = require('./website/algorithms/hamming');
 
 // Importing benchmarking libraries.
-const girvan = require('./website/algorithms/benchmark/mod_girvan-newman');
+const girvan = require('./website/algorithms/girvan-newman');
 // const lfr = require('./website/algorithms/benchmark/lancichinetti-fortunato-radicchi');
 
 // Importing Zachary's karate club network. Supporting Cytoscape.js and D3.js representation.
-const karate_reset = require('./website/algorithms/benchmark/karate_club.json');
-const karate_cyto_reset = require('./website/algorithms/benchmark/karate_club_cyto.json');
+const karate_reset = require('./uploads/karate_club.json');
+const karate_cyto_reset = require('./uploads/karate_club_cyto.json');
 
 const app = express();
 
@@ -30,6 +29,7 @@ app.listen(process.env.PORT || 3000);
 let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {}, phylo_reset = {}, phylo_cyto_reset = {};
 let node_data_lfr, obj_lfr_com, obj_lfr, obj_lfr_cyto, girvan_bench = {}, girvan_bench_cyto = {}, lfr_bench = {}, lfr_bench_cyto = {};
 let str = "";
+let length_var;
 //let final_arr = [];
 let executed = false;
 
@@ -45,6 +45,19 @@ function searchy(value, array_input) {
             result = true;
             break;
         }
+
+    }
+
+    return result
+}
+
+function nodeDetection(nodes_obj) {
+
+    let result = [];
+
+    for (let i = 0; i < nodes_obj.length; i++) {
+
+            result.push(nodes_obj[i].id)
 
     }
 
@@ -79,6 +92,7 @@ function arrayToString(multi_array) {
 function printMeta(obj) {
 
     let str = "";
+    let new_obj = {};
 
     let keys = Object.keys(obj);
     let values = Object.values(obj);
@@ -88,26 +102,43 @@ function printMeta(obj) {
         str += ("Community");
         str += "\n";
 
+    for (let i = 1; i < length_var; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
+
+            new_obj[i.toString()] = length_var;
+
+    }
+
+    for (let i = 0; i < keys.length; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
+
+            new_obj[keys[i]] = values[i];
+
+    }
+
+    keys = Object.keys(new_obj);
+    values = Object.values(new_obj);
+
     for (let j = 0; j < keys.length; j++) {
 
         for (let i = 0; i < 2; i++) {
 
             if (i === 0) {
                 str += keys[j];
+                str += "\t";
             } else {
                 str += values[j];
             }
 
-            str += "\t";
+            }
+
+        if(j !== keys.length-1) {
+            str += "\n";
+        }
 
         }
 
-        str += "\n";
+return str;
 
     }
-
-    return str;
-}
 
 function consensusArray(multi_array) {
 
@@ -175,7 +206,17 @@ function readFile(type, gamma_var, cyto, fet) {
 
     if(!executed) {
 
-        fs.readFile('./website/algorithms/benchmark/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data) {
+        let a = 15;
+        let b = 1000;
+
+        cmd.run(
+            `
+            cd ./website/algorithms/lancichinetti-fortunato-radicchi
+            ./benchmark -N ${b} -k ${a} -maxk 50 -mu 0.1 -minc 20 -maxc 50
+        `
+        );
+
+        fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data) {
 
             if (err) throw err;
 
@@ -197,7 +238,7 @@ function readFile(type, gamma_var, cyto, fet) {
 
         });
 
-        fs.readFile('./website/algorithms/benchmark/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data) {
+        fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data) {
 
             if (err) throw err;
 
@@ -221,7 +262,7 @@ function readFile(type, gamma_var, cyto, fet) {
         executed = true;
     }
 
-            fs.readFile('./uploads/Input.txt', 'utf8', function (err, data) {
+            fs.readFile('./uploads/amazon.txt', 'utf8', function (err, data) {
 
                 if (err) throw err;
 
@@ -257,7 +298,7 @@ function readFile(type, gamma_var, cyto, fet) {
                         // karate_cyto_reset["nodes"]
                         // karate_cyto_reset["links"]
 
-                        girvan_bench = girvan.girvanVar(0.1, false, 16); ////////////////////////////////////////////////////////
+                        girvan_bench = girvan.girvanVar(0.1, false, 16);
                         girvan_bench_cyto = girvan.girvanVar(0.1, true, 16);
 
                         lfr_bench["nodes"] = nodify(obj_lfr_com, 0);
@@ -350,10 +391,10 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "Staph":
 
-                                    community = louvain.louvainVar(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
+                                    community = louvain.louvainVar(nodeDetection(phylo_reset["nodes"]), phylo_reset["links"], gamma_var);
                                     result["nodes"] = nodify(community, 0);
                                     result["links"] = phylo_reset["links"];
-// console.log(community);
+ //console.log(community);
                                     fs.writeFile("./metaStaph.txt", printMeta(community));
                             }
                         }
@@ -522,7 +563,7 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "Staph":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
+                                    community = layeredLabelPropagation.layeredLabelPropagationVar(nodeDetection(phylo_reset["nodes"]), phylo_reset["links"], gamma_var);
                                     result["nodes"] = nodify(community, 0);
                                     result["links"] = phylo_reset["links"];
                             }
@@ -655,8 +696,9 @@ fs.readFile('./uploads/clonalComplex.txt', 'utf8', function (err, data) {
 
         let obj = [];
         split = data.toString().split("\n");
+        length_var = split.length;
 
-        for (let i = 1; i < split.length; i++) {
+        for (let i = 1; i < length_var; i++) {
             let splitLine = split[i].split("\t");
             if(searchy(splitLine[0], include_data)) {
                 obj[i - 1] = [];
@@ -666,17 +708,21 @@ fs.readFile('./uploads/clonalComplex.txt', 'utf8', function (err, data) {
             }
         }
 
+        /*
+
         let filtered_obj = obj.filter(function (el) {
             return el != null;
         });
 
-        phylo_reset = hamming.hammingVar(filtered_obj, 1, false);
-        phylo_cyto_reset = hamming.hammingVar(filtered_obj, 1, true);
+         */
+
+        phylo_reset = hamming.hammingVar(obj, 1, false);
+        phylo_cyto_reset = hamming.hammingVar(obj, 1, true);
 
     });
 });
 
-// Benchmark
+// ---------------------------------------------- Benchmark ----------------------------------------------
 
 /*
 

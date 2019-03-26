@@ -6,18 +6,16 @@
 // in the complete network. In fact, both algorithm versions are equivalent whenever this factor is considered 0.
 
 
-jLayeredLabelPropagation = function () { // A function expression can be stored in a variable. After it has been
+jLayeredLabelPropagation_mod = function (nds, edgs, gamma, steps_input) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
-
-    //Constant
-    let gamma = 0.5;
 
     // Global Variables
     let original_graph_nodes; // Defined in the core() of the algorithm.
     let original_graph_edges; // Defined in the core() of the algorithm.
     let original_graph = {}; // Defined in the core() of the algorithm.
     let partition_init; // Defined in the core() of the algorithm. May not be used (depending on the user input).
+    let steps = 0;
 
     // ----------------------------------------- Helpers -----------------------------------------
 
@@ -219,7 +217,9 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
             let next_nodes_to_com = status.nodes_to_com;
 
-            if(prev_nodes_to_com===next_nodes_to_com) {break;}
+            steps++;
+
+            if(prev_nodes_to_com===next_nodes_to_com || steps === steps_input) break;
 
         }
 
@@ -227,26 +227,11 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
 
     }
 
-    let core = function () {
-
-        return __algorithmIteration(original_graph, partition_init);
-
-    };
-
-    core.nodes = function (nds) { // nds are the input nodes from the network under analysis.
         if (nds.length > 0) {
-            original_graph_nodes = nds; // Global variable.
-        }
 
-        return core;
-    };
-
-    core.edges = function (edgs) { // edgs are the input edges coming from the network under analysis.
-        if (typeof original_graph_nodes === 'undefined')
-            throw 'Please provide the graph nodes first!';
-
-        if (edgs.length > 0) {
+            original_graph_nodes = nds;
             original_graph_edges = edgs; // Global variable.
+
             let assoc_mat = make_assoc_mat(edgs);
             original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) data.
                 'nodes': original_graph_nodes,
@@ -255,17 +240,9 @@ jLayeredLabelPropagation = function () { // A function expression can be stored 
             };
         }
 
-        return core;
+    return __algorithmIteration(original_graph, partition_init);
+};
 
-    };
-
-    core.partition_init = function (prttn) { // Initial partition input coming from the network under analysis (optional).
-        if (prttn.length > 0) {
-            partition_init = prttn; // Global variable.
-        }
-        return core;
-    };
-
-    // Output of LLP algorithm.
-    return core;
+module.exports = {
+    layeredLabelPropagationVar: jLayeredLabelPropagation_mod
 };

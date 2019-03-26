@@ -7,7 +7,7 @@
 // previously defined order, the whole process will restart. When no change was verified after a complete cycle,
 // the algorithm stops.
 
-jWeightedLabelPropagation = function () { // A function expression can be stored in a variable. After it has been
+jWeightedLabelPropagation_mod = function (nds, edgs) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
@@ -195,26 +195,11 @@ jWeightedLabelPropagation = function () { // A function expression can be stored
 
     }
 
-    let core = function () {
-
-        return __algorithmIteration(original_graph, partition_init);
-
-    };
-
-    core.nodes = function (nds) { // nds are the input nodes from the network under analysis.
         if (nds.length > 0) {
+
             original_graph_nodes = nds; // Global variable.
-        }
-
-        return core;
-    };
-
-    core.edges = function (edgs) { // edgs are the input edges coming from the network under analysis.
-        if (typeof original_graph_nodes === 'undefined')
-            throw 'Please provide the graph nodes first!';
-
-        if (edgs.length > 0) {
             original_graph_edges = edgs; // Global variable.
+
             let assoc_mat = make_assoc_mat(edgs);
             original_graph = { // Global variable. Graph is an object with node (node), edge (edges) and weight (_assoc_mat) data.
                 'nodes': original_graph_nodes,
@@ -223,16 +208,10 @@ jWeightedLabelPropagation = function () { // A function expression can be stored
             };
         }
 
-        return core;
-    };
-
-    core.partition_init = function (prttn) { // Initial partition input coming from the network under analysis (optional).
-        if (prttn.length > 0) {
-            partition_init = prttn; // Global variable.
-        }
-        return core;
-    };
-
     // Output of Weighted Label Propagation algorithm.
-    return core;
+    return __algorithmIteration(original_graph, partition_init);
+};
+
+module.exports = {
+    weightedLabelPropagationVar: jWeightedLabelPropagation_mod
 };
