@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Mix Parameter = 0",
+    "show": true,
+    "color": "orange",
+    "currentPopulation": 0.595,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.877
+      },
+      {
+        "year": 0.1,
+        "population": 0.824
+      },
+      {
+        "year": 0.2,
+        "population": 0.798
+      },
+      {
+        "year": 0.3,
+        "population": 0.810
+      },
+      {
+        "year": 0.4,
+        "population": 0.749
+      },
+      {
+        "year": 0.5,
+        "population": 0.696
+      },
+      {
+        "year": 0.6,
+        "population": 0.689
+      },
+      {
+        "year": 0.7,
+        "population": 0.668
+      },
+      {
+        "year": 0.8,
+        "population": 0.668
+      },
+      {
+        "year": 0.9,
+        "population": 0.654
+      },
+      {
+        "year": 1,
+        "population": 0.595
+      }
+    ]
+  },
+  {
+    "name": "Mix Parameter = 0.1",
+    "show": true,
+    "color": "lightblue",
+    "currentPopulation": 0.561,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.804
+      },
+      {
+        "year": 0.1,
+        "population": 0.754
+      },
+      {
+        "year": 0.2,
+        "population": 0.733
+      },
+      {
+        "year": 0.3,
+        "population": 0.714
+      },
+      {
+        "year": 0.4,
+        "population": 0.675
+      },
+      {
+        "year": 0.5,
+        "population": 0.646
+      },
+      {
+        "year": 0.6,
+        "population": 0.631
+      },
+      {
+        "year": 0.7,
+        "population": 0.611
+      },
+      {
+        "year": 0.8,
+        "population": 0.607
+      },
+      {
+        "year": 0.9,
+        "population": 0.614
+      },
+      {
+        "year": 1,
+        "population": 0.561
+      }
+    ]
+  },
+  {
+    "name": "Mix Parameter = 0.2",
+    "show": true,
+    "color": "pink",
+    "currentPopulation": 0.541,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.755
+      },
+      {
+        "year": 0.1,
+        "population": 0.708
+      },
+      {
+        "year": 0.2,
+        "population": 0.688
+      },
+      {
+        "year": 0.3,
+        "population": 0.668
+      },
+      {
+        "year": 0.4,
+        "population": 0.630
+      },
+      {
+        "year": 0.5,
+        "population": 0.608
+      },
+      {
+        "year": 0.6,
+        "population": 0.586
+      },
+      {
+        "year": 0.7,
+        "population": 0.584
+      },
+      {
+        "year": 0.8,
+        "population": 0.588
+      },
+      {
+        "year": 0.9,
+        "population": 0.594
+      },
+      {
+        "year": 1,
+        "population": 0.541
+      }
+    ]
+  },
+  {
+    "name": "Mix Parameter = 0.5",
+    "show": true,
+    "color": "lightgreen",
+    "currentPopulation": 0.395,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.261
+      },
+      {
+        "year": 0.1,
+        "population": 0.345
+      },
+      {
+        "year": 0.2,
+        "population": 0.357
+      },
+      {
+        "year": 0.3,
+        "population": 0.359
+      },
+      {
+        "year": 0.4,
+        "population": 0.389
+      },
+      {
+        "year": 0.5,
+        "population": 0.383
+      },
+      {
+        "year": 0.6,
+        "population": 0.387
+      },
+      {
+        "year": 0.7,
+        "population": 0.392
+      },
+      {
+        "year": 0.8,
+        "population": 0.387
+      },
+      {
+        "year": 0.9,
+        "population": 0.374
+      },
+      {
+        "year": 1,
+        "population": 0.395
+      }
+    ]
+  },
+  {
+    "name": "Mix Parameter = 0.6",
+    "show": true,
+    "color": "green",
+    "currentPopulation": 0.336,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.194
+      },
+      {
+        "year": 0.1,
+        "population": 0.261
+      },
+      {
+        "year": 0.2,
+        "population": 0.281
+      },
+      {
+        "year": 0.3,
+        "population": 0.294
+      },
+      {
+        "year": 0.4,
+        "population": 0.308
+      },
+      {
+        "year": 0.5,
+        "population": 0.298
+      },
+      {
+        "year": 0.6,
+        "population": 0.310
+      },
+      {
+        "year": 0.7,
+        "population": 0.319
+      },
+      {
+        "year": 0.8,
+        "population": 0.316
+      },
+      {
+        "year": 0.9,
+        "population": 0.317
+      },
+      {
+        "year": 1,
+        "population": 0.336
+      }
+    ]
+  },
+  {
+    "name": "Mix Parameter = 0.7",
+    "show": true,
+    "color": "darkgreen",
+    "currentPopulation": 0.305,
+    "history": [
+      {
+        "year": 0,
+        "population": 0.188
+      },
+      {
+        "year": 0.1,
+        "population": 0.243
+      },
+      {
+        "year": 0.2,
+        "population": 0.246
+      },
+      {
+        "year": 0.3,
+        "population": 0.267
+      },
+      {
+        "year": 0.4,
+        "population": 0.266
+      },
+      {
+        "year": 0.5,
+        "population": 0.289
+      },
+      {
+        "year": 0.6,
+        "population": 0.294
+      },
+      {
+        "year": 0.7,
+        "population": 0.288
+      },
+      {
+        "year": 0.8,
+        "population": 0.291
+      },
+      {
+        "year": 0.9,
+        "population": 0.280
+      },
+      {
+        "year": 1,
+        "population": 0.305
+      }
+    ]
+  }
+]

@@ -6,7 +6,7 @@
 // in the complete network. In fact, both algorithm versions are equivalent whenever this factor is considered 0.
 
 
-jLayeredLabelPropagation_mod = function (nds, edgs, gamma, steps_input) { // A function expression can be stored in a variable. After it has been
+jLayeredLabelPropagation = function (nds, edgs, gamma, steps_input) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
@@ -244,5 +244,5 @@ jLayeredLabelPropagation_mod = function (nds, edgs, gamma, steps_input) { // A f
 };
 
 module.exports = {
-    layeredLabelPropagationVar: jLayeredLabelPropagation_mod
+    jLayeredLabelPropagation: jLayeredLabelPropagation
 };

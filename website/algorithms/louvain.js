@@ -11,7 +11,7 @@
 // there will also exist self-loops that represent the sum of all links in a given community (strictly connecting nodes inside of it) before being
 // collapsed into a single one.
 
-jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
+jLouvain = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
@@ -268,7 +268,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
 
         });
 
-            console.log(mdl_a * Math.log(mdl_a) - 2 * mdl_b - mdl_c + mdl_d);
+         //   console.log(mdl_a * Math.log(mdl_a) - 2 * mdl_b - mdl_c + mdl_d);
 
         return result; // Modularity of a given partition (defined by status).
     }
@@ -438,7 +438,7 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
         init_status(current_graph, status); // Resetting status.
 
         while (true) { // Keeps partitioning the graph until no significant modularity increase occurs.
-            console.log();
+         //   console.log();
             __one_level(current_graph, status);
             new_mod = __modularity(status);
             if (new_mod - mod < __MIN) {
@@ -475,5 +475,5 @@ jLouvain_mod = function (nds, edgs, __MIN) { // A function expression can be sto
 };
 
 module.exports = {
-    louvainVar: jLouvain_mod
+    jLouvain: jLouvain
 };

@@ -5,7 +5,7 @@
 // This time, instead of maximizing network's modularity, the goal is to find the minimum description length of the network. To calculate
 // this quantity, map equation was used.
 
-jInfomap_mod = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
+jInfomap = function (nds, edgs, __MIN) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
@@ -481,5 +481,5 @@ jInfomap_mod = function (nds, edgs, __MIN) { // A function expression can be sto
 };
 
 module.exports = {
-    infomapVar: jInfomap_mod
+    jInfomap: jInfomap
 };

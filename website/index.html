@@ -361,7 +361,7 @@
 
     function change (id) {
 
-        if (id === "left" || id === "center" || id === "right") {
+        if (id.search("eit") === -1) {
 
             document.getElementById("left").style.backgroundColor = "black";
             document.getElementById("center").style.backgroundColor = "black";
@@ -404,7 +404,7 @@
     rename('D3.js (SVG)');
     rename_aux2('Amazon');
 
-    function rename(id) {
+    function rename(id, gamma) {
 
         let fetchy = document.getElementById("dropbtn_network").innerText;
 
@@ -430,11 +430,23 @@
 
             case "LLP":
 
-                document.getElementById("dropbtn").innerText = "LLP";
-                document.getElementById("range_label").innerText = "Resolution:";
-                document.getElementById("gamma").style.display = "inline-block";
-                document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + "llp" + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
+                if(gamma === undefined) {
+
+                    document.getElementById("dropbtn").innerText = "LLP";
+                    document.getElementById("range_label").innerText = "Resolution:";
+                    document.getElementById("gamma").style.display = "inline-block";
+                    document.getElementById("file").style.display = "none";
+                    fetch("algorithm/" + "llp" + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
+
+                } else {
+
+                    document.getElementById("dropbtn").innerText = "LLP";
+                    document.getElementById("range_label").innerText = "Resolution:";
+                    document.getElementById("gamma").style.display = "inline-block";
+                    document.getElementById("file").style.display = "none";
+                    fetch("algorithm/" + "llp" + "/gamma/" + gamma + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
+                }
+
                 break;
 
             case 'D3.js (SVG)':
@@ -552,6 +564,53 @@
         document.getElementById("file").style.display = "inline-block";
 
     });
+
+    // ---------------------------------------------- Benchmark Results Printing ----------------------------------------------
+
+    rename_aux2("GN");
+/*
+    function ola2() {
+        for (let i = 0; i < 10; i++) {
+
+            rename("Louvain");
+
+        }
+    }
+
+        function ola() {
+            for (let i = 0; i < 10; i++) {
+
+                rename("Infomap");
+
+            }
+        }
+    let me2;
+    function adeus() {
+        clearInterval(me);
+        me2 = setInterval(ola2,500);
+    }
+
+    function adeus2() {
+        clearInterval(me2);
+    }
+
+    let me = setInterval(ola,500);
+
+        setTimeout(adeus,6000);
+    setTimeout(adeus2,12000);
+
+   //     setInterval(rename("LLP", 0.1),1000);
+
+        for (let gamma_variable = 0; gamma_variable < 1.1; gamma_variable=gamma_variable+0.1) {
+
+        for (let i = 0; i < 10; i++) {
+
+            rename("LLP", gamma_variable.toString());
+
+        }
+    }
+
+    */
 
 </script>
 

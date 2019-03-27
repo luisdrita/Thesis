@@ -7,7 +7,7 @@
 // previously defined order, the whole process will restart. When no change was verified after a complete cycle,
 // the algorithm stops.
 
-jWeightedLabelPropagation_mod = function (nds, edgs) { // A function expression can be stored in a variable. After it has been
+jWeightedLabelPropagation = function (nds, edgs) { // A function expression can be stored in a variable. After it has been
     // stored this way, it can be used as a function. Functions stored in variables do not need
     // names. They are always invoked using the variable name.
 
@@ -213,5 +213,5 @@ jWeightedLabelPropagation_mod = function (nds, edgs) { // A function expression 
 };
 
 module.exports = {
-    weightedLabelPropagationVar: jWeightedLabelPropagation_mod
+    jWeightedLabelPropagation: jWeightedLabelPropagation
 };

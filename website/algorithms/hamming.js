@@ -91,5 +91,5 @@ jHamming = function (profile, nlv, cyto) {
 };
 
 module.exports = {
-    hammingVar: jHamming
+    jHamming: jHamming
 };

@@ -14,7 +14,9 @@ const hamming = require('./website/algorithms/hamming');
 
 // Importing benchmarking libraries.
 const girvan = require('./website/algorithms/girvan-newman');
-// const lfr = require('./website/algorithms/benchmark/lancichinetti-fortunato-radicchi');
+
+// Importing auxiliary functions.
+const aux = require('./auxFunctions');
 
 // Importing Zachary's karate club network. Supporting Cytoscape.js and D3.js representation.
 const karate_reset = require('./uploads/karate_club.json');
@@ -30,172 +32,9 @@ let result = {}, result_reset = {}, result_cyto = {}, result_cyto_reset = {}, ph
 let node_data_lfr, obj_lfr_com, obj_lfr, obj_lfr_cyto, girvan_bench = {}, girvan_bench_cyto = {}, lfr_bench = {}, lfr_bench_cyto = {};
 let str = "";
 let length_var;
-//let final_arr = [];
+let final_arr = [];
+let final_arr_titles = [];
 let executed = false;
-
-// ---------------------------------------------- Auxiliary Functions ----------------------------------------------
-
-function searchy(value, array_input) {
-
-    let result = false;
-
-    for (let i = 0; i < array_input.length; i++) {
-
-        if (array_input[i] === value) {
-            result = true;
-            break;
-        }
-
-    }
-
-    return result
-}
-
-function nodeDetection(nodes_obj) {
-
-    let result = [];
-
-    for (let i = 0; i < nodes_obj.length; i++) {
-
-            result.push(nodes_obj[i].id)
-
-    }
-
-    return result
-}
-
-// Converting array of arrays data to string representation. To be used to generate .txt docs for benchmark.
-function arrayToString(multi_array) {
-
-    for (let ij = 0; ij < multi_array.length; ij++) {
-        str += ("Method" + ij);
-        str += "\t";
-    }
-    str += "\n";
-
-    for (let j = 0; j < multi_array[0].length; j++) {
-
-        for (let i = 0; i < multi_array.length; i++) {
-
-            str += multi_array[i][j];
-
-            str += "\t";
-
-        }
-
-        str += "\n";
-
-    }
-}
-
-// Converting array of arrays data to string representation. To be used to generate .txt docs for benchmark.
-function printMeta(obj) {
-
-    let str = "";
-    let new_obj = {};
-
-    let keys = Object.keys(obj);
-    let values = Object.values(obj);
-
-        str += ("ST");
-        str += "\t";
-        str += ("Community");
-        str += "\n";
-
-    for (let i = 1; i < length_var; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
-
-            new_obj[i.toString()] = length_var;
-
-    }
-
-    for (let i = 0; i < keys.length; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
-
-            new_obj[keys[i]] = values[i];
-
-    }
-
-    keys = Object.keys(new_obj);
-    values = Object.values(new_obj);
-
-    for (let j = 0; j < keys.length; j++) {
-
-        for (let i = 0; i < 2; i++) {
-
-            if (i === 0) {
-                str += keys[j];
-                str += "\t";
-            } else {
-                str += values[j];
-            }
-
-            }
-
-        if(j !== keys.length-1) {
-            str += "\n";
-        }
-
-        }
-
-return str;
-
-    }
-
-function consensusArray(multi_array) {
-
-    for (let j = 0; j < multi_array[0].length; j++) {
-
-        let count = [];
-
-        for (let i = 0; i < multi_array.length; i++) {
-
-            count[multi_array[i][j]] = count[multi_array[i][j]] + 1;
-
-
-
-        }
-
-    }
-}
-
-// Upon input of source and target nodes, it returns an edge with the right format.
-function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
-    return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
-}
-
-// Upon input of a set of nodes, it returns an array with different format accordingly to a state value. It pretends to adjust to the type of visualization scheme and reset/run state.
-function nodify (final_node_data, state) { // Used in fs.readFile in order to push each node in Input.txt to an empty array.
-
-    let result_aux = [];
-    let keys = Object.keys(final_node_data);
-
-    switch(state) {
-
-        case 0:
-            keys.forEach(function (key) {
-                result_aux.push({id: key, group: final_node_data[key]})
-            });
-            break;
-
-        case 1:
-            keys.forEach(function (key) {
-                result_aux.push({id: key, group: 1})
-            });
-            break;
-
-        case 2:
-            keys.forEach(function (key) {
-                result_aux.push({data: {id: key, weight: 5}})
-            });
-            break;
-
-        case 3:
-            keys.forEach(function (key) {
-                result_aux.push({data: {id: key, weight: final_node_data[key]}});
-            });
-
-    }
-    return result_aux; // Previously, I used parseInt to convert the key string to an integer.
-}
 
 // ---------------------------------------------- Application ----------------------------------------------
 
@@ -205,7 +44,7 @@ function readFile(type, gamma_var, cyto, fet) {
     // fs.readFile('./uploads/Input.txt', 'utf8', function (err, data)
 
     if(!executed) {
-
+/*
         let a = 15;
         let b = 1000;
 
@@ -215,7 +54,7 @@ function readFile(type, gamma_var, cyto, fet) {
             ./benchmark -N ${b} -k ${a} -maxk 50 -mu 0.1 -minc 20 -maxc 50
         `
         );
-
+*/
         fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data) {
 
             if (err) throw err;
@@ -230,9 +69,9 @@ function readFile(type, gamma_var, cyto, fet) {
                 let splitLine = split[i].split("\t");
                 node_data_lfr[splitLine[0]] = true;
                 node_data_lfr[splitLine[1]] = true;
-                obj_lfr.push(edge(splitLine[0], splitLine[1]));
+                obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
 
-                if (cyto === "true") obj_lfr_cyto.push({data: edge(splitLine[0], splitLine[1])});
+                if (cyto === "true") obj_lfr_cyto.push({data: aux.edge(splitLine[0], splitLine[1])});
 
             }
 
@@ -277,19 +116,19 @@ function readFile(type, gamma_var, cyto, fet) {
                     let splitLine = split[i].split("\t");
                     node_data[splitLine[0]] = true;
                     node_data[splitLine[1]] = true;
-                    obj.push(edge(splitLine[0], splitLine[1]));
+                    obj.push(aux.edge(splitLine[0], splitLine[1]));
 
-                    if (cyto === "true") obj_cyto.push({data: edge(splitLine[0], splitLine[1])});
+                    if (cyto === "true") obj_cyto.push({data: aux.edge(splitLine[0], splitLine[1])});
 
                 }
 
                 switch (type) {
 
                     case 'init':
-                        result_reset["nodes"] = nodify(node_data, 1);
+                        result_reset["nodes"] = aux.nodify(node_data, 1);
                         result_reset["links"] = obj;
 
-                        result_cyto_reset["nodes"] = nodify(node_data, 2);
+                        result_cyto_reset["nodes"] = aux.nodify(node_data, 2);
                         result_cyto_reset["links"] = obj_cyto;
 
                         // karate_reset["nodes"]
@@ -298,17 +137,17 @@ function readFile(type, gamma_var, cyto, fet) {
                         // karate_cyto_reset["nodes"]
                         // karate_cyto_reset["links"]
 
-                        girvan_bench = girvan.girvanVar(0.1, false, 16);
-                        girvan_bench_cyto = girvan.girvanVar(0.1, true, 16);
+                        girvan_bench = girvan.jGirvan_Newman(0.1, false, 16);
+                        girvan_bench_cyto = girvan.jGirvan_Newman(0.1, true, 16);
 
-                        lfr_bench["nodes"] = nodify(obj_lfr_com, 0);
+                        lfr_bench["nodes"] = aux.nodify(obj_lfr_com, 0);
                         lfr_bench["links"] = obj_lfr;
 
-                        lfr_bench_cyto["nodes"] = nodify(node_data_lfr, 2);
+                        lfr_bench_cyto["nodes"] = aux.nodify(node_data_lfr, 2);
                         lfr_bench_cyto["links"] = obj_lfr_cyto;
 
                         result["communities"] = girvan_bench["communities"];
-                        //final_arr.push(result["communities"]);
+                        final_arr.push(result["communities"]);
 
                         break;
 
@@ -320,36 +159,36 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "GN":
 
-                                    community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = louvain.jLouvain(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = girvan_bench_cyto["links"];
                                     break;
 
                                 case "LFR":
 
-                                    community = louvain.louvainVar(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = louvain.jLouvain(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = obj_lfr_cyto;
                                     break;
 
                                 case "Amazon":
 
-                                    community = louvain.louvainVar(Object.keys(node_data), obj, gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = louvain.jLouvain(Object.keys(node_data), obj, gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = obj_cyto;
                                     break;
 
                                 case "Karate":
 
-                                    community = louvain.louvainVar(Array.from({length: 34}, (v, k) => k + 1), karate_reset["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = louvain.jLouvain(Array.from({length: 34}, (v, k) => k + 1), karate_reset["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = karate_cyto_reset["links"];
                                     break;
 
                                 case "Staph":
 
-                                    community = louvain.louvainVar(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = louvain.jLouvain(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = phylo_cyto_reset["links"];
                             }
 
@@ -359,43 +198,42 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "GN":
 
-                                    for (let i = 0; i < 10; i++) {
-                                        community = louvain.louvainVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
-                                        //final_arr.push(Object.values(community));
-                                    }
-
-                                    result["nodes"] = nodify(community, 0);
+                                    community = louvain.jLouvain(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                                    final_arr.push(Object.values(community));
+                                    final_arr_titles.push("Louvain GN");
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = girvan_bench["links"];
                                     break;
 
                                 case "LFR":
 
-                                    community = louvain.louvainVar(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = louvain.jLouvain(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
+                                    final_arr.push(Object.values(community));
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj_lfr;
                                     break;
 
                                 case "Amazon":
 
-                                    community = louvain.louvainVar(Object.keys(node_data), obj, gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = louvain.jLouvain(Object.keys(node_data), obj, gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj;
                                     break;
 
                                 case "Karate":
 
-                                    community = louvain.louvainVar(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = louvain.jLouvain(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = karate_reset["links"];
                                     break;
 
                                 case "Staph":
 
-                                    community = louvain.louvainVar(nodeDetection(phylo_reset["nodes"]), phylo_reset["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = louvain.jLouvain(aux.nodeDetection(phylo_reset["nodes"]), phylo_reset["links"], gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = phylo_reset["links"];
  //console.log(community);
-                                    fs.writeFile("./metaStaph.txt", printMeta(community));
+                                    fs.writeFile("./metaStaph.txt", aux.printMeta(community, length_var));
                             }
                         }
                         break;
@@ -408,36 +246,36 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "GN":
 
-                                    community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = infomap.jInfomap(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = girvan_bench_cyto["links"];
                                     break;
 
                                 case "LFR":
 
-                                    community = infomap.infomapVar(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = infomap.jInfomap(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = obj_lfr_cyto;
                                     break;
 
                                 case "Amazon":
 
-                                    community = infomap.infomapVar(Object.keys(node_data), obj, gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = infomap.jInfomap(Object.keys(node_data), obj, gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = obj_cyto;
                                     break;
 
                                 case "Karate":
 
-                                    community = infomap.infomapVar(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = infomap.jInfomap(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = karate_cyto_reset["links"];
                                     break;
 
                                 case "Staph":
 
-                                    community = infomap.infomapVar(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = infomap.jInfomap(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = phylo_cyto_reset["links"];
                             }
 
@@ -447,36 +285,39 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "GN":
 
-                                    community = infomap.infomapVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = infomap.jInfomap(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                                    final_arr.push(Object.values(community));
+                                    final_arr_titles.push("Infomap GN");
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = girvan_bench["links"];
                                     break;
 
                                 case "LFR":
 
-                                    community = infomap.infomapVar(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = infomap.jInfomap(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
+                                    final_arr.push(Object.values(community));
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj_lfr;
                                     break;
 
                                 case "Amazon":
 
-                                    community = infomap.infomapVar(Object.keys(node_data), obj, gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = infomap.jInfomap(Object.keys(node_data), obj, gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj;
                                     break;
 
                                 case "Karate":
 
-                                    community = infomap.infomapVar(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = infomap.jInfomap(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = karate_reset["links"];
                                     break;
 
                                 case "Staph":
 
-                                    community = infomap.infomapVar(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = infomap.jInfomap(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = phylo_reset["links"];
                             }
                         }
@@ -491,36 +332,36 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "GN":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = girvan_bench_cyto["links"];
                                     break;
 
                                 case "LFR":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = obj_lfr_cyto;
                                     break;
 
                                 case "Amazon":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(node_data), obj, gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Object.keys(node_data), obj, gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = obj_cyto;
                                     break;
 
                                 case "Karate":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = karate_cyto_reset["links"];
                                     break;
 
                                 case "Staph":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
-                                    result_cyto["nodes"] = nodify(community, 3);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Array.from({length: phylo_reset["nodes"].length}, (v, k) => k), phylo_reset["links"], gamma_var);
+                                    result_cyto["nodes"] = aux.nodify(community, 3);
                                     result_cyto["links"] = phylo_cyto_reset["links"];
                             }
 
@@ -530,41 +371,40 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                 case "GN":
 
-                                    for (let i = 0; i < 10; i++) {
-                                        community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var, 10000);
-                                        //final_arr.push(Object.values(community));
-                                    }
-
-                                    result["nodes"] = nodify(community, 0);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Object.keys(girvan_bench["nodes"]), girvan_bench["links"], gamma_var, 10000);
+                                    final_arr.push(Object.values(community));
+                                    final_arr_titles.push("LLP GN" + gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = girvan_bench["links"];
                                     //    fs.writeFile("./girvanLouvain.txt", str);
                                     break;
 
                                 case "LFR":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
+                                    final_arr.push(Object.values(community));
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj_lfr;
                                     break;
 
                                 case "Amazon":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Object.keys(node_data), obj, gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Object.keys(node_data), obj, gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj;
                                     break;
 
                                 case "Karate":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(Array.from({length: karate_reset["nodes"].length}, (v, k) => k + 1), karate_reset["links"], gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = karate_reset["links"];
                                     break;
 
                                 case "Staph":
 
-                                    community = layeredLabelPropagation.layeredLabelPropagationVar(nodeDetection(phylo_reset["nodes"]), phylo_reset["links"], gamma_var);
-                                    result["nodes"] = nodify(community, 0);
+                                    community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(phylo_reset["nodes"]), phylo_reset["links"], gamma_var);
+                                    result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = phylo_reset["links"];
                             }
                         }
@@ -584,11 +424,12 @@ app.get('/run/:id', function (req, res) {
     } else {
         res.send(result);
     }
-/*
-    arrayToString(final_arr);
-    fs.writeFile("./website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.5_mix0.6.txt", str); ////////////////////////////////////////////////////////////////
+
+   // console.log(final_arr);
+console.log(final_arr_titles);
+    str = aux.arrayToString(final_arr, str, final_arr_titles);
+    fs.writeFile("./print.txt", str);
     //    fs.writeFile("./girvanLouvain.txt", arrayToString(result["communities"]));
-    */
 
 });
 
@@ -657,7 +498,7 @@ app.get('/reset/:alg/cytoscape/:cyto', function (req, res) {
 
 // Sending data to community finding analysis. It will be dependent on the algorithm used, respective variable parameters, data visualization framework and network under study.
 app.get('/algorithm/:type/gamma/:val/cytoscape/:cyto/fetchy/:fet', function (req, res) {
-
+console.log(req.params.val);
     readFile(req.params.type, req.params.val, req.params.cyto, req.params.fet);
 
     res.send();
@@ -671,10 +512,12 @@ app.post('/upload', function (req, res) {
     form.parse(req);
 
     form.on('fileBegin', function (name, file) {
-        file.path = __dirname + '/uploads/' + "Input2.txt"; // file.name substituted by Input.txt
+        file.path = __dirname + '/uploads/' + "upload.txt"; // file.name substituted by Input.txt
     });
 
 });
+
+// ---------------------------------------------- PHYLOViZ Data Upload ----------------------------------------------
 
 fs.readFile('./uploads/clonalComplex.txt', 'utf8', function (err, data) {
 
@@ -700,7 +543,7 @@ fs.readFile('./uploads/clonalComplex.txt', 'utf8', function (err, data) {
 
         for (let i = 1; i < length_var; i++) {
             let splitLine = split[i].split("\t");
-            if(searchy(splitLine[0], include_data)) {
+            if(aux.searchy(splitLine[0], include_data)) {
                 obj[i - 1] = [];
                 for (let j = 1; j < splitLine.length; j++) {
                     obj[i - 1].push(Number(splitLine[j]));
@@ -708,24 +551,39 @@ fs.readFile('./uploads/clonalComplex.txt', 'utf8', function (err, data) {
             }
         }
 
-        /*
-
-        let filtered_obj = obj.filter(function (el) {
-            return el != null;
-        });
-
-         */
-
-        phylo_reset = hamming.hammingVar(obj, 1, false);
-        phylo_cyto_reset = hamming.hammingVar(obj, 1, true);
+        phylo_reset = hamming.jHamming(obj, 1, false);
+        phylo_cyto_reset = hamming.jHamming(obj, 1, true);
 
     });
 });
 
 // ---------------------------------------------- Benchmark ----------------------------------------------
 
-/*
+let file1 = "one.dat";
+let file2 = "two.dat";
 
+function runBenchmark() {
+
+    cmd.get(
+        `
+            cd ./website/algorithms/nmi
+            ./mutual ${file1} ${file2}
+        `,
+        function(err, data, stderr){
+
+            if (err) throw console.log('error', err);
+
+            console.log(Number(data.split("\t")[1]));
+
+        }
+    );
+}
+
+runBenchmark();
+
+//readFile("Louvain", 1/10000, "false", "GN");
+
+/*
 function ola () {
     for (let i = 0; i < 11; i++) {
         readFile('llp', i/10, "false", "Girvan");
@@ -734,6 +592,4 @@ function ola () {
 
     fs.writeFile("./girvanLouvain.txt", str);
 }
-
 */
-// console.log(lfr.lfrVar(3, 2, 100, 0.2));
