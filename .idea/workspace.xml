@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Benchmark Updates">
-      <change afterPath="$PROJECT_DIR$/auxFunctions.js" afterDir="false" />
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auxFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/auxFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/print.txt" beforeDir="false" afterPath="$PROJECT_DIR$/print.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/hamming.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/hamming.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/infomap.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/infomap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/layeredLabelPropagation.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/layeredLabelPropagation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/louvain.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/louvain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/weightedLabelPropagation.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/weightedLabelPropagation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,20 +19,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7533">
-              <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+            <state relative-caret-position="-331">
+              <caret line="387" column="79" selection-start-line="387" selection-start-column="79" selection-end-line="387" selection-end-column="79" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auxFunctions.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="111" column="13" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
+            <state relative-caret-position="405">
+              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -44,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="609" column="9" lean-forward="true" selection-start-line="609" selection-start-column="9" selection-end-line="609" selection-end-column="9" />
+            <state relative-caret-position="221">
+              <caret line="570" lean-forward="true" selection-start-line="570" selection-end-line="570" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -138,6 +134,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/auxFunctions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -151,7 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>svg_input</find>
       <find>div</find>
       <find>for</find>
       <find>myCircle</find>
@@ -181,6 +185,7 @@
       <find>arrayToString</find>
       <find>then</find>
       <find>console</find>
+      <find>final_arr_titles</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -265,11 +270,11 @@
         <option value="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi.js" />
         <option value="$PROJECT_DIR$/website/algorithms/weightedLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/layeredLabelPropagation.js" />
-        <option value="$PROJECT_DIR$/auxFunctions.js" />
         <option value="$PROJECT_DIR$/website/algorithms/louvain.js" />
+        <option value="$PROJECT_DIR$/auxFunctions.js" />
+        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/website/index.html" />
-        <option value="$PROJECT_DIR$/website/index.html" />
       </list>
     </option>
   </component>
@@ -538,7 +543,8 @@
       <workItem from="1553600308504" duration="6748000" />
       <workItem from="1553614322538" duration="1359000" />
       <workItem from="1553616561346" duration="299000" />
-      <workItem from="1553618255781" duration="17801000" />
+      <workItem from="1553618255781" duration="18155000" />
+      <workItem from="1553687271288" duration="6014000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -820,11 +826,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553616635739</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Strong Enhancement Results Visualization">
+      <created>1553652618962</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1553652618962</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1197330000" />
+    <option name="totallyTimeSpent" value="1203698000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -839,7 +852,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20171149" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20415647" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -852,7 +865,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32987553" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32987553" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49572128" visible="true" weight="0.17116183" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49572128" visible="true" weight="0.2707469" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5042787" side_tool="true" weight="0.16701245" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32987553" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
@@ -910,7 +923,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="MSc 3.0" />
     <MESSAGE value="Added Compressed Algorithms" />
     <MESSAGE value="Improved Code Robustness" />
     <MESSAGE value="Many Minor Improvements" />
@@ -935,7 +947,8 @@
     <MESSAGE value="Website Performance Strongly Enhanced" />
     <MESSAGE value="Phylogenetic Analysis Almost Concluded" />
     <MESSAGE value="Benchmark Updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Benchmark Updates" />
+    <MESSAGE value="Strong Enhancement Results Visualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Strong Enhancement Results Visualization" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js" />
@@ -1080,13 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="625">
@@ -1145,15 +1151,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/auxFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="111" column="13" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
+        <state relative-caret-position="288">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="609" column="9" lean-forward="true" selection-start-line="609" selection-start-column="9" selection-end-line="609" selection-end-column="9" />
+        <state relative-caret-position="221">
+          <caret line="570" lean-forward="true" selection-start-line="570" selection-end-line="570" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1247,8 +1253,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7533">
-          <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        <state relative-caret-position="-331">
+          <caret line="387" column="79" selection-start-line="387" selection-start-column="79" selection-end-line="387" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
         </state>
       </provider>
     </entry>

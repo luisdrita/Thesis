@@ -209,6 +209,7 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                     community = louvain.jLouvain(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
                                     final_arr.push(Object.values(community));
+                                    final_arr_titles.push("Louvain LFR");
                                     result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj_lfr;
                                     break;
@@ -296,6 +297,7 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                     community = infomap.jInfomap(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
                                     final_arr.push(Object.values(community));
+                                    final_arr_titles.push("Infomap LFR");
                                     result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj_lfr;
                                     break;
@@ -383,6 +385,7 @@ function readFile(type, gamma_var, cyto, fet) {
 
                                     community = layeredLabelPropagation.jLayeredLabelPropagation(Object.keys(node_data_lfr), lfr_bench["links"], gamma_var);
                                     final_arr.push(Object.values(community));
+                                    final_arr_titles.push("LLP LFR" + gamma_var);
                                     result["nodes"] = aux.nodify(community, 0);
                                     result["links"] = obj_lfr;
                                     break;
@@ -581,7 +584,8 @@ function runBenchmark() {
 
 runBenchmark();
 
-//readFile("Louvain", 1/10000, "false", "GN");
+// readFile("Louvain", 1/10000, "false", "GN");
+// readFile("Infomap", 1/10000, "false", "GN");
 
 /*
 function ola () {

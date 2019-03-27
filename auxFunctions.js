@@ -36,7 +36,7 @@ function arrayToString(multi_array, str, title) {
     str += "\t";
 
     for (let ij = 0; ij < title.length; ij++) {
-        str += (title[ij] + ij);
+        str += (title[ij] + "-" + ij);
         str += "\t";
     }
     str += "\n";

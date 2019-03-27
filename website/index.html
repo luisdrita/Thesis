@@ -566,51 +566,63 @@
     });
 
     // ---------------------------------------------- Benchmark Results Printing ----------------------------------------------
-
-    rename_aux2("GN");
 /*
-    function ola2() {
-        for (let i = 0; i < 10; i++) {
+    ["GN", "LFR"].map(function (net) {
+
+    rename_aux2(net);
+
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value) {
 
             rename("Louvain");
+            rename("Infomap");
 
-        }
-    }
+        });
 
-        function ola() {
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9].map(function (value1) {
+
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value2) {
+
+            rename("LLP", value1);
+
+        });
+
+    });
+
+    })
+*/
+      /*          function ola() {
+                    for (let i = 0; i < 10; i++) {
+
+                        rename("Infomap");
+
+                    }
+                }
+            let me2;
+            function adeus() {
+                clearInterval(me);
+                me2 = setInterval(ola2,500);
+            }
+
+            function adeus2() {
+                clearInterval(me2);
+            }
+
+            let me = setInterval(ola,500);
+
+                setTimeout(adeus,6000);
+            setTimeout(adeus2,12000);
+
+           //     setInterval(rename("LLP", 0.1),1000);
+
+            for (let gamma_variable = 0; gamma_variable < 1.1; gamma_variable=gamma_variable+0.1) {
+
             for (let i = 0; i < 10; i++) {
 
-                rename("Infomap");
+                fetch("algorithm/" + "llp" + "/gamma/" + gamma_variable + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + "GN");
 
             }
         }
-    let me2;
-    function adeus() {
-        clearInterval(me);
-        me2 = setInterval(ola2,500);
-    }
-
-    function adeus2() {
-        clearInterval(me2);
-    }
-
-    let me = setInterval(ola,500);
-
-        setTimeout(adeus,6000);
-    setTimeout(adeus2,12000);
-
-   //     setInterval(rename("LLP", 0.1),1000);
-
-        for (let gamma_variable = 0; gamma_variable < 1.1; gamma_variable=gamma_variable+0.1) {
-
-        for (let i = 0; i < 10; i++) {
-
-            rename("LLP", gamma_variable.toString());
-
-        }
-    }
-
-    */
+        */
 
 </script>
 
