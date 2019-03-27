@@ -561,7 +561,8 @@ fs.readFile('./uploads/clonalComplex.txt', 'utf8', function (err, data) {
 });
 
 // ---------------------------------------------- Benchmark ----------------------------------------------
-
+//heroku logs --tail
+/*
 let file1 = "one.dat";
 let file2 = "two.dat";
 
@@ -583,6 +584,8 @@ function runBenchmark() {
 }
 
 runBenchmark();
+
+ */
 
 // readFile("Louvain", 1/10000, "false", "GN");
 // readFile("Infomap", 1/10000, "false", "GN");
