@@ -6,17 +6,11 @@
 
     <title>Community Finding in Phylogenetic Networks</title>
 
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.22/cytoscape.js"></script> <!-- Using Content Delivery Network (CDN). -->
-    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='./style/index.css' rel="stylesheet">
 
-    <script src="./visualization/d3_svg.js"></script>
-    <script src="./visualization/d3_canvas.js"></script>
-    <script src="./visualization/cytoscape.js"></script>
+
+
 </head>
 
 <body style="min-width: 1700px; margin: auto; position: relative">
@@ -80,9 +74,9 @@
         <div class="dropdown" id = "dropdown">
             <button id = dropbtn class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
-                <a id = "Louvain" onclick="rename(this.id)" style="cursor: pointer">Louvain</a>
-                <a id = "Infomap" onclick="rename(this.id)" style="cursor: pointer">Infomap</a>
-                <a id = "LLP" onclick="rename(this.id)" style="cursor: pointer">Layered Label Propagation</a>
+                <a id = "Louvain" onclick="rename(this.id, undefined)" style="cursor: pointer">Louvain</a>
+                <a id = "Infomap" onclick="rename(this.id, undefined)" style="cursor: pointer">Infomap</a>
+                <a id = "LLP" onclick="rename(this.id, undefined)" style="cursor: pointer">Layered Label Propagation</a>
             </div>
         </div>
 
@@ -93,9 +87,9 @@
         <div class="dropdown">
             <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center">Interface</button>
             <div id = "dropdown-content_interface" class="dropdown-content">
-                <a id = "D3.js (SVG)" onclick="rename(this.id)" style="cursor: pointer">D3.js (SVG)</a>
-                <a id = "D3.js (Canvas)" onclick="rename(this.id)" style="cursor: pointer">D3.js (Canvas)</a>
-                <a id = "Cytoscape" onclick="rename(this.id)" style="cursor: pointer">Cytoscape</a>
+                <a id = "D3.js (SVG)" onclick="rename(this.id, undefined)" style="cursor: pointer">D3.js (SVG)</a>
+                <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined)" style="cursor: pointer">D3.js (Canvas)</a>
+                <a id = "Cytoscape" onclick="rename(this.id, undefined)" style="cursor: pointer">Cytoscape</a>
             </div>
         </div>
 
@@ -109,6 +103,10 @@
                 <a id = "Staph" onclick="rename_aux2(this.id)" style="cursor: pointer">Staph</a>
             </div>
         </div>
+
+        <input class="dropbtn" id = "mix_param" type="number" name="quantity" min="0" max="1" step = "0.1" value = "0.1" style="text-align: center; display: none" onchange = "rename_aux2(document.getElementById('dropbtn_network').innerText)">
+        <input class="dropbtn" id = "avg_deg" type="number" name="quantity" min="15" max="25" step = "1" value = "16" style="text-align: center; display: none" onchange = "rename_aux2(document.getElementById('dropbtn_network').innerText)">
+        <input class="dropbtn" id = "net_size" type="number" name="quantity" min="10" max="1000" step = "10" value = "100" style="text-align: center; display: none" onchange = "rename_aux2(document.getElementById('dropbtn_network').innerText)">
 
         <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
             <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText);">
@@ -354,6 +352,15 @@
 
 </body>
 
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.22/cytoscape.js"></script> <!-- Using Content Delivery Network (CDN). -->
+<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script src="./visualization/d3_svg.js"></script>
+<script src="./visualization/d3_canvas.js"></script>
+<script src="./visualization/cytoscape.js"></script>
+
 <script src="./visualization/results.js"></script>
 <script src="./visualization/infinite_scrolling.js"></script>
 
@@ -397,12 +404,29 @@
     function rename_aux2 (network) {
 
         document.getElementById("dropbtn_network").innerText = network;
-        rename(document.getElementById("dropbtn_interface").innerText);
+        rename(document.getElementById("dropbtn_interface").innerText, undefined);
+
+        if(network === "GN") {
+
+            document.getElementById('mix_param').style.display = 'inline-block';
+            document.getElementById('avg_deg').style.display = 'inline-block';
+            document.getElementById('net_size').style.display = 'none';
+
+        } else if(network === "LFR") {
+
+            document.getElementById('mix_param').style.display = 'inline-block';
+            document.getElementById('avg_deg').style.display = 'inline-block';
+            document.getElementById('net_size').style.display = 'inline-block';
+
+        } else {
+
+            document.getElementById('mix_param').style.display = 'none';
+            document.getElementById('avg_deg').style.display = 'none';
+            document.getElementById('net_size').style.display = 'none';
+
+        }
 
     }
-
-    rename('D3.js (SVG)');
-    rename_aux2('Amazon');
 
     function rename(id, gamma) {
 
@@ -461,7 +485,7 @@
                 d3.select('#graphDiv').append('svg').attr('id', 'svggg');
                 svg = d3.select('#graphDiv');
 
-                fetch("reset/" + fetchy + "/cytoscape/" + false).then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
 
                     return res.json();
 
@@ -484,7 +508,7 @@
                 canvas = d3.select('#graphDiv').append('canvas').attr('width', 600 + 'px').attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
-                fetch("reset/" + fetchy + "/cytoscape/" + false).then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
 
                     return res.json();
 
@@ -505,7 +529,7 @@
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 // Now send a request to your Node program
-                fetch("reset/" + fetchy + "/cytoscape/" + true).then(function(res) {
+                fetch("reset/" + fetchy + "/cytoscape/" + true + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
 
                     return res.json();
 
@@ -515,6 +539,9 @@
                 });
         }
     }
+
+    rename('D3.js (SVG)', undefined);
+    rename_aux2('Amazon');
 
     // Action on clicking in the Run button.
     d3.select('#comm_detect').on('click', function() {
@@ -559,70 +586,70 @@
         document.getElementById("dropbtn").innerText = "Algorithm";
         document.getElementById("gamma").style.display = "none";
 
-        rename_aux2(document.getElementById("dropbtn_network").innerText);
+        rename_aux2(document.getElementById("dropbtn_network").innerText, document.getElementById("mix_param").value);
 
         document.getElementById("file").style.display = "inline-block";
 
     });
 
     // ---------------------------------------------- Benchmark Results Printing ----------------------------------------------
-/*
-    ["GN", "LFR"].map(function (net) {
+    /*
+            ["GN", "LFR"].map(function (net) {
 
-    rename_aux2(net);
+            rename_aux2(net, 0.2);
 
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value) {
+                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value) {
 
-            rename("Louvain");
-            rename("Infomap");
+                    rename("Louvain");
+                    name("fomap");
 
-        });
+                });
 
-    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9].map(function (value1) {
+            [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9].map(function (value1) {
 
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value2) {
+                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value2) {
 
-            rename("LLP", value1);
+                    rename("LLP", value1);
 
-        });
+                });
 
-    });
+            });
 
-    })
-*/
-      /*          function ola() {
-                    for (let i = 0; i < 10; i++) {
+        })
+    */
+          /*          function ola() {
+                        for (let i = 0; i < 10; i++) {
 
-                        rename("Infomap");
+                            rename("Infomap");
 
+                        }
                     }
+                let me2;
+                function adeus() {
+                    clearInterval(me);
+                    me2 = setInterval(ola2,500);
                 }
-            let me2;
-            function adeus() {
-                clearInterval(me);
-                me2 = setInterval(ola2,500);
+
+                function adeus2() {
+                    clearInterval(me2);
+                }
+
+                let me = setInterval(ola,500);
+
+                    setTimeout(adeus,6000);
+                setTimeout(adeus2,12000);
+
+               //     setInterval(rename("LLP", 0.1),1000);
+
+                for (let gamma_variable = 0; gamma_variable < 1.1; gamma_variable=gamma_variable+0.1) {
+
+                for (let i = 0; i < 10; i++) {
+
+                    fetch("algorithm/" + "llp" + "/gamma/" + gamma_variable + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + "GN");
+
+                }
             }
-
-            function adeus2() {
-                clearInterval(me2);
-            }
-
-            let me = setInterval(ola,500);
-
-                setTimeout(adeus,6000);
-            setTimeout(adeus2,12000);
-
-           //     setInterval(rename("LLP", 0.1),1000);
-
-            for (let gamma_variable = 0; gamma_variable < 1.1; gamma_variable=gamma_variable+0.1) {
-
-            for (let i = 0; i < 10; i++) {
-
-                fetch("algorithm/" + "llp" + "/gamma/" + gamma_variable + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + "GN");
-
-            }
-        }
-        */
+            */
 
 </script>
 

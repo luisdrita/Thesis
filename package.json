@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "express": "^4.16.4",
+    "file-exists": "^5.0.1",
     "formidable": "latest",
     "fs": "0.0.2",
     "html2canvas": "^1.0.0-alpha.12",
