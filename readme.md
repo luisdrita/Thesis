@@ -1,5 +1,5 @@
 # MSc Thesis 
-[https://mscthesis.herokuapp.com/](https://mscthesis.herokuapp.com/) (please, allow a few seconds for the website to load)
+[https://mscthesis.herokuapp.com/](https://mscthesis.herokuapp.com/)
 
 ## Community Finding (CF) in Phylogenetic Trees using PHYLOViZ Online
 

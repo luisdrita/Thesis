@@ -3,16 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auxFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/auxFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metaStaph.txt" beforeDir="false" afterPath="$PROJECT_DIR$/metaStaph.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/print.txt" beforeDir="false" afterPath="$PROJECT_DIR$/print.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/clonalComplex.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/clonalComplex.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/style/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/visualization/d3_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/d3_svg.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2498">
-              <caret line="320" column="142" selection-start-line="320" selection-start-column="142" selection-end-line="320" selection-end-column="142" />
+            <state relative-caret-position="247">
+              <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
             </state>
           </provider>
         </entry>
@@ -37,17 +39,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auxFunctions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="22" />
+            <state relative-caret-position="-842">
+              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1731">
-              <caret line="541" lean-forward="true" selection-start-line="541" selection-end-line="541" />
+            <state relative-caret-position="6375">
+              <caret line="425" column="13" selection-start-line="425" selection-start-column="13" selection-end-line="425" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -144,19 +146,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/pages/aeicbas.html">
+        <entry file="file://$PROJECT_DIR$/website/visualization/d3_svg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/style/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="153" column="1" selection-start-line="153" selection-start-column="1" selection-end-line="153" selection-end-column="1" />
+            <state relative-caret-position="165">
+              <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -174,21 +167,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>change</find>
-      <find>err</find>
-      <find>final_arr</find>
-      <find>arrayToString</find>
-      <find>then</find>
-      <find>build</find>
-      <find>gn</find>
-      <find>rename_aux2</find>
-      <find>reset</find>
       <find>final_arr_titles</find>
       <find>result</find>
       <find>mix_param</find>
       <find>file</find>
       <find>networ</find>
-      <find>result[&quot;communities&quot;]</find>
       <find>obj_lfr</find>
       <find>obj_lfr_cyto</find>
       <find>obj_lfr_com</find>
@@ -196,14 +179,24 @@
       <find>console.log</find>
       <find>node_data_lfr</find>
       <find>network</find>
-      <find>length_var</find>
       <find>missin</find>
       <find>lfr_bench[&quot;nodes&quot;]</find>
       <find>executed</find>
-      <find>console</find>
       <find>nodeDetection</find>
       <find>net_size</find>
       <find>result_cyto_reset</find>
+      <find>lfr_bench_cyto</find>
+      <find>phylo_reset</find>
+      <find>console</find>
+      <find>result[&quot;communities&quot;]</find>
+      <find>lfr_bench_cyto[&quot;links2&quot;]</find>
+      <find>final_arr</find>
+      <find>range_label</find>
+      <find>rename_aux2</find>
+      <find>rename</find>
+      <find>length_var</find>
+      <find>svggg</find>
+      <find>dropbtn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -263,7 +256,6 @@
         <option value="$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_infomap.js" />
         <option value="$PROJECT_DIR$/website/cereal.csv" />
         <option value="$PROJECT_DIR$/website/data.tsv" />
-        <option value="$PROJECT_DIR$/website/visualization/d3_svg.js" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/website/visualization/cytoscape.js" />
         <option value="$PROJECT_DIR$/website/exp.html" />
@@ -275,24 +267,25 @@
         <option value="$PROJECT_DIR$/website/results.js" />
         <option value="$PROJECT_DIR$/website/visualization/d3_canvas.js" />
         <option value="$PROJECT_DIR$/website/visualization/results.js" />
-        <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/emsdk/emscripten/1.38.28/a.out.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/website/style/d3v4-selectable-zoomable-force-directed-graph.css" />
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman.js" />
-        <option value="$PROJECT_DIR$/website/algorithms/hamming.js" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap.js" />
         <option value="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi.js" />
         <option value="$PROJECT_DIR$/website/algorithms/weightedLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/layeredLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/louvain.js" />
-        <option value="$PROJECT_DIR$/auxFunctions.js" />
         <option value="$PROJECT_DIR$/website/style/index.css" />
-        <option value="$PROJECT_DIR$/website/index.html" />
-        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/hamming.js" />
+        <option value="$PROJECT_DIR$/auxFunctions.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/visualization/d3_svg.js" />
+        <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/index.html" />
       </list>
     </option>
   </component>
@@ -306,7 +299,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -367,6 +359,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -563,7 +556,8 @@
       <workItem from="1553616561346" duration="299000" />
       <workItem from="1553618255781" duration="18155000" />
       <workItem from="1553687271288" duration="19527000" />
-      <workItem from="1553775827823" duration="26047000" />
+      <workItem from="1553775827823" duration="26504000" />
+      <workItem from="1553862269783" duration="21563000" />
     </task>
     <task id="LOCAL-00001" summary="MSc 3.0">
       <created>1545014405192</created>
@@ -866,11 +860,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553701450855</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="New Ways of Network Tuning">
+      <created>1553827121542</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1553827121542</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1243258000" />
+    <option name="totallyTimeSpent" value="1265278000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -885,7 +886,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20660147" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20904645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -956,7 +957,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="Improved Code Robustness" />
     <MESSAGE value="Many Minor Improvements" />
     <MESSAGE value="Version 2.0" />
     <MESSAGE value="Benchmark GN" />
@@ -981,7 +981,8 @@
     <MESSAGE value="Benchmark Updates" />
     <MESSAGE value="Strong Enhancement Results Visualization" />
     <MESSAGE value="Bug Correction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Correction" />
+    <MESSAGE value="New Ways of Network Tuning" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Ways of Network Tuning" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website/algorithms/mod_algorithms/mod_layeredLabelPropagation.js" />
@@ -1084,16 +1085,6 @@
     <entry file="file://$PROJECT_DIR$/website/exp4.html" />
     <entry file="file://$PROJECT_DIR$/website/exp5.html" />
     <entry file="file://$PROJECT_DIR$/website/exp3.html" />
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="335">
-            <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/emsdk/emscripten/1.38.28/em++" />
     <entry file="file://$PROJECT_DIR$/emsdk/emscripten/1.38.28/a.out.js" />
     <entry file="file://$PROJECT_DIR$/website/exp.html" />
@@ -1133,13 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/hamming.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="94" column="2" lean-forward="true" selection-start-line="94" selection-start-column="2" selection-end-line="94" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/visualization/results.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1161,24 +1145,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/style/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="153" column="1" selection-start-line="153" selection-start-column="1" selection-end-line="153" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/visualization/d3_svg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="36" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-48">
           <caret line="201" selection-start-line="201" selection-end-line="201" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="15">
+            <caret line="1" column="68" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/style/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="153" column="1" selection-start-line="153" selection-start-column="1" selection-end-line="153" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1189,10 +1176,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/hamming.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="61" column="36" lean-forward="true" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auxFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-842">
+          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/d3_svg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1731">
-          <caret line="541" lean-forward="true" selection-start-line="541" selection-end-line="541" />
+        <state relative-caret-position="6375">
+          <caret line="425" column="13" selection-start-line="425" selection-start-column="13" selection-end-line="425" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1284,20 +1299,6 @@
             <element signature="n#style#0;n#p#0;n#div#1;n#div#3;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#figure#1;n#div#3;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/auxFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2498">
-          <caret line="320" column="142" selection-start-line="320" selection-start-column="142" selection-end-line="320" selection-end-column="142" />
         </state>
       </provider>
     </entry>

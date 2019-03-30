@@ -16,16 +16,18 @@ function searchy(value, array_input) {
     return result
 }
 
-function nodeDetection(nodes_obj) {
+function nodeDetection(nodes_obj, state) {
 
     let result = [];
 
     for (let i = 0; i < nodes_obj.length; i++) {
 
-        result.push(nodes_obj[i].id)
-
+        if(state) {
+            result.push(nodes_obj[i].id)
+        } else {
+            result.push(nodes_obj[i].data.id)
+        }
     }
-
     return result
 }
 

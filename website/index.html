@@ -9,8 +9,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='./style/index.css' rel="stylesheet">
 
-
-
 </head>
 
 <body style="min-width: 1700px; margin: auto; position: relative">
@@ -72,44 +70,44 @@
         <button id='reset_btn'>Reset</button>
         <button id='comm_detect'>Run</button>
         <div class="dropdown" id = "dropdown">
-            <button id = dropbtn class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
+            <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
-                <a id = "Louvain" onclick="rename(this.id, undefined)" style="cursor: pointer">Louvain</a>
-                <a id = "Infomap" onclick="rename(this.id, undefined)" style="cursor: pointer">Infomap</a>
-                <a id = "LLP" onclick="rename(this.id, undefined)" style="cursor: pointer">Layered Label Propagation</a>
+                <a id = "Louvain" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Louvain</a>
+                <a id = "Infomap" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Infomap</a>
+                <a id = "LLP" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Layered Label Propagation</a>
             </div>
         </div>
 
         <div class="dropdown" id = "gamma" style="display: none;">
-            <div id = "range_label" style="display: inline-block">Resolution:</div> <input type="range" id = "gamma2" name="points" min="0" max="100" onmouseup="rename(document.getElementById('dropbtn').innerText);">
+            <div id = "range_label" style="display: inline-block">Resolution:</div> <input type="range" id = "gamma2" name="points" min="0" max="100" onmouseup="rename(document.getElementById('dropbtn_algorithm').innerText, undefined, undefined);">
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center">Interface</button>
+            <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center">D3.js (SVG)</button> <!-- Interface -->
             <div id = "dropdown-content_interface" class="dropdown-content">
-                <a id = "D3.js (SVG)" onclick="rename(this.id, undefined)" style="cursor: pointer">D3.js (SVG)</a>
-                <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined)" style="cursor: pointer">D3.js (Canvas)</a>
-                <a id = "Cytoscape" onclick="rename(this.id, undefined)" style="cursor: pointer">Cytoscape</a>
+                <a id = "D3.js (SVG)" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">D3.js (SVG)</a>
+                <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">D3.js (Canvas)</a>
+                <a id = "Cytoscape" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Cytoscape</a>
             </div>
         </div>
 
         <div class="dropdown">
             <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center">Network</button>
             <div id = "dropdown-content_network" class="dropdown-content">
-                <a id = "GN" onclick="rename_aux2(this.id)" style="cursor: pointer">Girvan-Newman</a>
-                <a id = "LFR" onclick="rename_aux2(this.id)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
-                <a id = "Amazon" onclick="rename_aux2(this.id)" style="cursor: pointer">Amazon</a>
-                <a id = "Karate" onclick="rename_aux2(this.id)" style="cursor: pointer">Zachary's Karate Club</a>
-                <a id = "Staph" onclick="rename_aux2(this.id)" style="cursor: pointer">Staph</a>
+                <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Girvan-Newman</a>
+                <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
+                <a id = "Amazon" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Amazon</a>
+                <a id = "Karate" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Zachary's Karate Club</a>
+                <a id = "Staph" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Staph</a>
             </div>
         </div>
 
-        <input class="dropbtn" id = "mix_param" type="number" name="quantity" min="0" max="1" step = "0.1" value = "0.1" style="text-align: center; display: none" onchange = "rename_aux2(document.getElementById('dropbtn_network').innerText)">
-        <input class="dropbtn" id = "avg_deg" type="number" name="quantity" min="15" max="25" step = "1" value = "16" style="text-align: center; display: none" onchange = "rename_aux2(document.getElementById('dropbtn_network').innerText)">
-        <input class="dropbtn" id = "net_size" type="number" name="quantity" min="10" max="1000" step = "10" value = "100" style="text-align: center; display: none" onchange = "rename_aux2(document.getElementById('dropbtn_network').innerText)">
+        <input class="dropbtn" id = "mix_param" type="number" name="quantity" min="0" max="1" step = "0.1" value = "0.1" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
+        <input class="dropbtn" id = "avg_deg" type="number" name="quantity" min="15" max="25" step = "1" value = "16" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
+        <input class="dropbtn" id = "net_size" type="number" name="quantity" min="10" max="1000" step = "10" value = "100" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
 
         <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
-            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText);">
+            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText, undefined, undefined);">
             <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
         </form>
     </div>
@@ -401,91 +399,87 @@
 
     let canvas, svg, cy;
 
-    function rename_aux2 (network) {
+    function rename(id, gamma, network) {
 
-        document.getElementById("dropbtn_network").innerText = network;
-        rename(document.getElementById("dropbtn_interface").innerText, undefined);
+        if (network !== undefined) {
 
-        if(network === "GN") {
+            document.getElementById("dropbtn_network").innerText = network;
 
-            document.getElementById('mix_param').style.display = 'inline-block';
-            document.getElementById('avg_deg').style.display = 'inline-block';
-            document.getElementById('net_size').style.display = 'none';
+            if (network === "GN") {
 
-        } else if(network === "LFR") {
+                document.getElementById('mix_param').style.display = 'inline-block';
+                document.getElementById('avg_deg').style.display = 'inline-block';
+                document.getElementById('net_size').style.display = 'none';
 
-            document.getElementById('mix_param').style.display = 'inline-block';
-            document.getElementById('avg_deg').style.display = 'inline-block';
-            document.getElementById('net_size').style.display = 'inline-block';
+            } else if (network === "LFR") {
 
-        } else {
+                document.getElementById('mix_param').style.display = 'inline-block';
+                document.getElementById('avg_deg').style.display = 'inline-block';
+                document.getElementById('net_size').style.display = 'inline-block';
 
-            document.getElementById('mix_param').style.display = 'none';
-            document.getElementById('avg_deg').style.display = 'none';
-            document.getElementById('net_size').style.display = 'none';
+            } else {
 
+                document.getElementById('mix_param').style.display = 'none';
+                document.getElementById('avg_deg').style.display = 'none';
+                document.getElementById('net_size').style.display = 'none';
+
+            }
         }
-
-    }
-
-    function rename(id, gamma) {
-
-        let fetchy = document.getElementById("dropbtn_network").innerText;
 
         switch(id) {
 
             case "Louvain":
 
-                document.getElementById("dropbtn").innerText = "Louvain";
+                document.getElementById("dropbtn_algorithm").innerText = "Louvain";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
                 document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + "louvain" + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
                 break;
 
             case "Infomap":
 
-                document.getElementById("dropbtn").innerText = "Infomap";
+                document.getElementById("dropbtn_algorithm").innerText = "Infomap";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
                 document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + "infomap" + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + fetchy);
+                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
                 break;
 
             case "LLP":
 
                 if(gamma === undefined) {
 
-                    document.getElementById("dropbtn").innerText = "LLP";
+                    document.getElementById("dropbtn_algorithm").innerText = "LLP";
                     document.getElementById("range_label").innerText = "Resolution:";
                     document.getElementById("gamma").style.display = "inline-block";
                     document.getElementById("file").style.display = "none";
-                    fetch("algorithm/" + "llp" + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
+                    fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
 
                 } else {
 
-                    document.getElementById("dropbtn").innerText = "LLP";
+                    document.getElementById("dropbtn_algorithm").innerText = "LLP";
                     document.getElementById("range_label").innerText = "Resolution:";
                     document.getElementById("gamma").style.display = "inline-block";
                     document.getElementById("file").style.display = "none";
-                    fetch("algorithm/" + "llp" + "/gamma/" + gamma + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + fetchy);
+                    fetch("algorithm/" + id + "/gamma/" + gamma + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
                 }
 
                 break;
 
             case 'D3.js (SVG)':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (SVG)";
-                document.getElementById("dropbtn").innerText = "Algorithm";
+                document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
 
-                d3.select('#svggg').remove();
+                d3.select('#svg_implementation').remove();
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
-                d3.select('#graphDiv').append('svg').attr('id', 'svggg');
+                d3.select('#graphDiv').append('svg').attr('id', 'svg_implementation');
                 svg = d3.select('#graphDiv');
 
-                fetch("reset/" + fetchy + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
+                fetch("reset/" + document.getElementById("dropbtn_network").innerText + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
 
                     return res.json();
 
@@ -498,17 +492,17 @@
 
             case 'D3.js (Canvas)':
                 document.getElementById("dropbtn_interface").innerText = "D3.js (Canvas)";
-                document.getElementById("dropbtn").innerText = "Algorithm";
+                document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
 
-                d3.select('#svggg').remove();
+                d3.select('#svg_implementation').remove();
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 canvas = d3.select('#graphDiv').append('canvas').attr('width', 600 + 'px').attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
-                fetch("reset/" + fetchy + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
+                fetch("reset/" + document.getElementById("dropbtn_network").innerText + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
 
                     return res.json();
 
@@ -521,15 +515,15 @@
 
             case 'Cytoscape':
                 document.getElementById("dropbtn_interface").innerText = "Cytoscape";
-                document.getElementById("dropbtn").innerText = "Algorithm";
+                document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
 
-                d3.select('#svggg').remove();
+                d3.select('#svg_implementation').remove();
                 d3.select('canvas').remove();
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 // Now send a request to your Node program
-                fetch("reset/" + fetchy + "/cytoscape/" + true + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
+                fetch("reset/" + document.getElementById("dropbtn_network").innerText + "/cytoscape/" + true + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
 
                     return res.json();
 
@@ -540,25 +534,23 @@
         }
     }
 
-    rename('D3.js (SVG)', undefined);
-    rename_aux2('Amazon');
+    rename(document.getElementById("dropbtn_interface").innerText, undefined, 'Amazon');
 
     // Action on clicking in the Run button.
     d3.select('#comm_detect').on('click', function() {
 
-        if (document.getElementById("dropbtn").innerText !== "Algorithm") {
+        if (document.getElementById("dropbtn_algorithm").innerText !== "Algorithm") {
 
-            let view = document.getElementById("dropbtn_interface").innerText;
+            let inter = document.getElementById("dropbtn_interface").innerText;
 
-            fetch("run/" + view).then(function (res) {
+            fetch("run/" + inter).then(function (res) {
                 // Res will be a Response object.
                 // Use res.text() or res.json() to get the information that the Node program sent.
-
                 return res.json();
 
             }).then(function (jsonData) {
 
-                switch (view) {
+                switch (inter) {
 
                     case "D3.js (SVG)":
 
@@ -583,12 +575,11 @@
     // Action on clicking in the Reset button. All nodes have their colours reset to a standard one.
     d3.select('#reset_btn').on('click', function() {
 
-        document.getElementById("dropbtn").innerText = "Algorithm";
+        document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
         document.getElementById("gamma").style.display = "none";
-
-        rename_aux2(document.getElementById("dropbtn_network").innerText, document.getElementById("mix_param").value);
-
         document.getElementById("file").style.display = "inline-block";
+
+        rename(document.getElementById('dropbtn_interface').innerText, document.getElementById("mix_param").value, document.getElementById("dropbtn_network").innerText);
 
     });
 
