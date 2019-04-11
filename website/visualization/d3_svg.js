@@ -1,42 +1,37 @@
 function d3svgFunc(svg, graph) {
-    let d3v4;
-    // if both d3v3 and d3v4 are loaded, we'll assume
-    // that d3v4 is called d3v4, otherwise we'll assume
-    // that d3v4 is the default (d3)
-    if (typeof d3v4 == 'undefined')
-        d3v4 = d3;
+    // if both d3v3 and d3 are loaded, we'll assume
+    // that d3 is called d3, otherwise we'll assume
+    // that d3 is the default (d3)
 
-    let parentWidth = d3v4.select('svg').node().parentNode.clientWidth;
-    let parentHeight = d3v4.select('svg').node().parentNode.clientHeight;
+    let parentWidth = d3.select('svg').node().parentNode.clientWidth;
+    let parentHeight = d3.select('svg').node().parentNode.clientHeight;
 
-    svg = d3v4.select('#svg_implementation')
+    svg = d3.select('#svg_implementation')
         .attr('width', parentWidth)
         .attr('height', parentHeight);
 
     // remove any previous graphs
     svg.selectAll('.g-main').remove();
 
-    let gMain = svg.append('g')
-        .classed('g-main', true);
+    let gMain = svg.append('g').classed('g-main', true);
 
-    let rect = gMain.append('rect')
+    gMain.append('rect')
         .attr('width', parentWidth)
         .attr('height', parentHeight)
         .style('fill', 'white');
 
     let gDraw = gMain.append('g');
 
-    let zoom = d3v4.zoom().scaleExtent([1/10, 10])
+    let zoom = d3.zoom().scaleExtent([1/10, 10])
         .on('zoom', zoomed);
 
     gMain.call(zoom);
 
-
     function zoomed() {
-        gDraw.attr('transform', d3v4.event.transform);
+        gDraw.attr('transform', d3.event.transform);
     }
 
-    let color = d3v4.scaleOrdinal(d3v4.schemeCategory20);
+    let color = d3.scaleOrdinal(d3.schemeCategory20);
 
     if (! ("links" in graph)) {
         console.log("Graph is missing links");
@@ -49,11 +44,6 @@ function d3svgFunc(svg, graph) {
         nodes[graph.nodes[i].id] = graph.nodes[i];
         graph.nodes[i].weight = 1.01;
     }
-
-    // the brush needs to go before the nodes so that it doesn't
-    // get called when the mouse is over a node
-    let gBrushHolder = gDraw.append('g');
-    let gBrush = null;
 
     let link = gDraw.append("g")
         .attr("class", "link")
@@ -74,7 +64,7 @@ function d3svgFunc(svg, graph) {
             else
                 return color(d.group);
         })
-        .call(d3v4.drag()
+        .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
             .on("end", dragended));
@@ -89,21 +79,17 @@ function d3svgFunc(svg, graph) {
                 return d.id;
         });
 
-    let simulation = d3v4.forceSimulation()
-        .force("link", d3v4.forceLink()
+    let simulation = d3.forceSimulation()
+        .force("link", d3.forceLink()
             .id(function(d) { return d.id; })
             .distance(function(d) {
                 return 30;
-                //let dist = 20 / d.value;
-                //console.log('dist:', dist);
-
-                return dist;
             })
         )
-        .force("charge", d3v4.forceManyBody())
-        .force("center", d3v4.forceCenter(parentWidth / 2, parentHeight / 2))
-        .force("x", d3v4.forceX(parentWidth/2))
-        .force("y", d3v4.forceY(parentHeight/2));
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(parentWidth / 2, parentHeight / 2))
+        .force("x", d3.forceX(parentWidth/2))
+        .force("y", d3.forceY(parentHeight/2));
 
     simulation
         .nodes(graph.nodes)
@@ -124,146 +110,42 @@ function d3svgFunc(svg, graph) {
             .attr("cy", function(d) { return d.y; });
     }
 
-    let brushMode = false;
-    let brushing = false;
-
-    let brush = d3v4.brush()
-        .on("start", brushstarted)
-        .on("brush", brushed)
-        .on("end", brushended);
-
-    function brushstarted() {
-        // keep track of whether we're actively brushing so that we
-        // don't remove the brush on keyup in the middle of a selection
-        brushing = true;
-
-        node.each(function(d) {
-            d.previouslySelected = shiftKey && d.selected;
-        });
-    }
-
-    rect.on('click', () => {
-        node.each(function(d) {
-            d.selected = false;
-            d.previouslySelected = false;
-        });
-        node.classed("selected", false);
-    });
-
-    function brushed() {
-        if (!d3v4.event.sourceEvent) return;
-        if (!d3v4.event.selection) return;
-
-        let extent = d3v4.event.selection;
-
-        node.classed("selected", function(d) {
-            return d.selected = d.previouslySelected ^
-                (extent[0][0] <= d.x && d.x < extent[1][0]
-                    && extent[0][1] <= d.y && d.y < extent[1][1]);
-        });
-    }
-
-    function brushended() {
-        if (!d3v4.event.sourceEvent) return;
-        if (!d3v4.event.selection) return;
-        if (!gBrush) return;
-
-        gBrush.call(brush.move, null);
-
-        if (!brushMode) {
-            // the shift key has been release before we ended our brushing
-            gBrush.remove();
-            gBrush = null;
-        }
-
-        brushing = false;
-    }
-
-    d3v4.select('body').on('keydown', keydown);
-    d3v4.select('body').on('keyup', keyup);
-
-    let shiftKey;
-
-    function keydown() {
-        shiftKey = d3v4.event.shiftKey;
-
-        if (shiftKey) {
-            // if we already have a brush, don't do anything
-            if (gBrush)
-                return;
-
-            brushMode = true;
-
-            if (!gBrush) {
-                gBrush = gBrushHolder.append('g');
-                gBrush.call(brush);
-            }
-        }
-    }
-
-    function keyup() {
-        shiftKey = false;
-        brushMode = false;
-
-        if (!gBrush)
-            return;
-
-        if (!brushing) {
-            // only remove the brush if we're not actively brushing
-            // otherwise it'll be removed when the brushing ends
-            gBrush.remove();
-            gBrush = null;
-        }
-    }
-
     function dragstarted(d) {
-        if (!d3v4.event.active) simulation.alphaTarget(0.9).restart();
+        if (!d3.event.active) simulation.alphaTarget(0.9).restart();
 
-        if (!d.selected && !shiftKey) {
+        if (!d.selected) {
             // if this node isn't selected, then we have to unselect every other node
             node.classed("selected", function(p) { return p.selected =  p.previouslySelected = false; });
         }
 
-        d3v4.select(this).classed("selected", function(p) { d.previouslySelected = d.selected; return d.selected = true; });
+        d3.select(this).classed("selected", function(p) { d.previouslySelected = d.selected; return d.selected = true; });
 
         node.filter(function(d) { return d.selected; })
-            .each(function(d) { //d.fixed |= 2;
+            .each(function(d) {
                 d.fx = d.x;
                 d.fy = d.y;
             })
-
     }
 
     function dragged(d) {
-        //d.fx = d3v4.event.x;
-        //d.fy = d3v4.event.y;
+
         node.filter(function(d) { return d.selected; })
             .each(function(d) {
-                d.fx += d3v4.event.dx;
-                d.fy += d3v4.event.dy;
+                d.fx += d3.event.dx;
+                d.fy += d3.event.dy;
             })
     }
 
     function dragended(d) {
-        if (!d3v4.event.active) simulation.alphaTarget(0);
+        if (!d3.event.active) simulation.alphaTarget(0);
         d.fx = null;
         d.fy = null;
         node.filter(function(d) { return d.selected; })
-            .each(function(d) { //d.fixed &= ~6;
+            .each(function(d) {
                 d.fx = null;
                 d.fy = null;
             })
     }
-/*
-    svg.selectAll('text')
-        .data(texts)
-        .enter()
-        .append('text')
-        .attr('x', 900)
-        .attr('y', function(d,i) { return 470 + i * 18; })
-        .text(function(d) { return d; });
-
-*/
 
     return graph;
 }

@@ -15,9 +15,9 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     // names. They are always invoked using the variable name.
 
     // Global Variables
-    let nodes = [], edges = [], nodes_cyto = [], edges_cyto = [], edges2 = [], edges_group = [], communities = [];
+    let nodes = [], edges = [], edges2 = [], edges_group = [], communities = [];
     let result = {};
-    let matrix = Array(128).fill().map(() => Array(128).fill(0)), matrix2 = Array(128).fill().map(() => Array(128).fill(0)), final_matrix = Array(128).fill().map(() => Array(128).fill(0));
+    let matrix = Array(128).fill().map(() => Array(128).fill(0)), matrix2 = matrix, final_matrix = matrix;
     let rightGroup;
     let i;
     let out_degree = Math.round(mix_param * avg_deg), in_degree = avg_deg - Math.round(mix_param * avg_deg);
@@ -40,15 +40,14 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     // Joins the nodes that belong to the same group. Group order was randomized.
     function reShuffle(a) {
 
-        let randSequence = shuffle([1,2,3,4]);
-
-        let result = [];
+        let randSequence = shuffle([1,2,3,4]), result = [];
 
         for (let j = 0; j < 4; j++) {
 
-            for (let i = 0; i < a.length; i++) {
+        for (let i = 0; i < a.length; i++) {
 
-                if (a[i].group === randSequence[j]) result.push(a[i]);
+            if (a[i].group === randSequence[j]) result.push(a[i]);
+
             }
         }
 
@@ -60,19 +59,18 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
         nodes_set.forEach(function (node) {
 
-            if(node.id === node_i.id) return node.group;
+            if (node.id === node_i.id) return node.group;
         });
     }
 
     // Returns the number of neighbour nodes of node "node". It excludes itself.
     function number_neighbour_nodes(node, matrix) {
 
-        let neighbours = matrix[node.id];
-        let count = 0;
+        let neighbours = matrix[node.id], count = 0;
 
         neighbours.forEach(function (neighbour, index) {
 
-            if(neighbour === 1 && index !== node.id) count++;
+            if (neighbour === 1 && index !== node.id) count++;
 
         });
 
@@ -82,12 +80,11 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     // Returns the number of neighbours of node "node". It excludes the ones belonging to the same group.
     function number_neighbour_different_nodes(node, matrix, nodes_set) {
 
-        let neighbours = matrix[node.id];
-        let count = 0;
+        let neighbours = matrix[node.id], count = 0;
 
         neighbours.forEach(function (neighbour, index) {
 
-            if(neighbour === 1 && node.group !== find(neighbours[index], nodes_set)) count++;
+            if (neighbour === 1 && node.group !== find(neighbours[index], nodes_set)) count++;
 
         });
 
@@ -150,13 +147,11 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     // Assesses if all nodes belonging to a given group have all the inside connections in place.
     function complete(matrix, group) {
 
-        let aux = 0;
-
-        let nodes_aux = [];
+        let aux = 0, nodes_aux = [];
 
         nodes.forEach(function (node) {
 
-            if(node.group === group) nodes_aux.push(node);
+            if (node.group === group) nodes_aux.push(node);
 
         });
 
@@ -198,81 +193,70 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
     // ----------------------------------------- Algorithm -----------------------------------------
 
-    for (let i = 0; i < 128; i++) { // Simplified representation of all the communities present in the network.
-
-        if (i < 32) {
-            communities[i] = 1;
-
-        } else if (i < 64) {
-            communities[i] = 2;
-
-        } else if (i < 96) {
-            communities[i] = 3;
-
-        } else {
-            communities[i] = 4;
-        }
-    }
-
     for (let i = 0; i < 128; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
 
         if (i < 32) {
             nodes[i] = {id: i, group: 1};
+            communities[i] = 0;
 
         } else if (i < 64) {
             nodes[i] = {id: i, group: 2};
+            communities[i] = 1;
 
         } else if (i < 96) {
             nodes[i] = {id: i, group: 3};
+            communities[i] = 2;
 
         } else {
             nodes[i] = {id: i, group: 4};
+            communities[i] = 3;
         }
+
     }
 
-    nodes = reShuffle(shuffle(nodes)); // Shuffles nodes set, maintaining them organized in blocks of 32.
+        nodes = reShuffle(shuffle(nodes)); // Shuffles nodes set, maintaining them organized in blocks of 32.
 
-    for (i = 0; i < 128; i++) { // Establishing connections between nodes from the same groups.
+            for (i = 0; i < 128; i++) { // Establishing connections between nodes from the same groups.
 
-        rightGroup = includeGroup(nodes, nodes[i]); // Restricts possible connections of "nodes[i]" to the ones belonging to the same group and excluding itself.
+                rightGroup = includeGroup(nodes, nodes[i]); // Restricts possible connections of "nodes[i]" to the ones belonging to the same group and excluding itself.
 
-        loop:
-            while (number_neighbour_nodes(nodes[i], matrix) < in_degree) { // Checks if source node "nodes[i]" still have available connections to be made. Iterates until being complete.
+                loop:
+                while (number_neighbour_nodes(nodes[i], matrix) < in_degree) { // Checks if source node "nodes[i]" still have available connections to be made. Iterates until being complete.
 
-                let j = Math.round(Math.random() * (rightGroup.length - 1)); // Trying different target nodes in a randomized way.
+                    let j = Math.round(Math.random() * (rightGroup.length - 1)); // Trying different target nodes in a randomized way.
 
-                while (check(nodes[i], rightGroup[j], matrix) || number_neighbour_nodes(rightGroup[j], matrix) >= in_degree) { // Checks if target node "rightGroup[j]" still have available connections to be made.
+                    while (check(nodes[i], rightGroup[j], matrix) || number_neighbour_nodes(rightGroup[j], matrix) >= in_degree) { // Checks if target node "rightGroup[j]" still have available connections to be made.
 
-                    rightGroup = exclude(rightGroup, rightGroup[j]); // Excluding non-connectable node "rightGroup[j]" from "rightGroup".
+                        rightGroup = exclude(rightGroup, rightGroup[j]); // Excluding non-connectable node "rightGroup[j]" from "rightGroup".
 
-                    if (rightGroup.length === 0) break loop; // In case of being impossible to complete the set of connections of nodes[i], the "loop" cycle is broken.
+                        if (rightGroup.length === 0) break loop; // In case of being impossible to complete the set of connections of nodes[i], the "loop" cycle is broken.
 
-                    j = Math.round(Math.random() * (rightGroup.length - 1)); // Trying different target nodes in a randomized way.
+                        j = Math.round(Math.random() * (rightGroup.length - 1)); // Trying different target nodes in a randomized way.
+
+                    }
+
+                    if(!cyto) {
+                        edges.push({source: nodes[i].id, target: rightGroup[j].id, value: 1}); // Pushing recently formed edges to "edges" array.
+                    } else {
+                        edges.push({data: {source: nodes[i].id, target: rightGroup[j].id, value: 1}}); // Pushing recently formed edges to "edges" array.
+                    }
+
+                    matrix[nodes[i].id][rightGroup[j].id] = 1; // Representing nodes connections in the adjacency matrix.
+                    matrix[rightGroup[j].id][nodes[i].id] = 1; // Symmetric matrix.
 
                 }
 
-                if(!cyto) {
-                    edges.push({source: nodes[i].id, target: rightGroup[j].id, value: 1}); // Pushing recently formed edges to "edges" array.
-                } else {
-                    edges.push({data: {source: nodes[i].id, target: rightGroup[j].id, value: 1}}); // Pushing recently formed edges to "edges" array.
-                }
-
-                matrix[nodes[i].id][rightGroup[j].id] = 1; // Representing nodes connections in the adjacency matrix.
-                matrix[rightGroup[j].id][nodes[i].id] = 1; // Symmetric matrix.
-
+                reset(i, complete(matrix, nodes[i].group)); // Based on the state of the 2 input arguments, it resets the execution in a different way.
             }
 
-        reset(i, complete(matrix, nodes[i].group)); // Based on the state of the 2 input arguments, it resets the execution in a different way.
-    }
+        shuffle(nodes); // Completely shuffles nodes present in array "nodes".
+        edges = edges_group;
 
-    shuffle(nodes); // Completely shuffles nodes present in array "nodes".
-    edges = edges_group;
+        for (let ii = 0; ii < 128; ii++) { // Establishing connections between nodes from different groups.
 
-    for (let ii = 0; ii < 128; ii++) { // Establishing connections between nodes from different groups.
+            rightGroup = exceptGroup(nodes, nodes[ii]); // Restricts possible connections of "nodes[ii]" to the ones belonging to different groups.
 
-        rightGroup = exceptGroup(nodes, nodes[ii]); // Restricts possible connections of "nodes[ii]" to the ones belonging to different groups.
-
-        loop:
+            loop:
             while (number_neighbour_different_nodes(nodes[ii], matrix2, nodes) < out_degree) { // Checks if source node "nodes[ii]" still have available connections to be made. Iterates until being complete.
 
                 let j = Math.round(Math.random() * (rightGroup.length - 1)); // Trying different target nodes in a randomized way.
@@ -304,19 +288,12 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
             }
 
-    }
+        }
 
-    final_matrix = matrixAddition(matrix2, final_matrix); // Adjacency matrix resulting from all the previous established connections.
-    edges = edges.concat(edges2); // Concatenates edges from 1st and 2nd cycles (above).
+        final_matrix = matrixAddition(matrix2, final_matrix); // Adjacency matrix resulting from all the previous established connections.
+        edges = edges.concat(edges2); // Concatenates edges from 1st and 2nd cycles (above).
 
-    /*
-    let auxii = 0;
-    while (auxii < nodes.length) {
-        console.log(nodes[auxii].id + "-" + number_neighbour_nodes(nodes[auxii],final_matrix));
-        auxii++;
-    }
-    */
-    console.log("Done");
+console.log("Done");
 
     // Assembling output in a final object compound of nodes, edges and communities arrays.
     if(!cyto) {
@@ -354,3 +331,4 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 module.exports = {
     jGirvan_Newman: jGirvan_Newman
 };
+

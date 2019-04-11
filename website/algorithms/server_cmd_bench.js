@@ -9,11 +9,11 @@ const {performance} = require('perf_hooks');
 
 
 // Importing community finding libraries.
-const infomap = require('./website/algorithms/infomap/infomap');
-const louvain = require('./website/algorithms/louvain/louvain');
-const layeredLabelPropagation = require('./website/algorithms/llp/layeredLabelPropagation');
+const infomap = require('./website/algorithms/infomap');
+const louvain = require('./website/algorithms/louvain');
+const layeredLabelPropagation = require('./website/algorithms/layeredLabelPropagation');
 const hamming = require('./website/algorithms/hamming');
-const nmi = require('./website/algorithms/nmi/nmi');
+const nmi = require('./website/algorithms/nmi');
 
 // Importing benchmarking libraries.
 const girvan = require('./website/algorithms/girvan-newman');
@@ -51,16 +51,25 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             } else {
 
-                let t1 = performance.now();
+                // ---------------------------- NMI x Mix Parameter
+/*
+                community = louvain.jLouvain(aux.nodeDetection(mother_result[mix]["nodes"], 1), mother_result[mix]["links"], 1/10000);
+                final_arr.push(Object.values(community));
+                final_arr_titles.push("Louvain" + "_" + net + "_" + mix + "_" + ij);
+                ij++;
+                result["nodes"] = aux.nodify(community, 0);
+                result["links"] = mother_result[mix]["links"];
+*/
+                // ---------------------------- Label Propagation NMI x Mix Parameter
 
                 community = louvain.jLouvain(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], 1/10000);
-                let t2 = performance.now();
-                final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
                 result["nodes"] = aux.nodify(community, 0);
                 result["links"] = mother_result[mix + "_" + avg_deg]["links"];
+
+                console.log(ij);
 
             }
 
@@ -76,10 +85,18 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             } else {
 
-                let t1 = performance.now();
+                // ---------------------------- NMI x Mix Parameter
+
+                community = infomap.jInfomap(aux.nodeDetection(mother_result[mix]["nodes"], 1), mother_result[mix]["links"], 1/10000);
+                final_arr.push(Object.values(community));
+                final_arr_titles.push("Infomap" + "_" + net + "_" + mix + "_" + ij);
+                ij++;
+                result["nodes"] = aux.nodify(community, 0);
+                result["links"] = mother_result[mix]["links"];
+
+                // ---------------------------- Label Propagation NMI x Mix Parameter
+
                 community = infomap.jInfomap(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], 1/10000);
-                let t2 = performance.now();
-                final_times["Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
@@ -100,12 +117,18 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             } else {
 
-                if (mix === undefined && avg_deg === undefined) gamma_var = 0;
+                // ---------------------------- NMI x Mix Parameter
+/*
+                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(mother_result[mix]["nodes"], 1), mother_result[mix]["links"], gamma_var, 10000);
+                final_arr.push(Object.values(community));
+                final_arr_titles.push("LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + ij);
+                ij++;
+                result["nodes"] = aux.nodify(community, 0);
+                result["links"] = mother_result[mix]["links"];
+*/
+                // ---------------------------- Label Propagation NMI x Mix Parameter
 
-                let t1 = performance.now();
-                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
-                let t2 = performance.now();
-                final_times["LLP" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
+                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], 0, 10000);
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
@@ -138,39 +161,50 @@ app.get('/run/:inter', function (req, res) {
 // ---------------------------------------------- RESET ----------------------------------------------
 
 // Resetting the application by clicking in the corresponding button in the interface.
-app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/max_deg/:maxk/min_com/:minc/max_com/:maxc', function (req, res) {
+app.get('/reset/:alg/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/max_deg/:maxk/min_com/:minc/max_com/:maxc', function (req, res) {
 
-        switch (req.params.net) {
+        switch (req.params.alg) {
 
             case "GN":
 
-                mother_result[req.params.mix + "_" + req.params.deg] = girvan.jGirvan_Newman(req.params.mix, false, req.params.deg);
+        //        result = girvan.jGirvan_Newman(req.params.mix, false, req.params.deg);
+                //mother_result[req.params.mix] = result;
+
+                // ---------------------------- NMI x Mix Parameter
 /*
-               // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (rep) {
+                [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
 
-                    [16].map(function (avg_deg) {
+                    console.log(mix_param);
 
-                        [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+                    result = girvan.jGirvan_Newman(mix_param, false, 16);
+                    mother_result[mix_param] = result;
 
-                            let t1 = performance.now();
-                            result = girvan.jGirvan_Newman(mix_param, false, avg_deg);
-                            let t2 = performance.now();
+                    final_arr.push(result["communities"]);
+                    final_arr_titles.push("GN_Bench" + "_" + mix_param);
 
-                            mother_result[mix_param + "_" + avg_deg] = result;
+                });
+*/
+                // ---------------------------- LP/LLP/Louvain/Infomap NMI x Mix Parameter
 
-                            final_arr.push(result["communities"]);
-                            final_arr_titles.push("GN_Bench" + "_" + mix_param + "_" + avg_deg);
+                [15].map(function (avg_deg) {
 
-                            //final_times["GN_Bench" + "_" + mix_param + "_" + avg_deg + "_" + ij] = t2 - t1;
-                            //ij++;
+                    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+                        let t1 = performance.now();
+                        console.log(mix_param);
 
-                            console.log(mix_param);
+                        result = girvan.jGirvan_Newman(mix_param, false, avg_deg);
+                        mother_result[mix_param + "_" + avg_deg] = result;
 
-                        });
+                        final_arr.push(result["communities"]);
+                        final_arr_titles.push("GN_Bench" + "_" + mix_param + "_" + avg_deg);
+
+                        let t2 = performance.now();
+                        final_times["GN_Bench" + "_" + mix_param + "_" + avg_deg] = (t2-t1);
+
                     });
 
-             //   });
-*/
+                });
+
                 if(req.params.cyto !== "false")  {
 
                     result_cyto = girvan.jGirvan_Newman(req.params.mix, true, req.params.deg);
@@ -178,7 +212,7 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
                 } else {
 
-                    res.send(mother_result[req.params.mix + "_" + req.params.deg]);
+                    res.send(result);
 
                 }
 
@@ -186,16 +220,18 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
             case "LFR":
 
-         //       [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+                [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+
+                    console.log(mix_param);
 
                     cmd.get(
                         `
             cd ./website/algorithms/lancichinetti-fortunato-radicchi
-            ./benchmark -N ${req.params.size} -k ${req.params.deg} -maxk ${req.params.maxk} -mu ${req.params.mix} -minc ${req.params.minc} -maxc ${req.params.maxc}
+            ./benchmark -N ${req.params.size} -k ${req.params.deg} -maxk ${req.params.maxk} -mu ${mix_param} -minc ${req.params.minc} -maxc ${req.params.maxc}
         `,
                         function () { // err, data, stderr
 
-                            fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
+                            fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data) {
 
                                 if (err) throw err;
 
@@ -203,7 +239,7 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
                                 let obj_lfr = [];
                                 let node_data_lfr = {};
 
-                                let split = data_net.toString().split("\n");
+                                let split = data.toString().split("\n");
 
                                 for (let i = 0; i < split.length - 1; i++) {
                                     let splitLine = split[i].split("\t");
@@ -214,13 +250,13 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
                                 }
 
-                                fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
+                                fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data) {
 
                                     if (err) throw err;
 
                                     let obj_lfr_com = {};
 
-                                    let split = data_com.toString().split("\n");
+                                    let split = data.toString().split("\n");
 
                                     for (let i = 0; i < split.length - 1; i++) {
                                         let splitLine = split[i].split("\t");
@@ -229,39 +265,36 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
                                     result["nodes"] = aux.nodify(obj_lfr_com, 0);
                                     result["links"] = obj_lfr;
-                                    mother_result[req.params.mix + "_" + req.params.deg] = result;
+                                    mother_result[mix_param] = result;
 
                                     final_arr.push(Object.values(obj_lfr_com));
-                               //     final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + req.params.deg);
-
-                                  //  console.log(mix_param);
-
+                                    final_arr_titles.push("LFR_Bench" + "_" + mix_param);
+/*
                                     if (req.params.cyto !== "false") {
 
                                         result_cyto["nodes"] = aux.nodify(obj_lfr_com, 3);
                                         result_cyto["links"] = obj_lfr_cyto;
-                                        //res.send(result_cyto);
+                                        res.send(result_cyto);
 
                                     } else {
 
-                                        //res.send(result);
+                                        res.send(result);
                                     }
-
+*/
                                 });
                             });
                         });
-             //   });
+                });
 
                 if (req.params.cyto !== "false") {
 
-                    //result_cyto["nodes"] = aux.nodify(obj_lfr_com, 3);
-                    //result_cyto["links"] = obj_lfr_cyto;
+                    result_cyto["nodes"] = aux.nodify(obj_lfr_com, 3);
+                    result_cyto["links"] = obj_lfr_cyto;
                     res.send(result_cyto);
 
                 } else {
 
                     res.send(result);
-
                 }
 
                 break;
@@ -287,18 +320,16 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
                     }
 
-                    mother_result[req.params.mix + "_" + req.params.deg] = {};
-                    mother_result[req.params.mix + "_" + req.params.deg]["nodes"] = aux.nodify(node_data, 1);
-                    mother_result[req.params.mix + "_" + req.params.deg]["links"] = obj;
+                    result["nodes"] = aux.nodify(node_data, 1);
+                    result["links"] = obj;
 
                     if(req.params.cyto !== "false")  {
 
                         result_cyto["nodes"] = aux.nodify(node_data, 2);
                         result_cyto["links"] = obj_cyto;
                         res.send(result_cyto);
-
                     } else {
-                        res.send(mother_result[req.params.mix + "_" + req.params.deg]);
+                        res.send(result);
                     }
                 });
 
@@ -307,16 +338,14 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
             case "Karate":
 
                 // Importing Zachary's karate club network. Supporting Cytoscape.js and D3.js representation.
-               // result = require('./uploads/karate_club.json');
-                mother_result[req.params.mix + "_" + req.params.deg] = require('./uploads/karate_club.json');
+                result = require('./uploads/karate_club.json');
 
                 if(req.params.cyto !== "false")  {
 
-                    res.send(require('./uploads/karate_club_cyto.json'));
-
+                    result_cyto = require('./uploads/karate_club_cyto.json');
+                    res.send(result_cyto);
                 } else {
-
-                    res.send(mother_result[req.params.mix + "_" + req.params.deg]);
+                    res.send(result);
                 }
 
                 break;
@@ -355,7 +384,6 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
                         }
 
                         result = hamming.jHamming(obj, 1, false);
-                        mother_result[req.params.mix + "_" + req.params.deg] = result;
 
                         if(req.params.cyto !== "false")  {
 
@@ -390,102 +418,150 @@ app.post('/upload', function (req, res) {
     form.on('fileBegin', function (name, file) {
         file.path = __dirname + '/uploads/' + "upload.txt"; // file.name substituted by Input.txt
     });
+
 });
 
-// ---------------------------------------------- NMI ACCURACY BENCHMARK ----------------------------------------------
+// ---------------------------------------------- NMI BENCHMARK ----------------------------------------------
 
-app.get('/bench_accu/:title', function (req, res) {
+let datat = {};
 
-    let datat = {};
-    let auxii = "";
-    let titles = [];
-    let net = final_arr_titles[0].split("_")[0];
+app.get('/bench', function (req, res) {
 
     for (let i = 0; i < final_arr.length; i++) {
 
-        let mix;
-        let deg;
+        let auxi = "";
+        let net;
 
-        if ((final_arr_titles[i].search("LLP")) > -1) {
+        // ---------------------------- NMI x Mix Parameter
+/*
+        if(final_arr_titles[0].search("GN") === -1) {
 
-            mix = final_arr_titles[i].split("_")[3];
-            deg = final_arr_titles[i].split("_")[4];
+            let splitName = final_arr_titles[i].split("_");
+
+            if (splitName[0] === "Louvain" || splitName[0] === "Infomap") {
+
+                net = "LFR_Bench_" + splitName[2] + ".txt";
+
+            } else if (splitName[0] === "LLP") {
+
+                net = "LFR_Bench_" + splitName[3] + ".txt";
+
+            } else if (splitName[0] === "LFR") {
+
+                net = final_arr_titles[i] + ".txt";
+
+            }
 
         } else {
 
-            mix = final_arr_titles[i].split("_")[2];
-            deg = final_arr_titles[i].split("_")[3];
+            net = "GN_Bench_0.txt";
 
         }
+*/
+        // ---------------------------- LP/LLP/Louvain/Infomap NMI x Mix Parameter
 
-        let index;
+        if(final_arr_titles[0].search("GN") === -1) {
 
-        final_arr_titles.map(function (value, key) {
+            let splitName = final_arr_titles[i].split("_");
 
-            if (value === net + "_Bench_" + mix + "_" + deg) {
+            if (splitName[0] === "Louvain" || splitName[0] === "Infomap") {
 
-                index = key;
+                net = "LFR_Bench_" + splitName[2] + ".txt";
+
+            } else if (splitName[0] === "LLP") {
+
+                net = "LFR_Bench_" + splitName[3] + ".txt";
+
+            } else if (splitName[0] === "LFR") {
+
+                net = final_arr_titles[i] + ".txt";
 
             }
 
-        });
+        } else {
 
-        datat[final_arr_titles[i]] = nmi.jNMI(final_arr[index],final_arr[i]);
+            net = "GN_Bench_0_15.txt";
+
+        }
+/*
+        auxi = aux.arrayToString_bench(final_arr, auxi, final_arr_titles,final_arr_titles[i]);
+
+        fs.writeFile("./website/algorithms/nmi/" + final_arr_titles[i] + ".txt", auxi, function () {
+
+            cmd.get(
+                `
+            cd ./website/algorithms/nmi
+            ./mutual ${net} ${final_arr_titles[i] + ".txt"}
+        `,
+                function (err, data, stderr) {
+
+                    if (err) throw console.log('error', err);
+
+                    datat[final_arr_titles[i]] = Number(data.split("\t")[1]);
+/*
+                    if (final_arr_titles[i] !== "GN_Bench_0.txt" || final_arr_titles[i] !== "LFR_Bench_0_0.txt") {
+
+                        fs.unlink("./website/algorithms/nmi/" + final_arr_titles[i] + ".txt", function (err) {
+                            if (err) throw err;
+                        });
+                    }
+
+
+                }
+            );
+        });
+*/
+        datat[final_arr_titles[i]] = nmi.jNMI(final_arr[0],final_arr[i]);
 
     }
 
+    res.send();
+
+});
+
+app.get('/plot', function (req, res) {
+
+    let auxii = "";
+    let net = ((Object.keys(datat)[0]).split("_"))[1];
+    let alg = ((Object.keys(datat)[0]).split("_"))[0];
+
     // ---------------------------- NMI x Mix Parameter
+/*
+    if(net.search("GN") === -1) {
+        auxii  = aux.arrayToString_plot(datat, auxii, ["LLP_LFR_0_0_", "LLP_LFR_0_0.1_", "LLP_LFR_0_0.2_", "LLP_LFR_0_0.3_", "LLP_LFR_0_0.4_", "LLP_LFR_0_0.5_", "LLP_LFR_0_0.6_", "LLP_LFR_0_0.7_", "LLP_LFR_0_0.8_", "LLP_LFR_0_0.9_", "LLP_LFR_0_1_", "LLP_LFR_0.5_0_", "LLP_LFR_0.5_0.1_", "LLP_LFR_0.5_0.2_", "LLP_LFR_0.5_0.3_", "LLP_LFR_0.5_0.4_", "LLP_LFR_0.5_0.5_", "LLP_LFR_0.5_0.6_", "LLP_LFR_0.5_0.7_", "LLP_LFR_0.5_0.8_", "LLP_LFR_0.5_0.9_", "LLP_LFR_0.5_1_", "Louvain_LFR_0_", "Louvain_LFR_0.1_", "Louvain_LFR_0.2_", "Louvain_LFR_0.3_", "Louvain_LFR_0.4_", "Louvain_LFR_0.5_", "Louvain_LFR_0.6_", "Louvain_LFR_0.7_", "Louvain_LFR_0.8_", "Louvain_LFR_0.9_", "Louvain_LFR_1_", "Infomap_LFR_0_", "Infomap_LFR_0.1_", "Infomap_LFR_0.2_", "Infomap_LFR_0.3_", "Infomap_LFR_0.4_", "Infomap_LFR_0.5_", "Infomap_LFR_0.6_", "Infomap_LFR_0.7_", "Infomap_LFR_0.8_", "Infomap_LFR_0.9_", "Infomap_LFR_1_"]);
+        fs.writeFileSync("./website/algorithms/nmi/nmi_mix_LFR.csv", auxii);
+    } else {
+        auxii  = aux.arrayToString_plot(datat, auxii, ["LLP_GN_0_0_", "LLP_GN_0_0.1_", "LLP_GN_0_0.2_", "LLP_GN_0_0.3_", "LLP_GN_0_0.4_", "LLP_GN_0_0.5_", "LLP_GN_0_0.6_", "LLP_GN_0_0.7_", "LLP_GN_0_0.8_", "LLP_GN_0_0.9_", "LLP_GN_0_1_", "LLP_GN_0.5_0_", "LLP_GN_0.5_0.1_", "LLP_GN_0.5_0.2_", "LLP_GN_0.5_0.3_", "LLP_GN_0.5_0.4_", "LLP_GN_0.5_0.5_", "LLP_GN_0.5_0.6_", "LLP_GN_0.5_0.7_", "LLP_GN_0.5_0.8_", "LLP_GN_0.5_0.9_", "LLP_GN_0.5_1_", "Louvain_GN_0_", "Louvain_GN_0.1_", "Louvain_GN_0.2_", "Louvain_GN_0.3_", "Louvain_GN_0.4_", "Louvain_GN_0.5_", "Louvain_GN_0.6_", "Louvain_GN_0.7_", "Louvain_GN_0.8_", "Louvain_GN_0.9_", "Louvain_GN_1_", "Infomap_GN_0_", "Infomap_GN_0.1_", "Infomap_GN_0.2_", "Infomap_GN_0.3_", "Infomap_GN_0.4_", "Infomap_GN_0.5_", "Infomap_GN_0.6_", "Infomap_GN_0.7_", "Infomap_GN_0.8_", "Infomap_GN_0.9_", "Infomap_GN_1_"]);
+        fs.writeFileSync("./website/algorithms/nmi/nmi_mix_GN.csv", auxii);
+    }
+*/
+    // ---------------------------- LP/LLP/Louvain/Infomap NMI x Mix Parameter
 
-    [16].map(function (avg_deg) { //deg
+    let titles = [];
 
-        ["LLP", "Louvain", "Infomap"].map(function (alg) { //net
+    for (let i = 15; i < 25; i = i + 5) {
+
+        for (let ii = 0; ii < 11; ii++) {
 
             if (alg === "LLP") {
 
-                [0, 0.5].map(function (i) { // gamma
-
-                    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
-
-                        titles.push(alg + "_" + net + "_" + i + "_" + ii + "_" + avg_deg + "_");
-                    })
-                });
+                titles.push(alg + "_" + net + "_" + 0 + "_" + ii / 10 + "_" + i);
 
             } else {
 
-                [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
+                titles.push(alg + "_" + net + "_" + ii / 10 + "_" + i);
 
-                    titles.push(alg + "_" + net + "_" + ii + "_" + avg_deg + "_");
-
-                });
             }
-        });
-    });
 
-        auxii  = aux.arrayToString_plot(datat, auxii, titles);
-        fs.writeFileSync("./website/algorithms/" + req.params.title + "_" + net + ".csv", auxii);
+        }
 
-});
+    }
 
-// ---------------------------------------------- NMI SPEED BENCHMARK ----------------------------------------------
+    //console.log(titles);
 
-app.get('/bench_speed', function (req, res) {
-
-    let auxii = "";
-    let titles = [];
-
-    // ---------------------------- NMI x Mix Parameter
-
-    [16].map(function (avg_deg) { //deg
-
-                    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
-
-                        titles.push("LFR_Bench" + "_" + ii + "_" + avg_deg + "_");
-                    })
-    });
-
-    auxii  = aux.arrayToString_plot(final_times, auxii, titles);
-    fs.writeFileSync("./website/algorithms/GN_speed.csv", auxii);
+    auxii  = aux.arrayToString_plot(datat, auxii, titles);
+    fs.writeFileSync("./website/algorithms/nmi/" + alg + "_vs_mix_vs_k_" + net + ".csv", auxii);
 
 });
 
-//console.log(nmi.jNMI([1,1,3,0,0,0,0,0], [9,0,4,2,6,1,2,11]));
+console.log(nmi.jNMI([0,10,2,30,3,3,5,60,0],[0,1,2,3,3,3,5,6,9]));

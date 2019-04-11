@@ -72,9 +72,9 @@
         <div class="dropdown" id = "dropdown">
             <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
-                <a id = "Louvain" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Louvain</a>
-                <a id = "Infomap" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Infomap</a>
-                <a id = "LLP" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Layered Label Propagation</a>
+                <a id = "Louvain" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, 'Staph', 'Staph')" style="cursor: pointer">Louvain</a>
+                <a id = "Infomap" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, 'Staph', 'Staph')" style="cursor: pointer">Infomap</a>
+                <a id = "LLP" onclick="rename(this.id, document.getElementById('gamma2').value/document.getElementById('gamma2').max, document.getElementById('dropbtn_network').innerText, 'Staph', 'Staph')" style="cursor: pointer">Layered Label Propagation</a>
             </div>
         </div>
 
@@ -83,28 +83,31 @@
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center">D3.js (SVG)</button> <!-- Interface -->
+            <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center" onclick="fetch('/bench_accu/' + 'title');">Interface</button> <!-- Interface -->
             <div id = "dropdown-content_interface" class="dropdown-content">
-                <a id = "D3.js (SVG)" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">D3.js (SVG)</a>
-                <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">D3.js (Canvas)</a>
-                <a id = "Cytoscape" onclick="rename(this.id, undefined, undefined)" style="cursor: pointer">Cytoscape</a>
+                <a id = "D3.js (SVG)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText)" style="cursor: pointer">D3.js (SVG)</a>
+                <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText)" style="cursor: pointer">D3.js (Canvas)</a>
+                <a id = "Cytoscape" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText)" style="cursor: pointer">Cytoscape</a>
             </div>
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center">Network</button>
+            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center" onclick="bench('0');">Network</button>
             <div id = "dropdown-content_network" class="dropdown-content">
-                <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Girvan-Newman</a>
-                <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
-                <a id = "Amazon" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Amazon</a>
-                <a id = "Karate" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Zachary's Karate Club</a>
-                <a id = "Staph" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id)" style="cursor: pointer">Staph</a>
+                <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Girvan-Newman</a>
+                <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
+                <a id = "Amazon" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Amazon', 'Amazon')" style="cursor: pointer">Amazon</a>
+                <a id = "Karate" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Karate', 'Karate')" style="cursor: pointer">Zachary's Karate Club</a>
+                <a id = "Staph" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Staph', 'Staph')" style="cursor: pointer">Staph</a>
             </div>
         </div>
 
-        <input class="dropbtn" id = "mix_param" type="number" name="quantity" min="0" max="1" step = "0.1" value = "0.1" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
-        <input class="dropbtn" id = "avg_deg" type="number" name="quantity" min="15" max="25" step = "1" value = "16" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
-        <input class="dropbtn" id = "net_size" type="number" name="quantity" min="10" max="1000" step = "10" value = "100" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
+        <input class="dropbtn" id = "mix_param" type="number" name="quantity" min="0" max="1" step = "0.1" value = "0" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, this.value, document.getElementById('avg_deg').value)">
+        <input class="dropbtn" id = "avg_deg" type="number" name="quantity" min="15" max="25" step = "1" value = "16" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, this.value)">
+        <input class="dropbtn" id = "max_deg" type="number" name="quantity" min="15" max="100" step = "1" value = "50" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)">
+        <input class="dropbtn" id = "min_com" type="number" name="quantity" min="15" max="100" step = "1" value = "10" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)">
+        <input class="dropbtn" id = "max_com" type="number" name="quantity" min="15" max="200" step = "1" value = "50" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)">
+        <input class="dropbtn" id = "net_size" type="number" name="quantity" min="10" max="1000" step = "10" value = "128" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
 
         <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
             <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText, undefined, undefined);">
@@ -156,33 +159,143 @@
     <div style="margin: auto; text-align: center;">
         <div id = "left" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
         <div id = "center" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+        <div id = "center_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+        <div id = "center_right_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
         <div id = "right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
-
     </div>
 
     <div id = "left_div" style="display: inline-block;">
 
+        <div class="dropdown" id = "gamma220" style="position: absolute; bottom: 0; left: 300px">
+            <div id = "range_label21" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN1" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma221" style="position: absolute; bottom: 0; left: 400px;">
+            <div id = "range_label20" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR1">
+        </div>
+
+        <div class="dropdown" id = "gamma221a" style="position: absolute; bottom: 0; left: 500px;">
+            <a href="benchmark_data/data_visualized/csv/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" id = "gamma22012" style="position: absolute; bottom: 0; left: 1050px">
+            <div id = "range_label2121" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN2" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma2213" style="position: absolute; bottom: 0; left: 1150px;">
+            <div id = "range_label205" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR2">
+        </div>
+
+        <div class="dropdown" id = "gamma221aq" style="position: absolute; bottom: 0; left: 1250px;">
+            <a href="benchmark_data/data_visualized/csv/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
     </div>
 
     <div id = "center_div" style="display: none;">
+
+        <div class="dropdown" id = "gamma22011" style="position: absolute; bottom: 0; left: 300px">
+            <div id = "range_label2111" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN3" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma22122" style="position: absolute; bottom: 0; left: 400px;">
+            <div id = "range_label2022" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR3">
+        </div>
+
+        <div class="dropdown" id = "gamma2212a" style="position: absolute; bottom: 0; left: 500px;">
+            <a href="benchmark_data/data_visualized/csv/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" id = "gamma2201233" style="position: absolute; bottom: 0; left: 1050px">
+            <div id = "range_label212133" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN4" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma221344" style="position: absolute; bottom: 0; left: 1150px;">
+            <div id = "range_label20544" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR4">
+        </div>
+
+        <div class="dropdown" id = "gamma2221aq" style="position: absolute; bottom: 0; left: 1250px;">
+            <a href="benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "center_right_div" style="display: none;">
+
+        <div class="dropdown" id = "gamma220111" style="position: absolute; bottom: 0; left: 300px">
+            <div id = "range_label211111" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN5" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma2212222" style="position: absolute; bottom: 0; left: 400px;">
+            <div id = "range_label203333" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR5">
+        </div>
+
+        <div class="dropdown" id = "gamma221ua" style="position: absolute; bottom: 0; left: 500px;">
+            <a href="benchmark_data/data_visualized/csv/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" id = "gamma220124444" style="position: absolute; bottom: 0; left: 1050px">
+            <div id = "range_label21214444" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN6" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma22135555" style="position: absolute; bottom: 0; left: 1150px;">
+            <div id = "range_label2055555" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR6">
+        </div>
+
+        <div class="dropdown" id = "gamma2e21a" style="position: absolute; bottom: 0; left: 1250px;">
+            <a href="benchmark_data/data_visualized/csv/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "center_right_right_div" style="display: none;">
+
+        <div class="dropdown" id = "gamma2201112" style="position: absolute; bottom: 0; left: 300px">
+            <div id = "range_label2111112" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN7" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma22122222" style="position: absolute; bottom: 0; left: 400px;">
+            <div id = "range_label2023333" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR7">
+        </div>
+
+        <div class="dropdown" id = "gamma22u1a" style="position: absolute; bottom: 0; left: 500px;">
+            <a href="benchmark_data/data_visualized/csv/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" id = "gamma2201124444" style="position: absolute; bottom: 0; left: 1050px">
+            <div id = "range_label212314444" style="display: inline-block; font-size: 12px">GN</div> <input type="radio" name="GN8" checked>
+        </div>
+
+        <div class="dropdown" id = "gamma221e35555" style="position: absolute; bottom: 0; left: 1150px;">
+            <div id = "range_label20515555" style="display: inline-block; font-size: 12px">LFR</div> <input type="radio" name="LFR8">
+        </div>
+
+        <div class="dropdown" id = "gamma221uoa" style="position: absolute; bottom: 0; left: 1250px;">
+            <a href="benchmark_data/data_visualized/csv/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
 
     </div>
 
     <div id = "right_div" style="display: none;">
 
         <figure style="float: left;">
-            <img src="img/karate.png" width='350' alt="Zachary's Karate Club Benchmark Network">
+            <img src="img/karate.png" width='220' alt="Zachary's Karate Club Benchmark Network">
             <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Zachary's Karate Club Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 125px;">
-            <img src="img/gn.png" width='400' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
+            <img src="img/gn.png" width='250' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
             <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Girvan Newman Benchmark Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 50px;">
-            <img src="img/lfr.png" width='400' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
+            <img src="img/lfr.png" width='250' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
             <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Lancichinetti-Fortunato-Radicchi Benchmark Network</figcaption>
+        </figure>
+
+        <figure style="float: left; margin-left: 50px;">
+            <img src="img/staph.png" width='250' alt="Staphylococcus SLV Graph (Clonal Complex 0 - PHYLOViZ 2)" style="margin: auto; text-align: center">
+            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Staphylococcus SLV Graph (Clonal Complex 0 - PHYLOViZ 2)</figcaption>
         </figure>
 
     </div>
@@ -370,10 +483,14 @@
 
             document.getElementById("left").style.backgroundColor = "black";
             document.getElementById("center").style.backgroundColor = "black";
+            document.getElementById("center_right").style.backgroundColor = "black";
+            document.getElementById("center_right_right").style.backgroundColor = "black";
             document.getElementById("right").style.backgroundColor = "black";
 
             document.getElementById("left_div").style.display = "none";
             document.getElementById("center_div").style.display = "none";
+            document.getElementById("center_right_div").style.display = "none";
+            document.getElementById("center_right_right_div").style.display = "none";
             document.getElementById("right_div").style.display = "none";
 
         } else {
@@ -392,14 +509,26 @@
         document.getElementById(id + "_div").style.display = "block";
     }
 
-    results('./benchmark_data/data_visualized/csv/nmi_mix.csv',"svg1", "NMI x Mix Parameter", "#left_div");
-    results('./benchmark_data/data_visualized/csv/nmi_gamma.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div");
-    results('./benchmark_data/data_visualized/csv/labelPropagation_vs_mix_vs_k.csv',"svg3", "Label Propagation NMI x Mix Parameter", "#center_div");
-    results('./benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv',"svg4", "Louvain NMI x Mix Parameter", "#center_div");
+    results('./benchmark_data/data_visualized/csv/nmi_mix_GN.csv',"svg1", "NMI x Mix Parameter", "#left_div", 1);
+    results('./benchmark_data/data_visualized/csv/nmi_gamma_GN.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1);
+    //results('./benchmark_data/data_visualized/csv/nmi_mix.csv',"svg1", "NMI x Mix Parameter", "#left_div", 1);
+    //results('./benchmark_data/data_visualized/csv/nmi_gamma.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1);
+    results('./benchmark_data/data_visualized/csv/labelPropagation_vs_mix_vs_k.csv',"svg3", "Label Propagation NMI x Mix Parameter", "#center_div", 1);
+    results('./benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv',"svg4", "Louvain NMI x Mix Parameter", "#center_div", 1);
+    //results('./benchmark_data/data_visualized/csv/labelPropagation_vs_mix_vs_k.csv',"svg3", "Label Propagation NMI x Mix Parameter", "#center_div", 1);
+    //results('./benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv',"svg4", "Louvain NMI x Mix Parameter", "#center_div", 1);
+    results('./benchmark_data/data_visualized/csv/llp_vs_mix_vs_k.csv',"svg5", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div", 1);
+  //  results('./benchmark_data/data_visualized/csv/infomap_vs_mix_vs_k.csv',"svg6", "Infomap NMI x Mix Parameter", "#center_right_div", 1);
+    //results('./benchmark_data/data_visualized/csv/labelPropagation_vs_mix_vs_k.csv',"svg5", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div", 1);
+    //results('./benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv',"svg6", "Infomap NMI x Mix Parameter", "#center_right_div", 1);
+    results('./benchmark_data/data_visualized/csv/GN_speed.csv',"svg7", "Time x Mix Parameter", "#center_right_right_div", 35000);
+    results('./benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv',"svg8", "NMI x Mix Parameter", "#center_right_right_div", 1);
+    //results('./benchmark_data/data_visualized/csv/labelPropagation_vs_mix_vs_k.csv',"svg7", "Time x Mix Parameter", "#center_right_div", 1);
+    //results('./benchmark_data/data_visualized/csv/louvain_vs_mix_vs_k.csv',"svg8", "Infomap NMI x Mix Parameter", "#center_right_div", 1);
 
     let canvas, svg, cy;
 
-    function rename(id, gamma, network) {
+    function rename(id, gamma, network, mix_value, avg_deg) {
 
         if (network !== undefined) {
 
@@ -416,12 +545,18 @@
                 document.getElementById('mix_param').style.display = 'inline-block';
                 document.getElementById('avg_deg').style.display = 'inline-block';
                 document.getElementById('net_size').style.display = 'inline-block';
+                document.getElementById('max_deg').style.display = 'inline-block';
+                document.getElementById('max_com').style.display = 'inline-block';
+                document.getElementById('min_com').style.display = 'inline-block';
 
             } else {
 
                 document.getElementById('mix_param').style.display = 'none';
                 document.getElementById('avg_deg').style.display = 'none';
                 document.getElementById('net_size').style.display = 'none';
+                document.getElementById('max_deg').style.display = 'none';
+                document.getElementById('max_com').style.display = 'none';
+                document.getElementById('min_com').style.display = 'none';
 
             }
         }
@@ -434,7 +569,8 @@
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
                 document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
+                fetch("algorithm/" + id + "/gamma/" + gamma/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+
                 break;
 
             case "Infomap":
@@ -443,7 +579,8 @@
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max. Var:";
                 document.getElementById("file").style.display = "none";
-                fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
+                fetch("algorithm/" + id + "/gamma/" + gamma/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+
                 break;
 
             case "LLP":
@@ -454,7 +591,7 @@
                     document.getElementById("range_label").innerText = "Resolution:";
                     document.getElementById("gamma").style.display = "inline-block";
                     document.getElementById("file").style.display = "none";
-                    fetch("algorithm/" + id + "/gamma/" + (document.getElementById("gamma2").value) / (document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
+                    fetch("algorithm/" + id + "/gamma/" + gamma/(document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
 
                 } else {
 
@@ -462,7 +599,7 @@
                     document.getElementById("range_label").innerText = "Resolution:";
                     document.getElementById("gamma").style.display = "inline-block";
                     document.getElementById("file").style.display = "none";
-                    fetch("algorithm/" + id + "/gamma/" + gamma + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/fetchy/" + document.getElementById("dropbtn_network").innerText);
+                    fetch("algorithm/" + id + "/gamma/" + gamma + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
                 }
 
                 break;
@@ -479,7 +616,7 @@
                 d3.select('#graphDiv').append('svg').attr('id', 'svg_implementation');
                 svg = d3.select('#graphDiv');
 
-                fetch("reset/" + document.getElementById("dropbtn_network").innerText + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
+                fetch("reset/" + network + "/cytoscape/" + false + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg + "/net_size/" + document.getElementById("net_size").value + "/max_deg/" + document.getElementById("max_deg").value + "/min_com/" + document.getElementById("min_com").value + "/max_com/" + document.getElementById("max_com").value).then(function(res) {
 
                     return res.json();
 
@@ -502,7 +639,7 @@
                 canvas = d3.select('#graphDiv').append('canvas').attr('width', 600 + 'px').attr('height', 600 + 'px').node();
 
                 // Now send a request to your Node program
-                fetch("reset/" + document.getElementById("dropbtn_network").innerText + "/cytoscape/" + false + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
+                fetch("reset/" + network + "/cytoscape/" + false + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg + "/net_size/" + document.getElementById("net_size").value + "/max_deg/" + document.getElementById("max_deg").value + "/min_com/" + document.getElementById("min_com").value + "/max_com/" + document.getElementById("max_com").value).then(function(res) {
 
                     return res.json();
 
@@ -523,7 +660,7 @@
                 if(typeof cy !== 'undefined') cy.destroy();
 
                 // Now send a request to your Node program
-                fetch("reset/" + document.getElementById("dropbtn_network").innerText + "/cytoscape/" + true + "/mix_param/" + document.getElementById("mix_param").value + "/avg_deg/" + document.getElementById("avg_deg").value + "/net_size/" + document.getElementById("net_size").value).then(function(res) {
+                fetch("reset/" + network + "/cytoscape/" + true + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg + "/net_size/" + document.getElementById("net_size").value + "/max_deg/" + document.getElementById("max_deg").value + "/min_com/" + document.getElementById("min_com").value + "/max_com/" + document.getElementById("max_com").value).then(function(res) {
 
                     return res.json();
 
@@ -534,7 +671,7 @@
         }
     }
 
-    rename(document.getElementById("dropbtn_interface").innerText, undefined, 'Amazon');
+    rename('D3.js (SVG)', undefined, 'Amazon', 'Amazon', 'Amazon');
 
     // Action on clicking in the Run button.
     d3.select('#comm_detect').on('click', function() {
@@ -573,75 +710,139 @@
     });
 
     // Action on clicking in the Reset button. All nodes have their colours reset to a standard one.
-    d3.select('#reset_btn').on('click', function() {
+    d3.select('#reset_btn').on('click', function () {
 
         document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
         document.getElementById("gamma").style.display = "none";
         document.getElementById("file").style.display = "inline-block";
 
-        rename(document.getElementById('dropbtn_interface').innerText, document.getElementById("mix_param").value, document.getElementById("dropbtn_network").innerText);
+        rename(document.getElementById('dropbtn_interface').innerText, document.getElementById("gamma2").value, document.getElementById("dropbtn_network").innerText, document.getElementById("mix_param").value);
 
     });
+/*
+    // ------------------------------------------ Benchmark Results Printing ------------------------------------------
 
-    // ---------------------------------------------- Benchmark Results Printing ----------------------------------------------
-    /*
-            ["GN", "LFR"].map(function (net) {
+    // ---------------------------- NMI x Mix Parameter & NMI Layered Label Propagation x Gamma Parameter & LP/LLP/Louvain/Infomap NMI x Mix Parameter[BENCH]
 
-            rename_aux2(net, 0.2);
+    let net = "LFR";
+    let repeat = 10;
 
-                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value) {
+   // rename('D3.js (SVG)', 0, net, 0, 16); // net to undefined
 
-                    rename("Louvain");
-                    name("fomap");
+    function bench (id) {
 
-                });
+        let avg_degs = [];
+        let mixes = [];
+        let gammas = [];
+        let louvain = false;
+        let infomap = false;
+        let llp = false;
 
-            [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9].map(function (value1) {
+        switch (id) {
 
-                [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (value2) {
+            case "0":
 
-                    rename("LLP", value1);
+                avg_degs = [16];
+                mixes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+                gammas = [0, 0.5];
+                louvain = true;
+                infomap = true;
+                llp = true;
+                break;
 
-                });
+            case "1":
 
-            });
+                avg_degs = [16];
+                mixes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+                gammas = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+                louvain = false;
+                infomap = false;
+                llp = true;
+                break;
 
-        })
-    */
-          /*          function ola() {
-                        for (let i = 0; i < 10; i++) {
+            case "2":
 
-                            rename("Infomap");
+                avg_degs = [15, 20, 25];
+                mixes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+                gammas = [0];
+                louvain = false;
+                infomap = false;
+                llp = true;
+                break;
+
+            case "3":
+
+                avg_degs = [15, 20, 25];
+                mixes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+                louvain = true;
+                infomap = false;
+                llp = false;
+                break;
+
+            case "4":
+
+                avg_degs = [15, 20, 25];
+                mixes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+                gammas = [0.5];
+                louvain = false;
+                infomap = false;
+                llp = true;
+                break;
+
+            case "5":
+
+                avg_degs = [15, 20, 25];
+                mixes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+                louvain = false;
+                infomap = true;
+                llp = false;
+                break;
+
+            case "6":
+
+                break;
+
+            case "7":
+
+        }
+
+        avg_degs.map(function (avg_deg) {
+
+            mixes.map(function (mix) {
+
+                if(louvain) {
+
+                    for (let ii = 0; ii < repeat; ii++) {
+
+                        rename("Louvain", 1, net, mix, avg_deg);
+
+                    }
+                }
+
+                if(infomap) {
+
+                    for (let ii = 0; ii < repeat; ii++) {
+
+                        rename("Infomap", 1, net, mix, avg_deg);
+
+                    }
+                }
+
+                if(llp) {
+
+                    gammas.map(function (value1) {
+
+                        for (let ii = 0; ii < repeat; ii++) {
+
+                            rename("LLP", value1, net, mix, avg_deg);
 
                         }
-                    }
-                let me2;
-                function adeus() {
-                    clearInterval(me);
-                    me2 = setInterval(ola2,500);
+                    });
                 }
-
-                function adeus2() {
-                    clearInterval(me2);
-                }
-
-                let me = setInterval(ola,500);
-
-                    setTimeout(adeus,6000);
-                setTimeout(adeus2,12000);
-
-               //     setInterval(rename("LLP", 0.1),1000);
-
-                for (let gamma_variable = 0; gamma_variable < 1.1; gamma_variable=gamma_variable+0.1) {
-
-                for (let i = 0; i < 10; i++) {
-
-                    fetch("algorithm/" + "llp" + "/gamma/" + gamma_variable + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/fetchy/" + "GN");
-
-                }
-            }
-            */
-
+            })
+            });
+        }
+*/
 </script>
 
 </html>

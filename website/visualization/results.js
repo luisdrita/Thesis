@@ -1,4 +1,4 @@
-function results(sheet, svg_input, title, div) {
+function results(sheet, svg_input, title, div, y_max) {
 
     // set the dimensions and margins of the graph
     const margin = {top: 40, right: 150, bottom: 50, left: 150},
@@ -74,7 +74,7 @@ function results(sheet, svg_input, title, div) {
 
         // Add Y axis
         let y = d3.scaleLinear()
-            .domain( [0,1])
+            .domain( [0,y_max])
             .range([ height, 0 ]);
         svg.append("g")
             .call(d3.axisLeft(y));
@@ -148,7 +148,7 @@ function results(sheet, svg_input, title, div) {
             .attr("stroke", d => myColor(d.name))
             .attr("opacity", 1)
             .attr("id", d => "myLine" + d.name + d.title)
-            .style("stroke-width", 4)
+            .style("stroke-width", 3)
             .style("fill", "none")
             .on("mouseover", mouseover_line)
             .on("mouseleave", mouseleave_line);
@@ -298,9 +298,9 @@ function results(sheet, svg_input, title, div) {
             .append("circle")
             .attr("cx", d => x(d.time))
             .attr("cy", d => y(d.value))
-            .attr("r", 5)
+            .attr("r", 4)
             .attr("stroke", "white")
-            .attr("stroke-width", "2px")
+            .attr("stroke-width", "1px")
             .attr("class", d => "myCircle" + d.name + d.title)
             .attr("opacity", 1)
             .on("mouseover", mouseover)

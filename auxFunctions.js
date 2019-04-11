@@ -1,21 +1,5 @@
 // ---------------------------------------------- Auxiliary Functions ----------------------------------------------
 
-function searchy(value, array_input) {
-
-    let result = false;
-
-    for (let i = 0; i < array_input.length; i++) {
-
-        if (array_input[i] === value) {
-            result = true;
-            break;
-        }
-
-    }
-
-    return result
-}
-
 function nodeDetection(nodes_obj, state) {
 
     let result = [];
@@ -34,11 +18,8 @@ function nodeDetection(nodes_obj, state) {
 // Converting array of arrays data to string representation. To be used to generate .txt docs for benchmark.
 function arrayToString(multi_array, str, title) {
 
-    str += "Benchmark";
-    str += "\t";
-
     for (let ij = 0; ij < title.length; ij++) {
-        str += (title[ij] + "-" + ij);
+        str += (title[ij]);
         str += "\t";
     }
     str += "\n";
@@ -56,6 +37,130 @@ function arrayToString(multi_array, str, title) {
         str += "\n";
 
     }
+    return str;
+}
+
+// Converting array of arrays data to string representation. To be used to generate .txt docs for benchmark.
+function arrayToString_plot(obj, str, titles) {
+
+    let result = {};
+    let all_titles = Object.keys(obj);
+    let repeat = 10;
+
+    for (let i = 0; i < titles.length; i++) {
+
+        for (let j = 0; j < all_titles.length; j++) {
+
+            if (all_titles[j].includes(titles[i])) {
+
+                result[titles[i]] = result[titles[i]] || 0;
+                result[titles[i]] = result[titles[i]] + obj[all_titles[j]]/repeat;
+
+            }
+        }
+    }
+
+    let std_dev = {};
+
+    for (let i = 0; i < titles.length; i++) {
+
+        for (let j = 0; j < all_titles.length; j++) {
+
+            if (all_titles[j].includes(titles[i])) {
+
+                std_dev[titles[i]] = std_dev[titles[i]] || 0;
+                std_dev[titles[i]] = std_dev[titles[i]] + Math.pow(obj[all_titles[j]] - result[titles[i]], 2)/repeat;
+            }
+        }
+
+        std_dev[titles[i]] = Math.pow(std_dev[titles[i]], 0.5);
+
+    }
+
+    console.log(std_dev);
+    console.log(result);
+
+    let result_values = Object.values(result);
+    let std_dev_values = Object.values(std_dev);
+
+    str += ("time");
+    str += ",";
+
+    // ---------------------------- NMI x Mix Parameter [BENCH]
+
+    str += ("Label Propagation");
+    str += ",";
+    str += ("SD1");
+    str += ",";
+    str += ("Layered Label Propagation");
+    str += ",";
+    str += ("SD2");
+    str += ",";
+    str += ("Louvain");
+    str += ",";
+    str += ("SD3");
+    str += ",";
+    str += ("Infomap");
+    str += ",";
+    str += ("SD4");
+
+    // ---------------------------- LP/LLP/Louvain/Infomap NMI x Mix Parameter [BENCH]
+/*
+    str += ("k = 15");
+    str += ",";
+    str += ("SD1");
+    str += ",";
+    str += ("k = 20");
+    str += ",";
+    str += ("SD2");
+    str += ",";
+    str += ("k = 25");
+    str += ",";
+    str += ("SD3");
+*/
+    // ---------------------------- NMI Layered Label Propagation x Gamma Parameter [BENCH]
+/*
+    for (let i = 0; i < 11; i++) {
+
+        str += ("Mix Param. = " + i/10);
+        str += ",";
+        str += ("SD" + (i + 1));
+
+        if (i < 10) str += ",";
+
+    }
+*/
+
+    // ---------------------------- GN Generating Time x Mix Parameter [BENCH]
+
+/*
+    str += ("Generating Time");
+    str += ",";
+    str += ("SD1");
+*/
+
+
+    str += "\n";
+
+    for (let j = 0; j < 11; j++) {
+
+        str += j/10;
+        str += ",";
+
+        for (let i = j; i < result_values.length; i = i + 11) {
+
+                str += Math.round(result_values[i]*1000)/1000;
+                str += ",";
+                str += Math.round(std_dev_values[i]*1000)/1000;
+
+            if (i < result_values.length-11) str += ",";
+
+        }
+
+        if(j !== 11-1) str += "\n";
+
+        }
+
     return str;
 }
 
@@ -111,23 +216,6 @@ function printMeta(obj, length_var) {
 
 }
 
-function consensusArray(multi_array) {
-
-    for (let j = 0; j < multi_array[0].length; j++) {
-
-        let count = [];
-
-        for (let i = 0; i < multi_array.length; i++) {
-
-            count[multi_array[i][j]] = count[multi_array[i][j]] + 1;
-
-
-
-        }
-
-    }
-}
-
 // Upon input of source and target nodes, it returns an edge with the right format.
 function edge (source, target) { // Used in fs.readFile in order to push each edge in Input.txt to an empty array.
     return {source: source, target: target, value: 1}; // Previously, I used parseInt to convert source and target strings to an integer.
@@ -169,11 +257,10 @@ function nodify (final_node_data, state) { // Used in fs.readFile in order to pu
 }
 
 module.exports = {
-    searchy: searchy,
     nodeDetection: nodeDetection,
     arrayToString: arrayToString,
     printMeta: printMeta,
-    consensusArray: consensusArray,
     edge: edge,
-    nodify: nodify
+    nodify: nodify,
+    arrayToString_plot: arrayToString_plot
 };

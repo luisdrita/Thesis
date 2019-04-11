@@ -33,8 +33,6 @@ function d3canvasFunc(tempData){
         .call(d3.drag().subject(dragsubject).on("start", dragstarted).on("drag", dragged).on("end",dragended))
         .call(d3.zoom().scaleExtent([1 / 10, 10]).on("zoom", zoomed));
 
-
-
     function dragsubject() {
         let i,
             x = transform.invertX(d3.event.x),
@@ -55,8 +53,6 @@ function d3canvasFunc(tempData){
             }
         }
     }
-
-
 
     function dragstarted() {
         if (!d3.event.active) simulation.alphaTarget(0.3).restart();
@@ -97,7 +93,7 @@ function d3canvasFunc(tempData){
             context.stroke();
         });
 
-        let color = d3.scaleOrdinal(d3.schemeCategory20).domain(d3.range([0, 30]));
+        let color = d3.scaleOrdinal(d3.schemeCategory20);
 
 
         // Draw the nodes
