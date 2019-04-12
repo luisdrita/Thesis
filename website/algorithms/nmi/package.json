@@ -1,0 +1,30 @@
+{
+  "name": "normalized-mutual-information",
+  "version": "1.0.1",
+  "description": "This algorithm assesses how similar are 2 input partitions of a given network.",
+  "main": "nmi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/warcraft12321/Thesis/tree/master/website/algorithms/nmi"
+  },
+  "keywords": [
+    "normalized",
+    "mutual",
+    "information",
+    "ist",
+    "tecnico",
+    "luis",
+    "rita",
+    "warcraft12321",
+    "community",
+    "finding",
+    "phylogenetic",
+    "networks",
+    "application"
+  ],
+  "author": "Luís Rita",
+  "license": "ISC"
+}

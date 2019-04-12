@@ -1,0 +1,30 @@
+{
+  "name": "infomap",
+  "version": "1.0.1",
+  "description": "Infomap optimizes the map equation, which exploits the information-theoretic duality between the problem of compressing data, and the problem of detecting and extracting significant patterns or structures within those data.",
+  "main": "infomap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/warcraft12321/Thesis/tree/master/website/algorithms/infomap"
+  },
+  "keywords": [
+    "infomap",
+    "map",
+    "equation",
+    "ist",
+    "tecnico",
+    "luis",
+    "rita",
+    "warcraft12321",
+    "community",
+    "finding",
+    "phylogenetic",
+    "networks",
+    "application"
+  ],
+  "author": "Luís Rita",
+  "license": "MIT"
+}

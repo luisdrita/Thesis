@@ -1,0 +1,31 @@
+{
+  "name": "louvain-algorithm",
+  "version": "1.0.0",
+  "description": "Community finding algorithm.",
+  "main": "louvain.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/warcraft12321/Thesis/tree/master/website/algorithms/louvain"
+  },
+  "keywords": [
+    "louvain",
+    "algorithm",
+    "community",
+    "finding",
+    "ist",
+    "tecnico",
+    "luis",
+    "rita",
+    "warcraft12321",
+    "phylogenetic",
+    "networks",
+    "application",
+    "biomedical",
+    "engineering"
+  ],
+  "author": "Luís Rita",
+  "license": "MIT"
+}

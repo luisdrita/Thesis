@@ -1,0 +1,31 @@
+{
+  "name": "hamming-dist",
+  "version": "1.0.0",
+  "description": "Given 2 arrays, hamming distance is calculated between them.",
+  "main": "hamming.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/warcraft12321/Thesis/tree/master/website/algorithms/hamming"
+  },
+  "keywords": [
+    "hamming",
+    "distance",
+    "ist",
+    "tecnico",
+    "luis",
+    "rita",
+    "warcraft12321",
+    "community",
+    "finding",
+    "phylogenetic",
+    "networks",
+    "application",
+    "biomedical",
+    "engineering"
+  ],
+  "author": "Luís Rita",
+  "license": "MIT"
+}

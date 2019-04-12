@@ -16,7 +16,7 @@ const hamming = require('./website/algorithms/hamming');
 const nmi = require('./website/algorithms/nmi/nmi');
 
 // Importing benchmarking libraries.
-const girvan = require('./website/algorithms/girvan-newman');
+const girvan = require('./website/algorithms/girvan-newman/girvan-newman');
 
 // Importing auxiliary functions.
 const aux = require('./auxFunctions');
@@ -52,7 +52,6 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
             } else {
 
                 let t1 = performance.now();
-
                 community = louvain.jLouvain(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], 1/10000);
                 let t2 = performance.now();
                 final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
