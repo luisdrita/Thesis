@@ -220,8 +220,8 @@ jLouvain = function (nds, edgs, __MIN) { // A function expression can be stored 
     }
 
     function __modularity(status) { // It is possible to calculate network's modularity only using graph.status.
+
         let links = status.total_weight; // Total weight of the graph's edges.
-   //     console.log(links);
         let result = 0.0;
         let communities = make_set(obj_values(status.nodes_to_com)); // Array with all the (non-repeated & ordered) communities present in the graph.
 
@@ -232,44 +232,9 @@ jLouvain = function (nds, edgs, __MIN) { // A function expression can be stored 
                 result = result + in_degree / links - Math.pow((degree / (2.0 * links)), 2);
             }
 
-        //    console.log(links);
-
         });
 
-        // mdl
-
-        let nodes = make_set(Object.keys(status.nodes_to_com)); // Array with all the (non-repeated & ordered) node IDs present in the graph.
-
-        // 4 integrating parts of the map equation.
-        let mdl_a = 0;
-        let mdl_b = 0;
-        let mdl_c = 0;
-        let mdl_d = 0;
-
-        nodes.forEach(function (node) { // Iterating over each node in the network.
-            let gdegree = status.gdegrees[node] || 0;
-         //   console.log(gdegree);
-            if (links > 0) {
-                mdl_c = mdl_c + (gdegree / (2 * links)) * Math.log(gdegree / (2 * links));
-            }
-        });
-
-        communities.forEach(function (com) { // Iterating over each community in the network.
-            let in_degree = status.internals[com] || 0; // Sum of the weights of the links inside each community.
-            let degree = status.degrees[com] || 0; // Sum of the weights of the links incident in each community.
-
-            if (links > 0) {
-
-                mdl_b = mdl_b + ((degree - 2 * in_degree) / (2 * links)) * Math.log((degree - 2 * in_degree) / (2 * links));
-                mdl_a = mdl_a + (degree - 2 * in_degree) / (2 * links);
-                mdl_d = mdl_d + ((degree - 2 * in_degree) / (2 * links) + degree / (2 * links)) * Math.log((degree - 2 * in_degree) / (2 * links) + degree / (2 * links));
-
-            }
-
-        });
-
-         //   console.log(mdl_a * Math.log(mdl_a) - 2 * mdl_b - mdl_c + mdl_d);
-
+console.log(result);
         return result; // Modularity of a given partition (defined by status).
     }
 

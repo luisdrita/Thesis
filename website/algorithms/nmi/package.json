@@ -1,6 +1,6 @@
 {
   "name": "normalized-mutual-information",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This algorithm assesses how similar are 2 input partitions of a given network.",
   "main": "nmi.js",
   "scripts": {
@@ -26,5 +26,5 @@
     "application"
   ],
   "author": "Luís Rita",
-  "license": "ISC"
+  "license": "MIT"
 }

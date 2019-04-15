@@ -215,6 +215,8 @@ jLayeredLabelPropagation = function (nds, edgs, gamma, steps_input) { // A funct
 
             });
 
+            console.log("Working...")
+
             let next_nodes_to_com = status.nodes_to_com;
 
             steps++;

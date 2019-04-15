@@ -88,7 +88,16 @@ jNMI = function (array1, array2) {
     }
 
     // Normalized Mutual Information
-    return (2 * mutualInformation(array1, array2) / (entropy(array1) + entropy(array2)));
+
+    if(entropy(array1) + entropy(array2) === 0) {
+
+        return 1
+
+    } else {
+
+        return (2 * mutualInformation(array1, array2) / (entropy(array1) + entropy(array2)));
+
+    }
 
 };
 

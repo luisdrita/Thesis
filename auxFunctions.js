@@ -73,7 +73,7 @@ function arrayToString_plot(obj, str, titles) {
             }
         }
 
-        std_dev[titles[i]] = Math.pow(std_dev[titles[i]], 0.5);
+        std_dev[titles[i]] = 1.96 * Math.pow(std_dev[titles[i]], 0.5) / Math.pow(repeat, 0.5); // 95% Confidence Interval
 
     }
 
@@ -87,6 +87,7 @@ function arrayToString_plot(obj, str, titles) {
     str += ",";
 
     // ---------------------------- NMI x Mix Parameter [BENCH]
+
 
     str += ("Label Propagation");
     str += ",";
@@ -103,6 +104,7 @@ function arrayToString_plot(obj, str, titles) {
     str += ("Infomap");
     str += ",";
     str += ("SD4");
+
 
     // ---------------------------- LP/LLP/Louvain/Infomap NMI x Mix Parameter [BENCH]
 /*
@@ -138,7 +140,6 @@ function arrayToString_plot(obj, str, titles) {
     str += ",";
     str += ("SD1");
 */
-
 
     str += "\n";
 

@@ -107,5 +107,3 @@ The program will produce three files:
  
 
 -In the file time_seed.dat you can edit the seed which generates the random numbers. After reading, the program will increase this number by 1 (this is done to generate different networks running the program again and again). If the file is erased, it will be produced by the program again.
-
-

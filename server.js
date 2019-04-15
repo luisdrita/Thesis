@@ -6,13 +6,13 @@ const express = require('express');
 const formidable = require('formidable');
 const cmd = require('node-cmd');
 const {performance} = require('perf_hooks');
-
+const stats = require('download-stats');
 
 // Importing community finding libraries.
 const infomap = require('./website/algorithms/infomap/infomap');
 const louvain = require('./website/algorithms/louvain/louvain');
 const layeredLabelPropagation = require('./website/algorithms/llp/layeredLabelPropagation');
-const hamming = require('./website/algorithms/hamming');
+const hamming = require('./website/algorithms/hamming/hamming');
 const nmi = require('./website/algorithms/nmi/nmi');
 
 // Importing benchmarking libraries.
@@ -27,7 +27,7 @@ app.use(express.static('website'));
 app.listen(process.env.PORT || 3000);
 
 // Initializing global variables.
-let result = {}, result_cyto = {}, mother_result = {};
+let result = {}, result_cyto = {};
 
 // Initializing benchmarking variables.
 let str = "", final_arr = [], final_arr_titles = [], final_times = {}, ij = 0;
@@ -39,27 +39,29 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
     let community;
 
+    if (net === "Amazon" || net === "Karate" || net === "Staph") mix = net; avg_deg = net;
+
     switch (alg) {
 
         case 'Louvain':
 
             if (cyto === "true") {
 
-                community = louvain.jLouvain(aux.nodeDetection(result_cyto["nodes"], 0), result["links"], gamma_var);
+                community = louvain.jLouvain(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], 1/10000);
                 result_cyto["nodes"] = aux.nodify(community, 3);
-                result_cyto["links"] = result_cyto["links"];
+                result_cyto["links"] = result_cyto[mix + "_" + avg_deg]["links"];
 
             } else {
 
-                let t1 = performance.now();
-                community = louvain.jLouvain(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], 1/10000);
-                let t2 = performance.now();
-                final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
+              //  let t1 = performance.now();
+                community = louvain.jLouvain(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], 1/10000);
+                //  let t2 = performance.now();
+              //  final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
                 result["nodes"] = aux.nodify(community, 0);
-                result["links"] = mother_result[mix + "_" + avg_deg]["links"];
+                result["links"] = result[mix + "_" + avg_deg]["links"];
 
             }
 
@@ -69,21 +71,21 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             if (cyto === "true") {
 
-                community = infomap.jInfomap(aux.nodeDetection(result_cyto["nodes"], 0), result["links"], gamma_var);
+                community = infomap.jInfomap(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], 1/10000);
                 result_cyto["nodes"] = aux.nodify(community, 3);
-                result_cyto["links"] = result_cyto["links"];
+                result_cyto["links"] = result_cyto[mix + "_" + avg_deg]["links"];
 
             } else {
 
                 let t1 = performance.now();
-                community = infomap.jInfomap(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], 1/10000);
+                community = infomap.jInfomap(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], 1/10000);
                 let t2 = performance.now();
                 final_times["Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
                 result["nodes"] = aux.nodify(community, 0);
-                result["links"] = mother_result[mix + "_" + avg_deg]["links"];
+                result["links"] = result[mix + "_" + avg_deg]["links"];
 
             }
 
@@ -93,23 +95,23 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             if (cyto === "true") {
 
-                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result_cyto["nodes"], 0), result["links"], gamma_var);
+                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
                 result_cyto["nodes"] = aux.nodify(community, 3);
-                result_cyto["links"] = result_cyto["links"];
+                result_cyto["links"] = result_cyto[mix + "_" + avg_deg]["links"];
 
             } else {
 
                 if (mix === undefined && avg_deg === undefined) gamma_var = 0;
 
                 let t1 = performance.now();
-                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(mother_result[mix + "_" + avg_deg]["nodes"], 1), mother_result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
+                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
                 let t2 = performance.now();
                 final_times["LLP" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
                 result["nodes"] = aux.nodify(community, 0);
-                result["links"] = mother_result[mix + "_" + avg_deg]["links"];
+                result["links"] = result[mix + "_" + avg_deg]["links"];
             }
     }
 }
@@ -128,10 +130,10 @@ app.get('/run/:inter', function (req, res) {
         res.send(result);
 
     }
-
+/*
     str = aux.arrayToString(final_arr, str, final_arr_titles);
     fs.writeFile("./print.txt", str);
-
+*/
 });
 
 // ---------------------------------------------- RESET ----------------------------------------------
@@ -143,41 +145,16 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
             case "GN":
 
-                mother_result[req.params.mix + "_" + req.params.deg] = girvan.jGirvan_Newman(req.params.mix, false, req.params.deg);
-/*
-               // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (rep) {
+                result[req.params.mix + "_" + req.params.deg] = girvan.jGirvan_Newman(req.params.mix, false, req.params.deg);
 
-                    [16].map(function (avg_deg) {
-
-                        [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
-
-                            let t1 = performance.now();
-                            result = girvan.jGirvan_Newman(mix_param, false, avg_deg);
-                            let t2 = performance.now();
-
-                            mother_result[mix_param + "_" + avg_deg] = result;
-
-                            final_arr.push(result["communities"]);
-                            final_arr_titles.push("GN_Bench" + "_" + mix_param + "_" + avg_deg);
-
-                            //final_times["GN_Bench" + "_" + mix_param + "_" + avg_deg + "_" + ij] = t2 - t1;
-                            //ij++;
-
-                            console.log(mix_param);
-
-                        });
-                    });
-
-             //   });
-*/
                 if(req.params.cyto !== "false")  {
 
-                    result_cyto = girvan.jGirvan_Newman(req.params.mix, true, req.params.deg);
-                    res.send(result_cyto)
+                    result_cyto[req.params.mix + "_" + req.params.deg] = girvan.jGirvan_Newman(req.params.mix, true, req.params.deg);
+                    res.send(result_cyto[req.params.mix + "_" + req.params.deg]);
 
                 } else {
 
-                    res.send(mother_result[req.params.mix + "_" + req.params.deg]);
+                    res.send(result[req.params.mix + "_" + req.params.deg]);
 
                 }
 
@@ -185,83 +162,63 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
             case "LFR":
 
-         //       [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
-
-                    cmd.get(
-                        `
+        cmd.get(
+            `
             cd ./website/algorithms/lancichinetti-fortunato-radicchi
+            rm network.dat
+            rm community.dat
             ./benchmark -N ${req.params.size} -k ${req.params.deg} -maxk ${req.params.maxk} -mu ${req.params.mix} -minc ${req.params.minc} -maxc ${req.params.maxc}
         `,
-                        function () { // err, data, stderr
+            function () { // err, data, stderr
 
-                            fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
+                fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
 
-                                if (err) throw err;
+                    if (err) throw err;
 
-                                let obj_lfr_cyto = [];
-                                let obj_lfr = [];
-                                let node_data_lfr = {};
+                    let obj_lfr_cyto = [];
+                    let obj_lfr = [];
 
-                                let split = data_net.toString().split("\n");
+                    let split = data_net.toString().split("\n");
 
-                                for (let i = 0; i < split.length - 1; i++) {
-                                    let splitLine = split[i].split("\t");
-                                    node_data_lfr[splitLine[0]] = true;
-                                    node_data_lfr[splitLine[1]] = true;
-                                    obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
-                                    obj_lfr_cyto.push({data: aux.edge(splitLine[0], splitLine[1])});
+                    for (let i = 0; i < split.length - 1; i++) {
+                        let splitLine = split[i].split("\t");
+                        obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
+                        obj_lfr_cyto.push({data: aux.edge(splitLine[0], splitLine[1])});
+                    }
 
-                                }
+                    fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
 
-                                fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
+                        if (err) throw err;
 
-                                    if (err) throw err;
+                        let obj_lfr_com = {};
+                        let split = data_com.toString().split("\n");
 
-                                    let obj_lfr_com = {};
+                        for (let i = 0; i < split.length - 1; i++) {
+                            let splitLine = split[i].split("\t");
+                            obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
+                        }
 
-                                    let split = data_com.toString().split("\n");
+                        result[req.params.mix + "_" + req.params.deg] = {};
+                        result[req.params.mix + "_" + req.params.deg]["nodes"] = aux.nodify(obj_lfr_com, 0);
+                        result[req.params.mix + "_" + req.params.deg]["links"] = obj_lfr;
 
-                                    for (let i = 0; i < split.length - 1; i++) {
-                                        let splitLine = split[i].split("\t");
-                                        obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
-                                    }
+                        if (req.params.cyto !== "false") {
 
-                                    result["nodes"] = aux.nodify(obj_lfr_com, 0);
-                                    result["links"] = obj_lfr;
-                                    mother_result[req.params.mix + "_" + req.params.deg] = result;
+                            result_cyto[req.params.mix + "_" + req.params.deg] = {};
+                            result_cyto[req.params.mix + "_" + req.params.deg]["nodes"] = aux.nodify(obj_lfr_com, 3);
+                            result_cyto[req.params.mix + "_" + req.params.deg]["links"] = obj_lfr_cyto;
 
-                                    final_arr.push(Object.values(obj_lfr_com));
-                               //     final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + req.params.deg);
+                            res.send(result_cyto[req.params.mix + "_" + req.params.deg]);
 
-                                  //  console.log(mix_param);
+                        } else {
 
-                                    if (req.params.cyto !== "false") {
+                            res.send(result[req.params.mix + "_" + req.params.deg]);
 
-                                        result_cyto["nodes"] = aux.nodify(obj_lfr_com, 3);
-                                        result_cyto["links"] = obj_lfr_cyto;
-                                        //res.send(result_cyto);
+                        }
 
-                                    } else {
-
-                                        //res.send(result);
-                                    }
-
-                                });
-                            });
-                        });
-             //   });
-
-                if (req.params.cyto !== "false") {
-
-                    //result_cyto["nodes"] = aux.nodify(obj_lfr_com, 3);
-                    //result_cyto["links"] = obj_lfr_cyto;
-                    res.send(result_cyto);
-
-                } else {
-
-                    res.send(result);
-
-                }
+                    });
+                });
+            });
 
                 break;
 
@@ -286,18 +243,20 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
                     }
 
-                    mother_result[req.params.mix + "_" + req.params.deg] = {};
-                    mother_result[req.params.mix + "_" + req.params.deg]["nodes"] = aux.nodify(node_data, 1);
-                    mother_result[req.params.mix + "_" + req.params.deg]["links"] = obj;
+                    result[req.params.mix + "_" + req.params.deg] = {};
+                    result[req.params.mix + "_" + req.params.deg]["nodes"] = aux.nodify(node_data, 1);
+                    result[req.params.mix + "_" + req.params.deg]["links"] = obj;
 
                     if(req.params.cyto !== "false")  {
 
-                        result_cyto["nodes"] = aux.nodify(node_data, 2);
-                        result_cyto["links"] = obj_cyto;
-                        res.send(result_cyto);
+                        result_cyto[req.params.mix + "_" + req.params.deg] = {};
+                        result_cyto[req.params.mix + "_" + req.params.deg]["nodes"] = aux.nodify(node_data, 2);
+                        result_cyto[req.params.mix + "_" + req.params.deg]["links"] = obj_cyto;
+                        res.send(result_cyto[req.params.mix + "_" + req.params.deg]);
 
                     } else {
-                        res.send(mother_result[req.params.mix + "_" + req.params.deg]);
+
+                        res.send(result[req.params.mix + "_" + req.params.deg]);
                     }
                 });
 
@@ -306,16 +265,16 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
             case "Karate":
 
                 // Importing Zachary's karate club network. Supporting Cytoscape.js and D3.js representation.
-               // result = require('./uploads/karate_club.json');
-                mother_result[req.params.mix + "_" + req.params.deg] = require('./uploads/karate_club.json');
+                result[req.params.mix + "_" + req.params.deg] = require('./uploads/karate_club.json');
 
                 if(req.params.cyto !== "false")  {
 
-                    res.send(require('./uploads/karate_club_cyto.json'));
+                    result_cyto[req.params.mix + "_" + req.params.deg] = require('./uploads/karate_club_cyto.json');
+                    res.send(result_cyto[req.params.mix + "_" + req.params.deg]);
 
                 } else {
 
-                    res.send(mother_result[req.params.mix + "_" + req.params.deg]);
+                    res.send(result[req.params.mix + "_" + req.params.deg]);
                 }
 
                 break;
@@ -353,15 +312,15 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
                             }
                         }
 
-                        result = hamming.jHamming(obj, 1, false);
-                        mother_result[req.params.mix + "_" + req.params.deg] = result;
+                        result[req.params.mix + "_" + req.params.deg] = hamming.jHamming(obj, 1, false);
 
                         if(req.params.cyto !== "false")  {
 
-                            result_cyto = hamming.jHamming(obj, 1, true);
-                            res.send(result_cyto);
+                            result_cyto[req.params.mix + "_" + req.params.deg] = hamming.jHamming(obj, 1, true);
+
+                            res.send(result_cyto[req.params.mix + "_" + req.params.deg]);
                         } else {
-                            res.send(result);
+                            res.send(result[req.params.mix + "_" + req.params.deg]);
                         }
                     });
                 });
@@ -375,6 +334,7 @@ app.get('/algorithm/:alg/gamma/:val/cytoscape/:cyto/network/:net/mix_param/:mix/
 
     readFile(req.params.alg, req.params.val, req.params.cyto, req.params.net, req.params.mix, req.params.deg);
     res.send();
+
 });
 
 // ---------------------------------------------- DATA UPLOAD ----------------------------------------------
@@ -391,6 +351,35 @@ app.post('/upload', function (req, res) {
     });
 });
 
+// ---------------------------------------------- STATS ----------------------------------------------
+/*
+//app.get('/stats', function (req, res) {
+
+    let start = new Date('2019-04-11');
+    let d = new Date();
+    let end = new Date((d.getFullYear).toString() + "-" + (d.getMonth).toString() + "-" + (d.getDate).toString());
+
+    let downloadss = [];
+
+    ["infomap", "layered-label-propagation", "normalized-mutual-information", "girvan-newman-benchmark", "louvain-algorithm", "hamming-dist"].map(function (value, index) {
+
+        stats.get(start, end, value)
+            .on('error', console.error)
+            .on('data', function (data) {
+                //console.log(data["downloads"]);
+                downloadss.push(data["downloads"]);
+
+            })
+            .on('end', function () {
+                console.log('done.');
+
+            });
+    });
+console.log(downloadss);
+    //res.send(downloadss);
+
+//});
+*/
 // ---------------------------------------------- NMI ACCURACY BENCHMARK ----------------------------------------------
 
 app.get('/bench_accu/:title', function (req, res) {
@@ -432,6 +421,9 @@ app.get('/bench_accu/:title', function (req, res) {
         datat[final_arr_titles[i]] = nmi.jNMI(final_arr[index],final_arr[i]);
 
     }
+
+    //str = aux.arrayToString(final_arr, str, final_arr_titles);
+    //fs.writeFile("./print.txt", str);
 
     // ---------------------------- NMI x Mix Parameter
 
@@ -487,4 +479,96 @@ app.get('/bench_speed', function (req, res) {
 
 });
 
-//console.log(nmi.jNMI([1,1,3,0,0,0,0,0], [9,0,4,2,6,1,2,11]));
+// ---------------------------- LFR
+
+/*
+let obj_lfr_com = {};
+
+[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+
+    setTimeout(function () {
+
+        cmd.get(
+            `
+            cd ./website/algorithms/lancichinetti-fortunato-radicchi
+            rm network.dat
+            rm community.dat
+            ./benchmark -N ${128} -k ${16} -maxk ${50} -mu ${mix_param} -minc ${10} -maxc ${50}
+        `,
+            function () { // err, data, stderr
+
+                fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
+
+                    if (err) throw err;
+
+                    let obj_lfr = [];
+
+                    let split = data_net.toString().split("\n");
+
+                    for (let i = 0; i < split.length - 1; i++) {
+                        let splitLine = split[i].split("\t");
+                        obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
+
+                    }
+
+                    fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
+
+                        if (err) throw err;
+
+                        obj_lfr_com = {};
+                        let split = data_com.toString().split("\n");
+
+                        for (let i = 0; i < split.length - 1; i++) {
+                            let splitLine = split[i].split("\t");
+                            obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
+                        }
+
+                        result[mix_param + "_" + 16] = {};
+                        result[mix_param + "_" + 16]["nodes"] = aux.nodify(obj_lfr_com, 0);
+                        result[mix_param + "_" + 16]["links"] = obj_lfr;
+
+                        //  console.log(Object.values(obj_lfr_com));
+                        final_arr.push(Object.values(obj_lfr_com));
+                        final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + 16);
+                    });
+
+                });
+
+            });
+
+        console.log(mix_param);
+
+    }, 1000 + 1000*mix_param);
+
+});
+*/
+
+// ---------------------------- GN
+
+/*
+
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (rep) {
+
+[16].map(function (avg_deg) {
+
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+
+        let t1 = performance.now();
+        result = girvan.jGirvan_Newman(mix_param, false, avg_deg);
+        let t2 = performance.now();
+
+        result[mix_param + "_" + avg_deg] = result;
+
+        final_arr.push(result["communities"]);
+        final_arr_titles.push("GN_Bench" + "_" + mix_param + "_" + avg_deg);
+
+        //final_times["GN_Bench" + "_" + mix_param + "_" + avg_deg + "_" + ij] = t2 - t1;
+        //ij++;
+
+        console.log(mix_param);
+
+    });
+});
+//   });
+
+ */
