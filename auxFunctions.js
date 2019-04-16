@@ -20,7 +20,7 @@ function arrayToString(multi_array, str, title) {
 
     for (let ij = 0; ij < title.length; ij++) {
         str += (title[ij]);
-        str += "\t";
+        if (ij < title.length-1) str += ",";
     }
     str += "\n";
 
@@ -30,11 +30,11 @@ function arrayToString(multi_array, str, title) {
 
             str += multi_array[i][j];
 
-            str += "\t";
+            if (i < multi_array.length-1) str += ",";
 
         }
 
-        str += "\n";
+        if (j < multi_array[0].length-1) str += "\n";
 
     }
     return str;
@@ -88,7 +88,7 @@ function arrayToString_plot(obj, str, titles) {
 
     // ---------------------------- NMI x Mix Parameter [BENCH]
 
-
+/*
     str += ("Label Propagation");
     str += ",";
     str += ("SD1");
@@ -104,10 +104,10 @@ function arrayToString_plot(obj, str, titles) {
     str += ("Infomap");
     str += ",";
     str += ("SD4");
-
+*/
 
     // ---------------------------- LP/LLP/Louvain/Infomap NMI x Mix Parameter [BENCH]
-/*
+
     str += ("k = 15");
     str += ",";
     str += ("SD1");
@@ -119,7 +119,7 @@ function arrayToString_plot(obj, str, titles) {
     str += ("k = 25");
     str += ",";
     str += ("SD3");
-*/
+
     // ---------------------------- NMI Layered Label Propagation x Gamma Parameter [BENCH]
 /*
     for (let i = 0; i < 11; i++) {

@@ -1,8 +1,8 @@
-function results(sheet, svg_input, title, div, y_max) {
+function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
 
     // set the dimensions and margins of the graph
-    const margin = {top: 40, right: 150, bottom: 50, left: 150},
-        width = 750 - margin.left - margin.right,
+    const margin = {top: 40, right: 160, bottom: 50, left: 150},
+        width = width_input - margin.left - margin.right,
         height = 450 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
@@ -13,7 +13,7 @@ function results(sheet, svg_input, title, div, y_max) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    svg.append('text').html(title).attr('x', 200).attr('y', 10).style("font-size", "11px");
+    svg.append('text').html(title).attr('x', width_input/2 - 180).attr('y', 10).style("font-size", "11px");
 
     //Read the data
     d3.csv(sheet, function(data) {
@@ -66,7 +66,7 @@ function results(sheet, svg_input, title, div, y_max) {
 
         // Add X axis --> it is a date format
         let x = d3.scaleLinear()
-            .domain([0,1])
+            .domain([0,x_max])
             .range([ 0, width ]);
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")

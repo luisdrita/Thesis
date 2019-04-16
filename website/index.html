@@ -70,9 +70,9 @@
         <button id='reset_btn'>Reset</button>
         <button id='comm_detect'>Run</button>
         <div class="dropdown" id = "dropdown">
-            <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
+            <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center" onclick="stats();">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
-                <a id = "Louvain" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Louvain</a>
+                <a id = "Louvain" onclick="rename(this.id, '1', document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Louvain</a>
                 <a id = "Infomap" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Infomap</a>
                 <a id = "LLP" onclick="rename(this.id, document.getElementById('gamma2').value/document.getElementById('gamma2').max, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Layered Label Propagation</a>
             </div>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center" onclick="bench('0');">Network</button>
+            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center" onclick="bench('2');">Network</button>
             <div id = "dropdown-content_network" class="dropdown-content">
                 <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Girvan-Newman</a>
                 <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
@@ -111,7 +111,7 @@
 
         <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
             <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText, undefined, undefined);">
-            <label for="img2"><img src="img/trans.png" style="width: 20px; cursor: pointer;"></label>
+            <label for="img2"><img src="img/up.png" style="width: 16px; cursor: pointer;"></label>
         </form>
     </div>
 </div>
@@ -131,14 +131,18 @@
 
     <h2 style="text-align: center; font-size: 30px">Algorithms</h2>
 
-    <h2 style="text-align: left; color: gray; margin-left: 20px;">Infomap</h2>
+    <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Infomap</h2>
 
-    <p style="margin-left: 20px; line-height: 30px; margin-right: 20px;text-align: justify">
+    <a href="https://www.npmjs.com/package/infomap" target="_blank" rel="noopener noreferrer"><img src="img/npm.png" width="40px" style="display: inline-block; margin-bottom: 5px;" alt="Infomap Algorithm NPM"></a>
+
+    <p style="margin-left: 20px; line-height: 30px; margin-right: 20px; text-align: justify">
         Infomap optimizes the map equation, which exploits the information-theoretic duality between the problem of
         compressing data, and the problem of detecting and extracting significant patterns or structures within those data.
     </p>
 
-    <h2 style="text-align: left; color: gray; margin-left: 20px;">Layered Label Propagation</h2>
+    <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Layered Label Propagation</h2>
+
+    <a href="https://www.npmjs.com/package/layered-label-propagation" target="_blank" rel="noopener noreferrer"><img src="img/npm.png" width="40px" style="display: inline-block; margin-bottom: 5px;" alt="Layered Label Propagation Algorithm NPM"></a>
 
     <p style="margin-left: 20px; line-height: 30px;margin-right: 20px;text-align: justify">
         Label Propagation is a semi-supervised machine learning algorithm that assigns labels to previously unlabeled
@@ -146,7 +150,9 @@
         classifications). These labels are propagated to the unlabeled points throughout the course of the algorithm.
     </p>
 
-    <h2 style="text-align: left; color: gray; margin-left: 20px;">Louvain</h2>
+    <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Louvain</h2>
+
+    <a href="https://www.npmjs.com/package/louvain-algorithm" target="_blank" rel="noopener noreferrer"><img src="img/npm.png" width="40px" style="display: inline-block; margin-bottom: 5px;" alt="Louvain Algorithm NPM"></a>
 
     <p style="margin-left: 20px; line-height: 30px;margin-right: 20px;text-align: justify">The Louvain Method for community detection
         is a method to extract communities from large networks created
@@ -157,21 +163,21 @@
 <div id = "results" data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; border-bottom: transparent; border-right: transparent; border-left: transparent; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
     <h2 style="text-align: center; font-size: 30px">Results</h2>
     <div style="margin: auto; text-align: center;">
-        <div id = "left" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
-        <div id = "center" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
-        <div id = "center_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
-        <div id = "center_right_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
+        <div id = "left" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN1')"></div>
+        <div id = "center" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN3')"></div>
+        <div id = "center_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN5')"></div>
+        <div id = "center_right_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN7')"></div>
         <div id = "right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
     </div>
 
     <div id = "left_div" style="display: inline-block;">
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
-            <div style="display: inline-block; font-size: 12px">GN</div> <input id = "GN1" type="radio" onclick="change2(this.id, 1)" checked >
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN1' type="radio" onclick="change('left', this.id)" checked >
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
-            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = "LFR1" type="radio" onclick="change2(this.id, 1)">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR1' type="radio" onclick="change('left', this.id)">
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
@@ -184,14 +190,34 @@
 
     </div>
 
-    <div id = "center_div" style="display: none;">
+    <div id = "left_div2" style="display: none;">
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
-            <div style="display: inline-block; font-size: 12px">GN</div> <input id = "GN3" type="radio" onclick="change2(this.id, 3)" checked>
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN2' type="radio" onclick="change('left', this.id)" checked >
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
-            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = "LFR3" type="radio" onclick="change2(this.id, 3)">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR2' type="radio" onclick="change('left', this.id)">
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "center_div" style="display: none;">
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN3' type="radio" onclick="change('center', this.id)" checked>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR3' type="radio" onclick="change('center', this.id)">
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
@@ -204,14 +230,34 @@
 
     </div>
 
-    <div id = "center_right_div" style="display: none;">
+    <div id = "center_div2" style="display: none;">
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
-            <div style="display: inline-block; font-size: 12px">GN</div> <input id = "GN5" type="radio" onclick="change2(this.id, 5)" checked>
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN4' type="radio" onclick="change('center', this.id)" checked>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
-            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = "LFR5" type="radio" onclick="change2(this.id, 5)">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR4' type="radio" onclick="change('center', this.id)">
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "center_right_div" style="display: none;">
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN5' type="radio" onclick="change('center_right', this.id)" checked>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR5' type="radio" onclick="change('center_right', this.id)">
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
@@ -224,14 +270,34 @@
 
     </div>
 
-    <div id = "center_right_right_div" style="display: none;">
+    <div id = "center_right_div2" style="display: none;">
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
-            <div style="display: inline-block; font-size: 12px">GN</div> <input id = "GN7" type="radio" name="GN7" onclick="change2(this.id, 7)" checked>
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN6' type="radio" onclick="change('center_right', this.id)" checked>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
-            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = "LFR7" type="radio" name="LFR7" onclick="change2(this.id, 7)">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR6' type="radio" onclick="change('center_right', this.id)">
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "center_right_right_div" style="display: none;">
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN7' type="radio" onclick="change('center_right_right', this.id)" checked>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR7' type="radio" onclick="change('center_right_right', this.id)">
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
@@ -240,6 +306,26 @@
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
             <a href="benchmark_data/data_visualized/csv/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "center_right_right_div2" style="display: none;">
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 690px">
+            <div style="display: inline-block; font-size: 12px">GN</div> <input id = 'GN8' type="radio" onclick="change('center_right_right', this.id)" checked>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 230px; left: 770px;">
+            <div style="display: inline-block; font-size: 12px">LFR</div> <input id = 'LFR8' type="radio" onclick="change('center_right_right', this.id)">
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -268,16 +354,18 @@
 
     </div>
 </div>
-
+<!--
 <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px;">
     <h2 style="text-align: center; font-size: 30px;">Stats</h2>
-    <div style="margin: auto;">
+    <div id = "stats_div" style="display: inline-block;">
 
-
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 760px;">
+            <a href="./benchmark_data/data_visualized/csv/stats/stats.csv" download><img src="img/down.png" width="15"></a>
+        </div>
 
     </div>
 </div>
-
+-->
 <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px;">
     <h2 style="text-align: center; font-size: 30px;">Web Tools</h2>
     <div style="margin: auto;">
@@ -324,7 +412,6 @@
     <div style="margin: auto; margin-bottom: 20px; text-align: center;">
         <div id = "left_eit" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
         <div id = "center_eit" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
-        <div id = "right_eit" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id)"></div>
     </div>
 
     <div id = "left_eit_div" style="margin: auto;">
@@ -372,37 +459,7 @@
             <a href="pages/imim.html" style="text-decoration-line: none">
                 <h2 style="color: grey;">IMIM Industry & Innovation Day (Mannheim, Germany)</h2>
             </a>
-            <p style="text-align: justify"> Poster presentation of my MSc thesis to IMIM students and pharmaceutical industry representatives. Bursary awarded.</p>
-        </div>
-
-        <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
-
-            <a href="./pages/aeicbas.html" style="text-decoration-line: none">
-                <h2 style="color: grey;">VII AEICBAS Biomedical Congress (Porto, Portugal)</h2>
-            </a>
-            <p style="text-align: justify"> Thesis was classified in the top 20, in the scientific competition, of the Biomedical Congress.</p>
-        </div>
-
-        <figure style="float: right; margin-right: 3%">
-            <a href="./pages/aeicbas.html">
-                <img src="./img/aeicbas.png" width="310" alt="AMR Hackathon">
-            </a>
-        </figure>
-
-    </div>
-
-    <div id = "right_eit_div" style="margin: auto; display: none;">
-        <figure style="float: left;">
-            <a href="pages/imim.html">
-                <img src="./img/imim.jpg" width="300" alt="MTiH">
-            </a>
-        </figure>
-        <div style="float: left; width: 300px; line-height: 30px">
-
-            <a href="pages/imim.html" style="text-decoration-line: none">
-                <h2 style="color: grey;">IMIM Industry & Innovation Day (Mannheim, Germany)</h2>
-            </a>
-            <p style="text-align: justify"> Poster presentation of my MSc thesis to IMIM students and pharmaceutical industry representatives. Bursary awarded.</p>
+            <p style="text-align: justify"> Poster presentation of my thesis to IMIM students and pharmaceutical industry representatives. Bursary awarded.</p>
         </div>
 
         <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
@@ -424,8 +481,14 @@
 </div>
 
 <div class="container2" style="background-color: black; height: 50px; margin: auto">
-    <p style="color: white;">Luís Rita</p>
+    <p style="color: white;"><a href="https://warcraft12321.github.io/LUI/" target="_blank" rel="noopener noreferrer"><img src="img/luiss.png" width="50px"></a></p>
     <div id = "socialMedia">
+        <a href = "https://www.npmjs.com/~warcraft12321" target="_blank" rel="noopener noreferrer">
+            <img src = "./img/npm.png" width="50" style="margin-right: 5%" alt="GitHub">
+        </a>
+        <a href = "https://hub.docker.com/u/warcraft12321" target="_blank" rel="noopener noreferrer">
+            <img src = "./img/docker.png" width="35" style="margin-right: 5%" alt="GitHub">
+        </a>
         <a href = "https://github.com/warcraft12321" target="_blank" rel="noopener noreferrer">
             <img src = "./img/MediaIcons/github.png" width="25" style="margin-right: 5%" alt="GitHub">
         </a>
@@ -454,7 +517,9 @@
 
 <script>
 
-    function change (id) {
+    function change (id, net) {
+
+        if(net === undefined) net = "other";
 
         if (id.search("eit") === -1) {
 
@@ -470,61 +535,112 @@
             document.getElementById("center_right_right_div").style.display = "none";
             document.getElementById("right_div").style.display = "none";
 
+            document.getElementById("left_div2").style.display = "none";
+            document.getElementById("center_div2").style.display = "none";
+            document.getElementById("center_right_div2").style.display = "none";
+            document.getElementById("center_right_right_div2").style.display = "none";
+
         } else {
 
             document.getElementById("left_eit").style.backgroundColor = "black";
             document.getElementById("center_eit").style.backgroundColor = "black";
-            document.getElementById("right_eit").style.backgroundColor = "black";
 
             document.getElementById("left_eit_div").style.display = "none";
             document.getElementById("center_eit_div").style.display = "none";
-            document.getElementById("right_eit_div").style.display = "none";
+
+        }
+
+        if (net.search("GN") !== -1) {
+
+            let aux = net.split("N")[1];
+
+            if (aux % 2 !== 0) {
+
+                document.getElementById('LFR' + (Number(aux) + 1)).checked = false;
+                document.getElementById('GN' + (Number(aux) + 1)).checked = true;
+
+            } else {
+
+                document.getElementById('LFR' + (Number(aux) - 1)).checked = false;
+                document.getElementById('GN' + (Number(aux) - 1)).checked = true;
+
+            }
+
+            document.getElementById(id + "_div").style.display = "block";
+            document.getElementById(net).checked = true;
+            document.getElementById("LFR" + aux).checked = false;
+
+        } else if (net.search("LFR") !== -1) {
+
+            let aux2 = net.split("R")[1];
+            document.getElementById('LFR' + aux2).checked = false;
+
+            if (aux2 % 2 !== 0) {
+
+                document.getElementById('LFR' + (Number(aux2) + 1)).checked = true;
+                document.getElementById('GN' + (Number(aux2) + 1)).checked = false;
+
+            } else {
+
+                document.getElementById('LFR' + (Number(aux2) - 1)).checked = true;
+                document.getElementById('GN' + (Number(aux2) - 1)).checked = false;
+
+            }
+
+            document.getElementById(id + "_div2").style.display = "block";
+            document.getElementById(net).checked = true;
+            document.getElementById("GN" + aux2).checked = false;
+
+        } else {
+
+            document.getElementById(id + "_div").style.display = "block";
 
         }
 
         document.getElementById(id).style.backgroundColor = "white";
-        document.getElementById(id + "_div").style.display = "block";
-    }
-
-    function change2 (id, nr) {
-
-        d3.select('#svg' + nr).remove();
-        d3.select('#svg' + (nr + 1)).remove();
-
-        if (id.search("GN") === -1) {
-
-            document.getElementById("GN" + nr).checked = false;
-            results('./benchmark_data/data_visualized/csv/lfr/nmi_mix.csv',"svg" + nr, "NMI x Mix Parameter", "#left_div", 1);
-            results('./benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv',"svg" + (nr + 1), "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1);
-
-        } else {
-
-            document.getElementById("LFR" + nr).checked = false;
-            results('./benchmark_data/data_visualized/csv/gn/nmi_mix.csv',"svg" + nr, "NMI x Mix Parameter", "#left_div", 1);
-            results('./benchmark_data/data_visualized/csv/gn/nmi_gamma.csv',"svg" + (nr + 1), "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1);
-
-        }
-
-
 
     }
 
-    results('./benchmark_data/data_visualized/csv/gn/nmi_mix.csv',"svg1", "NMI x Mix Parameter", "#left_div", 1);
-    results('./benchmark_data/data_visualized/csv/gn/nmi_gamma.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/nmi_mix.csv',"svg1", "NMI x Mix Parameter", "#left_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1);
-    results('./benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv',"svg3", "Label Propagation NMI x Mix Parameter", "#center_div", 1);
-    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg4", "Louvain NMI x Mix Parameter", "#center_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg3", "Label Propagation NMI x Mix Parameter", "#center_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg4", "Louvain NMI x Mix Parameter", "#center_div", 1);
-    results('./benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv',"svg5", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div", 1);
-  //  results('./benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv',"svg6", "Infomap NMI x Mix Parameter", "#center_right_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg5", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg6", "Infomap NMI x Mix Parameter", "#center_right_div", 1);
-    results('./benchmark_data/data_visualized/csv/gn/GN_speed.csv',"svg7", "Time x Mix Parameter", "#center_right_right_div", 35000);
-    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg8", "NMI x Mix Parameter", "#center_right_right_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg7", "Time x Mix Parameter", "#center_right_div", 1);
-    //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg8", "Infomap NMI x Mix Parameter", "#center_right_div", 1);
+    results('./benchmark_data/data_visualized/csv/gn/nmi_mix.csv',"svg1", "NMI x Mix Parameter", "#left_div", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/nmi_gamma.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1, 1, 750);
+     results('./benchmark_data/data_visualized/csv/lfr/nmi_mix.csv',"svg3", "NMI x Mix Parameter", "#left_div2", 1, 1, 750);
+     results('./benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv',"svg4", "NMI Layered Label Propagation x Gamma Parameter", "#left_div2", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv',"svg5", "Label Propagation NMI x Mix Parameter", "#center_div", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg6", "Louvain NMI x Mix Parameter", "#center_div", 1, 1, 750);
+     //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg7", "Label Propagation NMI x Mix Parameter", "#center_div2", 1, 1, 750);
+     //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg8", "Louvain NMI x Mix Parameter", "#center_div2", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv',"svg9", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div", 1, 1, 750);
+    //results('./benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv',"svg10", "Infomap NMI x Mix Parameter", "#center_right_div", 1, 1, 750);
+    //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg11", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div2", 1, 1, 750);
+    //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg12", "Infomap NMI x Mix Parameter", "#center_right_div2", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/GN_speed.csv',"svg13", "Time x Mix Parameter", "#center_right_right_div", 35000, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg14", "NMI x Mix Parameter", "#center_right_right_div", 1, 1, 750);
+    //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg15", "Time x Mix Parameter", "#center_right_div2", 1, 1, 750);
+    //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg16", "Infomap NMI x Mix Parameter", "#center_right_div2", 1, 1, 750);
+
+    function stats() {
+
+        fetch('/stats/').then(function(res) {
+
+            return res.json();
+
+        }).then(function(jsonData) {
+
+console.log(jsonData);
+
+let max = 0;
+
+            ["infomap", "layered-label-propagation", "normalized-mutual-information", "girvan-newman-benchmark", "louvain-algorithm", "hamming-dist"].map(function (value, index) {
+
+                if (Object.values(jsonData[value])[Object.values(jsonData[value]).length - 1] > max) max = Object.values(jsonData[value])[Object.values(jsonData[value]).length - 1];
+
+            });
+
+            results('./benchmark_data/data_visualized/csv/stats/stats.csv',"svg9", "NPM Download Statistics", "#stats_div", max + 20, (jsonData["time"].length - 1), 1500);
+
+        });
+
+    }
 
     let canvas, svg, cy;
 
@@ -727,8 +843,6 @@
 /*
     let net = "LFR";
     let repeat = 10;
-
-   // rename('D3.js (SVG)', 0, net, 0, 16); // net to undefined
 
     function bench (id) {
 

@@ -39,7 +39,14 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
     let community;
 
-    if (net === "Amazon" || net === "Karate" || net === "Staph") mix = net; avg_deg = net;
+    console.log(alg);
+    console.log(gamma_var);
+    console.log(cyto);
+    console.log(net);
+    console.log(mix);
+    console.log(avg_deg);
+
+    if (net === "Amazon" || net === "Karate" || net === "Staph") {mix = net; avg_deg = net;}
 
     switch (alg) {
 
@@ -52,6 +59,8 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
                 result_cyto["links"] = result_cyto[mix + "_" + avg_deg]["links"];
 
             } else {
+
+                console.log(result[mix + "_" + avg_deg]);
 
               //  let t1 = performance.now();
                 community = louvain.jLouvain(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], 1/10000);
@@ -215,7 +224,6 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
                             res.send(result[req.params.mix + "_" + req.params.deg]);
 
                         }
-
                     });
                 });
             });
@@ -353,32 +361,44 @@ app.post('/upload', function (req, res) {
 
 // ---------------------------------------------- STATS ----------------------------------------------
 /*
-//app.get('/stats', function (req, res) {
-
     let start = new Date('2019-04-11');
     let d = new Date();
     let end = new Date((d.getFullYear).toString() + "-" + (d.getMonth).toString() + "-" + (d.getDate).toString());
 
-    let downloadss = [];
+    let downloadss = {};
+let downloadss_cum = {};
+downloadss["time"] = Array.from({length: (d.getDate() - 9)}, (v, k) => k);
 
     ["infomap", "layered-label-propagation", "normalized-mutual-information", "girvan-newman-benchmark", "louvain-algorithm", "hamming-dist"].map(function (value, index) {
-
+        downloadss[value] = [];
+        downloadss[value + "SD"] = [];
+        downloadss_cum[value] = 0;
         stats.get(start, end, value)
             .on('error', console.error)
             .on('data', function (data) {
                 //console.log(data["downloads"]);
-                downloadss.push(data["downloads"]);
-
+                downloadss_cum[value] = downloadss_cum[value] + data["downloads"];
+                downloadss[value].push(downloadss_cum[value]);
+                downloadss[value + "SD"].push(0);
             })
             .on('end', function () {
                 console.log('done.');
 
             });
     });
-console.log(downloadss);
-    //res.send(downloadss);
 
-//});
+
+app.get('/stats', function (req, res) {
+
+    console.log(downloadss);
+
+    res.send(downloadss);
+
+    str = "";
+    str = aux.arrayToString(Object.values(downloadss), str, Object.keys(downloadss));
+    fs.writeFile("./website/benchmark_data/data_visualized/csv/stats/stats.csv", str);
+
+});
 */
 // ---------------------------------------------- NMI ACCURACY BENCHMARK ----------------------------------------------
 
@@ -418,6 +438,9 @@ app.get('/bench_accu/:title', function (req, res) {
 
         });
 
+        console.log(final_arr[index]);
+        console.log(final_arr[i]);
+
         datat[final_arr_titles[i]] = nmi.jNMI(final_arr[index],final_arr[i]);
 
     }
@@ -427,13 +450,13 @@ app.get('/bench_accu/:title', function (req, res) {
 
     // ---------------------------- NMI x Mix Parameter
 
-    [16].map(function (avg_deg) { //deg
+    [15, 20, 25].map(function (avg_deg) { //deg
 
-        ["LLP", "Louvain", "Infomap"].map(function (alg) { //net
+        ["LLP"].map(function (alg) { //net
 
             if (alg === "LLP") {
 
-                [0, 0.5].map(function (i) { // gamma
+                [0].map(function (i) { // gamma
 
                     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
 
@@ -471,6 +494,7 @@ app.get('/bench_speed', function (req, res) {
                     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
 
                         titles.push("LFR_Bench" + "_" + ii + "_" + avg_deg + "_");
+
                     })
     });
 
@@ -484,6 +508,68 @@ app.get('/bench_speed', function (req, res) {
 /*
 let obj_lfr_com = {};
 
+//[15, 20, 25].map(function (avg_deg) {
+
+   // setTimeout(function () {
+
+        [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+
+            setTimeout(function () {
+
+                cmd.get(
+                    `
+            cd ./website/algorithms/lancichinetti-fortunato-radicchi
+            rm network.dat
+            rm community.dat
+            ./benchmark -N ${128} -k ${15} -maxk ${50} -mu ${mix_param} -minc ${10} -maxc ${50}
+        `,
+                    function () { // err, data, stderr
+
+                        fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
+
+                            if (err) throw err;
+
+                            let obj_lfr = [];
+
+                            let split = data_net.toString().split("\n");
+
+                            for (let i = 0; i < split.length - 1; i++) {
+                                let splitLine = split[i].split("\t");
+                                obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
+
+                            }
+
+                            fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
+
+                                if (err) throw err;
+
+                                obj_lfr_com = {};
+                                let split = data_com.toString().split("\n");
+
+                                for (let i = 0; i < split.length - 1; i++) {
+                                    let splitLine = split[i].split("\t");
+                                    obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
+                                }
+
+                                result[mix_param + "_" + 15] = {};
+                                result[mix_param + "_" + 15]["nodes"] = aux.nodify(obj_lfr_com, 0);
+                                result[mix_param + "_" + 15]["links"] = obj_lfr;
+
+                                //  console.log(Object.values(obj_lfr_com));
+                                final_arr.push(Object.values(obj_lfr_com));
+                                final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + 15);
+                            });
+
+                        });
+
+                    });
+
+                console.log(mix_param);
+
+            }, 1000 + 1000 * mix_param);
+
+        });
+
 [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
 
     setTimeout(function () {
@@ -493,7 +579,7 @@ let obj_lfr_com = {};
             cd ./website/algorithms/lancichinetti-fortunato-radicchi
             rm network.dat
             rm community.dat
-            ./benchmark -N ${128} -k ${16} -maxk ${50} -mu ${mix_param} -minc ${10} -maxc ${50}
+            ./benchmark -N ${128} -k ${20} -maxk ${50} -mu ${mix_param} -minc ${10} -maxc ${50}
         `,
             function () { // err, data, stderr
 
@@ -523,13 +609,13 @@ let obj_lfr_com = {};
                             obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
                         }
 
-                        result[mix_param + "_" + 16] = {};
-                        result[mix_param + "_" + 16]["nodes"] = aux.nodify(obj_lfr_com, 0);
-                        result[mix_param + "_" + 16]["links"] = obj_lfr;
+                        result[mix_param + "_" + 20] = {};
+                        result[mix_param + "_" + 20]["nodes"] = aux.nodify(obj_lfr_com, 0);
+                        result[mix_param + "_" + 20]["links"] = obj_lfr;
 
                         //  console.log(Object.values(obj_lfr_com));
                         final_arr.push(Object.values(obj_lfr_com));
-                        final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + 16);
+                        final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + 20);
                     });
 
                 });
@@ -538,11 +624,15 @@ let obj_lfr_com = {};
 
         console.log(mix_param);
 
-    }, 1000 + 1000*mix_param);
+    }, 1200 + 1210 * mix_param);
 
 });
-*/
 
+  //  }, 900 + 2000 * avg_deg);
+
+//});
+
+*/
 // ---------------------------- GN
 
 /*
