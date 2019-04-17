@@ -88,7 +88,7 @@ Example2:
 If you want to produce a kind of Girvan-Newman benchmark, you can type:
 ./benchmark -N 128 -k 16 -maxk 16 -mu 0.1 -minc 32 -maxc 32
 
-
+./benchmark -N ${nr_nodes} -k ${16} -maxk ${50} -mu ${0.1} -minc ${10} -maxc ${50}
 -------------------- Output ---------------------------
 
 Please note that the community size distribution can be modified by the program to satisfy several constraints (a warning will be displayed).

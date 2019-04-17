@@ -62,10 +62,10 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
                 console.log(result[mix + "_" + avg_deg]);
 
-              //  let t1 = performance.now();
+                let t1 = performance.now();
                 community = louvain.jLouvain(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], 1/10000);
-                //  let t2 = performance.now();
-              //  final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
+                let t2 = performance.now();
+                final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
@@ -115,7 +115,7 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
                 let t1 = performance.now();
                 community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
                 let t2 = performance.now();
-                final_times["LLP" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
+                final_times["LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 final_arr.push(Object.values(community));
                 final_arr_titles.push("LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij);
                 ij++;
@@ -360,7 +360,7 @@ app.post('/upload', function (req, res) {
 });
 
 // ---------------------------------------------- STATS ----------------------------------------------
-/*
+
     let start = new Date('2019-04-11');
     let d = new Date();
     let end = new Date((d.getFullYear).toString() + "-" + (d.getMonth).toString() + "-" + (d.getDate).toString());
@@ -376,7 +376,6 @@ downloadss["time"] = Array.from({length: (d.getDate() - 9)}, (v, k) => k);
         stats.get(start, end, value)
             .on('error', console.error)
             .on('data', function (data) {
-                //console.log(data["downloads"]);
                 downloadss_cum[value] = downloadss_cum[value] + data["downloads"];
                 downloadss[value].push(downloadss_cum[value]);
                 downloadss[value + "SD"].push(0);
@@ -390,8 +389,6 @@ downloadss["time"] = Array.from({length: (d.getDate() - 9)}, (v, k) => k);
 
 app.get('/stats', function (req, res) {
 
-    console.log(downloadss);
-
     res.send(downloadss);
 
     str = "";
@@ -399,7 +396,7 @@ app.get('/stats', function (req, res) {
     fs.writeFile("./website/benchmark_data/data_visualized/csv/stats/stats.csv", str);
 
 });
-*/
+
 // ---------------------------------------------- NMI ACCURACY BENCHMARK ----------------------------------------------
 
 app.get('/bench_accu/:title', function (req, res) {
@@ -452,11 +449,11 @@ app.get('/bench_accu/:title', function (req, res) {
 
     [15, 20, 25].map(function (avg_deg) { //deg
 
-        ["LLP"].map(function (alg) { //net
+        ["Infomap"].map(function (alg) { //net
 
             if (alg === "LLP") {
 
-                [0].map(function (i) { // gamma
+                [0, 0.5].map(function (i) { // gamma
 
                     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
 
@@ -474,6 +471,7 @@ app.get('/bench_accu/:title', function (req, res) {
             }
         });
     });
+//auxii  = aux.arrayToString_plot(datat, auxii, titles);
 
         auxii  = aux.arrayToString_plot(datat, auxii, titles);
         fs.writeFileSync("./website/algorithms/" + req.params.title + "_" + net + ".csv", auxii);
@@ -491,11 +489,15 @@ app.get('/bench_speed', function (req, res) {
 
     [16].map(function (avg_deg) { //deg
 
-                    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
+       // [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].map(function (nr_nodes) {
 
-                        titles.push("LFR_Bench" + "_" + ii + "_" + avg_deg + "_");
+            [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (ii) { // mix
 
-                    })
+                titles.push("LFR_Bench" + "_" + ii + "_" + avg_deg + "_");
+
+           })
+
+      //  });
     });
 
     auxii  = aux.arrayToString_plot(final_times, auxii, titles);
@@ -504,152 +506,109 @@ app.get('/bench_speed', function (req, res) {
 });
 
 // ---------------------------- LFR
-
 /*
 let obj_lfr_com = {};
 
-//[15, 20, 25].map(function (avg_deg) {
-
-   // setTimeout(function () {
-
-        [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
-
-            setTimeout(function () {
-
-                cmd.get(
-                    `
-            cd ./website/algorithms/lancichinetti-fortunato-radicchi
-            rm network.dat
-            rm community.dat
-            ./benchmark -N ${128} -k ${15} -maxk ${50} -mu ${mix_param} -minc ${10} -maxc ${50}
-        `,
-                    function () { // err, data, stderr
-
-                        fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
-
-                            if (err) throw err;
-
-                            let obj_lfr = [];
-
-                            let split = data_net.toString().split("\n");
-
-                            for (let i = 0; i < split.length - 1; i++) {
-                                let splitLine = split[i].split("\t");
-                                obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
-
-                            }
-
-                            fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
-
-                                if (err) throw err;
-
-                                obj_lfr_com = {};
-                                let split = data_com.toString().split("\n");
-
-                                for (let i = 0; i < split.length - 1; i++) {
-                                    let splitLine = split[i].split("\t");
-                                    obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
-                                }
-
-                                result[mix_param + "_" + 15] = {};
-                                result[mix_param + "_" + 15]["nodes"] = aux.nodify(obj_lfr_com, 0);
-                                result[mix_param + "_" + 15]["links"] = obj_lfr;
-
-                                //  console.log(Object.values(obj_lfr_com));
-                                final_arr.push(Object.values(obj_lfr_com));
-                                final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + 15);
-                            });
-
-                        });
-
-                    });
-
-                console.log(mix_param);
-
-            }, 1000 + 1000 * mix_param);
-
-        });
-
-[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (rep) {
 
     setTimeout(function () {
 
-        cmd.get(
-            `
+       // [128].map(function (nr_nodes) {
+
+           // setTimeout(function () {
+
+               // [25].map(function (avg_deg) {
+
+                    //  setTimeout(function () {
+
+                    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
+
+                        setTimeout(function () {
+                            let t1 = performance.now();
+                            cmd.get(
+                                `
             cd ./website/algorithms/lancichinetti-fortunato-radicchi
             rm network.dat
             rm community.dat
-            ./benchmark -N ${128} -k ${20} -maxk ${50} -mu ${mix_param} -minc ${10} -maxc ${50}
+            ./benchmark -N ${128} -k ${16} -maxk ${16} -mu ${mix_param} -minc ${32} -maxc ${32}
         `,
-            function () { // err, data, stderr
+                                function () { // err, data, stderr
+                                    let t2 = performance.now();
+                                    fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
 
-                fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/network.dat', 'utf8', function (err, data_net) {
+                                        if (err) throw err;
 
-                    if (err) throw err;
+                                        let obj_lfr = [];
 
-                    let obj_lfr = [];
+                                        let split = data_net.toString().split("\n");
 
-                    let split = data_net.toString().split("\n");
+                                        for (let i = 0; i < split.length - 1; i++) {
+                                            let splitLine = split[i].split("\t");
+                                            obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
 
-                    for (let i = 0; i < split.length - 1; i++) {
-                        let splitLine = split[i].split("\t");
-                        obj_lfr.push(aux.edge(splitLine[0], splitLine[1]));
+                                        }
 
-                    }
+                                        fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
 
-                    fs.readFile('./website/algorithms/lancichinetti-fortunato-radicchi/community.dat', 'utf8', function (err, data_com) {
+                                            if (err) throw err;
 
-                        if (err) throw err;
+                                            obj_lfr_com = {};
+                                            let split = data_com.toString().split("\n");
 
-                        obj_lfr_com = {};
-                        let split = data_com.toString().split("\n");
+                                            for (let i = 0; i < split.length - 1; i++) {
+                                                let splitLine = split[i].split("\t");
+                                                obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
+                                            }
 
-                        for (let i = 0; i < split.length - 1; i++) {
-                            let splitLine = split[i].split("\t");
-                            obj_lfr_com[splitLine[0]] = Number(splitLine[1]);
-                        }
+                                            result[mix_param + "_" + 16] = {};
+                                            result[mix_param + "_" + 16]["nodes"] = aux.nodify(obj_lfr_com, 0);
+                                            result[mix_param + "_" + 16]["links"] = obj_lfr;
 
-                        result[mix_param + "_" + 20] = {};
-                        result[mix_param + "_" + 20]["nodes"] = aux.nodify(obj_lfr_com, 0);
-                        result[mix_param + "_" + 20]["links"] = obj_lfr;
+                                            final_arr.push(Object.values(obj_lfr_com));
+                                            final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + 16);
+                                            final_times["LFR_Bench" + "_" + mix_param + "_" + 16 + "_" + ij] = t2 - t1;
+                                            ij++;
+                                        });
 
-                        //  console.log(Object.values(obj_lfr_com));
-                        final_arr.push(Object.values(obj_lfr_com));
-                        final_arr_titles.push("LFR_Bench" + "_" + mix_param + "_" + 20);
-                    });
+                                    });
 
-                });
+                                });
 
-            });
+                            console.log(15);
+                       // console.log(25);
 
-        console.log(mix_param);
+                        }, 1000 + 2500 * mix_param);
 
-    }, 1200 + 1210 * mix_param);
+                  //  });
+
+                    //   }, 300 + 1000 * avg_deg);
+
+               // });
+
+           // }, 300 + 10 * nr_nodes)
+
+        });
+
+    }, 300 + 1000 * rep)
 
 });
-
-  //  }, 900 + 2000 * avg_deg);
-
-//});
-
 */
+
 // ---------------------------- GN
 
 /*
 
 // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (rep) {
 
-[16].map(function (avg_deg) {
+[15].map(function (avg_deg) {
 
     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
 
         let t1 = performance.now();
-        result = girvan.jGirvan_Newman(mix_param, false, avg_deg);
+        result[mix_param + "_" + avg_deg] = girvan.jGirvan_Newman(mix_param, false, avg_deg);
         let t2 = performance.now();
 
-        result[mix_param + "_" + avg_deg] = result;
-
-        final_arr.push(result["communities"]);
+        final_arr.push(result[mix_param + "_" + avg_deg]["communities"]);
         final_arr_titles.push("GN_Bench" + "_" + mix_param + "_" + avg_deg);
 
         //final_times["GN_Bench" + "_" + mix_param + "_" + avg_deg + "_" + ij] = t2 - t1;
@@ -660,5 +619,4 @@ let obj_lfr_com = {};
     });
 });
 //   });
-
- */
+*/

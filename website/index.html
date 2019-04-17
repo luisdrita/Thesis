@@ -11,7 +11,7 @@
 
 </head>
 
-<body style="min-width: 1700px; margin: auto; position: relative">
+<body style="min-width: 1700px; margin: auto; position: relative" onload="stats()" >
 
 <header>
 
@@ -70,7 +70,7 @@
         <button id='reset_btn'>Reset</button>
         <button id='comm_detect'>Run</button>
         <div class="dropdown" id = "dropdown">
-            <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center" onclick="stats();">Algorithm</button>
+            <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content">
                 <a id = "Louvain" onclick="rename(this.id, '1', document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Louvain</a>
                 <a id = "Infomap" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Infomap</a>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center" onclick="fetch('/bench_accu/' + 'title');">Interface</button> <!-- Interface -->
+            <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center" onclick="fetch('/bench_accu/' + 'hello');">Interface</button> <!-- Interface -->
             <div id = "dropdown-content_interface" class="dropdown-content">
                 <a id = "D3.js (SVG)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (SVG)</a>
                 <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (Canvas)</a>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center" onclick="bench('2');">Network</button>
+            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center" onclick="bench('5');">Network</button>
             <div id = "dropdown-content_network" class="dropdown-content">
                 <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Girvan-Newman</a>
                 <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
@@ -164,6 +164,7 @@
     <h2 style="text-align: center; font-size: 30px">Results</h2>
     <div style="margin: auto; text-align: center;">
         <div id = "left" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN1')"></div>
+        <div id = "left-center" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN3')"></div>
         <div id = "center" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN3')"></div>
         <div id = "center_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN5')"></div>
         <div id = "center_right_right" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, 'GN7')"></div>
@@ -206,6 +207,30 @@
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
             <a href="benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "left-center_div" style="display: none;">
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
+            <a href="./benchmark_data/data_visualized/csv/stats/stats.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+    </div>
+
+    <div id = "left-center_div2" style="display: none;">
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
+            <a href="benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
+        </div>
+
+        <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
+            <a href="./benchmark_data/data_visualized/csv/stats/stats.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -261,11 +286,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -281,11 +306,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/lfr/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/lfr/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -301,11 +326,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/gn/GN_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -321,11 +346,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/lfr/LFR_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/data_visualized/csv/lfr/LFR_speed_nrNodes.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -524,18 +549,21 @@
         if (id.search("eit") === -1) {
 
             document.getElementById("left").style.backgroundColor = "black";
+            document.getElementById("left-center").style.backgroundColor = "black";
             document.getElementById("center").style.backgroundColor = "black";
             document.getElementById("center_right").style.backgroundColor = "black";
             document.getElementById("center_right_right").style.backgroundColor = "black";
             document.getElementById("right").style.backgroundColor = "black";
 
             document.getElementById("left_div").style.display = "none";
+            document.getElementById("left-center_div").style.display = "none";
             document.getElementById("center_div").style.display = "none";
             document.getElementById("center_right_div").style.display = "none";
             document.getElementById("center_right_right_div").style.display = "none";
             document.getElementById("right_div").style.display = "none";
 
             document.getElementById("left_div2").style.display = "none";
+            document.getElementById("left-center_div2").style.display = "none";
             document.getElementById("center_div2").style.display = "none";
             document.getElementById("center_right_div2").style.display = "none";
             document.getElementById("center_right_right_div2").style.display = "none";
@@ -573,7 +601,6 @@
         } else if (net.search("LFR") !== -1) {
 
             let aux2 = net.split("R")[1];
-            document.getElementById('LFR' + aux2).checked = false;
 
             if (aux2 % 2 !== 0) {
 
@@ -588,12 +615,14 @@
             }
 
             document.getElementById(id + "_div2").style.display = "block";
+            document.getElementById(id + "_div").style.display = "none";
             document.getElementById(net).checked = true;
             document.getElementById("GN" + aux2).checked = false;
 
         } else {
 
             document.getElementById(id + "_div").style.display = "block";
+            document.getElementById(id + "_div2").style.display = "none";
 
         }
 
@@ -601,22 +630,28 @@
 
     }
 
-    results('./benchmark_data/data_visualized/csv/gn/nmi_mix.csv',"svg1", "NMI x Mix Parameter", "#left_div", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/nmi_gamma.csv',"svg2", "NMI Layered Label Propagation x Gamma Parameter", "#left_div", 1, 1, 750);
-     results('./benchmark_data/data_visualized/csv/lfr/nmi_mix.csv',"svg3", "NMI x Mix Parameter", "#left_div2", 1, 1, 750);
-     results('./benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv',"svg4", "NMI Layered Label Propagation x Gamma Parameter", "#left_div2", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv',"svg5", "Label Propagation NMI x Mix Parameter", "#center_div", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg6", "Louvain NMI x Mix Parameter", "#center_div", 1, 1, 750);
-     //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg7", "Label Propagation NMI x Mix Parameter", "#center_div2", 1, 1, 750);
-     //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg8", "Louvain NMI x Mix Parameter", "#center_div2", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv',"svg9", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div", 1, 1, 750);
-    //results('./benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv',"svg10", "Infomap NMI x Mix Parameter", "#center_right_div", 1, 1, 750);
-    //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg11", "Layered Label Propagation NMI x Mix Parameter", "#center_right_div2", 1, 1, 750);
-    //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg12", "Infomap NMI x Mix Parameter", "#center_right_div2", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/GN_speed.csv',"svg13", "Time x Mix Parameter", "#center_right_right_div", 35000, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg14", "NMI x Mix Parameter", "#center_right_right_div", 1, 1, 750);
-    //results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg15", "Time x Mix Parameter", "#center_right_div2", 1, 1, 750);
-    //results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg16", "Infomap NMI x Mix Parameter", "#center_right_div2", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/nmi_mix.csv',"svg1", "NMI x Mix Parameter (GN)", "#left_div", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/nmi_gamma.csv',"svg2", "Layered Label Propagation NMI x Gamma Parameter (GN)", "#left_div", 1, 1, 750);
+     results('./benchmark_data/data_visualized/csv/lfr/nmi_mix.csv',"svg3", "NMI x Mix Parameter (LFR)", "#left_div2", 1, 1, 750);
+     results('./benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv',"svg4", "Layered Label Propagation NMI x Gamma Parameter (LFR)", "#left_div2", 1, 1, 750);
+
+    results('./benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv',"svg5", "Time x Mix Parameter (LFR)", "#left-center_div", 29000, 1000, 750);
+
+    results('./benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv',"svg7", "Label Propagation NMI x Mix Parameter (GN)", "#center_div", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg8", "Louvain NMI x Mix Parameter (GN)", "#center_div", 1, 1, 750);
+     results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg9", "Label Propagation NMI x Mix Parameter (LFR)", "#center_div2", 1, 1, 750);
+     results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg10", "Louvain NMI x Mix Parameter (LFR)", "#center_div2", 1, 1, 750);
+
+    results('./benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv',"svg11", "Layered Label Propagation NMI x Mix Parameter (GN)", "#center_right_div", 1, 1, 750);
+    //results('./benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv',"svg12", "Infomap NMI x Mix Parameter (GN)", "#center_right_div", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/lfr/llp_vs_mix_vs_k.csv',"svg13", "Layered Label Propagation NMI x Mix Parameter (LFR)", "#center_right_div2", 1, 1, 750);
+    results('./benchmark_data/data_visualized/csv/lfr/infomap_vs_mix_vs_k.csv',"svg14", "Infomap NMI x Mix Parameter (LFR)", "#center_right_div2", 1, 1, 750);
+
+    results('./benchmark_data/data_visualized/csv/gn/GN_speed.csv',"svg15", "Time x Mix Parameter (GN)", "#center_right_right_div", 35000, 1, 750);
+    results('./benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv',"svg16", "Time x Mix Parameter (GN)", "#center_right_right_div", 200, 1, 750);
+    results('./benchmark_data/data_visualized/csv/lfr/LFR_speed.csv',"svg17", "Time x Mix Parameter (LFR)", "#center_right_right_div2", 180, 1, 750);
+    results('./benchmark_data/data_visualized/csv/lfr/LFR_speed_nrNodes.csv',"svg18", "Time x Number of Nodes (LFR)", "#center_right_right_div2", 600, 1000, 750);
+
 
     function stats() {
 
@@ -626,8 +661,6 @@
 
         }).then(function(jsonData) {
 
-console.log(jsonData);
-
 let max = 0;
 
             ["infomap", "layered-label-propagation", "normalized-mutual-information", "girvan-newman-benchmark", "louvain-algorithm", "hamming-dist"].map(function (value, index) {
@@ -636,7 +669,7 @@ let max = 0;
 
             });
 
-            results('./benchmark_data/data_visualized/csv/stats/stats.csv',"svg9", "NPM Download Statistics", "#stats_div", max + 20, (jsonData["time"].length - 1), 1500);
+            results('./benchmark_data/data_visualized/csv/stats/stats.csv',"svg6", "Real Time NPM Downloads", "#left-center_div", max + 20, (jsonData["time"].length - 1), 750);
 
         });
 
@@ -840,8 +873,8 @@ let max = 0;
     // ------------------------------------------ Benchmark Results Printing ------------------------------------------
 
     // ---------------------------- NMI x Mix Parameter & NMI Layered Label Propagation x Gamma Parameter & LP/LLP/Louvain/Infomap NMI x Mix Parameter[BENCH]
-/*
-    let net = "LFR";
+
+    let net = "GN";
     let repeat = 10;
 
     function bench (id) {
@@ -906,7 +939,7 @@ let max = 0;
 
             case "5":
 
-                avg_degs = [15, 20, 25];
+                avg_degs = [15];
                 mixes = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
                 louvain = false;
                 infomap = true;
@@ -914,6 +947,13 @@ let max = 0;
                 break;
 
             case "6":
+
+                avg_degs = [16];
+                mixes = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+                gammas = [0, 0.5];
+                louvain = true;
+                infomap = true;
+                llp = true;
 
                 break;
 
@@ -957,7 +997,7 @@ let max = 0;
             })
             });
         }
-*/
+
 </script>
 
 </html>

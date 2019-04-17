@@ -202,7 +202,9 @@ function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
 
         let mousemove = function(d) {
 
-            if(svg_input === "svg1" || svg_input === "svg3") {
+            let number = svg_input.split("g")[1];
+
+            if(number%2 !== 0) {
                 Tooltip
                     .html(d.value + " ± " + d.error)
                     .style("left", (d3.mouse(this)[0] + margin.left + 15) + "px")
