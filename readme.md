@@ -107,7 +107,9 @@ Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Franci
 
 [25/03/19] Phylogenetic data analysis improved. Results visualization working as intended;
 
-[Next] Thesis writing.
+[23/04/19] [Extended abstract](https://github.com/warcraft12321/Thesis/blob/master/website/file/abstract.pdf); [Thesis](https://github.com/warcraft12321/Thesis/blob/master/website/file/thesis.pdf).
+
+
 
 ### Screenshot
 

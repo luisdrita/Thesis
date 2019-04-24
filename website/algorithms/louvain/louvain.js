@@ -400,10 +400,10 @@ console.log(result);
         mod = new_mod;
         let current_graph = induced_graph(partition, original_graph); // Graph that results from partitioning the original. Graph
         // after 1st pass. Community aggregation.
-        init_status(current_graph, status); // Resetting status.
 
         while (true) { // Keeps partitioning the graph until no significant modularity increase occurs.
          //   console.log();
+            init_status(current_graph, status);
             __one_level(current_graph, status);
             new_mod = __modularity(status);
             if (new_mod - mod < __MIN) {
@@ -415,7 +415,7 @@ console.log(result);
 
             mod = new_mod;
             current_graph = induced_graph(partition, current_graph);
-            init_status(current_graph, status);
+
         }
 
         return status_list; // Dendogram is a set of ordered partitions.

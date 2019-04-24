@@ -389,9 +389,9 @@ jInfomap = function (nds, edgs, __MIN) { // A function expression can be stored 
         mdl = new_mdl;
         let current_graph = induced_graph(partition, original_graph); // Graph that results from partitioning the original. Graph
         // after 1st pass. Community aggregation.
-        init_status(current_graph, status); // Resetting status.
 
         while (true) { // Keeps partitioning the graph until no significant modularity increase occurs.
+            init_status(current_graph, status);
             __one_level(current_graph, status);
             new_mdl = __mdl(status);
             if (mdl - new_mdl < __MIN) {
@@ -403,7 +403,7 @@ jInfomap = function (nds, edgs, __MIN) { // A function expression can be stored 
 
             mdl = new_mdl;
             current_graph = induced_graph(partition, current_graph);
-            init_status(current_graph, status);
+
         }
 
         return status_list; // Dendogram is a set of ordered partitions.

@@ -1,4 +1,4 @@
-time,Label Propagation,SD1,Layered Label Propagation,SD2,Louvain,SD3,Infomap,SD4
+time,LP,SD1,LLP,SD2,Louvain,SD3,Infomap,SD4
 0,0,0,0,0,0,0,0,0
 100,40.457,2.898,44.121,3.582,17.673,4.181,373.404,34.824
 200,133.364,2.709,141.657,4.141,26.244,4.495,1181.029,54.473

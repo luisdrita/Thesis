@@ -13,7 +13,7 @@ function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    svg.append('text').html(title).attr('x', width_input/2 - 180).attr('y', 10).style("font-size", "11px");
+    svg.append('text').html(title).attr('x', width_input/2 - 190).attr('y', 10).style("font-size", "15px");
 
     //Read the data
     d3.csv(sheet, function(data) {
@@ -251,26 +251,26 @@ function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
             .data(data2).enter()
             .append("line")
             .attr("class", d => "error-line" + d.group + d.title)
-            .attr("opacity", "0")
+            .attr("opacity", 0)
             .attr("stroke", "black")
             .attr("stroke-width", "2px")
             .attr("x1", d => x(d.x))
-            .attr("y1", d => y(d.y + d.e))
+            .attr("y1", d => y(d.y + d.e/2))
             .attr("x2", d => x(d.x))
-            .attr("y2", d => y(d.y - d.e));
+            .attr("y2", d => y(d.y - d.e/2));
 
         // Add Error Top Cap
         svg.append("g").selectAll("line") //  let top_cap =
             .data(data2).enter()
             .append("line")
             .attr("class", d => "error-cap" + d.group + d.title)
-            .attr("opacity", "0")
+            .attr("opacity", 0)
             .attr("stroke", "black")
             .attr("stroke-width", "2px")
             .attr("x1", d => x(d.x) - 4)
-            .attr("y1", d => y(d.y + d.e))
+            .attr("y1", d => y(d.y + d.e/2))
             .attr("x2", d => x(d.x) + 4)
-            .attr("y2", d => y(d.y + d.e));
+            .attr("y2", d => y(d.y + d.e/2));
 
         // Add Error Bottom Cap
         svg.append("g").selectAll("line") //  let bottom_cap =
@@ -278,12 +278,12 @@ function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
             .append("line")
             .attr("class", d => "error-cap" + d.group + d.title)
             .attr("stroke", "black")
-            .attr("opacity", "0")
+            .attr("opacity", 0)
             .attr("stroke-width", "2px")
             .attr("x1", d => x(d.x) - 4)
-            .attr("y1", d => y(d.y - d.e))
+            .attr("y1", d => y(d.y - d.e/2))
             .attr("x2", d => x(d.x) + 4)
-            .attr("y2", d => y(d.y - d.e));
+            .attr("y2", d => y(d.y - d.e/2));
 
         // Add the points
         svg
@@ -300,7 +300,7 @@ function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
             .append("circle")
             .attr("cx", d => x(d.time))
             .attr("cy", d => y(d.value))
-            .attr("r", 4)
+            .attr("r", 3)
             .attr("stroke", "white")
             .attr("stroke-width", "1px")
             .attr("class", d => "myCircle" + d.name + d.title)
@@ -319,9 +319,10 @@ function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
             .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1], title: d.title}; }) // keep only the last value of each time series
             .attr("transform", d => "translate(" + x(d.value.time) + "," + y(d.value.value) + ")") // Put the text at the position of the last point
             .attr("x", 12) // shift the text a bit more right
+            .attr("opacity", 0.8) // shift the text a bit more right
             .text(d => d.name)
             .style("fill", d => myColor(d.name))
             .attr("id", d => "myLabel" + d.name + d.title)
-            .style("font-size", "11px")
-    });
+            .style("font-size", "15px")
+    }); // Benchmark: 15px; Normal: 11px.
 }
