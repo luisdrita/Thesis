@@ -71,8 +71,8 @@
         <button id='comm_detect'>Run</button>
         <div class="dropdown" id = "dropdown">
             <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
-            <div id = "dropdown-content" class="dropdown-content">
-                <a id = "Louvain" onclick="rename(this.id, '1', document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer;">Louvain <img src="img/star.png" width = "15px" style="position: absolute; right: 19px; top: 13px;"></a>
+            <div id = "dropdown-content" class="dropdown-content" style="line-height: 18px;">
+                <a id = "Louvain" onclick="rename(this.id, '1', document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer;">Louvain <img src="img/star.png" width = "15px" style="position: absolute; right: 19px; top: 13px;" alt = "Star"></a>
                 <a id = "Infomap" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Infomap</a>
                 <a id = "LLP" onclick="rename(this.id, document.getElementById('gamma2').value/document.getElementById('gamma2').max, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Layered Label Propagation</a>
             </div>
@@ -84,7 +84,7 @@
 
         <div class="dropdown">
             <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center" onclick="fetch('/bench_speed/');">Interface</button> <!-- Interface -->
-            <div id = "dropdown-content_interface" class="dropdown-content">
+            <div id = "dropdown-content_interface" class="dropdown-content" style="line-height: 18px">
                 <a id = "D3.js (SVG)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (SVG)</a>
                 <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (Canvas) <img src="img/star.png" width = "15px" style="position: absolute; right: 7px; top: 55px;"></a>
                 <a id = "Cytoscape" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Cytoscape.js</a>
@@ -93,7 +93,7 @@
 
         <div class="dropdown">
             <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center" onclick="bench('5');">Network</button>
-            <div id = "dropdown-content_network" class="dropdown-content">
+            <div id = "dropdown-content_network" class="dropdown-content" style="line-height: 18px;">
                 <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Girvan-Newman</a>
                 <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
                 <a id = "Amazon" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Amazon', 'Amazon')" style="cursor: pointer">Amazon</a>
@@ -111,7 +111,7 @@
 
         <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
             <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText, undefined, undefined);">
-            <label for="img2"><img src="img/up.png" style="width: 16px; cursor: pointer;"></label>
+            <label for="img2"><img src="img/up.png" style="width: 16px; cursor: pointer;" alt="Upload"></label>
         </form>
     </div>
 </div>
@@ -182,11 +182,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/gn/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -202,11 +202,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -214,11 +214,11 @@
     <div id = "left-center_div" style="display: none;">
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="./benchmark_data/data_visualized/csv/stats/stats.csv" download><img src="img/down.png" width="15"></a>
+            <a href="./benchmark_data/npm_stats/stats.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -226,11 +226,11 @@
     <div id = "left-center_div2" style="display: none;">
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="./benchmark_data/data_visualized/csv/stats/stats.csv" download><img src="img/down.png" width="15"></a>
+            <a href="./benchmark_data/npm_stats/stats.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -246,11 +246,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -266,11 +266,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -286,11 +286,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -306,11 +306,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -326,11 +326,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/gn/GN_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/GN_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/GNLFR_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -346,11 +346,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/LFR_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_speed.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/data_visualized/csv/lfr/LFR_speed_nrNodes.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_speed_nrNodes.csv" download><img src="img/down.png" width="15"></a>
         </div>
 
     </div>
@@ -358,22 +358,22 @@
     <div id = "right_div" style="display: none;">
 
         <figure style="float: left;">
-            <img src="img/karate.png" width='220' alt="Zachary's Karate Club Benchmark Network">
+            <img src="img/networks/karate.png" width='220' alt="Zachary's Karate Club Benchmark Network">
             <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Zachary's Karate Club Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 125px;">
-            <img src="img/gn.png" width='250' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
+            <img src="img/networks/gn.png" width='250' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
             <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Girvan Newman Benchmark Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 50px;">
-            <img src="img/lfr.png" width='250' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
+            <img src="img/networks/lfr.png" width='250' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
             <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Lancichinetti-Fortunato-Radicchi Benchmark Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 50px;">
-            <img src="img/staph.png" width='250' alt="Staphylococcus SLV Graph (Clonal Complex 0 - PHYLOViZ 2)" style="margin: auto; text-align: center">
+            <img src="img/networks/staph.png" width='250' alt="Staphylococcus SLV Graph (Clonal Complex 0 - PHYLOViZ 2)" style="margin: auto; text-align: center">
             <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Staphylococcus SLV Graph (Clonal Complex 0 - PHYLOViZ 2)</figcaption>
         </figure>
 
@@ -498,8 +498,11 @@
 
     <img src="http://www.cutercounter.com/hits.php?id=gmmpdndx&nd=6&style=2" border="0" alt="website counter" style="float: left; margin-left: 20px; margin-top: 20px">
 
-    <p><a href="https://warcraft12321.github.io/LUI/" target="_blank" rel="noopener noreferrer"><img src="img/luiss.png" width="50px"></a></p>
+    <p><a href="https://warcraft12321.github.io/LUI/" target="_blank" rel="noopener noreferrer"><img src="img/luiss.png" width="50px" alt="Luís"></a></p>
     <div id = "socialMedia">
+        <a href = "https://www.researchgate.net/profile/Luis_Rita2" target="_blank" rel="noopener noreferrer">
+            <img src = "./img/rg.png" width="25" style="margin-right: 5%" alt="GitHub">
+        </a>
         <a href = "https://www.npmjs.com/~warcraft12321" target="_blank" rel="noopener noreferrer">
             <img src = "./img/npm.png" width="50" style="margin-right: 5%" alt="GitHub">
         </a>
@@ -507,7 +510,7 @@
             <img src = "./img/docker.png" width="35" style="margin-right: 5%" alt="GitHub">
         </a>
         <a href = "https://github.com/warcraft12321" target="_blank" rel="noopener noreferrer">
-            <img src = "./img/MediaIcons/github.png" width="25" style="margin-right: 5%" alt="GitHub">
+            <img src = "./img/github.png" width="25" style="margin-right: 5%" alt="GitHub">
         </a>
     </div>
 </div>
@@ -523,7 +526,7 @@
 <script src="./visualization/d3_canvas.js"></script>
 <script src="./visualization/cytoscape.js"></script>
 
-<script src="./visualization/results.js"></script>
+<script src="./visualization/bench_results.js"></script>
 <script src="./visualization/infinite_scrolling.js"></script>
 
 <script>
@@ -563,6 +566,8 @@
             document.getElementById("center_eit_div").style.display = "none";
 
         }
+
+        document.getElementById(id).style.backgroundColor = "white";
 
         if (net.search("GN") !== -1) {
 
@@ -605,39 +610,37 @@
             document.getElementById(net).checked = true;
             document.getElementById("GN" + aux2).checked = false;
 
+
         } else {
 
             document.getElementById(id + "_div").style.display = "block";
-            document.getElementById(id + "_div2").style.display = "none";
+            if (id.search("eit") === -1) document.getElementById(id + "_div2").style.display = "none";
 
         }
 
-        document.getElementById(id).style.backgroundColor = "white";
-
     }
 
-    results('./benchmark_data/data_visualized/csv/gn/nmi_mix.csv',"svg1", "NMI x Mix (GN)", "#left_div", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/nmi_gamma.csv',"svg2", "LLP NMI x Resolution (GN)", "#left_div", 1, 1, 750);
-     results('./benchmark_data/data_visualized/csv/lfr/nmi_mix.csv',"svg3", "NMI x Mix (LFR)", "#left_div2", 1, 1, 750);
-     results('./benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv',"svg4", "LLP NMI x Resolution (LFR)", "#left_div2", 1, 1, 750);
+    results('./benchmark_data/gn/nmi_mix.csv',"svg1", "NMI x Mix [GN]", "#left_div", 1, 1, 750);
+    results('./benchmark_data/gn/nmi_gamma.csv',"svg2", "LLP NMI x Resolution [GN]", "#left_div", 1, 1, 750);
+     results('./benchmark_data/lfr/nmi_mix.csv',"svg3", "NMI x Mix [LFR]", "#left_div2", 1, 1, 750);
+     results('./benchmark_data/lfr/nmi_gamma.csv',"svg4", "LLP NMI x Resolution [LFR]", "#left_div2", 1, 1, 750);
 
-    results('./benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv',"svg5", "Time x Nr. Nodes (LFR)", "#left-center_div", 28500, 1000, 750);
+    results('./benchmark_data/lfr/LFR_alg_speed.csv',"svg5", "Time x Nr. Nodes [LFR]", "#left-center_div", 28500, 1000, 750);
 
-    results('./benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv',"svg7", "LP NMI x Mix (GN)", "#center_div", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv',"svg8", "Louvain NMI x Mix (GN)", "#center_div", 1, 1, 750);
-     results('./benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv',"svg9", "LP NMI x Mix (LFR)", "#center_div2", 1, 1, 750);
-     results('./benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv',"svg10", "Louvain NMI x Mix (LFR)", "#center_div2", 1, 1, 750);
+    results('./benchmark_data/gn/labelPropagation_vs_mix_vs_k.csv',"svg7", "LP NMI x Mix [GN]", "#center_div", 1, 1, 750);
+    results('./benchmark_data/gn/louvain_vs_mix_vs_k.csv',"svg8", "Louvain NMI x Mix [GN]", "#center_div", 1, 1, 750);
+     results('./benchmark_data/lfr/labelPropagation_vs_mix_vs_k.csv',"svg9", "LP NMI x Mix [LFR]", "#center_div2", 1, 1, 750);
+     results('./benchmark_data/lfr/louvain_vs_mix_vs_k.csv',"svg10", "Louvain NMI x Mix [LFR]", "#center_div2", 1, 1, 750);
 
-    results('./benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv',"svg11", "LLP NMI x Mix (GN)", "#center_right_div", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv',"svg12", "Infomap NMI x Mix (GN)", "#center_right_div", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/lfr/llp_vs_mix_vs_k.csv',"svg13", "LLP NMI x Mix (LFR)", "#center_right_div2", 1, 1, 750);
-    results('./benchmark_data/data_visualized/csv/lfr/infomap_vs_mix_vs_k.csv',"svg14", "Infomap NMI x Mix (LFR)", "#center_right_div2", 1, 1, 750);
+    results('./benchmark_data/gn/llp_vs_mix_vs_k.csv',"svg11", "LLP NMI x Mix [GN]", "#center_right_div", 1, 1, 750);
+    results('./benchmark_data/gn/infomap_vs_mix_vs_k.csv',"svg12", "Infomap NMI x Mix [GN]", "#center_right_div", 1, 1, 750);
+    results('./benchmark_data/lfr/llp_vs_mix_vs_k.csv',"svg13", "LLP NMI x Mix [LFR]", "#center_right_div2", 1, 1, 750);
+    results('./benchmark_data/lfr/infomap_vs_mix_vs_k.csv',"svg14", "Infomap NMI x Mix [LFR]", "#center_right_div2", 1, 1, 750);
 
-    results('./benchmark_data/data_visualized/csv/gn/GN_speed_2.csv',"svg15", "Time x Mix (GN)", "#center_right_right_div", 35000, 1, 750);
-    results('./benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv',"svg16", "Time x Mix (GN)", "#center_right_right_div", 200, 1, 750);
-    results('./benchmark_data/data_visualized/csv/lfr/LFR_speed.csv',"svg17", "Time x Mix (LFR)", "#center_right_right_div2", 180, 1, 750);
-    results('./benchmark_data/data_visualized/csv/lfr/LFR_speed_nrNodes.csv',"svg18", "Time x Nr. Nodes (LFR)", "#center_right_right_div2", 600, 1000, 750);
-
+    results('./benchmark_data/gn/GN_speed_2.csv',"svg15", "Log(Time) x Mix [GN]", "#center_right_right_div", 140000, 1, 750);
+    results('./benchmark_data/gn/GNLFR_speed.csv',"svg16", "Time x Mix [GN]", "#center_right_right_div", 200, 1, 750);
+    results('./benchmark_data/lfr/LFR_speed.csv',"svg17", "Time x Mix [LFR]", "#center_right_right_div2", 180, 1, 750);
+    results('./benchmark_data/lfr/LFR_speed_nrNodes.csv',"svg18", "Time x Nr. Nodes [LFR]", "#center_right_right_div2", 600, 1000, 750);
 
     (function stats() {
 
@@ -647,7 +650,7 @@
 
         }).then(function(jsonData) {
 
-let max = 0;
+            let max = 0;
 
             ["infomap", "layered-label-propagation", "normalized-mutual-information", "girvan-newman-benchmark", "louvain-algorithm", "hamming-dist"].map(function (value, index) {
 
@@ -655,7 +658,7 @@ let max = 0;
 
             });
 
-            results('./benchmark_data/data_visualized/csv/stats/stats.csv',"svg6", "Real Time NPM Downloads", "#left-center_div", max + 20, (jsonData["time"].length - 1), 750);
+            results('./benchmark_data/npm_stats/stats.csv',"svg6", "Real Time NPM Downloads", "#left-center_div", max + 20, (jsonData["time"].length - 1), 750);
 
         });
 

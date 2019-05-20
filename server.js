@@ -390,7 +390,7 @@ app.get('/stats', function (req, res) {
 
     str = "";
     str = aux.arrayToString(Object.values(downloadss), str, Object.keys(downloadss));
-    fs.writeFileSync("./website/benchmark_data/data_visualized/csv/stats/stats.csv", str);
+    fs.writeFileSync("./website/benchmark_data/npm_stats/stats.csv", str);
 
     res.send(downloadss);
 
@@ -480,7 +480,7 @@ app.get('/bench_speed', function (req, res) {
 
     // ---------------------------- NMI x Mix Parameter
 
-    [15, 20, 25].map(function (avg_deg) { //deg
+    [15].map(function (avg_deg) { //deg
 
        // [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].map(function (nr_nodes) {
 
@@ -593,7 +593,7 @@ let obj_lfr_com = {};
 
  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (rep) {
 
-[15, 20, 25].map(function (avg_deg) {
+[15].map(function (avg_deg) {
 
     [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (mix_param) {
 

@@ -54,7 +54,7 @@ function arrayToString_plot(obj, str, titles) {
             if (all_titles[j].includes(titles[i])) {
 
                 result[titles[i]] = result[titles[i]] || 0;
-                result[titles[i]] = result[titles[i]] + obj[all_titles[j]]/repeat;
+                result[titles[i]] = result[titles[i]] + Math.log10(obj[all_titles[j]])/repeat;
 
             }
         }
@@ -69,11 +69,11 @@ function arrayToString_plot(obj, str, titles) {
             if (all_titles[j].includes(titles[i])) {
 
                 std_dev[titles[i]] = std_dev[titles[i]] || 0;
-                std_dev[titles[i]] = std_dev[titles[i]] + Math.pow(obj[all_titles[j]] - result[titles[i]], 2)/repeat;
+                std_dev[titles[i]] = std_dev[titles[i]] + Math.pow(obj[all_titles[j]] - Math.pow(10,result[titles[i]]), 2)/repeat;
             }
         }
 
-        std_dev[titles[i]] = 1.96 * Math.pow(std_dev[titles[i]], 0.5) / Math.pow(repeat, 0.5); // 95% Confidence Interval
+        std_dev[titles[i]] = Math.log10(1.96 * Math.pow(std_dev[titles[i]], 0.5) / Math.pow(repeat, 0.5)); // 95% Confidence Interval
 
     }
 

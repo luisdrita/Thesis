@@ -2,7 +2,7 @@
 
 ## Description
 
-The execution of this algorithm is divided in 2 phases: minimizing description length (using map equation) and community
+The execution of this algorithm is divided in 2 phases: minimizing description length (using [map equation](http://www.mapequation.org/index.html)) and community
  aggregation. Although the implementation is similar to the [Louvain algorithm](), the optimizing function is different.
 
 ## Usage

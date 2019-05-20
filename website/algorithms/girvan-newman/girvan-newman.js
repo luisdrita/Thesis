@@ -3,7 +3,7 @@
 // [Description]
 // The GN benchmark was historically the first one to appear as a result of an effort of Girvan and Newman. In their
 // paper, where it was described for the first time, they considered a network of 128 nodes divided in 4 different
-// groups, each one with exactly the same number of nodes (32). Then, a mixing parameter chose by the user would
+// groups, each one with exactly the same number of nodes (32). Then, using a mixing parameter chosen by the user would
 // iteratively be used to connect different pairs of nodes with different probabilities. Precisely, nodes from different
 // groups would connect with a probability given by that value (u) and the ones present in different communities with
 // 1-u. Nevertheless, the authors consider that each node will exactly be connected to 16 different ones. In spite of
@@ -15,12 +15,12 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     // names. They are always invoked using the variable name.
 
     // Global Variables
-    let nodes = [], edges = [], nodes_cyto = [], edges_cyto = [], edges2 = [], edges_group = [], communities = [];
+    let nodes = [], edges = [], edges2 = [], edges_group = [], communities = [];
     let result = {};
     let matrix = Array(128).fill().map(() => Array(128).fill(0)), matrix2 = Array(128).fill().map(() => Array(128).fill(0)), final_matrix = Array(128).fill().map(() => Array(128).fill(0));
     let rightGroup;
     let i;
-    let out_degree = Math.round(mix_param * avg_deg), in_degree = avg_deg - Math.round(mix_param * avg_deg);
+    let out_degree = Math.round(mix_param * avg_deg), in_degree = avg_deg - out_degree;
 
     // ----------------------------------------- Auxiliary Functions -----------------------------------------
 
@@ -147,28 +147,6 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
         return result
     }
 
-    // Assesses if all nodes belonging to a given group have all the inside connections in place.
-    function complete(matrix, group) {
-
-        let aux = 0;
-
-        let nodes_aux = [];
-
-        nodes.forEach(function (node) {
-
-            if(node.group === group) nodes_aux.push(node);
-
-        });
-
-        nodes_aux.forEach(function (node) {
-
-            aux = aux + (in_degree - number_neighbour_nodes(node, matrix));
-
-        });
-
-        return aux > 0;
-    }
-
     // Sums 2 matrices.
     function matrixAddition(a, b){
         return a.map(function(n, i){
@@ -179,21 +157,28 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     }
 
     // Reset mechanism crucial for algorithm sequence of actions.
-    function reset(i_input, boolean) {
+    function reset(i_input, group) {
 
-        if (boolean && (i_input+1)%32 === 0) {
+        let aux = 0;
+
+        nodes.forEach(function (node) {
+
+            if(node.group === group) aux = aux + (in_degree - number_neighbour_nodes(node, matrix));
+
+        });
+
+        if (aux > 0) {
 
             i = i_input-32;
-            edges = [];
-            matrix = Array(128).fill().map(() => Array(128).fill(0));
 
-        } else if (!boolean && (i_input+1)%32 === 0) {
+        } else {
 
             edges_group = edges_group.concat(edges);
-            edges = [];
             final_matrix = matrixAddition(matrix, final_matrix);
-            matrix = Array(128).fill().map(() => Array(128).fill(0));
         }
+
+        edges = [];
+        matrix = Array(128).fill().map(() => Array(128).fill(0));
     }
 
     // ----------------------------------------- Algorithm -----------------------------------------
@@ -202,35 +187,24 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
         if (i < 32) {
             communities[i] = 1;
-
-        } else if (i < 64) {
-            communities[i] = 2;
-
-        } else if (i < 96) {
-            communities[i] = 3;
-
-        } else {
-            communities[i] = 4;
-        }
-    }
-
-    for (let i = 0; i < 128; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
-
-        if (i < 32) {
             nodes[i] = {id: i, group: 1};
 
         } else if (i < 64) {
+            communities[i] = 2;
             nodes[i] = {id: i, group: 2};
 
         } else if (i < 96) {
+            communities[i] = 3;
             nodes[i] = {id: i, group: 3};
 
         } else {
+            communities[i] = 4;
             nodes[i] = {id: i, group: 4};
+
         }
     }
 
-    nodes = reShuffle(shuffle(nodes)); // Shuffles nodes set, maintaining them organized in blocks of 32.
+    nodes = reShuffle(shuffle(nodes)); // Shuffles nodes set, maintaining them organized in blocks of 32 ordered randomly.
 
     for (i = 0; i < 128; i++) { // Establishing connections between nodes from the same groups.
 
@@ -262,7 +236,7 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
             }
 
-        reset(i, complete(matrix, nodes[i].group)); // Based on the state of the 2 input arguments, it resets the execution in a different way.
+            if((i+1)%32 === 0) reset(i, nodes[i].group); // Based on the state of the 2 input arguments, it resets the execution in a different way.
     }
 
     shuffle(nodes); // Completely shuffles nodes present in array "nodes".
@@ -303,19 +277,11 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
                 matrix2[rightGroup[j].id][nodes[ii].id] = 1; // Symmetric matrix.
 
             }
-
     }
 
     final_matrix = matrixAddition(matrix2, final_matrix); // Adjacency matrix resulting from all the previous established connections.
     edges = edges.concat(edges2); // Concatenates edges from 1st and 2nd cycles (above).
 
-    /*
-    let auxii = 0;
-    while (auxii < nodes.length) {
-        console.log(nodes[auxii].id + "-" + number_neighbour_nodes(nodes[auxii],final_matrix));
-        auxii++;
-    }
-    */
     console.log("Done");
 
     // Assembling output in a final object compound of nodes, edges and communities arrays.
@@ -325,7 +291,7 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
 
     } else {
 
-        for (let i = 0; i < 128; i++) { // Generating 127 nodes, distributed in 4 groups, from GN benchmark network.
+        for (let i = 0; i < 128; i++) { // Generating 128 nodes, distributed in 4 groups, from GN benchmark network.
 
             if (i < 32) {
                 nodes[i] = {data: {id: i, weight: 1}};

@@ -1,34 +1,245 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Extended Abstract Added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auxFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/auxFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/llp_gamma0.5_mix0.6.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/metaStaph.txt" beforeDir="false" afterPath="$PROJECT_DIR$/metaStaph.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nmi_mix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/print.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/printi0.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server - cópia.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/infomap/infomap.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/infomap/infomap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/clonalComplex.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/phylo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/GN_speed.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/GN_speed.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/hello_GN.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/hello_LFR.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/llp/layeredLabelPropagation.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/llp/layeredLabelPropagation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/louvain/louvain.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/louvain/louvain.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GN_speed.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GN_speed.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_gamma.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_gamma.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_mix.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_mix.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/stats/stats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/stats/stats.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/luis_LFR.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/title_LFR.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GN_speed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GN_speed_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_gamma.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_mix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/GN_speed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_speed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_speed_nrNodes.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/infomap_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/llp_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/stats/stats.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/labelPropagation_vs_mix_vs_k.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/louvain_vs_mix_vs_k.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/nmi_gamma.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/nmi_mix.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.0_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.1_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.2_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.3_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.4_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.5_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.6_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.7_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.8_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.9_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma1.0_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.0_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.1_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.2_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.3_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.4_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.5_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.6_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.7_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.8_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.9_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma1.0_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.0_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.1_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.2_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.3_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.4_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.5_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.6_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.7_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.8_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.9_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma1.0_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.0_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.1_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.2_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.3_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.4_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.5_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.6_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.7_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.8_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.9_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma1.0_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.0_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.1_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.2_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.3_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.4_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.5_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.6_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.7_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.8_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.9_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma1.0_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.0_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.1_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.2_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.3_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.4_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.5_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.6_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.7_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.8_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.9_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma1.0_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/file/imm.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/github.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/gmail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/linkedin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/dna.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/gn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/karate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/lfr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/luis.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/mtih2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/QuickLook/Icon.tiff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/QuickLook/Preview.tiff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/QuickLook/Thumbnail.tiff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/data/E0D38A57-CD78-45EC-B08B-E94D1BB73597" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/metadata.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/staph.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/pages/abstract.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/abstract.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/pages/aeicbas.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/aeicbas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/pages/amr.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/amr.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/pages/imim.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/imim.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/pages/mtih.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/mtih.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/pages/thesis.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/thesis.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/style/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/visualization/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/visualization/d3_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/d3_svg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/visualization/results.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,11 +252,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="610" column="12" selection-start-line="610" selection-start-column="12" selection-end-line="610" selection-end-column="12" />
+            <state relative-caret-position="585">
+              <caret line="111" column="124" lean-forward="true" selection-start-line="111" selection-start-column="124" selection-end-line="111" selection-end-column="124" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -63,6 +274,7 @@
                 <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -70,11 +282,13 @@
                 <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#1;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#2;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#1;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#2;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -202,6 +416,11 @@
                 <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#figure#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -211,28 +430,61 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/algorithms/llp/layeredLabelPropagation.js">
+        <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/louvain.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3435">
-              <caret line="229" column="5" selection-start-line="229" selection-start-column="5" selection-end-line="229" selection-end-column="5" />
+            <state relative-caret-position="4980">
+              <caret line="332" column="12" selection-start-line="332" selection-start-column="12" selection-end-line="332" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/visualization/results.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="280" column="30" selection-start-line="280" selection-start-column="30" selection-end-line="280" selection-end-column="30" />
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="30">
+                <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wiki.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="870">
+                <caret line="58" column="79" selection-start-line="58" selection-start-column="79" selection-end-line="58" selection-end-column="79" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/algorithms/infomap/infomap.js">
+        <entry file="file://$PROJECT_DIR$/website/visualization/cytoscape.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5010">
-              <caret line="334" column="8" selection-start-line="334" selection-start-column="8" selection-end-line="334" selection-end-column="8" />
+            <state relative-caret-position="45">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/visualization/bench_results.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="320" column="68" lean-forward="true" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/style/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="87" column="22" lean-forward="true" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -250,17 +502,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>2</find>
-      <find>eit health</find>
-      <find>algorithm</find>
-      <find>algorithm(</find>
-      <find>gamma220</find>
-      <find>range_label212314444</find>
-      <find>svg1</find>
-      <find>search</find>
-      <find>left</find>
-      <find>center_right_right</find>
-      <find>10</find>
       <find>11</find>
       <find>sd</find>
       <find>x</find>
@@ -280,6 +521,17 @@
       <find>social</find>
       <find>implementation</find>
       <find>the aim</find>
+      <find>over</find>
+      <find>mouse</find>
+      <find>title</find>
+      <find>circle</find>
+      <find>graph</find>
+      <find>nodes_cyto</find>
+      <find>edges_group</find>
+      <find>final</find>
+      <find>final_matrix</find>
+      <find>helvet</find>
+      <find>line-he</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -318,10 +570,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/website/exp4.html" />
-        <option value="$PROJECT_DIR$/website/exp5.html" />
-        <option value="$PROJECT_DIR$/website/exp3.html" />
-        <option value="$PROJECT_DIR$/website/benchmark_data/data_visualized/nmi_gamma.json" />
         <option value="$PROJECT_DIR$/website/results.js" />
         <option value="$PROJECT_DIR$/emsdk/emscripten/1.38.28/a.out.js" />
         <option value="$PROJECT_DIR$/package.json" />
@@ -331,7 +579,6 @@
         <option value="$PROJECT_DIR$/website/algorithms/weightedLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/layeredLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/hamming.js" />
-        <option value="$PROJECT_DIR$/website/visualization/d3_svg.js" />
         <option value="$PROJECT_DIR$/website/visualization/d3_canvas.js" />
         <option value="$PROJECT_DIR$/server_cmd_bench.js" />
         <option value="$PROJECT_DIR$/website/algorithms/nmi.js" />
@@ -340,7 +587,6 @@
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman.js" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap/package.json" />
         <option value="$PROJECT_DIR$/website/algorithms/llp/readme.md" />
-        <option value="$PROJECT_DIR$/website/algorithms/infomap/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/nmi/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/louvain/readme.md" />
@@ -351,24 +597,30 @@
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/package.json" />
         <option value="$PROJECT_DIR$/website/algorithms/llp/package.json" />
         <option value="$PROJECT_DIR$/website/algorithms/nmi/package.json" />
-        <option value="$PROJECT_DIR$/auxFunctions.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/website/visualization/cytoscape.js" />
-        <option value="$PROJECT_DIR$/website/style/index.css" />
         <option value="$PROJECT_DIR$/website/algorithms/louvain/louvain.js" />
         <option value="$PROJECT_DIR$/website/algorithms/llp/layeredLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap/infomap.js" />
         <option value="$PROJECT_DIR$/website/visualization/results.js" />
-        <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/auxFunctions.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/visualization/d3_svg.js" />
+        <option value="$PROJECT_DIR$/website/algorithms/infomap/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js" />
+        <option value="$PROJECT_DIR$/website/pages/abstract.html" />
         <option value="$PROJECT_DIR$/website/pages/aeicbas.html" />
-        <option value="$PROJECT_DIR$/website/pages/amr.html" />
-        <option value="$PROJECT_DIR$/website/pages/imim.html" />
         <option value="$PROJECT_DIR$/website/pages/mtih.html" />
         <option value="$PROJECT_DIR$/website/pages/thesis.html" />
-        <option value="$PROJECT_DIR$/website/pages/abstract.html" />
+        <option value="$PROJECT_DIR$/website/pages/amr.html" />
+        <option value="$PROJECT_DIR$/website/pages/imim.html" />
+        <option value="$PROJECT_DIR$/readme - cópia.md" />
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/visualization/bench_results.js" />
+        <option value="$PROJECT_DIR$/website/style/index.css" />
+        <option value="$PROJECT_DIR$/wiki.md" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -399,6 +651,13 @@
               <item name="cf" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
               <item name="algorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cf" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
+              <item name="girvan-newman" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cf" type="b2602c69:ProjectViewProjectNode" />
@@ -438,15 +697,14 @@
               <item name="cf" type="b2602c69:ProjectViewProjectNode" />
               <item name="cf" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="benchmark_data" type="462c0819:PsiDirectoryNode" />
-              <item name="data_visualized" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cf" type="b2602c69:ProjectViewProjectNode" />
               <item name="cf" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="benchmark_data" type="462c0819:PsiDirectoryNode" />
-              <item name="infomap_vs_mix" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="networks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cf" type="b2602c69:ProjectViewProjectNode" />
@@ -696,14 +954,34 @@
       <workItem from="1555759772369" duration="3906000" />
       <workItem from="1555844073653" duration="6896000" />
       <workItem from="1555931994557" duration="5338000" />
-      <workItem from="1556017313803" duration="3693000" />
-    </task>
-    <task id="LOCAL-00004" summary="Improved Code Robustness">
-      <created>1547858422357</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1547858422357</updated>
+      <workItem from="1556017313803" duration="10465000" />
+      <workItem from="1556191239227" duration="1606000" />
+      <workItem from="1556276775869" duration="116000" />
+      <workItem from="1556367705116" duration="3859000" />
+      <workItem from="1556450607556" duration="8042000" />
+      <workItem from="1556538792936" duration="8151000" />
+      <workItem from="1556622219263" duration="252000" />
+      <workItem from="1556711858529" duration="257000" />
+      <workItem from="1556793120338" duration="155000" />
+      <workItem from="1556884480901" duration="120000" />
+      <workItem from="1556888168991" duration="2845000" />
+      <workItem from="1556955277637" duration="602000" />
+      <workItem from="1557062204819" duration="126000" />
+      <workItem from="1557143960045" duration="114000" />
+      <workItem from="1557228224210" duration="134000" />
+      <workItem from="1557314290757" duration="161000" />
+      <workItem from="1557399834943" duration="178000" />
+      <workItem from="1557490769446" duration="310000" />
+      <workItem from="1557574906914" duration="114000" />
+      <workItem from="1557664531199" duration="679000" />
+      <workItem from="1557748729643" duration="136000" />
+      <workItem from="1557831822223" duration="2227000" />
+      <workItem from="1557921352883" duration="155000" />
+      <workItem from="1558007622980" duration="128000" />
+      <workItem from="1558093886488" duration="116000" />
+      <workItem from="1558179770744" duration="805000" />
+      <workItem from="1558265039935" duration="385000" />
+      <workItem from="1558352041297" duration="4693000" />
     </task>
     <task id="LOCAL-00005" summary="Many Minor Improvements">
       <created>1549159730671</created>
@@ -1041,11 +1319,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555551799692</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Extended Abstract Added">
+      <created>1556070689833</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1556070689834</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1738540000" />
+    <option name="totallyTimeSpent" value="1781778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1058,9 +1343,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14364304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19926651" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -1073,7 +1357,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32987553" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.20228216" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49511003" visible="true" weight="0.15560167" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49511003" visible="true" weight="0.23962656" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50488997" side_tool="true" weight="0.18257262" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32987553" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
@@ -1131,7 +1415,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="Major General Improvements" />
     <MESSAGE value="App General Calibration" />
     <MESSAGE value="Updated Guide" />
     <MESSAGE value="Added Benchmark Results" />
@@ -1156,32 +1439,10 @@
     <MESSAGE value="General Improvements 2" />
     <MESSAGE value="General Improvements 3" />
     <MESSAGE value="General Improvements 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="General Improvements 4" />
+    <MESSAGE value="Extended Abstract Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extended Abstract Added" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/hamming.js" />
-    <entry file="file://$PROJECT_DIR$/website/visualization/d3_svg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/visualization/d3_canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/student-2.json" />
     <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/nmiResults.json" />
     <entry file="file://$PROJECT_DIR$/server_cmd_bench.js" />
     <entry file="file://$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi.js" />
@@ -1193,9 +1454,6 @@
     <entry file="file://$PROJECT_DIR$/website/algorithms/infomap.js" />
     <entry file="file://$PROJECT_DIR$/infomap_npm/package.json" />
     <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman.js" />
-    <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1221,16 +1479,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="285">
             <caret line="19" column="26" selection-end-line="54" selection-end-column="65" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/infomap/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="345">
-            <caret line="23" selection-start-line="23" selection-end-line="30" selection-end-column="4" />
           </first_editor>
           <second_editor />
         </state>
@@ -1320,41 +1568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/visualization/cytoscape.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/auxFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/style/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3660">
-          <caret line="244" column="43" selection-start-line="244" selection-start-column="43" selection-end-line="244" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/louvain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4980">
-          <caret line="332" column="12" selection-start-line="332" selection-start-column="12" selection-end-line="332" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/llp/layeredLabelPropagation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3435">
@@ -1369,42 +1582,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/visualization/results.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="280" column="30" selection-start-line="280" selection-start-column="30" selection-end-line="280" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
+    <entry file="file://$PROJECT_DIR$/website/visualization/results.js" />
+    <entry file="file://$PROJECT_DIR$/website/benchmark_data/data_visualized/json/labelPropagation_vs_mix_vs_k.json" />
+    <entry file="file://$PROJECT_DIR$/website/algorithms/infomap/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="403">
-            <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+          <first_editor relative-caret-position="60">
+            <caret line="4" column="145" selection-start-line="4" selection-start-column="145" selection-end-line="4" selection-end-column="145" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/amr.html">
+    <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="121" column="26" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
+        <state relative-caret-position="3660">
+          <caret line="244" column="41" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/d3_svg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="69" column="35" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auxFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="71" column="122" selection-start-line="71" selection-start-column="122" selection-end-line="71" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/pages/abstract.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" column="66" selection-start-line="62" selection-start-column="66" selection-end-line="62" selection-end-column="66" />
           <folding>
-            <element signature="n#style#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#object#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/imim.html">
+    <entry file="file://$PROJECT_DIR$/website/pages/aeicbas.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="104" column="10" lean-forward="true" selection-start-line="104" selection-start-column="10" selection-end-line="104" selection-end-column="10" />
+        <state relative-caret-position="840">
+          <caret line="56" column="66" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
           <folding>
-            <element signature="n#style#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -1413,11 +1644,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/mtih.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="104" column="12" lean-forward="true" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="12" />
+        <state relative-caret-position="885">
+          <caret line="59" column="66" selection-start-line="59" selection-start-column="66" selection-end-line="59" selection-end-column="66" />
           <folding>
             <element signature="n#style#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -1425,45 +1655,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/thesis.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="108" column="10" lean-forward="true" selection-start-line="108" selection-start-column="10" selection-end-line="108" selection-end-column="10" />
+        <state relative-caret-position="930">
+          <caret line="62" column="66" selection-start-line="62" selection-start-column="66" selection-end-line="62" selection-end-column="66" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/abstract.html">
+    <entry file="file://$PROJECT_DIR$/website/pages/amr.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="106" column="26" selection-start-line="106" selection-start-column="26" selection-end-line="106" selection-end-column="26" />
+        <state relative-caret-position="1095">
+          <caret line="73" column="66" selection-start-line="73" selection-start-column="66" selection-end-line="73" selection-end-column="66" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/aeicbas.html">
+    <entry file="file://$PROJECT_DIR$/website/pages/imim.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="102" column="10" lean-forward="true" selection-start-line="102" selection-start-column="10" selection-end-line="102" selection-end-column="10" />
+        <state relative-caret-position="643">
+          <caret line="58" column="66" selection-start-line="58" selection-start-column="66" selection-end-line="58" selection-end-column="66" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#object#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/louvain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4980">
+          <caret line="332" column="12" selection-start-line="332" selection-start-column="12" selection-end-line="332" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme - cópia.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="369">
+            <caret line="58" column="306" selection-start-line="58" selection-start-column="306" selection-end-line="58" selection-end-column="306" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4530">
+          <caret line="302" column="54" selection-start-line="302" selection-start-column="54" selection-end-line="302" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/cytoscape.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="610" column="12" selection-start-line="610" selection-start-column="12" selection-end-line="610" selection-end-column="12" />
+        <state relative-caret-position="585">
+          <caret line="111" column="124" lean-forward="true" selection-start-line="111" selection-start-column="124" selection-end-line="111" selection-end-column="124" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1481,6 +1741,7 @@
             <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1488,11 +1749,13 @@
             <element signature="n#style#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#1;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#2;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#1;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#2;n#div#0;n#div#3;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1620,10 +1883,49 @@
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#figure#1;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/bench_results.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="320" column="68" lean-forward="true" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/style/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="87" column="22" lean-forward="true" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="30">
+            <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wiki.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="870">
+            <caret line="58" column="79" selection-start-line="58" selection-start-column="79" selection-end-line="58" selection-end-column="79" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

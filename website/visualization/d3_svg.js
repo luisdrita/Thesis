@@ -69,7 +69,6 @@ function d3svgFunc(svg, graph) {
             .on("drag", dragged)
             .on("end", dragended));
 
-
     // add titles for mouseover blurbs
     node.append("title")
         .text(function(d) {

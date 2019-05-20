@@ -71,7 +71,7 @@ footer {
     float:right;
     margin-top:0.75%;
     margin-right: 25px;
-    width: 150px;
+    width: 190px;
 }
 
 .container2 {
@@ -85,6 +85,7 @@ footer {
 
 body {
     font-family: Helvetica;
+    line-height: 18px;
 }
 
 /* Customize the label (the container) */
