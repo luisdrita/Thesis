@@ -1,246 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="Extended Abstract Added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auxFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/auxFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/llp_gamma0.5_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaStaph.txt" beforeDir="false" afterPath="$PROJECT_DIR$/metaStaph.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nmi_mix.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/print.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/printi0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server - cópia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/clonalComplex.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/phylo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/GN_speed.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/GN_speed.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/hello_GN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/hello_LFR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/luis_LFR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/title_LFR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GNLFR_speed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GN_speed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/GN_speed_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/infomap_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/labelPropagation_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/llp_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/louvain_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_gamma.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/gn/nmi_mix.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/GN_speed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_alg_speed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_speed.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/LFR_speed_nrNodes.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/infomap_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/labelPropagation_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/llp_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/louvain_vs_mix_vs_k.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_gamma.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/lfr/nmi_mix.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/csv/stats/stats.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/labelPropagation_vs_mix_vs_k.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/louvain_vs_mix_vs_k.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/nmi_gamma.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/data_visualized/json/nmi_mix.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_15/labelPropagation_gamma10000_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_20/labelPropagation_gamma10000_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/labelPropagation_vs_mix_vs_k/k_25/labelPropagation_gamma10000_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.0_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.1_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.2_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.3_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.4_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.5_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.6_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.7_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.8_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma0.9_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.1/llp_gamma1.0_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.0_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.1_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.2_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.3_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.4_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.5_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.6_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.7_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.8_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma0.9_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.2/llp_gamma1.0_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.0_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.1_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.2_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.3_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.4_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.5_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.6_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.7_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.8_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma0.9_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.5/llp_gamma1.0_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.0_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.1_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.2_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.3_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.4_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.5_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.6_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.7_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.8_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma0.9_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.6/llp_gamma1.0_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.0_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.1_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.2_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.3_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.4_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.5_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.6_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.7_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.8_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma0.9_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0.7/llp_gamma1.0_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.0_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.1_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.2_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.3_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.4_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.5_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.6_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.7_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.8_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma0.9_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_gamma/mix_0/llp_gamma1.0_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/llp_vs_mix/llp_gamma0.5_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_15/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_20/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/louvain_vs_mix_vs_k/k_25/louvain_gamma10000_mix1.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix0.9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/lp_vs_mix/lp_gamma10000_mix1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/file/imm.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/github.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/gmail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/MediaIcons/linkedin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/dna.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/gn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/karate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/lfr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/luis.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/mtih2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/QuickLook/Icon.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/QuickLook/Preview.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/QuickLook/Thumbnail.tiff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/data/E0D38A57-CD78-45EC-B08B-E94D1BB73597" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/poster.pxd/metadata.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/staph.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/abstract.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/abstract.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/aeicbas.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/aeicbas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/amr.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/amr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/imim.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/imim.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/mtih.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/mtih.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/thesis.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/thesis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/style/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/website/style/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/visualization/d3_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/d3_svg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/visualization/results.js" beforeDir="false" />
-    </list>
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -256,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
-              <caret line="111" column="124" lean-forward="true" selection-start-line="111" selection-start-column="124" selection-end-line="111" selection-end-column="124" />
+              <caret line="111" column="124" selection-start-line="111" selection-start-column="124" selection-end-line="111" selection-end-column="124" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -454,8 +215,8 @@
         <entry file="file://$PROJECT_DIR$/wiki.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="870">
-                <caret line="58" column="79" selection-start-line="58" selection-start-column="79" selection-end-line="58" selection-end-column="79" />
+              <first_editor relative-caret-position="420">
+                <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
               </first_editor>
               <second_editor />
             </state>
@@ -466,7 +227,7 @@
         <entry file="file://$PROJECT_DIR$/website/visualization/cytoscape.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -475,7 +236,7 @@
         <entry file="file://$PROJECT_DIR$/website/visualization/bench_results.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="320" column="68" lean-forward="true" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
+              <caret line="320" column="68" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -484,7 +245,7 @@
         <entry file="file://$PROJECT_DIR$/website/style/index.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="287">
-              <caret line="87" column="22" lean-forward="true" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
+              <caret line="87" column="22" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -981,14 +742,7 @@
       <workItem from="1558093886488" duration="116000" />
       <workItem from="1558179770744" duration="805000" />
       <workItem from="1558265039935" duration="385000" />
-      <workItem from="1558352041297" duration="4693000" />
-    </task>
-    <task id="LOCAL-00005" summary="Many Minor Improvements">
-      <created>1549159730671</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1549159730671</updated>
+      <workItem from="1558352041297" duration="5303000" />
     </task>
     <task id="LOCAL-00006" summary="Many Minor Improvements">
       <created>1549160042196</created>
@@ -1326,11 +1080,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556070689834</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Almost Thesis Final Version">
+      <created>1558396276923</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1558396276923</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1781778000" />
+    <option name="totallyTimeSpent" value="1782388000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1415,7 +1176,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="App General Calibration" />
     <MESSAGE value="Updated Guide" />
     <MESSAGE value="Added Benchmark Results" />
     <MESSAGE value="Added LFR Code" />
@@ -1440,7 +1200,8 @@
     <MESSAGE value="General Improvements 3" />
     <MESSAGE value="General Improvements 4" />
     <MESSAGE value="Extended Abstract Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extended Abstract Added" />
+    <MESSAGE value="Almost Thesis Final Version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost Thesis Final Version" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/nmiResults.json" />
@@ -1716,14 +1477,14 @@
     <entry file="file://$PROJECT_DIR$/website/visualization/cytoscape.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
-          <caret line="111" column="124" lean-forward="true" selection-start-line="111" selection-start-column="124" selection-end-line="111" selection-end-column="124" />
+          <caret line="111" column="124" selection-start-line="111" selection-start-column="124" selection-end-line="111" selection-end-column="124" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1898,14 +1659,14 @@
     <entry file="file://$PROJECT_DIR$/website/visualization/bench_results.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="320" column="68" lean-forward="true" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
+          <caret line="320" column="68" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/style/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
-          <caret line="87" column="22" lean-forward="true" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
+          <caret line="87" column="22" selection-start-line="87" selection-start-column="22" selection-end-line="87" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1922,8 +1683,8 @@
     <entry file="file://$PROJECT_DIR$/wiki.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="870">
-            <caret line="58" column="79" selection-start-line="58" selection-start-column="79" selection-end-line="58" selection-end-column="79" />
+          <first_editor relative-caret-position="420">
+            <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
           </first_editor>
           <second_editor />
         </state>
