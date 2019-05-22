@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MTiH</title>
+    <title>Thesis</title>
     <meta charset="utf-8">
     <link href='../style/index.css' rel="stylesheet">
+    <script type="application/javascript" src="https://cdn.rawgit.com/PhyloCanvas/PhyloCanvas/v1.7.1/src/scripts/PhyloCanvas.js"></script>
+
+    <style>
+        #phylocanvas {
+            width: 375px;
+            height: 225px;
+        }
+    </style>
 
 </head>
+
 <body style="min-width: 1700px; margin: auto">
 
 <header>
@@ -41,17 +50,45 @@
 
 </header>
 
-<h2 style="margin-top: 50px; text-align: center; font-size: 30px">IMIM Industry & Innovation Day (Mannheim, Germany)</h2>
+<div style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px; margin-top: 50px; border-style: solid; position: relative">
+    <h2 style="text-align: center; font-size: 30px;">Phylogenetic Trees</h2>
+    <div style="margin-top: 50px">
+        <div style="float: left; width: 400px; height: 400px; margin-left: 5%; border-style: solid;">
 
-<p style="width: 70%; margin: auto; text-align: justify;">
-    Poster presentation of master thesis to IMIM students (Heidelberg University, University Medical Center Groningen
-    and Uppsala University students) and industry representatives (Roche, Merck, GeneWerk, EIT Health, Velabs, Cellzome,
-    evid.one, EMBL...). Visit to Cubex 41 (start-up innovative center) was also included. Bursary awarded.
-</p>
+            <div id="phylocanvas"></div>
 
-<object data='../file/imim.pdf' type='application/pdf' width='70%' style="height: 700px; display: block; margin: auto;margin-top: 50px; margin-bottom: 50px;">
-    <p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="../file/imim.pdf">Download PDF</a></p>
-</object>
+        </div>
+
+        <div style="float: left; width: 400px; height: 400px; margin-left: 5%; border-style: solid" >
+
+
+        </div>
+
+        <div style="float: right; width: 400px; height: 400px; margin-right: 5%; border-style: solid" >
+
+        </div>
+    </div>
+</div>
+
+<div style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px; margin-top: 50px; margin-bottom: 50px; border-style: solid">
+    <h2 style="text-align: center; font-size: 30px;">Geographical Map</h2>
+    <div style="margin-top: 50px">
+        <div style="float: left; width: 400px; height: 400px; margin-left: 5%; border-style: solid" >
+
+
+        </div>
+
+        <div style="float: left; width: 400px; height: 400px; margin-left: 5%; border-style: solid" >
+
+
+        </div>
+
+        <div style="float: right; width: 400px; height: 400px; margin-right: 5%; border-style: solid" >
+
+
+        </div>
+    </div>
+</div>
 
 <div class="container2" style="background-color: black; height: 50px; margin: auto">
     <p style="padding-left: 50px"><a href="https://warcraft12321.github.io/LUI/" target="_blank" rel="noopener noreferrer"><img src="../img/luiss.png" width="50px" alt="Luís"></a></p>
@@ -71,5 +108,19 @@
     </div>
 </div>
 
+<script>
+    // Construct tree object
+    var phylocanvas = new PhyloCanvas.Tree('phylocanvas');
+
+    // Store newick string or path to newick file
+    var newick_str = "(A:0.1,B:0.2,(C:0.3,D:0.4)E:0.5)F;";
+
+    // Load and draw tree
+    phylocanvas.load(newick_str);
+</script>
+
 </body>
+
+
+
 </html>
