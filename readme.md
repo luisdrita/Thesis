@@ -58,4 +58,4 @@ Web application which integrates all the previous components. [Image](https://hu
 
 Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Francisco ([INESC-ID](https://www.inesc-id.pt/) & [IST](https://tecnico.ulisboa.pt/pt/)) | João Carriço ([iMM](https://imm.medicina.ulisboa.pt/pt/) & [IST](https://tecnico.ulisboa.pt/pt/)) | Vítor Borges ([INSA](http://www.insa.pt/))  
   
-  Roadmap ------> [Wiki](https://github.com/warcraft12321/Thesis/wiki)
+  Roadmap -> [Wiki](https://github.com/warcraft12321/Thesis/wiki)

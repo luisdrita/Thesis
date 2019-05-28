@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <link href='../style/index.css' rel="stylesheet">
     <link rel="icon" href="../img/logo.png">
-    <script type="application/javascript" src="https://cdn.rawgit.com/PhyloCanvas/PhyloCanvas/v1.7.3/src/scripts/PhyloCanvas.js"></script>
-
+    <script src="https://cdn.rawgit.com/phylocanvas/phylocanvas-quickstart/v2.8.1/phylocanvas-quickstart.js"></script>
+<!-- ../../node_modules/phylocanvas-quickstart-master/phylocanvas-quickstart.js -->
     <style>
         #phylocanvas {
             width: 700px;
@@ -66,15 +66,19 @@
                     <a id = "Rectangular" onclick="plot(this.id)" style="cursor: pointer">Rectangular</a>
                     <a id = "Circular" onclick="plot(this.id)" style="cursor: pointer">Circular</a>
                     <a id = "Diagonal" onclick="plot(this.id)" style="cursor: pointer">Diagonal</a>
-                    <a id = "Hierarchy" onclick="plot(this.id)" style="cursor: pointer">Hierarchy</a>
+                    <a id = "Hierarchical" onclick="plot(this.id)" style="cursor: pointer">Hierarchical</a>
                 </div>
             </div>
+
+            <h2 style="color: gray; text-align: center">Metadata</h2>
+
+            <input type="checkbox" onchange="meta();" checked><br>
 
         </div>
 
         <div style="width: 700px; height: 500px; float: left; border-style: solid; margin-left: 25px">
 
-            <div id="phylocanvas" style="margin: auto"></div>
+            <div id="phylocanvas" style="margin: auto; overflow: hidden; position: relative;"></div>
 
         </div>
 
@@ -139,7 +143,24 @@
 
 <script>
 
-    let tree;
+    function hashCode(str) { // java String#hashCode
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        return hash;
+    }
+
+    function intToRGB(i){
+        var c = (i & 0x00FFFFFF)
+            .toString(16)
+            .toUpperCase();
+
+        return "00000".substring(0, 6 - c.length) + c;
+    }
+
+    let data;
+    let metaData;
 
     fetch("/insaflu_tree/").then(function(res) {
 
@@ -147,99 +168,173 @@
 
     }).then(function(jsonData) {
 
-        tree = jsonData;
+        data = jsonData;
 
         plot("Circular");
 
-       // console.log(jsonData);
+        // console.log(jsonData);
 
     });
 
-/*
-    fetch("/insaflu_sample/").then(function(res) {
+    fetch('/insaflu_sample/').then(function(res) {
 
         return res.json();
 
     }).then(function(jsonData) {
 
-        console.log(jsonData);
+        metaData = jsonData;
+
+        tree.on('beforeFirstDraw', function () {
+
+         //   console.log(Object.keys(metaData["influenza_03"]).length);
+
+            for (let i = 0; i < tree.leaves.length; i++) {
+
+                for (let j = 0; j < Object.keys(metaData["influenza_03"]).length; j++) {
+
+                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
+
+                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
+                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j];
+
+                }
+            }
+        });
+    });
+
+    let tree = Phylocanvas.createTree('phylocanvas', {
+
+        baseNodeSize: 10,
+        padding: 5,
+        textSize: 10,
+        font: "helvetica",
+       // root: "A_H3N2_reference_demo",
+        zoomFactor: 2,
+        labelPadding: 5,
+        showLabels: true,
+        lineWidth: 3,
+        alignLabels: true,
+      //  highlightColour: "red",
+        highlightSize: 2
+     //   showBranchLengthLabels: true
 
     });
-*/
 
-    // Construct tree object.
-    let phylocanvas = new PhyloCanvas.Tree('phylocanvas', {
-        // other options
-        contextMenu : [{
-            text: 'Normal Menu',
-            handler: 'triggerNormal',
-            internal: false,
-            leaf: false
-        }, {
-            text: 'Internal Menu',
-            handler: 'triggerInternal',
-            internal: true,
-            leaf: true
-        }, {
-            text: 'Save as PNG',
-            handler: 'exportCurrentTreeView',
-            internal: false,
-            leaf: false
-        }]
-    });
+  //  console.log(getNodeAtMousePosition("hover"));
+
+    /*
+        tree.on('click', function (e) {
+            var node = tree.getNodeAtMousePosition(e);
+            if (node) {
+                tree.redrawFromBranch(node);
+            } else {
+                tree.redrawOriginalTr();
+            }
+        });
+    */
 /*
-    let history = new PhyloCanvas.History('phylocanvas', {
-        // other options
-        contextMenu: [{
-            text: 'Normal Menu',
-            handler: 'triggerNormal',
-            internal: false,
-            leaf: false
-        }, {
-            text: 'Internal Menu',
-            handler: 'triggerInternal',
-            internal: true,
-            leaf: true
-        }, {
-            text: 'Save as PNG',
-            handler: 'exportCurrentTreeView',
-            internal: false,
-            leaf: false
-        }]
-    });
+           tree.on('beforeFirstDraw', function () {
+
+              for (let i = 0; i < tree.leaves.length; i++) {
+
+                //  for(let j = 0; j < metaData["influenza_03"].length; j++)
+
+                  tree.leaves[i].data = {
+                      column1: {
+                          colour: '#3C7383',
+                          label: 'Label' + (i + 1),
+                      },
+                      column2: '#9BB7BF',
+                      column3: '#3C7383',
+                      column4: '#9BB7BF',
+                  };
+
+              }
+          });
 */
-  //  history.collapse();
+    function plot (type) {
 
-function plot (type) {
+        document.getElementById("shape").innerText = type;
 
-    document.getElementById("shape").innerText = type;
+        tree.load(data);
 
-    // Load and draw tree.
-    phylocanvas.load(tree);
+       // tree.redrawFromBranch(tree.branches["influenza_05"]);
 
-    // Configuration
-    phylocanvas.lineWidth = 3;
-    phylocanvas.leaves[0].highlighted = true;
-   // phylocanvas.branches[0].highlighted = true;
-    phylocanvas.showLabels = true; // defaults to true
-   // phylocanvas.selectedNodeSizeIncrease = 100;
-    //phylocanvas.root = ;
-    //phylocanvas.branchColour = 'light-blue';
-    phylocanvas.shotMetadata = true;
+        // Tree - Functions
+          tree.setTreeType(type.toLowerCase()); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
 
+        if (type === "Circular" || type === "Radial") {
 
-    // Tree - Functions
-    phylocanvas.setNodeColourAndShape('1', 'rgb(250, 150, 50)', 'x'); // setNodeColourAndShape is used to set the color and shape of a specific set of nodes.
-    phylocanvas.setFont("helvetica"); // Change the font for the node labels
-    phylocanvas.setNodeSize(5);
-    phylocanvas.setTextSize(20);
-    phylocanvas.setTreeType(type.toLowerCase()); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-    //phylocanvas.setRoot("A_H3N2_reference_demo");
-   // phylocanvas.setZoom(-0.4);
+            for (let i = 0; i < tree.leaves.length; i++) {
 
-    phylocanvas.draw();
+                tree.leaves[i].data = {
 
-}
+                };
+            }
+
+        }
+
+        tree.draw();
+
+    }
+
+    let active = true;
+
+    function meta() {
+
+        if(!active) {
+
+                for (let i = 0; i < tree.leaves.length; i++) {
+                    tree.leaves[i].data = {
+                        column1: {
+                            colour: '#3C7383',
+                            label: 'Label' + (i + 1),
+                        },
+                        column2: '#9BB7BF',
+                        column3: '#3C7383',
+                        column4: '#9BB7BF',
+                    };
+                }
+
+            active = true;
+
+        } else {
+
+            for (let i = 0; i < tree.leaves.length; i++) {
+                tree.leaves[i].data = {
+
+                };
+            }
+
+            active = false;
+
+        }
+
+        tree.draw();
+
+    }
+
+    let button = document.createElement("BUTTON");
+
+    button.innerHTML = "hello";
+    button.style.position = "absolute";
+    button.style.right = "0";
+    button.style.top = "0";
+    button.id = "shape";
+    button.onclick = backFunc;
+    button.style.zIndex = "1";
+
+    document.getElementById("phylocanvas").appendChild(button);
+
+    function backFunc() {
+
+       // tree.redrawFromBranch(tree.getSelectedNodeIds());
+        console.log(tree.getSelectedNodeIds());
+    }
+
+    //console.log(tree.branches["influenza_03"]);
+
+    tree.setRoot(tree.branches["influenza_03"]);
 
 </script>
 

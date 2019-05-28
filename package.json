@@ -22,7 +22,9 @@
   },
   "description": "## Community Finding (CF) in Phylogenetic Trees using PHYLOViZ Online",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "phylocanvas": "^2.8.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/warcraft12321/Thesis.git"

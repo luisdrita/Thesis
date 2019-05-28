@@ -613,3 +613,53 @@ let obj_lfr_com = {};
 });
  });
 */
+
+// ---------------------------- INSaFLU
+
+app.get('/insaflu_tree', function (req, res) {
+
+    fs.readFile('./uploads/insaflu/Tree_ML_All.nwk', 'utf8', function (err, data) {
+
+        if (err) throw err;
+
+        let tree_data = data.toString();
+
+        console.log(tree_data);
+
+        res.send(tree_data);
+    });
+});
+
+
+app.get('/insaflu_sample', function (req, res) {
+
+    fs.readFile('./uploads/insaflu/Sample_list.csv', 'utf8', function (err, data) {
+
+        if (err) throw err;
+
+        let obj = {};
+        let split = data.toString().split("\n");
+        let metaTitles = split[0].split(",");
+
+        for (let i = 1; i < split.length; i++) {
+
+            let splitLine = split[i].split(",");
+
+            for (let j = 1; j < splitLine.length; j++) {
+
+                obj[splitLine[0]] = obj[splitLine[0]] || {};
+
+                obj[splitLine[0]][metaTitles[j]] = splitLine[j];
+
+            }
+        }
+
+        res.send(obj);
+
+        console.log(obj);
+
+    });
+
+});
+
+
