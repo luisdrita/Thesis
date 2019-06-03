@@ -187,7 +187,7 @@ jWeightedLabelPropagation = function (nds, edgs) { // A function expression can 
 
             let next_nodes_to_com = status.nodes_to_com;
 
-            if(prev_nodes_to_com===next_nodes_to_com) {break;}
+            if (prev_nodes_to_com===next_nodes_to_com) {break;}
 
         }
 

@@ -7,10 +7,7 @@
 
 jHamming = function (profile, nlv, cyto) {
 
-    let distance_matrix = [];
-    let edges = [];
-    let nodes = [];
-    let result = {};
+    let distance_matrix = [], edges = [], nodes = [], result = {};
 
     function numberDifferences (array1, array2) {
 

@@ -6,11 +6,28 @@
     <link href='../style/index.css' rel="stylesheet">
     <link rel="icon" href="../img/logo.png">
     <script src="https://cdn.rawgit.com/phylocanvas/phylocanvas-quickstart/v2.8.1/phylocanvas-quickstart.js"></script>
-<!-- ../../node_modules/phylocanvas-quickstart-master/phylocanvas-quickstart.js -->
+
+    <!-- Load d3.js and the geo projection plugin -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <!-- Load Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+            crossorigin=""></script>
+
     <style>
+
         #phylocanvas {
             width: 700px;
         }
+
+        #mapid { height: 400px; }
+
     </style>
 
 </head>
@@ -107,19 +124,13 @@
 <div style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px; margin-top: 50px; margin-bottom: 50px; border-style: solid; padding-bottom: 25px">
     <h2 style="text-align: center; font-size: 30px;">Geographical Map &#127757;</h2>
     <div style="margin-top: 25px">
-        <div style="float: left; width: 400px; height: 400px; margin-left: 5%; border-style: solid" >
+
+        <div style="height: 400px; margin-left: 5%; margin-right: 5%; border-style: solid" >
+
+            <div id="mapid" style="margin: auto"></div>
 
         </div>
 
-        <div style="float: left; width: 400px; height: 400px; margin-left: 5%; border-style: solid" >
-
-
-        </div>
-
-        <div style="float: right; width: 400px; height: 400px; margin-right: 5%; border-style: solid" >
-
-
-        </div>
     </div>
 </div>
 
@@ -143,16 +154,18 @@
 
 <script>
 
+    // ------------------------------------------ Phylogenetic Trees ------------------------------------------
+
     function hashCode(str) { // java String#hashCode
-        var hash = 0;
-        for (var i = 0; i < str.length; i++) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
             hash = str.charCodeAt(i) + ((hash << 5) - hash);
         }
         return hash;
     }
 
     function intToRGB(i){
-        var c = (i & 0x00FFFFFF)
+        let c = (i & 0x00FFFFFF)
             .toString(16)
             .toUpperCase();
 
@@ -329,12 +342,68 @@
     function backFunc() {
 
        // tree.redrawFromBranch(tree.getSelectedNodeIds());
-        console.log(tree.getSelectedNodeIds());
+        console.log(tree.getSelectedNodeIds()[0]);
+      //  tree.redrawFromBranch(tree.getSelectedNodeIds()[0]);
+      //  tree.setRoot("influenza_12");
+     //   tree.storeNode("influenza_12")
     }
 
-    //console.log(tree.branches["influenza_03"]);
+  //  console.log(tree.branches["influenza_12"]);
 
-    tree.setRoot(tree.branches["influenza_03"]);
+   // tree.setRoot(tree.branches["influenza_03"]);
+   //
+
+    // ------------------------------------------ Geographical Map ------------------------------------------
+
+    // mapid is the id of the div where the map will appear
+    let map = L
+        .map('mapid')
+        .setView([47, 2], 5);   // center position + zoom
+
+    // Add a tile to the map = a background. Comes from OpenStreetmap
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+            maxZoom: 6,
+        }).addTo(map);
+
+    // Add a svg layer to the map
+    L.svg().addTo(map);
+
+    // Create data for circles:
+    let markers = [
+        {long: 9.083, lat: 42.149}, // corsica
+        {long: 7.26, lat: 43.71}, // nice
+        {long: 2.349, lat: 48.864}, // Paris
+        {long: -1.397, lat: 43.664}, // Hossegor
+        {long: 3.075, lat: 50.640}, // Lille
+        {long: -3.83, lat: 48}, // Morlaix
+    ];
+
+    // Select the svg area and add circles:
+    d3.select("#mapid")
+        .select("svg")
+        .selectAll("myCircles")
+        .data(markers)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).x })
+        .attr("cy", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).y })
+        .attr("r", 14)
+        .style("fill", "red")
+     //   .attr("stroke", "red")
+        .attr("stroke-width", 3)
+        .attr("fill-opacity", .8);
+
+    // Function that update circle position if something change
+    function update() {
+        d3.selectAll("circle")
+            .attr("cx", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).x })
+            .attr("cy", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).y })
+    }
+
+    // If the user change the map (zoom or drag), I update circle position:
+    map.on("moveend", update)
 
 </script>
 

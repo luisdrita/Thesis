@@ -13,7 +13,7 @@
     stroke-opacity: 0.6;
 }
 
-.dropbtn, #reset_btn, #comm_detect, #file, #gamma, .container{
+.dropbtn, #reset_btn, #comm_detect, #gamma, .container{
     background-color: black;
     color: white;
     padding: 10px;
@@ -26,7 +26,6 @@
 .dropdown {
     position: relative;
     display: inline-block;
-    height: 20px;
 }
 
 .dropdown-content {
@@ -51,7 +50,7 @@
 
 .dropdown:hover .dropbtn {background-color: black; box-shadow: 2px 2px 2px 2px grey;}
 
-#reset_btn:hover, #comm_detect:hover, #file:hover {box-shadow: 2px 2px 2px 2px grey;}
+#reset_btn:hover, #comm_detect:hover {box-shadow: 2px 2px 2px 2px grey;}
 
 footer {
     display: block;
@@ -152,4 +151,49 @@ body {
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     opacity: 1;
+}
+
+/*  ----------------------------------------------- Tooltip ----------------------------------------------- */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    /*
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+     */
+    font-size: 14px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 0.8;
 }

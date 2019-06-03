@@ -3,9 +3,8 @@
 // Importing general libraries.
 const fs = require('fs');
 const express = require('express');
-const formidable = require('formidable');
 const cmd = require('node-cmd');
-const {performance} = require('perf_hooks');
+//const {performance} = require('perf_hooks');
 const stats = require('download-stats');
 
 // Importing community finding libraries.
@@ -13,7 +12,7 @@ const infomap = require('./website/algorithms/infomap/infomap');
 const louvain = require('./website/algorithms/louvain/louvain');
 const layeredLabelPropagation = require('./website/algorithms/llp/layeredLabelPropagation');
 const hamming = require('./website/algorithms/hamming/hamming');
-const nmi = require('./website/algorithms/nmi/nmi');
+// const nmi = require('./website/algorithms/nmi/nmi');
 
 // Importing benchmarking libraries.
 const girvan = require('./website/algorithms/girvan-newman/girvan-newman');
@@ -30,7 +29,8 @@ app.listen(process.env.PORT || 3000);
 let result = {}, result_cyto = {};
 
 // Initializing benchmarking variables.
-let str = "", final_arr = [], final_arr_titles = [], final_times = {}, ij = 0;
+let str = "";
+//let final_arr = [], final_arr_titles = [], final_times = {}, ij = 0;
 
 // ---------------------------------------------- APPLICATION ----------------------------------------------
 
@@ -47,21 +47,19 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             if (cyto === "true") {
 
-                community = louvain.jLouvain(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], 1/10000);
+                community = louvain.jLouvain(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], gamma_var);
                 result_cyto["nodes"] = aux.nodify(community, 3);
                 result_cyto["links"] = result_cyto[mix + "_" + avg_deg]["links"];
 
             } else {
 
-                console.log(result[mix + "_" + avg_deg]);
-
-                let t1 = performance.now();
-                community = louvain.jLouvain(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], 1/10000);
-                let t2 = performance.now();
-                final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
-                final_arr.push(Object.values(community));
-                final_arr_titles.push("Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
-                ij++;
+                //let t1 = performance.now();
+                community = louvain.jLouvain(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], gamma_var);
+                //let t2 = performance.now();
+                //final_times["Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
+                //final_arr.push(Object.values(community));
+                //final_arr_titles.push("Louvain" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
+                //ij++;
                 result["nodes"] = aux.nodify(community, 0);
                 result["links"] = result[mix + "_" + avg_deg]["links"];
 
@@ -75,19 +73,19 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             if (cyto === "true") {
 
-                community = infomap.jInfomap(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], 1/10000);
+                community = infomap.jInfomap(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], gamma_var);
                 result_cyto["nodes"] = aux.nodify(community, 3);
                 result_cyto["links"] = result_cyto[mix + "_" + avg_deg]["links"];
 
             } else {
 
-                let t1 = performance.now();
-                community = infomap.jInfomap(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], 1/10000);
-                let t2 = performance.now();
-                final_times["Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
-                final_arr.push(Object.values(community));
-                final_arr_titles.push("Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
-                ij++;
+                //let t1 = performance.now();
+                community = infomap.jInfomap(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], gamma_var);
+                //let t2 = performance.now();
+                //final_times["Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
+                //final_arr.push(Object.values(community));
+                //final_arr_titles.push("Infomap" + "_" + net + "_" + mix + "_" + avg_deg + "_" + ij);
+                //ij++;
                 result["nodes"] = aux.nodify(community, 0);
                 result["links"] = result[mix + "_" + avg_deg]["links"];
 
@@ -109,13 +107,13 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
                 if (mix === undefined && avg_deg === undefined) gamma_var = 0;
 
-                let t1 = performance.now();
+                //let t1 = performance.now();
                 community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
-                let t2 = performance.now();
-                final_times["LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
-                final_arr.push(Object.values(community));
-                final_arr_titles.push("LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij);
-                ij++;
+                //let t2 = performance.now();
+                //final_times["LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
+                //final_arr.push(Object.values(community));
+                //final_arr_titles.push("LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij);
+                //ij++;
                 result["nodes"] = aux.nodify(community, 0);
                 result["links"] = result[mix + "_" + avg_deg]["links"];
             }
@@ -289,7 +287,7 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
             case "Staph":
 
-                fs.readFile('./uploads/clonalComplex.txt', 'utf8', function (err, data) {
+                fs.readFile('./uploads/staph_clonalComplex.txt', 'utf8', function (err, data) {
 
                     if (err) throw err;
 
@@ -303,7 +301,7 @@ app.get('/reset/:net/cytoscape/:cyto/mix_param/:mix/avg_deg/:deg/net_size/:size/
 
                     let include_data = Object.keys(node_data);
 
-                    fs.readFile('./uploads/phylo.txt', 'utf8', function (err, data) {
+                    fs.readFile('./uploads/staph_profile.txt', 'utf8', function (err, data) {
 
                         if (err) throw err;
 
@@ -345,20 +343,6 @@ app.get('/algorithm/:alg/gamma/:val/cytoscape/:cyto/network/:net/mix_param/:mix/
 
 });
 
-// ---------------------------------------------- DATA UPLOAD ----------------------------------------------
-
-// To be executed upon file upload in the interface.
-app.post('/upload', function (req, res) {
-
-    let form = new formidable.IncomingForm();
-
-    form.parse(req);
-
-    form.on('fileBegin', function (name, file) {
-        file.path = __dirname + '/uploads/' + "upload.txt"; // file.name substituted by Input.txt
-    });
-});
-
 // ---------------------------------------------- STATS ----------------------------------------------
 
     let start = new Date('2019-04-11');
@@ -397,7 +381,7 @@ app.get('/stats', function (req, res) {
 });
 
 // ---------------------------------------------- NMI ACCURACY BENCHMARK ----------------------------------------------
-
+/*
 app.get('/bench_accu/:title', function (req, res) {
 
     let datat = {};
@@ -437,9 +421,9 @@ app.get('/bench_accu/:title', function (req, res) {
         datat[final_arr_titles[i]] = nmi.jNMI(final_arr[index],final_arr[i]);
 
     }
-
+*/
     // ---------------------------- NMI x Mix Parameter
-
+/*
     [15, 20, 25].map(function (avg_deg) { //deg
 
         ["Infomap"].map(function (alg) { //net
@@ -470,9 +454,9 @@ app.get('/bench_accu/:title', function (req, res) {
         fs.writeFileSync("./website/algorithms/" + req.params.title + "_" + net + ".csv", auxii);
 
 });
-
+*/
 // ---------------------------------------------- NMI SPEED BENCHMARK ----------------------------------------------
-
+/*
 app.get('/bench_speed', function (req, res) {
 
     let auxii = "";
@@ -497,7 +481,7 @@ app.get('/bench_speed', function (req, res) {
     fs.writeFileSync("./website/algorithms/GN_speed.csv", auxii);
 
 });
-
+*/
 // ---------------------------- LFR
 /*
 let obj_lfr_com = {};
@@ -567,9 +551,6 @@ let obj_lfr_com = {};
 
                                 });
 
-                            console.log(avg_deg);
-                       // console.log(25);
-
                         }, 1000 + 2500 * mix_param);
 
                     });
@@ -606,15 +587,12 @@ let obj_lfr_com = {};
 
         final_times["GN_Bench" + "_" + mix_param + "_" + avg_deg + "_" + ij] = t2 - t1;
         ij++;
-
-        console.log(mix_param);
-
     });
 });
  });
 */
 
-// ---------------------------- INSaFLU
+// ---------------------------------------------- INSaFLU ----------------------------------------------
 
 app.get('/insaflu_tree', function (req, res) {
 
@@ -659,7 +637,6 @@ app.get('/insaflu_sample', function (req, res) {
         console.log(obj);
 
     });
-
 });
 
 

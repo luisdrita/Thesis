@@ -282,8 +282,6 @@ jGirvan_Newman = function (mix_param, cyto, avg_deg) { // A function expression 
     final_matrix = matrixAddition(matrix2, final_matrix); // Adjacency matrix resulting from all the previous established connections.
     edges = edges.concat(edges2); // Concatenates edges from 1st and 2nd cycles (above).
 
-    console.log("Done");
-
     // Assembling output in a final object compound of nodes, edges and communities arrays.
     if(!cyto) {
 

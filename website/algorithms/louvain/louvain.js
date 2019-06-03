@@ -234,7 +234,6 @@ jLouvain = function (nds, edgs, __MIN) { // A function expression can be stored 
 
         });
 
-console.log(result);
         return result; // Modularity of a given partition (defined by status).
     }
 
@@ -402,7 +401,6 @@ console.log(result);
         // after 1st pass. Community aggregation.
 
         while (true) { // Keeps partitioning the graph until no significant modularity increase occurs.
-         //   console.log();
             init_status(current_graph, status);
             __one_level(current_graph, status);
             new_mod = __modularity(status);

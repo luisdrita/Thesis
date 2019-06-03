@@ -18,7 +18,7 @@
 
     <div style="border-style: dashed; border-color: transparent; width: 100%; margin: auto;">
         <div style="border-style: dashed; border-color: transparent; float: left; margin-top: 2%; margin-left: 12.5%">
-            <a href="https://ist.pt" target="_blank" rel="noopener noreferrer">
+            <a href="http://www.insa.pt/" target="_blank" rel="noopener noreferrer">
                 <img src="./img/ul.png" width="150" alt="UL">
             </a>
         </div>
@@ -63,15 +63,15 @@
 
     <div style="text-align: center;"><img src="img/phyl.png" style="margin-top: 10px;" width="100px" alt="Phyl"></div>
 
-    <div id = "graphDiv" style="width: 600px; height: 600px; border-style: solid; display: block; margin: auto; margin-top: 0px; text-align: center">
+    <div id = "graphDiv" style="width: 600px; height: 600px; border-style: solid; display: block; margin: auto; margin-top: 0; text-align: center">
 
     </div>
 
     <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 25px; margin-bottom: 25px; border-style: solid; border-color: transparent; position: relative; text-align: center">
-        <button id='reset_btn'>Reset</button>
-        <button id='comm_detect'>Run</button>
+        <button id='reset_btn' style="width: 60px;">Reset</button>
+        <button id='comm_detect' style="width: 60px;">Run</button>
         <div class="dropdown" id = "dropdown">
-            <button id = dropbtn_algorithm class="dropbtn" style="width: 90px; text-align: center">Algorithm</button>
+            <button id = dropbtn_algorithm class="dropbtn" style="width: 100px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content" style="line-height: 18px;">
                 <a id = "Louvain" onclick="rename(this.id, '1', document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer;">Louvain <img src="img/star.png" width = "15px" style="position: absolute; right: 19px; top: 13px;" alt = "Star"></a>
                 <a id = "Infomap" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Infomap</a>
@@ -79,86 +79,96 @@
             </div>
         </div>
 
-        <div class="dropdown" id = "gamma" style="display: none;">
-            <div id = "range_label" style="display: inline-block">Resolution:</div> <input type="range" id = "gamma2" name="points" min="0" max="100" value = "50" onmouseup="rename(document.getElementById('dropbtn_algorithm').innerText, this.value/this.max, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value,document.getElementById('avg_deg').value);">
+        <div class="dropdown tooltip" id = "gamma" style="background-color: black; color: white; font-size: 14px; border: none; border-radius: 10px; cursor: pointer; padding: 4px; display: none">
+            <input style="height: 11px; width: 90px" type="range" id = "gamma2" name="points" min="0" max="100" value = "50" onmouseup="rename(document.getElementById('dropbtn_algorithm').innerText, this.value/this.max, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value,document.getElementById('avg_deg').value);">
+            <span id = "range_label" class="tooltiptext">Mixing</span>
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_interface class="dropbtn" style="width: 115px; text-align: center" onclick="fetch('/bench_speed/');">Interface</button> <!-- Interface -->
+            <button id = dropbtn_interface class="dropbtn" style="width: 100px; text-align: center">Interface</button> <!-- onclick="fetch('/bench_speed/');" -->
             <div id = "dropdown-content_interface" class="dropdown-content" style="line-height: 18px">
-                <a id = "D3.js (SVG)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (SVG)</a>
-                <a id = "D3.js (Canvas)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (Canvas) <img src="img/star.png" width = "15px" style="position: absolute; right: 7px; top: 55px;"></a>
+                <a id = "D3 (SVG)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (SVG)</a>
+                <a id = "D3 (Canvas)" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">D3.js (Canvas) <img src="img/star.png" width = "15px" style="position: absolute; right: 7px; top: 55px;"></a>
                 <a id = "Cytoscape" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Cytoscape.js</a>
             </div>
         </div>
 
         <div class="dropdown">
-            <button id = dropbtn_network class="dropbtn" style="width: 115px; text-align: center" onclick="bench('5');">Network</button>
+            <button id = dropbtn_network class="dropbtn" style="width: 100px; text-align: center">Network</button> <!-- onclick="bench('5');" -->
             <div id = "dropdown-content_network" class="dropdown-content" style="line-height: 18px;">
                 <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Girvan-Newman</a>
-                <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
+                <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value);" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
                 <a id = "Amazon" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Amazon', 'Amazon')" style="cursor: pointer">Amazon</a>
                 <a id = "Karate" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Karate', 'Karate')" style="cursor: pointer">Zachary's Karate Club</a>
-                <a id = "Staph" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Staph', 'Staph')" style="cursor: pointer">Staph</a>
+                <a id = "Staph" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Staph', 'Staph')" style="cursor: pointer"><i>Staphylococcus aureus</i> MLST SLV</a>
             </div>
         </div>
 
-        <input class="dropbtn" id = "mix_param" type="number" name="quantity" min="0" max="1" step = "0.1" value = "0" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, this.value, document.getElementById('avg_deg').value)">
-        <input class="dropbtn" id = "avg_deg" type="number" name="quantity" min="15" max="25" step = "1" value = "16" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, this.value)">
-        <input class="dropbtn" id = "max_deg" type="number" name="quantity" min="15" max="100" step = "1" value = "50" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)">
-        <input class="dropbtn" id = "min_com" type="number" name="quantity" min="15" max="100" step = "1" value = "10" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)">
-        <input class="dropbtn" id = "max_com" type="number" name="quantity" min="15" max="200" step = "1" value = "50" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)">
-        <input class="dropbtn" id = "net_size" type="number" name="quantity" min="10" max="1000" step = "10" value = "128" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText)">
-
-        <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="bottom: -2px;">
-            <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit(); rename(document.getElementById('dropbtn_interface').innerText, undefined, undefined);">
-            <label for="img2"><img src="img/up.png" style="width: 16px; cursor: pointer;" alt="Upload"></label>
-        </form>
+        <div class="tooltip"><input class="dropbtn" id = "mix_param" type="number" name="quantity" min="0" max="1" step = "0.1" value = "0" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, this.value, document.getElementById('avg_deg').value)"><span class="tooltiptext">Mixing</span></div>
+        <div class="tooltip"><input class="dropbtn" id = "avg_deg" type="number" name="quantity" min="15" max="25" step = "1" value = "16" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, this.value)"><span class="tooltiptext">Average Degree</span></div>
+        <div class="tooltip"><input class="dropbtn" id = "net_size" type="number" name="quantity" min="10" max="1000" step = "10" value = "100" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)"><span class="tooltiptext">Network Size</span></div>
+        <div class="tooltip"><input class="dropbtn" id = "max_deg" type="number" name="quantity" min="15" max="100" step = "1" value = "50" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)"><span class="tooltiptext">Max Node Degree</span></div>
+        <div class="tooltip"><input class="dropbtn" id = "min_com" type="number" name="quantity" min="10" max="100" step = "1" value = "10" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)"><span class="tooltiptext">Min Community Size</span></div>
+        <div class="tooltip"><input class="dropbtn" id = "max_com" type="number" name="quantity" min="15" max="200" step = "1" value = "50" style="text-align: center; display: none" onchange = "rename(document.getElementById('dropbtn_interface').innerText, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)"><span class="tooltiptext">Max Community Size</span></div>
     </div>
 </div>
 
 <div style="float: left; border-style: solid; width: 44%; margin-left: 75px;">
-    <h2 style="text-align: center; font-size: 30px">Abstract</h2>
-    <p style="margin-left: 20px; margin-right: 20px; line-height: 30px; float: left">
-        The aim of the <a href="pages/thesis.html" style="color: #1d68ca; text-decoration-line: none">thesis</a> (<a href="pages/abstract.html" style="color: #1d68ca; text-decoration-line: none">extended abstract</a>) was to develop an improved version of PHYLOViZ Online by implementing community
-        finding algorithms, as well as, adding new tools for data visualization. Similar algorithms are being used
-        in other domains. In phylogenetics, it is a step forward for handling infectious diseases.
-        This tool is intended to assist distinct health professionals, including doctors and bioinformaticians, and is
-        designed to enable medical and research purposes.
+    <h2 style="text-align: center; font-size: 30px">Objectives</h2>
+    <p style="margin-left: 20px; margin-right: 20px; margin-top: -5px; line-height: 30px; float: left; text-align: justify">
+        The aim of the <a href="pages/thesis.html" style="color: #1d68ca; text-decoration-line: none">thesis</a> (<a href="pages/abstract.html" style="color: #1d68ca; text-decoration-line: none">extended abstract</a>) was to implement Louvain, Infomap and
+        LLP algorithms, in JavaScript. To benchmark them, in terms of accuracy and speed, against GN and LFR networks. Perform
+        additional testing using real networks, namely a <i>Staphylococcus aureus</i> MLST dataset. Compare <i>D3.js</i> (using SVG and Canvas elements) and
+        <i>Cytoscape.js</i> frameworks in terms of their tools and robustness to big data. Visualize networks, along with the respective analysis, and plot all data generated from the benchmark tests.
     </p>
 </div>
 
-<div style="float: left; border-style: solid; width: 44%; margin-top: 20px; margin-left: 75px; height: 495px;overflow: scroll;">
+<div style="float: left; border-style: solid; width: 44%; margin-top: 20px; margin-left: 75px; height: 485px;overflow: scroll;">
 
     <h2 style="text-align: center; font-size: 30px">Algorithms</h2>
+
+    <h2 style="text-align: left; color: gray; margin-left: 20px; margin-top: -5px; display: inline-block;">Louvain</h2>
+
+    <a href="https://www.npmjs.com/package/louvain-algorithm" target="_blank" rel="noopener noreferrer"><img src="img/npm.png" width="40px" style="display: inline-block; margin-bottom: 5px;" alt="Louvain Algorithm NPM"></a>
+
+    <p style="margin-left: 20px; line-height: 30px;margin-right: 20px; margin-top: -5px;text-align: justify">
+        Louvain is divided in 2 phases:<br>
+        Modularity Optimization - At the beginning, the algorithm will randomly order all
+        nodes in the network such that, one by one, it will remove and insert them in a different community. This will
+        continue until no significant modularity's variation is verified (using equation below); <br>
+        Community Aggregation - After finishing previous step, every node belonging to the same community is merged into a single
+        giant one and the links of the new network are the sum of the links connecting nodes from the same pair of communities.<br>
+        Both steps are executed until modularity's variation is lower than an input value.
+        <br>
+        <img src="img/eq1.svg" style="display: block; margin: auto; margin-top: 10px;">
+    </p>
 
     <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Infomap</h2>
 
     <a href="https://www.npmjs.com/package/infomap" target="_blank" rel="noopener noreferrer"><img src="img/npm.png" width="40px" style="display: inline-block; margin-bottom: 5px;" alt="Infomap Algorithm NPM"></a>
 
-    <p style="margin-left: 20px; line-height: 30px; margin-right: 20px; text-align: justify">
-        Infomap optimizes the map equation, which exploits the information-theoretic duality between the problem of
-        compressing data, and the problem of detecting and extracting significant patterns or structures within those data.
+    <p style="margin-left: 20px; line-height: 30px; margin-right: 20px; margin-top: -5px; text-align: justify">
+        Infomap considers 2 steps: Minimizing Description Length (using map equation) and
+        Community Aggregation. Although the implementation is similar to the Louvain algorithm, the optimizing function
+        is different:<br>
+        <img src="img/eq2.svg" style="display: block; margin: auto; margin-top: 10px;">
     </p>
 
     <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Layered Label Propagation</h2>
 
     <a href="https://www.npmjs.com/package/layered-label-propagation" target="_blank" rel="noopener noreferrer"><img src="img/npm.png" width="40px" style="display: inline-block; margin-bottom: 5px;" alt="Layered Label Propagation Algorithm NPM"></a>
 
-    <p style="margin-left: 20px; line-height: 30px;margin-right: 20px;text-align: justify">
-        Label Propagation is a semi-supervised machine learning algorithm that assigns labels to previously unlabeled
-        data points. At the start of the algorithm, a (generally small) subset of the data points have labels (or
-        classifications). These labels are propagated to the unlabeled points throughout the course of the algorithm.
+    <p style="margin-left: 20px; line-height: 30px;margin-right: 20px; margin-top: -5px; text-align: justify">
+        LLP is a semi-supervised algorithm that is able to detect communities based on a set of nodes that is partially labeled or unlabelled.<br>
+        Considering an unlabelled network, it starts by assigning a random community to each node. Then, at the beginning of each cycle, all nodes are considered
+        in a random order. Based on the equation below, the community that maximizes its value for a given node, it is the one that is assigned.
+        Being k<sub>i</sub> the number of nodes with label &lambda;<sub>i</sub> in the neighborhood of a given node and &nu;<sub>i</sub> the total number in the whole graph with the same label. &gamma; is the
+        resolution parameter that buffers the number of nodes belonging to a given community in the neighborhood, by its usual presence across the whole network.<br>
+        This algorithm is equivalent to Label Propagation whenever &gamma; is 0.
+        <br>
+        <img src="img/eq3.svg" style="display: block; margin: auto; margin-top: 10px;">
     </p>
 
-    <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Louvain</h2>
-
-    <a href="https://www.npmjs.com/package/louvain-algorithm" target="_blank" rel="noopener noreferrer"><img src="img/npm.png" width="40px" style="display: inline-block; margin-bottom: 5px;" alt="Louvain Algorithm NPM"></a>
-
-    <p style="margin-left: 20px; line-height: 30px;margin-right: 20px;text-align: justify">The Louvain Method for community detection
-        is a method to extract communities from large networks created
-        by Blondel et al. from the University of Louvain (affiliation of authors has given the method its name). The
-        method is a greedy optimization method that appears to run in time O(nlog(n)).</p>
 </div>
 
 <div id = "results" data-aos="fade-up" data-aos-anchor-placement="center-bottom" style="display: block; width: 90%; border-bottom: transparent; border-right: transparent; border-left: transparent; float: left; margin-right: 50px; margin-left: 75px; margin-top: 20px;">
@@ -365,7 +375,7 @@
 
         <figure style="float: left; margin-left: 125px;">
             <img src="img/networks/gn.png" width='250' alt="Girvan Newman Benchmark Network" style="margin: auto; text-align: center">
-            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Girvan Newman Benchmark Network</figcaption>
+            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Girvan-Newman Benchmark Network</figcaption>
         </figure>
 
         <figure style="float: left; margin-left: 50px;">
@@ -375,7 +385,7 @@
 
         <figure style="float: left; margin-left: 50px;">
             <img src="img/networks/staph.png" width='250' alt="Staphylococcus SLV Graph (Clonal Complex 0 - PHYLOViZ 2)" style="margin: auto; text-align: center">
-            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;">Staphylococcus SLV Graph (Clonal Complex 0 - PHYLOViZ 2)</figcaption>
+            <figcaption style="text-align: center; margin-top: 25px; font-size: 12px;"><i>Staph. aureus</i> SLV Graph (Clonal Complex 0 - PHYLOViZ 2)</figcaption>
         </figure>
 
     </div>
@@ -441,9 +451,9 @@
             <a href="pages/mtih.html" style="text-decoration-line: none">
                 <h2 style="color: grey;">1st Workshop MTiH (Madrid, Spain)</h2>
             </a>
-            <p style="text-align: justify"> As a MTiH student, I was invited to present a poster
-                of my thesis and to
-                talk about past academic achievements. I was still able to suggest new ways of
+            <p style="text-align: justify"> As an MTiH student, I presented a poster
+                of the thesis and
+                talked about past academic achievements. I was still able to suggest new ways of
                 improving this European program, powered by EIT Health. Bursary awarded.</p>
         </div>
 
@@ -452,8 +462,8 @@
             <a href="./pages/amr.html" style="text-decoration-line: none">
                 <h2 style="color: grey;">AMR Hackathon 2018 (Heidelberg, Germany)</h2>
             </a>
-            <p style="text-align: justify"> Selected to participate in a 3-day Antimicrobial Resistance Hackathon organized by EIT Health Germany. We were divided in teams of 6/7 elements that would proceed to an AMR
-                analysis of a different EU country. Bursary awarded.</p>
+            <p style="text-align: justify"> Selected to participate in a 3-day AMR Hackathon, organized by EIT Health Germany. Participants were divided in teams of 6/7 elements that would analyze AMR
+                situation in a different EU country. Bursary awarded.</p>
         </div>
 
         <figure style="float: right; margin-right: 3%">
@@ -475,7 +485,7 @@
             <a href="pages/imim.html" style="text-decoration-line: none">
                 <h2 style="color: grey;">IMIM Industry & Innovation Day (Mannheim, Germany)</h2>
             </a>
-            <p style="text-align: justify"> Poster presentation of my thesis to IMIM students and pharmaceutical industry representatives. Bursary awarded.</p>
+            <p style="text-align: justify"> Poster presentation of the thesis to IMIM students and pharmaceutical industry representatives. Bursary awarded.</p>
         </div>
 
         <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
@@ -498,7 +508,7 @@
 
 <div class="container2" style="background-color: black; height: 50px; margin: auto">
 
-    <img src="http://www.cutercounter.com/hits.php?id=gmmpdndx&nd=6&style=2" border="0" alt="website counter" style="float: left; margin-left: 20px; margin-top: 20px">
+    <img src="http://www.cutercounter.com/hits.php?id=gmmpdndx&nd=6&style=2" alt="website counter" style="float: left; margin-left: 20px; margin-top: 20px">
 
     <p><a href="https://warcraft12321.github.io/LUI/" target="_blank" rel="noopener noreferrer"><img src="img/luiss.png" width="50px" alt="Luís"></a></p>
     <div id = "socialMedia">
@@ -639,11 +649,11 @@
     results('./benchmark_data/lfr/llp_vs_mix_vs_k.csv',"svg13", "LLP NMI x Mix [LFR]", "#center_right_div2", 1, 1, 750);
     results('./benchmark_data/lfr/infomap_vs_mix_vs_k.csv',"svg14", "Infomap NMI x Mix [LFR]", "#center_right_div2", 1, 1, 750);
 
-    results('./benchmark_data/gn/GN_speed_2.csv',"svg15", "Log(Time) x Mix [GN]", "#center_right_right_div", 140000, 1, 750);
+    results('./benchmark_data/gn/GN_speed_2.csv',"svg15", "Time x Mix [GN]", "#center_right_right_div", 140000, 1, 750);
     results('./benchmark_data/gn/GNLFR_speed.csv',"svg16", "Time x Mix [GN]", "#center_right_right_div", 200, 1, 750);
     results('./benchmark_data/lfr/LFR_speed.csv',"svg17", "Time x Mix [LFR]", "#center_right_right_div2", 180, 1, 750);
     results('./benchmark_data/lfr/LFR_speed_nrNodes.csv',"svg18", "Time x Nr. Nodes [LFR]", "#center_right_right_div2", 600, 1000, 750);
-
+/*
     (function stats() {
 
         fetch('/stats/').then(function(res) {
@@ -665,7 +675,7 @@
         });
 
     })();
-
+*/
     let canvas, svg, cy;
 
     function rename(id, gamma, network, mix_value, avg_deg) {
@@ -679,15 +689,18 @@
                 document.getElementById('mix_param').style.display = 'inline-block';
                 document.getElementById('avg_deg').style.display = 'inline-block';
                 document.getElementById('net_size').style.display = 'none';
+                document.getElementById('max_deg').style.display = 'none';
+                document.getElementById('max_com').style.display = 'none';
+                document.getElementById('min_com').style.display = 'none';
 
             } else if (network === "LFR") {
 
                 document.getElementById('mix_param').style.display = 'inline-block';
                 document.getElementById('avg_deg').style.display = 'inline-block';
                 document.getElementById('net_size').style.display = 'inline-block';
-                document.getElementById('max_deg').style.display = 'inline-block';
-                document.getElementById('max_com').style.display = 'inline-block';
-                document.getElementById('min_com').style.display = 'inline-block';
+                document.getElementById('max_deg').style.display = 'none';
+                document.getElementById('max_com').style.display = 'none';
+                document.getElementById('min_com').style.display = 'none';
 
             } else {
 
@@ -707,45 +720,31 @@
 
                 document.getElementById("dropbtn_algorithm").innerText = "Louvain";
                 document.getElementById("gamma").style.display = "inline-block";
-                document.getElementById("range_label").innerText = "Max. Var:";
-                document.getElementById("file").style.display = "none";
+                document.getElementById("range_label").innerText = "Max Variation";
                 fetch("algorithm/" + id + "/gamma/" + gamma/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
-
+console.log(gamma/10000);
                 break;
 
             case "Infomap":
 
                 document.getElementById("dropbtn_algorithm").innerText = "Infomap";
                 document.getElementById("gamma").style.display = "inline-block";
-                document.getElementById("range_label").innerText = "Max. Var:";
-                document.getElementById("file").style.display = "none";
+                document.getElementById("range_label").innerText = "Max Variation";
                 fetch("algorithm/" + id + "/gamma/" + gamma/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
 
                 break;
 
             case "LLP":
 
-                if(gamma === undefined) {
-
                     document.getElementById("dropbtn_algorithm").innerText = "LLP";
-                    document.getElementById("range_label").innerText = "Resolution:";
+                    document.getElementById("range_label").innerText = "Resolution";
                     document.getElementById("gamma").style.display = "inline-block";
-                    document.getElementById("file").style.display = "none";
                     fetch("algorithm/" + id + "/gamma/" + gamma/(document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
-
-                } else {
-
-                    document.getElementById("dropbtn_algorithm").innerText = "LLP";
-                    document.getElementById("range_label").innerText = "Resolution:";
-                    document.getElementById("gamma").style.display = "inline-block";
-                    document.getElementById("file").style.display = "none";
-                    fetch("algorithm/" + id + "/gamma/" + gamma + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
-                }
 
                 break;
 
-            case 'D3.js (SVG)':
-                document.getElementById("dropbtn_interface").innerText = "D3.js (SVG)";
+            case 'D3 (SVG)':
+                document.getElementById("dropbtn_interface").innerText = "D3 (SVG)";
                 document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
 
@@ -768,8 +767,8 @@
 
                 break;
 
-            case 'D3.js (Canvas)':
-                document.getElementById("dropbtn_interface").innerText = "D3.js (Canvas)";
+            case 'D3 (Canvas)':
+                document.getElementById("dropbtn_interface").innerText = "D3 (Canvas)";
                 document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
                 document.getElementById("gamma").style.display = "none";
 
@@ -812,7 +811,7 @@
         }
     }
 
-    rename('D3.js (SVG)', undefined, 'Amazon', 'Amazon', 'Amazon');
+    rename('D3 (SVG)', undefined, 'Amazon', 'Amazon', 'Amazon');
 
     // Action on clicking in the Run button.
     d3.select('#comm_detect').on('click', function() {
@@ -830,13 +829,13 @@
 
                 switch (inter) {
 
-                    case "D3.js (SVG)":
+                    case "D3 (SVG)":
 
                         d3svgFunc(svg, jsonData);
 
                         break;
 
-                    case "D3.js (Canvas)":
+                    case "D3 (Canvas)":
 
                         d3canvasFunc(jsonData);
 
@@ -855,9 +854,8 @@
 
         document.getElementById("dropbtn_algorithm").innerText = "Algorithm";
         document.getElementById("gamma").style.display = "none";
-        document.getElementById("file").style.display = "inline-block";
 
-        rename(document.getElementById('dropbtn_interface').innerText, document.getElementById("gamma2").value, document.getElementById("dropbtn_network").innerText, document.getElementById("mix_param").value);
+        rename(document.getElementById('dropbtn_interface').innerText, document.getElementById("gamma2").value, document.getElementById("dropbtn_network").innerText, document.getElementById("mix_param").value, document.getElementById('avg_deg').value);
 
     });
 

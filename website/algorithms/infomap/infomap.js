@@ -219,8 +219,6 @@ jInfomap = function (nds, edgs, __MIN) { // A function expression can be stored 
 
         });
 
-        console.log("Working...");
-
         return mdl_a * Math.log(mdl_a) - 2 * mdl_b - mdl_c + mdl_d; // Modularity of a given partition (defined by status).
     }
 

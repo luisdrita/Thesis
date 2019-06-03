@@ -210,12 +210,8 @@ jLayeredLabelPropagation = function (nds, edgs, gamma, steps_input) { // A funct
                     let best_com = __dominantCommunity(node, graph, status);
 
                     status.nodes_to_com[node] = +best_com;
-
                 }
-
             });
-
-            console.log("Working...");
 
             let next_nodes_to_com = status.nodes_to_com;
 
