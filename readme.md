@@ -32,7 +32,7 @@ The aim of the <a href="https://mscthesis.herokuapp.com/pages/thesis.html" style
 Congruence of each partition inferred by Louvain, Infomap and LLP was determined using NMI.
 
 ##### Speed
-Time required to run Louvain, Infomap and LLP, in GN and LFR networks, was measured. As well as, the one needed by the 
+Time required to run Louvain, Infomap and LLP, in GN and LFR networks, was measured. As well as, the time needed to execute 
 GN Benchmark Network Generator, considering different mixing and average node degree parameters.
 
 ### Visualization Interface

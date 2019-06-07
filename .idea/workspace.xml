@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metaStaph.txt" beforeDir="false" afterPath="$PROJECT_DIR$/metaStaph.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/insaflu/Sample_list.csv" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/insaflu/Sample_list.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/hamming/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/hamming/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/community.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/network.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/statistics.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/lancichinetti-fortunato-radicchi/time_seed.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/llp/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/llp/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/louvain/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/louvain/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/algorithms/nmi/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/nmi/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/QuickLook/Icon.tiff" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/QuickLook/Icon.tiff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/QuickLook/Preview.tiff" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/QuickLook/Preview.tiff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/QuickLook/Thumbnail.tiff" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/QuickLook/Thumbnail.tiff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/data/C6013FF7-3B60-4A6D-BD10-48409F2A0307" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/data/C6013FF7-3B60-4A6D-BD10-48409F2A0307" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/metadata.info" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/top10death.pxd/metadata.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/insaflu2.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/insaflu2.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="122" column="88" selection-start-line="122" selection-start-column="88" selection-end-line="122" selection-end-column="88" />
+            <state relative-caret-position="565">
+              <caret line="118" column="8" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="122" selection-end-column="137" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -196,8 +175,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="834">
+            <state relative-caret-position="-3289">
               <caret line="118" column="39" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="460">
+                <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -325,7 +316,6 @@
         <option value="$PROJECT_DIR$/insaflu/insaflu.html" />
         <option value="$PROJECT_DIR$/website/pages/abstract - cópia.html" />
         <option value="$PROJECT_DIR$/test.html" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/website/pages/insaflu.html" />
         <option value="$PROJECT_DIR$/website/visualization/bench_results.js" />
         <option value="$PROJECT_DIR$/website/pages/mtih.html" />
@@ -343,7 +333,6 @@
         <option value="$PROJECT_DIR$/website/pages/thesis.html" />
         <option value="$PROJECT_DIR$/website/pages/insaflu2.html" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/hamming/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap/readme.md" />
@@ -352,6 +341,8 @@
         <option value="$PROJECT_DIR$/website/algorithms/nmi/readme.md" />
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -724,14 +715,7 @@
       <workItem from="1559642677080" duration="146000" />
       <workItem from="1559668416582" duration="2407000" />
       <workItem from="1559735664109" duration="2455000" />
-      <workItem from="1559862841298" duration="1065000" />
-    </task>
-    <task id="LOCAL-00012" summary="Benchmark GN">
-      <created>1550283993433</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1550283993433</updated>
+      <workItem from="1559862841298" duration="1790000" />
     </task>
     <task id="LOCAL-00013" summary="Benchmark GN">
       <created>1550596973421</created>
@@ -1069,11 +1053,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559526996039</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Updated Objectives">
+      <created>1559866336972</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1559866336973</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1907272000" />
+    <option name="totallyTimeSpent" value="1907997000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1086,8 +1077,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18337408" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18337408" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -1100,7 +1092,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32987553" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.20228216" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49511003" visible="true" weight="0.15663901" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49511003" visible="true" weight="0.15663901" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50488997" side_tool="true" weight="0.18257262" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32987553" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
@@ -1158,7 +1150,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="Added Results" />
     <MESSAGE value="PHYLOViZ Integration 1.0" />
     <MESSAGE value="emscripten" />
     <MESSAGE value="Interface Enhancements" />
@@ -1183,7 +1174,8 @@
     <MESSAGE value="Website Interface Enhancement" />
     <MESSAGE value="New Tools to INSaFLU" />
     <MESSAGE value="Optimized Interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optimized Interface" />
+    <MESSAGE value="Updated Objectives" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Objectives" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman.js" />
@@ -1569,27 +1561,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3289">
+          <caret line="118" column="39" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="615">
-            <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <first_editor relative-caret-position="460">
+            <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="834">
-          <caret line="118" column="39" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="122" column="88" selection-start-line="122" selection-start-column="88" selection-end-line="122" selection-end-column="88" />
+        <state relative-caret-position="565">
+          <caret line="118" column="8" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="122" selection-end-column="137" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
