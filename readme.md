@@ -1,15 +1,12 @@
 # MSc Thesis 
-[https://mscthesis.herokuapp.com/](https://mscthesis.herokuapp.com/)
+[mscthesis.herokuapp.com](https://mscthesis.herokuapp.com/)
 
 ## Community Finding with Applications on Phylogenetic Networks
 
-The aim of the thesis was to develop an improved version of [PHYLOViZ](http://www.phyloviz.net/) Online by
-implementing community finding (CF) algorithms, as well as, adding new tools for
-data visualization. Similar algorithms are being used in other domains. In
-phylogenetics, it is a step forward for handling infectious diseases.
-
-This tool is intended to assist distinct health professionals, including doctors and
-bioinformaticians, and is designed to enable medical and research purposes.
+The aim of the <a href="https://mscthesis.herokuapp.com/pages/thesis.html" style="color: #1d68ca; text-decoration-line: none">thesis</a> (<a href="https://mscthesis.herokuapp.com/pages/abstract.html" style="color: #1d68ca; text-decoration-line: none">extended abstract</a>) was
+        to implement three community finding algorithms – Louvain, Infomap and Layered Label
+        Propagation; to benchmark them using two synthetic networks – Girvan-Newman and Lancichinetti-Fortunato-Radicchi; to test them in real networks, particularly, in one derived from a <i>Staphylococcus aureus</i> MLST dataset; to compare
+        visualization frameworks – Cytoscape.js and D3.js (using SVG and Canvas elements), and, finally, to make it all available online.
 
 ### Implemented Algorithms
 
@@ -28,14 +25,15 @@ bioinformaticians, and is designed to enable medical and research purposes.
 #### Real Networks
 - [Amazon](http://snap.stanford.edu/data/com-Amazon.html);
 - [Zachary's Karate Club](https://www.researchgate.net/publication/248519014_An_Information_Flow_Model_for_Conflict_and_Fission_in_Small_Groups1);
-- [_Staphylococcus aureus_](https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef).
+- [_Staphylococcus aureus_ MLST Dataset](https://pubmlst.org/bigsdb?db=pubmlst_saureus_seqdef).
 
 #### Parameters
 ##### Accuracy
 Congruence of each partition inferred by Louvain, Infomap and LLP was determined using NMI.
 
 ##### Speed
-Time required to run Louvain, Infomap, LLP and GN Benchmark Network Generator, in GN and LFR networks, was measured.
+Time required to run Louvain, Infomap and LLP, in GN and LFR networks, was measured. As well as, the one needed by the 
+GN Benchmark Network Generator, considering different mixing and average node degree parameters.
 
 ### Visualization Interface
 
@@ -45,14 +43,6 @@ Time required to run Louvain, Infomap, LLP and GN Benchmark Network Generator, i
 
 ### Phyl
 Web application which integrates all the previous components. [Image](https://hub.docker.com/r/warcraft12321/thesis) available in Docker Hub.
-
-### User Guide
-
-1. Insert text file (.txt) with data in this [format](https://github.com/warcraft12321/Thesis/blob/master/uploads/Input.txt) and "Input.txt" name. Or, just use a standard network included in the app;
-2. Choose visualization interface;
-3. Choose CF algorithm;
-4. Run;
-5. Generated networks are draggable, zoomable and pannable. 
 
 ### Supervision Team
 
