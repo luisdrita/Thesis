@@ -1,4 +1,4 @@
-id,fastq1,fastq2,data set,vaccine status,week,onset date,collection date,lab reception date,latitude,longitude,type-subtype,putative mixed-infection,day,host,month,note,Region,year
+id,fastq1,fastq2,data set,vaccine_status,week,onset date,collection date,lab reception date,latitude,longitude,type-subtype,putative mixed-infection,day,host,month,note,Region,year
 A_H3N2_reference_demo,,,,,,,,,,,,,,,,,,
 influenza_02,influenza_02_R1_001.fastq.gz,influenza_02_R2_001.fastq.gz,demo,NOTVACC,45,2016-11-11,2016-11-14,2016-11-15,40.406698,-8.130182,A-H3N2,No,11,human,11,NOT REAL DATA,Viseu,2016
 influenza_08,influenza_08_R1_001.fastq.gz,influenza_08_R2_001.fastq.gz,demo,NOTVACC,46,2016-11-15,2016-11-18,2016-11-19,40.197724,-8.403456,A-H3N2,No,15,human,11,NOT REAL DATA,Coimbra,2016
@@ -10,7 +10,7 @@ influenza_10,influenza_10_R1_001.fastq.gz,influenza_10_R2_001.fastq.gz,demo,NOTV
 influenza_04,influenza_04_R1_001.fastq.gz,influenza_04_R2_001.fastq.gz,demo,NOTVACC,45,2016-11-13,2016-11-16,2016-11-17,40.406698,-8.130182,A-H3N2,No,13,human,11,NOT REAL DATA,Viseu,2016
 influenza_09,influenza_09_R1_001.fastq.gz,influenza_09_R2_001.fastq.gz,demo,VACCINATED,46,2016-11-16,2016-11-19,2016-11-20,32.648622,-16.924075,A-H3N2,No,16,human,11,NOT REAL DATA,Madeira,2016
 influenza_14,influenza_14_R1_001.fastq.gz,influenza_14_R2_001.fastq.gz,demo,NOTVACC,47,2016-11-22,2016-11-25,2016-11-26,40.197724,-8.403456,A-H3N2,No,22,human,11,NOT REAL DATA,Coimbra,2016
-influenza_12,influenza_12_R1_001.fastq.gz,influenza_12_R2_001.fastq.gz,demo,NOTVACCINATED,48,2016-12-01,2016-12-04,2016-12-05,38.969211,-9.415351,A-H3N2,No,1,human,12,NOT REAL DATA,Lisbon,2016
+influenza_12,influenza_12_R1_001.fastq.gz,influenza_12_R2_001.fastq.gz,demo,NOTVACC,48,2016-12-01,2016-12-04,2016-12-05,38.969211,-9.415351,A-H3N2,No,1,human,12,NOT REAL DATA,Lisbon,2016
 influenza_05,influenza_05_R1_001.fastq.gz,influenza_05_R2_001.fastq.gz,demo,NOTVACC,47,2016-11-18,2016-11-21,2016-11-22,37.76161,-25.682478,A-H3N2,No,18,human,11,NOT REAL DATA,Azores,2016
 influenza_07,influenza_07_R1_001.fastq.gz,influenza_07_R2_001.fastq.gz,demo,NOTVACC,46,2016-11-18,2016-11-21,2016-11-22,32.648622,-16.924075,A-H3N2,No,18,human,11,NOT REAL DATA,Madeira,2016
 influenza_03,influenza_03_R1_001.fastq.gz,influenza_03_R2_001.fastq.gz,demo,NOTVACC,45,2016-11-12,2016-11-15,2016-11-16,37.76161,-25.682478,A-H3N2,No,12,human,11,NOT REAL DATA,Azores,2016

@@ -65,7 +65,7 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             }
 
-            if (net === "Staph") fs.writeFile("./metaStaph.txt", aux.printMeta(community, 5200));
+            //if (net === "Staph") fs.writeFile("./metaStaph.txt", aux.printMeta(community, 5200));
 
             break;
 
@@ -91,7 +91,7 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             }
 
-            if (net === "Staph") fs.writeFile("./metaStaph.txt", aux.printMeta(community, 5200));
+            //if (net === "Staph") fs.writeFile("./metaStaph.txt", aux.printMeta(community, 5200));
 
             break;
 
@@ -99,7 +99,7 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
 
             if (cyto === "true") {
 
-                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
+                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result_cyto[mix + "_" + avg_deg]["nodes"], 0), result[mix + "_" + avg_deg]["links"], gamma_var, 1000);
                 result_cyto["nodes"] = aux.nodify(community, 3);
                 result_cyto["links"] = result_cyto[mix + "_" + avg_deg]["links"];
 
@@ -108,7 +108,7 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
                 if (mix === undefined && avg_deg === undefined) gamma_var = 0;
 
                 //let t1 = performance.now();
-                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], gamma_var, 10000);
+                community = layeredLabelPropagation.jLayeredLabelPropagation(aux.nodeDetection(result[mix + "_" + avg_deg]["nodes"], 1), result[mix + "_" + avg_deg]["links"], gamma_var, 1000);
                 //let t2 = performance.now();
                 //final_times["LLP" + "_" + net + "_" + gamma_var + "_" + mix + "_" + avg_deg + "_" + ij] = t2 - t1;
                 //final_arr.push(Object.values(community));
@@ -116,9 +116,10 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
                 //ij++;
                 result["nodes"] = aux.nodify(community, 0);
                 result["links"] = result[mix + "_" + avg_deg]["links"];
+                console.log(gamma_var);
             }
 
-            if (net === "Staph") fs.writeFile("./metaStaph.txt", aux.printMeta(community, 5200));
+            //if (net === "Staph") fs.writeFile("./metaStaph.txt", aux.printMeta(community, 5200));
 
     }
 }

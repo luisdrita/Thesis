@@ -80,7 +80,7 @@
         </div>
 
         <div class="dropdown tooltip" id = "gamma" style="background-color: black; color: white; font-size: 14px; border: none; border-radius: 10px; cursor: pointer; padding: 4px; display: none">
-            <input style="height: 11px; width: 90px" type="range" id = "gamma2" name="points" min="0" max="100" value = "50" onmouseup="rename(document.getElementById('dropbtn_algorithm').innerText, this.value/this.max, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value,document.getElementById('avg_deg').value);">
+            <input style="height: 11px; width: 90px" type="range" id = "gamma2" name="points" min="0" max="100" value = "50" onmouseup="rename(document.getElementById('dropbtn_algorithm').innerText, this.value, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value,document.getElementById('avg_deg').value);">
             <span id = "range_label" class="tooltiptext">Mixing</span>
         </div>
 
@@ -116,14 +116,16 @@
 <div style="float: left; border-style: solid; width: 44%; margin-left: 75px;">
     <h2 style="text-align: center; font-size: 30px">Objectives</h2>
     <p style="margin-left: 20px; margin-right: 20px; margin-top: -5px; line-height: 30px; float: left; text-align: justify">
-        The aim of the <a href="pages/thesis.html" style="color: #1d68ca; text-decoration-line: none">thesis</a> (<a href="pages/abstract.html" style="color: #1d68ca; text-decoration-line: none">extended abstract</a>) was to implement Louvain, Infomap and
-        LLP algorithms, in JavaScript. To benchmark them, in terms of accuracy and speed, against GN and LFR networks. Perform
-        additional testing using real networks, namely a <i>Staphylococcus aureus</i> MLST dataset. Compare <i>D3.js</i> (using SVG and Canvas elements) and
-        <i>Cytoscape.js</i> frameworks in terms of their tools and robustness to big data. Visualize networks, along with the respective analysis, and plot all data generated from the benchmark tests.
+        The aim of the <a href="pages/thesis.html" style="color: #1d68ca; text-decoration-line: none">thesis</a> (<a href="pages/abstract.html" style="color: #1d68ca; text-decoration-line: none">extended abstract</a>) was
+        to implement three community finding algorithms – Louvain, Infomap and Layered Label
+        Propagation (LLP); to benchmark them using two synthetic networks – Girvan-Newman (GN) and Lancichinetti-Fortunato-Radicchi
+        (LFR); to test them in real networks, particularly, in one derived from a <i>Staphylococcus aureus</i> MLST dataset; to compare
+        visualization frameworks – Cytoscape.js and D3.js (using SVG and Canvas elements), and, finally, to make it all available online.
+
     </p>
 </div>
 
-<div style="float: left; border-style: solid; width: 44%; margin-top: 20px; margin-left: 75px; height: 485px;overflow: scroll;">
+<div style="float: left; border-style: solid; width: 44%; margin-top: 20px; margin-left: 75px; height: 479px;overflow: scroll;">
 
     <h2 style="text-align: center; font-size: 30px">Algorithms</h2>
 
@@ -653,7 +655,7 @@
     results('./benchmark_data/gn/GNLFR_speed.csv',"svg16", "Time x Mix [GN]", "#center_right_right_div", 200, 1, 750);
     results('./benchmark_data/lfr/LFR_speed.csv',"svg17", "Time x Mix [LFR]", "#center_right_right_div2", 180, 1, 750);
     results('./benchmark_data/lfr/LFR_speed_nrNodes.csv',"svg18", "Time x Nr. Nodes [LFR]", "#center_right_right_div2", 600, 1000, 750);
-/*
+
     (function stats() {
 
         fetch('/stats/').then(function(res) {
@@ -675,7 +677,7 @@
         });
 
     })();
-*/
+
     let canvas, svg, cy;
 
     function rename(id, gamma, network, mix_value, avg_deg) {
@@ -721,8 +723,8 @@
                 document.getElementById("dropbtn_algorithm").innerText = "Louvain";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max Variation";
-                fetch("algorithm/" + id + "/gamma/" + gamma/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
-console.log(gamma/10000);
+                fetch("algorithm/" + id + "/gamma/" + (gamma+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+
                 break;
 
             case "Infomap":
@@ -730,7 +732,7 @@ console.log(gamma/10000);
                 document.getElementById("dropbtn_algorithm").innerText = "Infomap";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max Variation";
-                fetch("algorithm/" + id + "/gamma/" + gamma/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+                fetch("algorithm/" + id + "/gamma/" + (gamma+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
 
                 break;
 
@@ -739,7 +741,8 @@ console.log(gamma/10000);
                     document.getElementById("dropbtn_algorithm").innerText = "LLP";
                     document.getElementById("range_label").innerText = "Resolution";
                     document.getElementById("gamma").style.display = "inline-block";
-                    fetch("algorithm/" + id + "/gamma/" + gamma/(document.getElementById("gamma2").max) + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+                    fetch("algorithm/" + id + "/gamma/" + gamma/100 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+                console.log(gamma/100);
 
                 break;
 

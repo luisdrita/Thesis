@@ -45,6 +45,6 @@ Check out more in the thesis [website](https://mscthesis.herokuapp.com/). You ma
 
 #### Supervision Team
 
-Bruno Gonçalves ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Alexandre Francisco ([INESC-ID](https://www.inesc-id.pt/) & [IST](https://tecnico.ulisboa.pt/pt/)) | João Carriço ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Vítor Borges ([INSA](http://www.insa.pt/))
+Alexandre Francisco ([INESC-ID](https://www.inesc-id.pt/) & [IST](https://tecnico.ulisboa.pt/pt/)) | João Carriço ([iMM](https://imm.medicina.ulisboa.pt/pt/)) | Vítor Borges ([INSA](http://www.insa.pt/))
 
 I am deeply grateful for their help along this unique journey... 

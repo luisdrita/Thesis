@@ -22,12 +22,6 @@
 
     <style>
 
-        #phylocanvas {
-            width: 700px;
-        }
-
-        #mapid { height: 400px; }
-
     </style>
 
 </head>
@@ -70,14 +64,10 @@
 <div style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px; margin-top: 50px; border-style: solid; position: relative; padding-bottom: 25px">
     <h2 style="text-align: center; font-size: 30px;">Phylogenetic Trees &#127794;</h2>
 
-    <div style="margin-top: 25px;">
+    <div id="phylocanvas" style="height: 500px; margin-left: 5%; margin-right: 5%; margin-top: 25px; border-style: solid; overflow: hidden"></div>
 
-        <div style="float: left; width: 300px; height: 500px; margin-left: 5%; border-style: solid; display: block; text-align: center;">
-
-            <h2 style="color: gray; text-align: center">Shape</h2>
-
-            <div class="dropdown" id = "dropdown" style="margin: auto;">
-                <button id = shape class="dropbtn" style="width: 90px; text-align: center; margin: auto">Shape</button>
+            <div class="dropdown" style="position: absolute; left: 0; top: 0;">
+                <button id = shape class="dropbtn" style="width: 90px; text-align: center;">Shape</button>
                 <div id = "dropdown-content" class="dropdown-content" style="line-height: 18px;">
                     <a id = "Radial" onclick="plot(this.id)" style="cursor: pointer;">Radial</a>
                     <a id = "Rectangular" onclick="plot(this.id)" style="cursor: pointer">Rectangular</a>
@@ -86,52 +76,12 @@
                     <a id = "Hierarchical" onclick="plot(this.id)" style="cursor: pointer">Hierarchical</a>
                 </div>
             </div>
-
-            <h2 style="color: gray; text-align: center">Metadata</h2>
-
-            <input type="checkbox" onchange="meta();" checked><br>
-
-        </div>
-
-        <div style="width: 700px; height: 500px; float: left; border-style: solid; margin-left: 25px">
-
-            <div id="phylocanvas" style="margin: auto; overflow: hidden; position: relative;"></div>
-
-        </div>
-
-        <div style="float: right; width: 300px; height: 500px; margin-right: 5%; border-style: solid" >
-
-            <h2 style="color: gray; text-align: center">Newick Tree</h2>
-
-            <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="display: block; text-align: center">
-                <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit();">
-                <label for="img2"><img src="../img/up.png" style="width: 16px; cursor: pointer;" alt="Upload"></label>
-            </form>
-
-            <h2 style="color: gray; text-align: center">Metadata</h2>
-
-            <form class="dropdown" action="/upload" enctype="multipart/form-data" method="post" id = "file" style="display: block; text-align: center">
-                <input class = "uploads" type="file" name="upload" accept=".txt" id = "img2" style="display: none;" onchange="document.getElementById('file').submit();">
-                <label for="img2"><img src="../img/up.png" style="width: 16px; cursor: pointer;" alt="Upload"></label>
-            </form>
-
-        </div>
-
-    </div>
-
 </div>
 
 <div style="display: block; width: 90%; float: left; margin-right: 50px; margin-left: 75px; margin-top: 50px; margin-bottom: 50px; border-style: solid; padding-bottom: 25px">
     <h2 style="text-align: center; font-size: 30px;">Geographical Map &#127757;</h2>
-    <div style="margin-top: 25px">
 
-        <div style="height: 400px; margin-left: 5%; margin-right: 5%; border-style: solid" >
-
-            <div id="mapid" style="margin: auto"></div>
-
-        </div>
-
-    </div>
+        <div id="mapid" style="height: 500px; margin-left: 5%; margin-right: 5%; margin-top: 25px; border-style: solid"></div>
 </div>
 
 <div class="container2" style="background-color: black; height: 50px; margin: auto">
@@ -154,7 +104,34 @@
 
 <script>
 
-    // ------------------------------------------ Phylogenetic Trees ------------------------------------------
+    // ------------------------------------------ Acquiring Data ------------------------------------------
+
+    let data;
+
+    fetch("/insaflu_tree/").then(function(res) {
+
+        return res.text();
+
+    }).then(function(jsonData) {
+
+        data = jsonData;
+
+        plot("Circular");
+
+    });
+
+    fetch('/insaflu_sample/').then(function(res) {
+
+        return res.json();
+
+    }).then(function(jsonData) {
+
+        phylTree(jsonData);
+        geoMap(jsonData);
+
+    });
+
+    // ------------------------------------------ Auxiliary Functions ------------------------------------------
 
     function hashCode(str) { // java String#hashCode
         let hash = 0;
@@ -172,48 +149,18 @@
         return "00000".substring(0, 6 - c.length) + c;
     }
 
-    let data;
-    let metaData;
+    function label2number(label, metadata, id) {
 
-    fetch("/insaflu_tree/").then(function(res) {
+        let result = {};
 
-        return res.text();
+        for (let i = 0; i < Object.keys(metadata).length; i++) {
 
-    }).then(function(jsonData) {
+            result[(metadata[i][label])] = (result[metadata[i][label]] + 1) || 0;
+        }
+        return result[id]
+    }
 
-        data = jsonData;
-
-        plot("Circular");
-
-        // console.log(jsonData);
-
-    });
-
-    fetch('/insaflu_sample/').then(function(res) {
-
-        return res.json();
-
-    }).then(function(jsonData) {
-
-        metaData = jsonData;
-
-        tree.on('beforeFirstDraw', function () {
-
-         //   console.log(Object.keys(metaData["influenza_03"]).length);
-
-            for (let i = 0; i < tree.leaves.length; i++) {
-
-                for (let j = 0; j < Object.keys(metaData["influenza_03"]).length; j++) {
-
-                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
-
-                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
-                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j];
-
-                }
-            }
-        });
-    });
+    // ------------------------------------------ Phylogenetic Tree ------------------------------------------
 
     let tree = Phylocanvas.createTree('phylocanvas', {
 
@@ -286,9 +233,7 @@
             }
 
         }
-
         tree.draw();
-
     }
 
     let active = true;
@@ -327,17 +272,91 @@
 
     }
 
-    let button = document.createElement("BUTTON");
+    function phylTree(metaData) {
 
-    button.innerHTML = "hello";
-    button.style.position = "absolute";
-    button.style.right = "0";
-    button.style.top = "0";
-    button.id = "shape";
-    button.onclick = backFunc;
-    button.style.zIndex = "1";
+        tree.on('beforeFirstDraw', function () {
 
-    document.getElementById("phylocanvas").appendChild(button);
+            //   console.log(Object.keys(metaData["influenza_03"]).length);
+
+            for (let i = 0; i < tree.leaves.length; i++) {
+
+                for (let j = 0; j < Object.keys(Object.values(metaData)[i]).length; j++) {
+
+                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
+
+                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
+                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j];
+
+                }
+            }
+        });
+    }
+
+    // -------------------------------------- Buttons
+
+    let button1 = document.createElement("BUTTON");
+    let button21 = document.createElement("BUTTON");
+    let button3 = document.createElement("BUTTON");
+    let button4 = document.createElement("BUTTON");
+    let button5 = document.createElement("BUTTON");
+
+    let radio = document.createElement("INPUT");
+
+    button1.innerHTML = "Radial";
+    button1.style.position = "absolute";
+    button1.style.right = "0";
+    button1.style.top = "0";
+    button1.id = "shape";
+    button1.onclick = plot;
+    button1.style.zIndex = "1";
+
+    button21.innerHTML = "Rectangular";
+    button21.style.position = "absolute";
+    button21.style.right = "100px";
+    button21.style.top = "0";
+    button21.id = "shape";
+    button21.onclick = plot;
+    button21.style.zIndex = "1";
+
+    button3.innerHTML = "Circular";
+    button3.style.position = "absolute";
+    button3.style.right = "200px";
+    button3.style.top = "0";
+    button3.id = "shape";
+    button3.onclick = plot;
+    button3.style.zIndex = "1";
+
+    button4.innerHTML = "Diagonal";
+    button4.style.position = "absolute";
+    button4.style.right = "300px";
+    button4.style.top = "0";
+    button4.id = "shape";
+    button4.onclick = plot;
+    button4.style.zIndex = "1";
+
+    button5.innerHTML = "Hierarchical";
+    button5.style.position = "absolute";
+    button5.style.right = "400px";
+    button5.style.top = "0";
+    button5.id = "shape";
+    button5.onclick = plot;
+    button5.style.zIndex = "1";
+
+    radio.type = "checkbox";
+    radio.onchange = meta;
+    radio.checked = "true";
+    radio.style.zIndex = "1";
+    radio.style.position = "absolute";
+    radio.style.right = "100";
+    radio.style.top = "0";
+
+    document.getElementById("phylocanvas").appendChild(button1);
+    document.getElementById("phylocanvas").appendChild(button21);
+    document.getElementById("phylocanvas").appendChild(button3);
+    document.getElementById("phylocanvas").appendChild(button4);
+    document.getElementById("phylocanvas").appendChild(button5);
+
+    document.getElementById("phylocanvas").appendChild(radio);
 
     function backFunc() {
 
@@ -355,55 +374,159 @@
 
     // ------------------------------------------ Geographical Map ------------------------------------------
 
-    // mapid is the id of the div where the map will appear
-    let map = L
-        .map('mapid')
-        .setView([47, 2], 5);   // center position + zoom
+    function geoMap(input) {
 
-    // Add a tile to the map = a background. Comes from OpenStreetmap
-    L.tileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-            maxZoom: 6,
-        }).addTo(map);
+        let markers_init = {};
 
-    // Add a svg layer to the map
-    L.svg().addTo(map);
+        for (let i = 0; i < Object.keys(input).length; i++) {
 
-    // Create data for circles:
-    let markers = [
-        {long: 9.083, lat: 42.149}, // corsica
-        {long: 7.26, lat: 43.71}, // nice
-        {long: 2.349, lat: 48.864}, // Paris
-        {long: -1.397, lat: 43.664}, // Hossegor
-        {long: 3.075, lat: 50.640}, // Lille
-        {long: -3.83, lat: 48}, // Morlaix
-    ];
+            for (let j = 0; j < Object.keys(Object.values(input)[i]).length; j++) {
 
-    // Select the svg area and add circles:
-    d3.select("#mapid")
-        .select("svg")
-        .selectAll("myCircles")
-        .data(markers)
-        .enter()
-        .append("circle")
-        .attr("cx", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).x })
-        .attr("cy", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).y })
-        .attr("r", 14)
-        .style("fill", "red")
-     //   .attr("stroke", "red")
-        .attr("stroke-width", 3)
-        .attr("fill-opacity", .8);
+                if (Object.keys(Object.values(input)[i])[j].search("lat") !== -1) {
 
-    // Function that update circle position if something change
-    function update() {
-        d3.selectAll("circle")
-            .attr("cx", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).x })
-            .attr("cy", function(d){ return map.latLngToLayerPoint([d.lat, d.long]).y })
+                    markers_init[Object.keys(input)[i]] = markers_init[Object.keys(input)[i]] || {};
+                    markers_init[Object.keys(input)[i]]["lat"] = input[(Object.keys(input)[i])][Object.keys(Object.values(input)[i])[j]];
+
+                } else if (Object.keys(Object.values(input)[i])[j].search("long") !== -1) {
+
+                    markers_init[Object.keys(input)[i]]["long"] = input[(Object.keys(input)[i])][Object.keys(Object.values(input)[i])[j]];
+
+                }
+            }
+        }
+
+        // mapid is the id of the div where the map will appear
+        let map = L
+            .map('mapid')
+            .setView([38, 9], 5);   // center position + zoom
+
+        // Add a tile to the map = a background. Comes from OpenStreetmap
+        L.tileLayer(
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                maxZoom: 10,
+            }).addTo(map);
+
+        // Add a svg layer to the map
+        L.svg().addTo(map);
+
+        // Create data for circles:
+      /*  let markers = [
+            {long: 9.083, lat: 42.149}, // corsica
+            {long: 7.26, lat: 43.71}, // nice
+            {long: 2.349, lat: 48.864}, // Paris
+            {long: -1.397, lat: 43.664}, // Hossegor
+            {long: 3.075, lat: 50.640}, // Lille
+            {long: -3.83, lat: 48}, // Morlaix
+        ];
+       */
+
+        let markers = Object.values(input);
+
+        // Select the svg area and add circles:
+        d3.select("#mapid")
+            .select("svg")
+            .selectAll("myCircles")
+            .data(markers)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) {
+                return map.latLngToLayerPoint([d.latitude, d.longitude]).x
+            })
+            .attr("cy", function (d) {
+                return map.latLngToLayerPoint([d.latitude, d.longitude]).y
+            })
+            .attr("r", function (d) {
+                return label2number("Region", markers, d.Region)*20
+            })
+            .style("fill", function (d) {
+                return "#" + intToRGB(hashCode(d.vaccine_status))
+            })
+            //   .attr("stroke", "red")
+            .attr("stroke-width", 3)
+            .attr("fill-opacity", .3);
+
+        // Function that update circle position if something change
+        function update() {
+            d3.selectAll("circle")
+                .attr("cx", function (d) {
+                    return map.latLngToLayerPoint([d.latitude, d.longitude]).x
+                })
+                .attr("cy", function (d) {
+                    return map.latLngToLayerPoint([d.latitude, d.longitude]).y
+                })
+        }
+
+        // If the user change the map (zoom or drag), I update circle position:
+        map.on("moveend", update)
+
     }
 
-    // If the user change the map (zoom or drag), I update circle position:
-    map.on("moveend", update)
+    // -------------------------------------- Buttons
+
+    let button2 = document.createElement("BUTTON");
+    button2.style.zIndex = "5";
+    button2.innerHTML = "hello";
+    button2.style.position = "absolute";
+    button2.style.right = "0";
+    button2.style.top = "0";
+    button2.id = "shape2";
+    button2.onclick = backFunc2;
+
+    document.getElementById("mapid").appendChild(button2);
+
+    function backFunc2() {
+
+        // tree.redrawFromBranch(tree.getSelectedNodeIds());
+       // console.log(tree.getSelectedNodeIds()[0]);
+        //  tree.redrawFromBranch(tree.getSelectedNodeIds()[0]);
+        //  tree.setRoot("influenza_12");
+        //   tree.storeNode("influenza_12")
+    }
+
+    // -------------------------------------- Tooltip
+/*
+    // create a tooltip
+    let Tooltip = d3.select('#mapid')
+        .append("div")
+        .style("position", "absolute")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px");
+
+    // Three function that change the tooltip when user hover / move / leave a cell
+    let mouseover = function(d) {
+
+        Tooltip
+            .style("opacity", 1);
+    };
+
+    let mousemove = function(d) {
+
+        let number = svg_input.split("g")[1];
+
+        if(number%2 !== 0) {
+            Tooltip
+                .html(d.value + " ± " + d.error)
+                .style("left", (d3.mouse(this)[0] + margin.left + 15) + "px")
+                .style("top", (d3.mouse(this)[1] + margin.top + 70) + "px")
+        } else {
+            Tooltip
+                .html(d.value + " ± " + d.error)
+                .style("left", (d3.mouse(this)[0] + margin.left + 775) + "px")
+                .style("top", (d3.mouse(this)[1] + margin.top + 70) + "px")
+        }
+    };
+
+    let mouseleave = function(d) {
+        Tooltip
+            .style("opacity", 0);
+    };
+*/
 
 </script>
 
