@@ -745,8 +745,7 @@
                     document.getElementById("dropbtn_algorithm").innerText = "LLP";
                     document.getElementById("range_label").innerText = "Resolution";
                     document.getElementById("gamma").style.display = "inline-block";
-                    fetch("algorithm/" + id + "/gamma/" + 1 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
-                console.log(gamma/100);
+                    fetch("algorithm/" + id + "/gamma/" + gamma/100 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
 
                 break;
 
