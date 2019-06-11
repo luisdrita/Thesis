@@ -17,33 +17,38 @@
 <header>
 
     <div style="border-style: dashed; border-color: transparent; width: 100%; margin: auto;">
-        <div style="border-style: dashed; border-color: transparent; float: left; margin-top: 2%; margin-left: 12.5%">
-            <a href="http://www.insa.pt/" target="_blank" rel="noopener noreferrer">
+        <div style="border-style: dashed; border-color: transparent; float: left; margin-top: 2%; margin-left: 10%">
+            <a href="https://www.ulisboa.pt/" target="_blank" rel="noopener noreferrer">
                 <img src="./img/ul.png" width="150" alt="UL">
             </a>
         </div>
 
-        <div style="border-style: dashed; border-color: transparent; float: left;margin-top: 1.5%; margin-left: 12.5%">
+        <div style="border-style: dashed; border-color: transparent; float: left;margin-top: 1.5%; margin-left: 10%">
             <a href="https://ist.pt" target="_blank" rel="noopener noreferrer">
                 <img src="./img/ist.jpg" width="130" alt="IST">
             </a>
         </div>
 
-        <div style="border-style: dashed; border-color: transparent; float: right; margin-top: 1.8%; margin-right: 12.5%">
-            <a href="https://imm.medicina.ulisboa.pt/pt/" target="_blank" rel="noopener noreferrer">
-                <img src="./img/imm.png" width="130" alt="iMM">
-            </a>
-        </div>
-
-        <div style="border-style: dashed; border-color: transparent; float: right;margin-top: 1.5%; margin-right: 12.5%">
-            <a href="https://ist.pt" target="_blank" rel="noopener noreferrer">
+        <div style="border-style: dashed; border-color: transparent; float: left;margin-top: 1.5%; margin-left: 9%">
+            <a href="http://www.medicina.ulisboa.pt/" target="_blank" rel="noopener noreferrer">
                 <img src="./img/fmul.png" width="130" alt="FMUL">
             </a>
         </div>
 
+        <div style="border-style: dashed; border-color: transparent; float: right;margin-top: 2.2%; margin-right: 10%">
+            <a href="http://www.insa.pt/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/logoentidade.png" width="180" alt="INSA">
+            </a>
+        </div>
+
+        <div style="border-style: dashed; border-color: transparent; float: right; margin-top: 1.8%; margin-right: 8%">
+            <a href="https://imm.medicina.ulisboa.pt/pt/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/imm.png" width="130" alt="iMM">
+            </a>
+        </div>
     </div>
 
-    <p style="margin-top: 7%; text-align: center; font-size: 45px;">Community Finding in Phylogenetic Networks</p>
+    <p style="margin-top: 7%; text-align: center; font-size: 45px;">Community Finding with Applications on Phylogenetic Networks</p>
 
 </header>
 
@@ -52,7 +57,6 @@
     <h2 style="color: white; text-align: center; font-size: 22px;">Guide</h2>
     <ol style="color: white; line-height: 30px; font-size: 14px">
         <li>Pick Network</li>
-        <!-- (<a href="https://github.com/warcraft12321/Thesis/blob/master/uploads/Input.txt" style="color: #1d68ca; text-decoration: none" target="_blank" rel="noopener noreferrer">Format</a>)-->
         <li>Choose View</li>
         <li>Select Algorithm</li>
         <li>Run</li>
@@ -97,7 +101,7 @@
             <button id = dropbtn_network class="dropbtn" style="width: 100px; text-align: center">Network</button> <!-- onclick="bench('5');" -->
             <div id = "dropdown-content_network" class="dropdown-content" style="line-height: 18px;">
                 <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Girvan-Newman</a>
-                <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value);" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
+                <a id = "LFR" onclick="//rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value);" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
                 <a id = "Amazon" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Amazon', 'Amazon')" style="cursor: pointer">Amazon</a>
                 <a id = "Karate" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Karate', 'Karate')" style="cursor: pointer">Zachary's Karate Club</a>
                 <a id = "Staph" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Staph', 'Staph')" style="cursor: pointer"><i>Staphylococcus aureus</i> MLST SLV</a>
@@ -741,7 +745,7 @@
                     document.getElementById("dropbtn_algorithm").innerText = "LLP";
                     document.getElementById("range_label").innerText = "Resolution";
                     document.getElementById("gamma").style.display = "inline-block";
-                    fetch("algorithm/" + id + "/gamma/" + gamma/100 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+                    fetch("algorithm/" + id + "/gamma/" + 1 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText === "Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
                 console.log(gamma/100);
 
                 break;
