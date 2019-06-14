@@ -67,11 +67,11 @@
 
     <div style="text-align: center;"><img src="img/phyl.png" style="margin-top: 10px;" width="100px" alt="Phyl"></div>
 
-    <div id = "graphDiv" style="width: 600px; height: 600px; border-style: solid; display: block; margin: auto; margin-top: 0; text-align: center">
+    <div id = "graphDiv" style="width: 600px; height: 600px; border-style: solid; display: block; margin: 0 auto auto;text-align: center">
 
     </div>
 
-    <div id="content_wrapper" style=" width:100%; margin: auto; margin-top: 25px; margin-bottom: 25px; border-style: solid; border-color: transparent; position: relative; text-align: center">
+    <div id="content_wrapper" style=" width:100%; margin: 25px auto;border-style: solid; border-color: transparent; position: relative; text-align: center">
         <button id='reset_btn' style="width: 60px;">Reset</button>
         <button id='comm_detect' style="width: 60px;">Run</button>
         <div class="dropdown" id = "dropdown">
@@ -146,7 +146,7 @@
         giant one and the links of the new network are the sum of the links connecting nodes from the same pair of communities.<br>
         Both steps are executed until modularity's variation is lower than an input value.
         <br>
-        <img src="img/eq1.svg" style="display: block; margin: auto; margin-top: 10px;">
+        <img src="img/eq1.svg" style="display: block; margin: 10px auto auto;" alt = "Louvain Equation">
     </p>
 
     <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Infomap</h2>
@@ -157,7 +157,7 @@
         Infomap considers 2 steps: Minimizing Description Length (using map equation) and
         Community Aggregation. Although the implementation is similar to the Louvain algorithm, the optimizing function
         is different:<br>
-        <img src="img/eq2.svg" style="display: block; margin: auto; margin-top: 10px;">
+        <img src="img/eq2.svg" style="display: block; margin: 10px auto auto;" alt = "Map Equation">
     </p>
 
     <h2 style="text-align: left; color: gray; margin-left: 20px; display: inline-block;">Layered Label Propagation</h2>
@@ -172,7 +172,7 @@
         resolution parameter that buffers the number of nodes belonging to a given community in the neighborhood, by its usual presence across the whole network.<br>
         This algorithm is equivalent to Label Propagation whenever &gamma; is 0.
         <br>
-        <img src="img/eq3.svg" style="display: block; margin: auto; margin-top: 10px;">
+        <img src="img/eq3.svg" style="display: block; margin: 10px auto auto;" alt = "Layered Label Propagation Equation">
     </p>
 
 </div>
@@ -199,11 +199,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/gn/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/nmi_mix.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/gn/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/nmi_gamma.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -219,11 +219,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/lfr/nmi_mix.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/nmi_mix.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/lfr/nmi_gamma.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/nmi_gamma.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -231,11 +231,11 @@
     <div id = "left-center_div" style="display: none;">
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="./benchmark_data/npm_stats/stats.csv" download><img src="img/down.png" width="15"></a>
+            <a href="./benchmark_data/npm_stats/stats.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -243,11 +243,11 @@
     <div id = "left-center_div2" style="display: none;">
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_alg_speed.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="./benchmark_data/npm_stats/stats.csv" download><img src="img/down.png" width="15"></a>
+            <a href="./benchmark_data/npm_stats/stats.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -263,11 +263,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/gn/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/gn/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -283,11 +283,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/lfr/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/labelPropagation_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/lfr/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/louvain_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -303,11 +303,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/gn/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/gn/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -323,11 +323,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/lfr/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/llp_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/lfr/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/infomap_vs_mix_vs_k.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -343,11 +343,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/gn/GN_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/GN_speed.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/gn/GNLFR_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/gn/GNLFR_speed.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -363,11 +363,11 @@
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 370px;">
-            <a href="benchmark_data/lfr/LFR_speed.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_speed.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
         <div class="dropdown" style="position: absolute; bottom: 0; left: 1120px;">
-            <a href="benchmark_data/lfr/LFR_speed_nrNodes.csv" download><img src="img/down.png" width="15"></a>
+            <a href="benchmark_data/lfr/LFR_speed_nrNodes.csv" download><img src="img/down.png" width="15" alt = "Download Button"></a>
         </div>
 
     </div>
@@ -421,7 +421,7 @@
 
             <a href="https://insaflu.insa.pt/" target="_blank" rel="noopener noreferrer" style="text-decoration-line: none">
                 <h2 style="color: grey; display: inline-block;">INSaFLU</h2>
-                <a href="pages/insaflu2.html" target="_blank" rel="noopener noreferrer"><img src="img/tools.png" width="20px" style="display: inline-block; margin-bottom: 5px;" alt="INSaFLU"></a>
+                <a href="pages/insaflu.html" target="_blank" rel="noopener noreferrer"><img src="img/tools.png" width="20px" style="display: inline-block; margin-bottom: 5px;" alt="INSaFLU"></a>
             </a>
             <p style="text-align: justify"> It is a bioinformatics free web-based suite that deals with primary data
                 (reads) towards the automatic generation of the output data that are actually the core first-line
@@ -441,7 +441,7 @@
 
 <div data-aos="fade-up" data-aos-anchor-placement="center-bottom" class = "post" style="display: block; width: 90%; float: left; margin-left: 75px; margin-bottom: 20px;">
     <h2 style="text-align: center; font-size: 30px">Events</h2>
-    <div style="margin: auto; margin-bottom: 20px; text-align: center;">
+    <div style="margin: auto auto 20px;text-align: center;">
         <div id = "left_eit" style="width: 50px; height: 5px; background-color: white; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, undefined)"></div>
         <div id = "center_eit" style="width: 50px; height: 5px; background-color: black; cursor: pointer; border-radius: 5px; border-style: solid; margin: auto; display: inline-block" onclick="change(this.id, undefined)"></div>
     </div>

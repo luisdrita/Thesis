@@ -38,21 +38,32 @@
 
     </div>
 
-    <p style="margin-top: 7%; text-align: center; font-size: 45px;"><a href="../index.html" style="color: black; text-decoration: none">Community Finding in Phylogenetic Networks</a></p>
+    <p style="margin-top: 7%; text-align: center; font-size: 45px;"><a href="../index.html" style="color: black; text-decoration: none">Community Finding with Applications on Phylogenetic Networks</a></p>
 
 </header>
 
 <h2 style="margin-top: 50px; text-align: center; font-size: 30px">Master Thesis</h2>
 
 <p style="width: 60%; margin-top: 50px; margin: auto; text-align: justify">
-    Microbial typing allows us to determine how similar multiple strains are and to infer a possible evolutionary path. We
-    may trace the source of an outbreak, infer about the pathogenicity/virulence of a recently discovered strain or, based
-    on serotype data or other phenotypic data, to determine the most suitable strains to be targeted for vaccination. <br>
-    With the advent of high-throughput sequencing methods, new ways for visualizing and analysing increasingly amounts of
-    data are needed. Although some software already exist, they do not scale well for big data or require advanced technical
-    knowledge to be useful in phylogenetics. PHYLOViZ, along with the tools under development, will provide a brand-new insight
-    into the field of microbiology.
+    With the advent of high-throughput sequencing methods, new ways of visualizing and analyzing increasingly amounts
+    of data are needed. Although some software already exist, they do not scale well or require advanced skills to be useful in phylogenetics. <br>
+
+    &nbsp &nbsp &nbsp The aim of this thesis was to implement three community finding algorithms – Louvain, Infomap and Layered Label Propagation (LLP);
+    to benchmark them using two synthetic networks – Girvan-Newman (GN) and Lancichinetti-Fortunato-Radicchi (LFR); to test them
+    in real networks, particularly, in one derived from a Staphylococcus aureus MLST dataset; to compare visualization
+    frameworks – Cytoscape.js and D3.js, and, finally, to make it all available online. <br>
+
+    &nbsp &nbsp &nbsp Louvain, Infomap and LLP were implemented in JavaScript. Unless otherwise stated, next conclusions are valid for GN
+    and LFR. In terms of speed, Louvain outperformed all others. Considering accuracy, in networks with well-defined
+    communities, Louvain was the most accurate. For higher mixing, LLP was the best. Contrarily to weakly mixed, it is
+    advantageous to increase the resolution parameter in highly mixed GN. In LFR, higher resolution decreases the accuracy
+    of detection, independently of the mixing parameter. The increase of the average node degree enhanced partitioning
+    accuracy and suggested detection by chance was minimized. It is computationally more intensive to generate GN with
+    higher mixing or average degree, using the algorithm developed in the thesis or the LFR implementation. In S. aureus
+    network, Louvain was the fastest and the most accurate in detecting the clusters of seven groups of strains directly
+    evolved from the common ancestor.
 </p>
+<p style="text-align: center;"><b>Community Finding | Phylogenetic Networks | Data Visualization | Web Application</b></p>
 
 <object data='../file/abstract.pdf' type='application/pdf' width='60%' style="height: 700px; display: block; margin: auto;margin-top: 50px; margin-bottom: 50px;">
     <p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="../file/abstract.pdf">Download PDF</a></p>
