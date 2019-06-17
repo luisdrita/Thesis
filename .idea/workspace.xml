@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/website/visualization/map.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/website/visualization/tree.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/QuickLook/Icon.tiff" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/QuickLook/Icon.tiff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/QuickLook/Thumbnail.tiff" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/QuickLook/Thumbnail.tiff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/data/FC1E5805-EB64-4B14-A597-1287A35B4E85" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/data/FC1E5805-EB64-4B14-A597-1287A35B4E85" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/metadata.info" beforeDir="false" afterPath="$PROJECT_DIR$/website/img/pixelmator/gear.pxd/metadata.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/abstract.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/abstract.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/aeicbas.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/aeicbas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/amr.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/amr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/imim.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/imim.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/pages/insaflu.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/insaflu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/insaflu2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/mtih.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/mtih.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/thesis.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/thesis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/visualization/bench_results.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/bench_results.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4875">
-              <caret line="325" column="83" selection-start-line="325" selection-start-column="80" selection-end-line="325" selection-end-column="83" />
+            <state relative-caret-position="364">
+              <caret line="137" column="55" selection-start-line="137" selection-start-column="55" selection-end-line="137" selection-end-column="55" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -194,11 +194,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/pages/insaflu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="779" column="58" selection-start-line="779" selection-start-column="58" selection-end-line="779" selection-end-column="58" />
+            <state relative-caret-position="455">
+              <caret line="153" column="32" lean-forward="true" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -225,10 +225,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/style/index.css">
+        <entry file="file://$PROJECT_DIR$/website/visualization/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+            <state relative-caret-position="495">
+              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/visualization/tree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="33" column="35" lean-forward="true" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -239,43 +248,43 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>gamma</find>
-      <find>steps_input</find>
-      <find>__MIN</find>
-      <find>algorithms</find>
-      <find>abstr</find>
-      <find>createtree</find>
-      <find>svg</find>
-      <find>margin</find>
-      <find>img</find>
-      <find>mouse</find>
-      <find>mouseover</find>
-      <find>meta</find>
-      <find>button1</find>
-      <find>phylTree</find>
-      <find>active</find>
-      <find>click</find>
-      <find>size</find>
-      <find>radial</find>
-      <find>markers_init</find>
-      <find>backFunc2</find>
-      <find>mapi</find>
-      <find>add</find>
-      <find>data</find>
-      <find>mapid</find>
-      <find>tree.loa</find>
-      <find>controller2</find>
-      <find>dropdown</find>
+      <find>a5</find>
+      <find>map</find>
+      <find>shape4</find>
+      <find>treeDiv4</find>
+      <find>treeTypeDiv</find>
+      <find>treeDivInside4</find>
+      <find>treeButton4</find>
+      <find>main</find>
+      <find>tooltip</find>
+      <find>style</find>
+      <find>line</find>
+      <find>lineHe</find>
+      <find>padding</find>
+      <find>left</find>
+      <find>fontSi</find>
+      <find>metadataSwitch</find>
+      <find>tree.load</find>
+      <find>tree.draw</find>
+      <find>toggle</find>
+      <find>overf</find>
+      <find>metadata</find>
+      <find>overflo</find>
+      <find>tree.d</find>
+      <find>gear_</find>
       <find>circular</find>
-      <find>inner</find>
-      <find>plot</find>
+      <find>gear</find>
+      <find>over</find>
+      <find>toLo</find>
+      <find>data</find>
+      <find>input</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -314,8 +323,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/website/visualization/d3_canvas.js" />
-        <option value="$PROJECT_DIR$/server_cmd_bench.js" />
         <option value="$PROJECT_DIR$/website/algorithms/nmi.js" />
         <option value="$PROJECT_DIR$/website/algorithms/louvain.js" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap.js" />
@@ -338,13 +345,11 @@
         <option value="$PROJECT_DIR$/insaflu/insaflu.html" />
         <option value="$PROJECT_DIR$/website/pages/abstract - cópia.html" />
         <option value="$PROJECT_DIR$/test.html" />
-        <option value="$PROJECT_DIR$/website/visualization/bench_results.js" />
         <option value="$PROJECT_DIR$/website/algorithms/llp/layeredLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap/infomap.js" />
         <option value="$PROJECT_DIR$/website/algorithms/hamming/hamming.js" />
         <option value="$PROJECT_DIR$/website/algorithms/weightedLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js" />
-        <option value="$PROJECT_DIR$/website/style/index.css" />
         <option value="$PROJECT_DIR$/website/pages/insaflu2.html" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" />
@@ -362,9 +367,13 @@
         <option value="$PROJECT_DIR$/website/pages/imim.html" />
         <option value="$PROJECT_DIR$/website/pages/mtih.html" />
         <option value="$PROJECT_DIR$/website/pages/thesis.html" />
+        <option value="$PROJECT_DIR$/website/style/index.css" />
+        <option value="$PROJECT_DIR$/website/visualization/bench_results.js" />
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/website/index.html" />
+        <option value="$PROJECT_DIR$/website/visualization/map.js" />
         <option value="$PROJECT_DIR$/website/pages/insaflu.html" />
+        <option value="$PROJECT_DIR$/website/visualization/tree.js" />
       </list>
     </option>
   </component>
@@ -746,14 +755,10 @@
       <workItem from="1560253734222" duration="771000" />
       <workItem from="1560258404407" duration="12146000" />
       <workItem from="1560333306026" duration="20271000" />
-      <workItem from="1560428440266" duration="12490000" />
-    </task>
-    <task id="LOCAL-00018" summary="GN Network">
-      <created>1550600771862</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1550600771862</updated>
+      <workItem from="1560428440266" duration="12749000" />
+      <workItem from="1560508179383" duration="17610000" />
+      <workItem from="1560598201920" duration="24277000" />
+      <workItem from="1560690676464" duration="22537000" />
     </task>
     <task id="LOCAL-00019" summary="Benchmark 1.0">
       <created>1550973276872</created>
@@ -1091,11 +1096,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560218863645</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="INSaFLU Tools Updated">
+      <created>1560474230164</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1560474230165</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1958208000" />
+    <option name="totallyTimeSpent" value="2022891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1109,7 +1121,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20537898" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21271394" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -1122,7 +1134,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32987553" />
       <window_info anchor="bottom" id="Docker" order="7" weight="0.32987553" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.20228216" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49511003" visible="true" weight="0.15663901" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49511003" visible="true" weight="0.16493776" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50488997" side_tool="true" weight="0.18257262" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.32987553" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
@@ -1180,7 +1192,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="Staphylococcus" />
     <MESSAGE value="Website Performance Strongly Enhanced" />
     <MESSAGE value="Phylogenetic Analysis Almost Concluded" />
     <MESSAGE value="Benchmark Updates" />
@@ -1205,13 +1216,10 @@
     <MESSAGE value="DOI" />
     <MESSAGE value="Updated Thesis and Ext. Abstract" />
     <MESSAGE value="Bug Corrected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Corrected" />
+    <MESSAGE value="INSaFLU Tools Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="INSaFLU Tools Updated" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman.js" />
-    <entry file="file://$PROJECT_DIR$/uploads/karate_club.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/hi.txr" />
     <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/package.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -1329,13 +1337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4245">
           <caret line="283" selection-start-line="283" selection-end-line="283" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/visualization/bench_results.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4590">
-          <caret line="306" column="12" selection-start-line="306" selection-start-column="12" selection-end-line="308" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1525,10 +1526,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/bench_results.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="163" column="42" lean-forward="true" selection-start-line="163" selection-start-column="42" selection-end-line="163" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/style/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="169" column="14" selection-start-line="169" selection-start-column="14" selection-end-line="169" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4875">
-          <caret line="325" column="83" selection-start-line="325" selection-start-column="80" selection-end-line="325" selection-end-column="83" />
+        <state relative-caret-position="364">
+          <caret line="137" column="55" selection-start-line="137" selection-start-column="55" selection-end-line="137" selection-end-column="55" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1683,24 +1705,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/style/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/insaflu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="779" column="58" selection-start-line="779" selection-start-column="58" selection-end-line="779" selection-end-column="58" />
+        <state relative-caret-position="455">
+          <caret line="153" column="32" lean-forward="true" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1722,6 +1730,20 @@
             <element signature="n#style#0;n#img#0;n#a#2;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#3;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="33" column="35" lean-forward="true" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
         </state>
       </provider>
     </entry>

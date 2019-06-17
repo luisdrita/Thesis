@@ -162,7 +162,8 @@ function results(sheet, svg_input, title, div, y_max, x_max, width_input) {
             .style("border", "solid")
             .style("border-width", "2px")
             .style("border-radius", "5px")
-            .style("padding", "5px");
+            .style("padding-left", "5px")
+            .style("padding-right", "5px");
 
         // Three function that change the tooltip when user hover / move / leave a cell
         let mouseover = function(d) {
