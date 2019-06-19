@@ -19,7 +19,7 @@ let tree = Phylocanvas.createTree('phylocanvas', {
     padding: 5,
    // textSize: "25",
     font: "helvetica",
-    root: "A_H3N2_reference_demo",
+   // root: "A_H3N2_reference_demo",
     zoomFactor: 2,
     labelPadding: 5,
     showLabels: true,
@@ -39,6 +39,8 @@ function phylTree(metaData, data_input) {
     tree.setNodeSize(document.getElementById("nodeSize").value);
     //tree.setTextSize(document.getElementById("textSize").value);
 
+    console.log(metaData);
+
     tree.on('beforeFirstDraw', function () {
 
             for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
@@ -47,12 +49,14 @@ function phylTree(metaData, data_input) {
                     let metadataSwitch = document.createElement("INPUT");
 
                     metadataSwitchLabel.id = "metadataSwitchLabel"+j;
-                    metadataSwitchLabel.innerHTML = Object.keys(metaData[Object.keys(metaData)[0]])[j] + "&emsp;&emsp;";
+                    metadataSwitchLabel.className = "metadataSwitchLabel";
+                    metadataSwitchLabel.innerHTML = Object.keys(metaData[Object.keys(metaData)[0]])[j]; // + "&emsp;&emsp;"
                     metadataSwitchLabel.style.display = "block";
                     metadataSwitchLabel.style.paddingLeft = "10px";
                     metadataSwitchLabel.style.paddingRight = "10px";
 
                     metadataSwitch.id = "metadataSwitch"+j;
+                    metadataSwitch.className = "metadataSwitch";
                     metadataSwitch.type = "checkbox";
                     metadataSwitch.style.zIndex = "2000";
                     metadataSwitch.style.cursor = "pointer";
@@ -61,10 +65,18 @@ function phylTree(metaData, data_input) {
                     document.getElementById("metadataSwitchLabel"+j).appendChild(metadataSwitch);
             }
 
-            radioDetect(metaData, Object.keys(Object.values(metaData)[0]).length, treeType);
+            radioDetect(metaData, Object.keys(Object.values(metaData)[0]).length);
     });
 
     tree.load(data_input);
+
+    selectAlll(metaData, Object.keys(Object.values(metaData)[0]).length);
+
+    document.getElementById("metadataSwitchDisplay").addEventListener("change", function () {
+
+        displayLabel(metaData, Object.keys(Object.values(metaData)[0]).length);
+
+    })
 }
 
 function radioDetect (metaData, max) {
@@ -82,8 +94,16 @@ function radioDetect (metaData, max) {
                     (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
 
                     (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
-                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j];
 
+                    if (document.getElementById("metadataSwitchDisplay").checked === true) {
+
+                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j] || "No Data";
+
+                    } else {
+
+                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = "";
+
+                    }
                 }
 
             } else {
@@ -230,8 +250,12 @@ let treeStyleDivInside = document.createElement("DIV");
 
 let nodeSizeLabel = document.createElement("P");
 let nodeSize = document.createElement("INPUT");
+
 let textSizeLabel = document.createElement("P");
 let textSize = document.createElement("INPUT");
+
+let selectNodeColorLabel = document.createElement("P");
+let selectNodeColor = document.createElement("SELECT");
 
 treeStyleDiv.id = "treeStyleDiv";
 treeStyleDiv.classList.add("dropdown");
@@ -260,10 +284,10 @@ treeStyleDivInside.style.zIndex = "20";
 treeStyleDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeStyleDivInside.style.lineHeight = "15px";
 treeStyleDivInside.style.paddingBottom = "15px";
+treeStyleDivInside.style.fontSize = "14px";
 
 nodeSizeLabel.id = "nodeSizeLabel";
 nodeSizeLabel.innerHTML = "Node Size";
-nodeSizeLabel.style.fontSize = "14px";
 nodeSizeLabel.style.zIndex = "2";
 nodeSizeLabel.style.textAlign = "center";
 
@@ -272,13 +296,12 @@ nodeSize.type = "range";
 nodeSize.value = "10";
 nodeSize.style.zIndex = "2";
 nodeSize.style.cursor = "pointer";
-nodeSize.style.marginLeft = "10px";
-nodeSize.style.marginRight = "10px";
 nodeSize.style.width = "100px";
+nodeSize.style.display = "block";
+nodeSize.style.margin = "auto";
 
 textSizeLabel.id = "textSizeLabel";
 textSizeLabel.innerHTML = "Label Size";
-textSizeLabel.style.fontSize = "14px";
 textSizeLabel.style.zIndex = "2";
 textSizeLabel.style.textAlign = "center";
 
@@ -287,9 +310,21 @@ textSize.type = "range";
 textSize.value = "12";
 textSize.style.zIndex = "2";
 textSize.style.cursor = "pointer";
-textSize.style.marginLeft = "10px";
-textSize.style.marginRight = "10px";
 textSize.style.width = "100px";
+textSize.style.display = "block";
+textSize.style.margin = "auto";
+
+selectNodeColorLabel.id = "selectNodeColorLabel";
+selectNodeColorLabel.innerHTML = "Color";
+selectNodeColorLabel.style.zIndex = "1000";
+selectNodeColorLabel.style.textAlign = "center";
+selectNodeColorLabel.style.color = "black";
+selectNodeColorLabel.style.marginLeft = "10px";
+selectNodeColorLabel.style.marginRight = "10px";
+
+selectNodeColor.id = "selectLatitude";
+selectNodeColor.style.zIndex = "1000";
+selectNodeColor.style.display = "block";
 
 document.getElementById("treeBottomBar").appendChild(treeStyleDiv);
 
@@ -298,14 +333,24 @@ document.getElementById("treeStyleDiv").appendChild(treeStyleDivInside);
 
 document.getElementById("treeStyleDivInside").appendChild(nodeSizeLabel);
 document.getElementById("treeStyleDivInside").appendChild(nodeSize);
+
 document.getElementById("treeStyleDivInside").appendChild(textSizeLabel);
 document.getElementById("treeStyleDivInside").appendChild(textSize);
+
+document.getElementById("treeStyleDivInside").appendChild(selectNodeColorLabel);
+document.getElementById("treeStyleDivInside").appendChild(selectNodeColor);
 
 // -------------------------------------- Metadata --------------------------------------
 
 let treeMetadataDiv = document.createElement("DIV");
 let treeMetadataButton = document.createElement("BUTTON");
 let treeMetadataDivInside = document.createElement("DIV");
+
+let metadataSwitchLabel = document.createElement("LABEL");
+let metadataSwitch = document.createElement("INPUT");
+
+let metadataSwitchLabelDisplay = document.createElement("LABEL");
+let metadataSwitchDisplay = document.createElement("INPUT");
 
 treeMetadataDiv.id = "treeMetadataDiv";
 treeMetadataDiv.classList.add("dropdown");
@@ -337,10 +382,42 @@ treeMetadataDivInside.style.height = "200px";
 treeMetadataDivInside.style.overflow = "scroll";
 treeMetadataDivInside.style.paddingBottom = "20px";
 
+metadataSwitchLabel.id = "metadataSwitchLabel";
+metadataSwitchLabel.innerHTML = "Select All" + "&emsp;&emsp;";
+metadataSwitchLabel.style.display = "block";
+metadataSwitchLabel.style.paddingLeft = "10px";
+metadataSwitchLabel.style.paddingRight = "10px";
+metadataSwitchLabel.style.backgroundColor = "black";
+metadataSwitchLabel.style.color = "white";
+
+metadataSwitch.id = "metadataSwitch";
+metadataSwitch.type = "checkbox";
+metadataSwitch.style.zIndex = "2000";
+metadataSwitch.style.cursor = "pointer";
+
+metadataSwitchLabelDisplay.id = "metadataSwitchLabelDisplay";
+metadataSwitchLabelDisplay.innerHTML = "Metadata Labels" + "&emsp;&emsp;";
+metadataSwitchLabelDisplay.style.display = "block";
+metadataSwitchLabelDisplay.style.paddingLeft = "10px";
+metadataSwitchLabelDisplay.style.paddingRight = "10px";
+metadataSwitchLabelDisplay.style.backgroundColor = "black";
+metadataSwitchLabelDisplay.style.color = "white";
+
+metadataSwitchDisplay.id = "metadataSwitchDisplay";
+metadataSwitchDisplay.type = "checkbox";
+metadataSwitchDisplay.style.zIndex = "2000";
+metadataSwitchDisplay.style.cursor = "pointer";
+
 document.getElementById("treeBottomBar").appendChild(treeMetadataDiv);
 
 document.getElementById("treeMetadataDiv").appendChild(treeMetadataButton);
 document.getElementById("treeMetadataDiv").appendChild(treeMetadataDivInside);
+
+document.getElementById("treeMetadataDivInside").appendChild(metadataSwitchLabelDisplay);
+document.getElementById("metadataSwitchLabelDisplay").appendChild(metadataSwitchDisplay);
+
+document.getElementById("treeMetadataDivInside").appendChild(metadataSwitchLabel);
+document.getElementById("metadataSwitchLabel").appendChild(metadataSwitch);
 
 // -------------------------------------- Button Dynamics
 
@@ -477,3 +554,94 @@ document.getElementById("treeMetadataButton").addEventListener("mouseout", funct
     treeMetadataDivInside.style.display = "none";
 
 });
+
+function selectAlll (metaData, max) {
+
+    document.getElementById("metadataSwitch").addEventListener("change", function () {
+
+        if (document.getElementById("metadataSwitch").checked === true) {
+
+            for (let i = 0; i < document.getElementsByClassName("metadataSwitch").length; i++) {
+
+                document.getElementsByClassName("metadataSwitch")[i].checked = true;
+
+            }
+
+            for (let j = 0; j < max; j++) {
+
+                        for (let i = 0; i < tree.leaves.length; i++) {
+
+                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
+
+                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
+                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j] || "No Data";
+
+                        }
+
+                    tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+            }
+
+        } else {
+
+            for (let i = 0; i < document.getElementsByClassName("metadataSwitch").length; i++) {
+
+                document.getElementsByClassName("metadataSwitch")[i].checked = false;
+
+            }
+
+                for (let i = 0; i < tree.leaves.length; i++) {
+
+                    tree.leaves[i].data = {
+                    };
+
+                }
+
+                tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+
+        }
+    });
+}
+
+function displayLabel (metaData, max) {
+
+    let metaLabels = [];
+
+    for (let i = 0; i < document.getElementsByClassName("metadataSwitch").length; i++) {
+
+        if (document.getElementsByClassName("metadataSwitch")[i].checked === true) {
+
+            metaLabels.push(document.getElementsByClassName("metadataSwitchLabel")[i].innerText);
+
+        }
+        console.log(metaLabels);
+    }
+
+    for (let j = 0; j < max; j++) {
+
+                for (let i = 0; i < tree.leaves.length; i++) {
+
+                    if (metaLabels.find(function(element) {
+                        return (element === Object.keys(metaData[Object.keys(metaData)[i]])[j]);
+                    }) !== undefined) {
+
+                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
+
+                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
+
+                        if (document.getElementById("metadataSwitchDisplay").checked === true) {
+
+                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j] || "No Data";
+
+                        } else {
+
+                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = "";
+
+                        }
+
+                    }
+
+                }
+
+            tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+    }
+}

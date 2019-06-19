@@ -1,8 +1,8 @@
 function geoMap(metaData) {
 
     let mapType;
-    let lat = "";
-    let long = "";
+    let lat = "latitude";
+    let long = "longitude";
 
     //latitude
     //longitude
@@ -10,29 +10,29 @@ function geoMap(metaData) {
     for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
 
         let optionLatitude = document.createElement("OPTION");
-        let optionLongitude = document.createElement("OPTION");
+//        let optionLongitude = document.createElement("OPTION");
 
         optionLatitude.id = "optionLatitude"+j;
         optionLatitude.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
         optionLatitude.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
-
+/*
         optionLongitude.id = "optionLongitude"+j;
         optionLongitude.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
         optionLongitude.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
-
+*/
         document.getElementById("selectLatitude").appendChild(optionLatitude);
-        document.getElementById("selectLongitude").appendChild(optionLongitude);
+        //document.getElementById("selectLongitude").appendChild(optionLongitude);
 
         if (Object.keys(metaData[Object.keys(metaData)[0]])[j].search("lat") !== -1) {
             lat = "latitude";
         }
-
+/*
         if (Object.keys(metaData[Object.keys(metaData)[0]])[j].search("long") !== -1) {
             long = "longitude";
         }
-
+*/
     }
-
+/*
     document.getElementById("selectLatitude").addEventListener("change", function () {
 
         for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
@@ -63,7 +63,7 @@ function geoMap(metaData) {
                     return label2number("Region", markers, d["Region"])*(document.getElementById("bubbleSize").value)
                 })
                 .style("fill", function (d) {
-                    return "#" + intToRGB(hashCode(d.vaccine_status))
+                    return "#" + intToRGB(hashCode(d["vaccine_status"]))
                 })
                 //   .attr("stroke", "red")
                 .attr("stroke-width", 3)
@@ -103,7 +103,7 @@ function geoMap(metaData) {
                     return label2number("Region", markers, d["Region"])*(document.getElementById("bubbleSize").value)
                 })
                 .style("fill", function (d) {
-                    return "#" + intToRGB(hashCode(d.vaccine_status))
+                    return "#" + intToRGB(hashCode(d["vaccine_status"]))
                 })
                 //   .attr("stroke", "red")
                 .attr("stroke-width", 3)
@@ -112,7 +112,7 @@ function geoMap(metaData) {
         }
 
     });
-
+*/
     // mapid is the id of the div where the map will appear
     let map = L
         .map('mapid')
@@ -199,7 +199,7 @@ function geoMap(metaData) {
 
     let markers = Object.values(metaData);
 
-    if (lat !== "" && long !== "") {
+  //  if (lat !== "" && long !== "") {
 
     // Select the svg area and add circles:
     d3.select("#mapid")
@@ -209,30 +209,71 @@ function geoMap(metaData) {
         .enter()
         .append("circle")
         .attr("cx", function (d) {
-            return map.latLngToLayerPoint([d[lat], d[long]]).x
+
+            if (isNaN(d[lat]) === false) {
+
+                return map.latLngToLayerPoint([d[lat], d[long]]).x
+
+            } else {
+
+                return map.latLngToLayerPoint([0, 0]).x
+
+            }
         })
         .attr("cy", function (d) {
+
+            if (isNaN(d[long]) === false) {
+
             return map.latLngToLayerPoint([d[lat], d[long]]).y
+
+            } else {
+
+                return map.latLngToLayerPoint([0, 0]).y
+            }
+
         })
         .attr("r", function (d) {
-            return label2number("Region", markers, d["Region"])*(document.getElementById("bubbleSize").value)
+            if (isNaN(d[long]) === false && isNaN(d[lat]) === false) {
+
+                return label2number("latitude", markers, d["latitude"])*((document.getElementById("bubbleSize").value)/10);
+
+            } else {
+
+                return 0;
+
+            }
         })
-        .style("fill", function (d) {
-            return "#" + intToRGB(hashCode(d.vaccine_status))
-        })
+     /*   .style("fill", function (d) {
+            return "#" + intToRGB(hashCode(d["vaccine_status"]))
+        })*/
         //   .attr("stroke", "red")
         .attr("stroke-width", 3)
         .attr("fill-opacity", .3);
-    }
+   // }
 
     // Function that update circle position if something change
     function update() {
         d3.selectAll("circle")
             .attr("cx", function (d) {
-                return map.latLngToLayerPoint([d[lat], d[long]]).x
+                if (isNaN(d[lat]) === false) {
+
+                    return map.latLngToLayerPoint([d[lat], d[long]]).x
+
+                } else {
+
+                    return map.latLngToLayerPoint([0, 0]).x
+
+                }
             })
             .attr("cy", function (d) {
-                return map.latLngToLayerPoint([d[lat], d[long]]).y
+                if (isNaN(d[long]) === false) {
+
+                    return map.latLngToLayerPoint([d[lat], d[long]]).y
+
+                } else {
+
+                    return map.latLngToLayerPoint([0, 0]).y
+                }
             })
     }
 
@@ -454,10 +495,10 @@ let mapMetadataButton = document.createElement("BUTTON");
 let mapMetadataDivInside = document.createElement("DIV");
 
 let latitude = document.createElement("P");
-let longitude = document.createElement("P");
+//let longitude = document.createElement("P");
 
 let selectLatitude = document.createElement("SELECT");
-let selectLongitude = document.createElement("SELECT");
+//let selectLongitude = document.createElement("SELECT");
 
 mapMetadataDiv.id = "mapMetadataDiv";
 mapMetadataDiv.classList.add("dropdown");
@@ -489,12 +530,12 @@ mapMetadataDivInside.style.paddingLeft = "10px";
 mapMetadataDivInside.style.paddingRight = "10px";
 
 latitude.id = "latitude";
-latitude.innerHTML = "Latitude";
+latitude.innerHTML = "Color According To";
 latitude.style.fontSize = "14px";
 latitude.style.zIndex = "1000";
 latitude.style.textAlign = "center";
 latitude.style.color = "white";
-
+/*
 longitude.id = "longitude";
 longitude.innerHTML = "Longitude";
 longitude.style.fontSize = "14px";
@@ -502,12 +543,12 @@ longitude.style.zIndex = "1000";
 longitude.style.textAlign = "center";
 longitude.style.color = "white";
 
-selectLatitude.id = "selectLatitude";
-selectLatitude.style.zIndex = "1000";
-selectLatitude.style.display = "block";
-
 selectLongitude.id = "selectLongitude";
 selectLongitude.style.zIndex = "1000";
+selectLatitude.style.display = "block";
+*/
+selectLatitude.id = "selectLatitude";
+selectLatitude.style.zIndex = "1000";
 selectLatitude.style.display = "block";
 
 document.getElementById("mapBottomBar").appendChild(mapMetadataDiv);
@@ -517,9 +558,10 @@ document.getElementById("mapMetadataDiv").appendChild(mapMetadataDivInside);
 
 document.getElementById("mapMetadataDivInside").appendChild(latitude);
 document.getElementById("mapMetadataDivInside").appendChild(selectLatitude);
+/*
 document.getElementById("mapMetadataDivInside").appendChild(longitude);
 document.getElementById("mapMetadataDivInside").appendChild(selectLongitude);
-
+*/
 // -------------------------------------- Button Dynamics --------------------------------------
 
 document.getElementById("mapDivInside").addEventListener("mouseover", function () {

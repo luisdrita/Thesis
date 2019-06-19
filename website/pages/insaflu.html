@@ -165,7 +165,8 @@
         for (let i = 0; i < str.length; i++) {
             hash = str.charCodeAt(i) + ((hash << 5) - hash);
         }
-        return hash;
+        console.log(hash);
+        return hash*130;
     }
 
     function intToRGB(i){

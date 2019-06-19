@@ -597,7 +597,7 @@ let obj_lfr_com = {};
 
 app.get('/insaflu_tree', function (req, res) {
 
-    fs.readFile('./uploads/insaflu/Tree_ML_All.nwk', 'utf8', function (err, data) {
+    fs.readFile('./uploads/insaflu/figtree_TEST.nwk', 'utf8', function (err, data) {
 
         if (err) throw err;
 
@@ -612,17 +612,17 @@ app.get('/insaflu_tree', function (req, res) {
 
 app.get('/insaflu_sample', function (req, res) {
 
-    fs.readFile('./uploads/insaflu/Sample_list.csv', 'utf8', function (err, data) {
+    fs.readFile('./uploads/insaflu/Id_test.csv', 'utf8', function (err, data) {
 
         if (err) throw err;
 
         let obj = {};
         let split = data.toString().split("\n");
-        let metaTitles = split[0].split(",");
+        let metaTitles = split[0].split(";");
 
         for (let i = 1; i < split.length; i++) {
 
-            let splitLine = split[i].split(",");
+            let splitLine = split[i].split(";");
 
             for (let j = 1; j < splitLine.length; j++) {
 

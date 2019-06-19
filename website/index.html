@@ -77,9 +77,9 @@
         <div class="dropdown" id = "dropdown">
             <button id = dropbtn_algorithm class="dropbtn" style="width: 100px; text-align: center">Algorithm</button>
             <div id = "dropdown-content" class="dropdown-content" style="line-height: 18px;">
-                <a id = "Louvain" onclick="rename(this.id, '1', document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer;">Louvain <img src="img/star.png" width = "15px" style="position: absolute; right: 19px; top: 13px;" alt = "Star"></a>
-                <a id = "Infomap" onclick="rename(this.id, undefined, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Infomap</a>
-                <a id = "LLP" onclick="rename(this.id, document.getElementById('gamma2').value/document.getElementById('gamma2').max, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Layered Label Propagation</a>
+                <a id = "Louvain" onclick="rename(this.id, document.getElementById('gamma2').value, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer;">Louvain <img src="img/star.png" width = "15px" style="position: absolute; right: 19px; top: 13px;" alt = "Star"></a>
+                <a id = "Infomap" onclick="rename(this.id, document.getElementById('gamma2').value, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Infomap</a>
+                <a id = "LLP" onclick="rename(this.id, document.getElementById('gamma2').value, document.getElementById('dropbtn_network').innerText, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Layered Label Propagation</a>
             </div>
         </div>
 
@@ -99,9 +99,9 @@
 
         <div class="dropdown">
             <button id = dropbtn_network class="dropbtn" style="width: 100px; text-align: center">Network</button> <!-- onclick="bench('5');" -->
-            <div id = "dropdown-content_network" class="dropdown-content" style="line-height: 18px;">
+            <div id = "dropdown-content_network" class="dropdown-content" style="line-height: 18px; height: 130px; overflow: scroll">
                 <a id = "GN" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value)" style="cursor: pointer">Girvan-Newman</a>
-                <a id = "LFR" onclick="//rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value);" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
+                <a id = "LFR" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, document.getElementById('mix_param').value, document.getElementById('avg_deg').value);" style="cursor: pointer">Lancichinetti-Fortunato-Radicchi</a>
                 <a id = "Amazon" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Amazon', 'Amazon')" style="cursor: pointer">Amazon</a>
                 <a id = "Karate" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Karate', 'Karate')" style="cursor: pointer">Zachary's Karate Club</a>
                 <a id = "Staph" onclick="rename(document.getElementById('dropbtn_interface').innerText, undefined, this.id, 'Staph', 'Staph')" style="cursor: pointer"><i>Staphylococcus aureus</i> MLST SLV</a>
@@ -421,10 +421,10 @@
 
             <a href="https://insaflu.insa.pt/" target="_blank" rel="noopener noreferrer" style="text-decoration-line: none">
                 <h2 style="color: grey; display: inline-block;">INSaFLU</h2>
-                <a href="pages/insaflu.html" target="_blank" rel="noopener noreferrer"><img src="img/tools.png" width="20px" style="display: inline-block; margin-bottom: 5px;" alt="INSaFLU"></a>
+                <a href="pages/insaflu.html" target="_blank" rel="noopener noreferrer"><img src="img/tools.png" width="20px" style="display: inline-block;" alt="INSaFLU"></a>
             </a>
-            <p style="text-align: justify"> It is a bioinformatics free web-based suite that deals with primary data
-                (reads) towards the automatic generation of the output data that are actually the core first-line
+            <p style="text-align: justify; margin-top: -2px"> It is a web-based application that deals with primary data
+                towards the automatic generation of the output data that are the core first-line
                 “genetic requests” for effective and timely influenza laboratory surveillance. Data
                 integration is continuously scalable, fitting the need for a real-time epidemiological surveillance
                 during the flu epidemics. </p>
@@ -497,7 +497,7 @@
         <div style="float: right; width: 300px; line-height: 30px; margin-right: 5%">
 
             <a href="./pages/aeicbas.html" style="text-decoration-line: none">
-                <h2 style="color: grey;">VII AEICBAS Biomedical Congress (Porto, Portugal)</h2>
+                <h2 style="color: grey;">VII AEICBAS Biomedical Congress (Oporto, Portugal)</h2>
             </a>
             <p style="text-align: justify"> Thesis was classified in the top 20, in the scientific competition, of the Biomedical Congress.</p>
         </div>
@@ -736,7 +736,7 @@
                 document.getElementById("dropbtn_algorithm").innerText = "Infomap";
                 document.getElementById("gamma").style.display = "inline-block";
                 document.getElementById("range_label").innerText = "Max Variation";
-                fetch("algorithm/" + id + "/gamma/" + (gamma+1)/1000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
+                fetch("algorithm/" + id + "/gamma/" + (gamma+1)/10000 + "/cytoscape/" + (document.getElementById("dropbtn_interface").innerText==="Cytoscape") + "/network/" + network + "/mix_param/" + mix_value + "/avg_deg/" + avg_deg);
 
                 break;
 
