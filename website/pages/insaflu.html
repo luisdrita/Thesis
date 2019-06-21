@@ -165,7 +165,6 @@
         for (let i = 0; i < str.length; i++) {
             hash = str.charCodeAt(i) + ((hash << 5) - hash);
         }
-        console.log(hash);
         return hash*130;
     }
 
@@ -187,6 +186,18 @@
         }
         return result[id]
     }
+
+    function numberNonEmpty(label, metadata) {
+
+        let result = 0;
+
+        for (let i = 0; i < Object.keys(metadata).length; i++) {
+
+            if (isNaN(metadata[i][label]) !== true && metadata[i][label] !== "") result = (result + 1);
+        }
+        return result
+    }
+
 </script>
 
 <!-- Phylogenetic Tree -->

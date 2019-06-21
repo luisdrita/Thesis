@@ -1,7 +1,8 @@
 document.getElementById("phylocanvas").style.overflow = "hidden";
 
-let treeType = "circular";
+let treeType = "circular"; // Initial shape of the phylogenetic tree.
 
+// Setting initial tree properties.
 let tree = Phylocanvas.createTree('phylocanvas', {
     /*
             metadata: {
@@ -33,27 +34,74 @@ let tree = Phylocanvas.createTree('phylocanvas', {
 
 function phylTree(metaData, data_input) {
 
-    document.getElementById("treeButton").src = "../img/" + treeType + ".png";
+    // Generating metadata options for coloring nodes in the tree.
+    for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
+
+        if (j === 0) {
+
+            let optionMetadataa = document.createElement("OPTION");
+
+            optionMetadataa.id = "optionMetadataa";
+            optionMetadataa.innerHTML= "None";
+
+            document.getElementById("selectNodeColor").appendChild(optionMetadataa);
+
+        }
+
+        let optionMetadata = document.createElement("OPTION");
+
+        optionMetadata.id = "optionMetadata"+j;
+        optionMetadata.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
+        optionMetadata.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
+
+        document.getElementById("selectNodeColor").appendChild(optionMetadata);
+    }
+
+    // Listening to changes in the select element of node colors which will trigger tree update.
+    document.getElementById("selectNodeColor").addEventListener("change", function () {
+
+        for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
+
+            if (document.getElementById("optionMetadata"+j).selected) {
+
+                for (let i = 0; i < tree.leaves.length; i++) {
+
+                    tree.leaves[i].setDisplay({
+                        //colour: 'red',
+                        //shape: 'circle', // or square, triangle, star
+                        //size: 3, // ratio of the base node size
+                        leafStyle: {
+                            //strokeStyle: '#0000ff',
+                            fillStyle: "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j])),
+                            //lineWidth: 2,
+                        }
+                    });
+                }
+            }
+        }
+    });
+
+    document.getElementById("treeButton").src = "../img/" + treeType + ".png"; // Initializing the right tree button accordingly to the shape of the tree.
 
     tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-    tree.setNodeSize(document.getElementById("nodeSize").value);
+    tree.setNodeSize(document.getElementById("nodeSize").value); // Setting the node size accordingly to the value of the respective range element.
     //tree.setTextSize(document.getElementById("textSize").value);
-
-    console.log(metaData);
 
     tree.on('beforeFirstDraw', function () {
 
+        // Generating metadata options for inserting bars in front of tree leafs.
             for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
 
-                    let metadataSwitchLabel = document.createElement("LABEL");
-                    let metadataSwitch = document.createElement("INPUT");
+                    let metadataSwitchLabel = document.createElement("LABEL"); // Metadata label.
+                    let metadataSwitch = document.createElement("INPUT"); // Checkbox input.
 
                     metadataSwitchLabel.id = "metadataSwitchLabel"+j;
                     metadataSwitchLabel.className = "metadataSwitchLabel";
-                    metadataSwitchLabel.innerHTML = Object.keys(metaData[Object.keys(metaData)[0]])[j]; // + "&emsp;&emsp;"
+                    metadataSwitchLabel.innerHTML = Object.keys(metaData[Object.keys(metaData)[0]])[j];
                     metadataSwitchLabel.style.display = "block";
                     metadataSwitchLabel.style.paddingLeft = "10px";
                     metadataSwitchLabel.style.paddingRight = "10px";
+                    metadataSwitchLabel.style.opacity = "1";
 
                     metadataSwitch.id = "metadataSwitch"+j;
                     metadataSwitch.className = "metadataSwitch";
@@ -64,19 +112,14 @@ function phylTree(metaData, data_input) {
                     document.getElementById("treeMetadataDivInside").appendChild(metadataSwitchLabel);
                     document.getElementById("metadataSwitchLabel"+j).appendChild(metadataSwitch);
             }
-
+console.log(Object.keys(Object.values(metaData)[0]).length);
             radioDetect(metaData, Object.keys(Object.values(metaData)[0]).length);
     });
 
     tree.load(data_input);
 
     selectAlll(metaData, Object.keys(Object.values(metaData)[0]).length);
-
-    document.getElementById("metadataSwitchDisplay").addEventListener("change", function () {
-
-        displayLabel(metaData, Object.keys(Object.values(metaData)[0]).length);
-
-    })
+    displayLabel(metaData, Object.keys(Object.values(metaData)[0]).length);
 }
 
 function radioDetect (metaData, max) {
@@ -87,21 +130,19 @@ function radioDetect (metaData, max) {
 
             if (document.getElementById("metadataSwitch"+j).checked === true) {
 
-                console.log(metaData);
-
                 for (let i = 0; i < tree.leaves.length; i++) {
 
-                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
+                    (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] = (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] || {};
 
-                    (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
+                    (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j]));
 
                     if (document.getElementById("metadataSwitchDisplay").checked === true) {
 
-                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j] || "No Data";
+                        (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["label"] = Object.values(metaData[tree.leaves[i].label])[j] || "No Data";
 
                     } else {
 
-                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = "";
+                        (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["label"] = "";
 
                     }
                 }
@@ -110,7 +151,7 @@ function radioDetect (metaData, max) {
 
                 for (let i = 0; i < tree.leaves.length; i++) {
 
-                    delete (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]];
+                    delete (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]];
 
                 }
             }
@@ -189,6 +230,10 @@ treeDivInside.style.position = "absolute";
 treeDivInside.style.bottom = "30px";
 treeDivInside.style.zIndex = "700";
 treeDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
+treeDivInside.style.backgroundColor = "black";
+treeDivInside.style.borderTopLeftRadius = "10px";
+treeDivInside.style.borderTopRightRadius = "10px";
+treeDivInside.style.borderBottomRightRadius = "10px";
 
 treeType1.id = "radial";
 treeType1.style.cursor = "pointer";
@@ -282,14 +327,21 @@ treeStyleDivInside.style.position = "absolute";
 treeStyleDivInside.style.bottom = "25px";
 treeStyleDivInside.style.zIndex = "20";
 treeStyleDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
-treeStyleDivInside.style.lineHeight = "15px";
+treeStyleDivInside.style.lineHeight = "5px";
 treeStyleDivInside.style.paddingBottom = "15px";
-treeStyleDivInside.style.fontSize = "14px";
+treeStyleDivInside.style.paddingLeft = "10px";
+treeStyleDivInside.style.paddingRight = "10px";
+treeStyleDivInside.style.fontSize = "12px";
+treeStyleDivInside.style.backgroundColor = "black";
+treeStyleDivInside.style.borderTopLeftRadius = "10px";
+treeStyleDivInside.style.borderTopRightRadius = "10px";
+treeStyleDivInside.style.borderBottomRightRadius = "10px";
 
 nodeSizeLabel.id = "nodeSizeLabel";
 nodeSizeLabel.innerHTML = "Node Size";
 nodeSizeLabel.style.zIndex = "2";
 nodeSizeLabel.style.textAlign = "center";
+nodeSizeLabel.style.color = "white";
 
 nodeSize.id = "nodeSize";
 nodeSize.type = "range";
@@ -304,6 +356,7 @@ textSizeLabel.id = "textSizeLabel";
 textSizeLabel.innerHTML = "Label Size";
 textSizeLabel.style.zIndex = "2";
 textSizeLabel.style.textAlign = "center";
+textSizeLabel.style.color = "white";
 
 textSize.id = "textSize";
 textSize.type = "range";
@@ -318,13 +371,12 @@ selectNodeColorLabel.id = "selectNodeColorLabel";
 selectNodeColorLabel.innerHTML = "Color";
 selectNodeColorLabel.style.zIndex = "1000";
 selectNodeColorLabel.style.textAlign = "center";
-selectNodeColorLabel.style.color = "black";
-selectNodeColorLabel.style.marginLeft = "10px";
-selectNodeColorLabel.style.marginRight = "10px";
+selectNodeColorLabel.style.color = "white";
 
-selectNodeColor.id = "selectLatitude";
+selectNodeColor.id = "selectNodeColor";
 selectNodeColor.style.zIndex = "1000";
 selectNodeColor.style.display = "block";
+selectNodeColor.style.width = "100px";
 
 document.getElementById("treeBottomBar").appendChild(treeStyleDiv);
 
@@ -377,18 +429,23 @@ treeMetadataDivInside.style.position = "absolute";
 treeMetadataDivInside.style.bottom = "25px";
 treeMetadataDivInside.style.zIndex = "20";
 treeMetadataDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
-treeMetadataDivInside.style.fontSize = "14px";
+treeMetadataDivInside.style.fontSize = "12px";
 treeMetadataDivInside.style.height = "200px";
 treeMetadataDivInside.style.overflow = "scroll";
 treeMetadataDivInside.style.paddingBottom = "20px";
+treeMetadataDivInside.style.borderTopLeftRadius = "10px";
+treeMetadataDivInside.style.borderTopRightRadius = "10px";
+treeMetadataDivInside.style.borderBottomRightRadius = "10px";
+treeMetadataDivInside.style.backgroundColor = "black";
+treeMetadataDivInside.style.color = "white";
 
 metadataSwitchLabel.id = "metadataSwitchLabel";
 metadataSwitchLabel.innerHTML = "Select All" + "&emsp;&emsp;";
 metadataSwitchLabel.style.display = "block";
 metadataSwitchLabel.style.paddingLeft = "10px";
 metadataSwitchLabel.style.paddingRight = "10px";
-metadataSwitchLabel.style.backgroundColor = "black";
-metadataSwitchLabel.style.color = "white";
+metadataSwitchLabel.style.backgroundColor = "white";
+metadataSwitchLabel.style.color = "black";
 
 metadataSwitch.id = "metadataSwitch";
 metadataSwitch.type = "checkbox";
@@ -400,8 +457,8 @@ metadataSwitchLabelDisplay.innerHTML = "Metadata Labels" + "&emsp;&emsp;";
 metadataSwitchLabelDisplay.style.display = "block";
 metadataSwitchLabelDisplay.style.paddingLeft = "10px";
 metadataSwitchLabelDisplay.style.paddingRight = "10px";
-metadataSwitchLabelDisplay.style.backgroundColor = "black";
-metadataSwitchLabelDisplay.style.color = "white";
+metadataSwitchLabelDisplay.style.backgroundColor = "white";
+metadataSwitchLabelDisplay.style.color = "black";
 
 metadataSwitchDisplay.id = "metadataSwitchDisplay";
 metadataSwitchDisplay.type = "checkbox";
@@ -424,8 +481,6 @@ document.getElementById("metadataSwitchLabel").appendChild(metadataSwitch);
 function toggle() {
 
     let x = document.getElementsByClassName("toggle");
-
-    console.log(x);
 
     for (let i = 0; i < x.length; i++) {
         if (x[i].style.display === "none") {
@@ -571,11 +626,19 @@ function selectAlll (metaData, max) {
 
                         for (let i = 0; i < tree.leaves.length; i++) {
 
-                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
+                            (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] = (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] || {};
 
-                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
-                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j] || "No Data";
+                            (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j]));
 
+                            if (document.getElementById("metadataSwitchDisplay").checked === true) {
+
+                                (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["label"] = Object.values(metaData[tree.leaves[i].label])[j] || "No Data";
+
+                            } else {
+
+                                (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["label"] = "";
+
+                            }
                         }
 
                     tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
@@ -604,6 +667,8 @@ function selectAlll (metaData, max) {
 
 function displayLabel (metaData, max) {
 
+    document.getElementById("metadataSwitchDisplay").addEventListener("change", function () {
+
     let metaLabels = [];
 
     for (let i = 0; i < document.getElementsByClassName("metadataSwitch").length; i++) {
@@ -613,28 +678,29 @@ function displayLabel (metaData, max) {
             metaLabels.push(document.getElementsByClassName("metadataSwitchLabel")[i].innerText);
 
         }
-        console.log(metaLabels);
     }
+
+    console.log(metaLabels);
 
     for (let j = 0; j < max; j++) {
 
                 for (let i = 0; i < tree.leaves.length; i++) {
 
                     if (metaLabels.find(function(element) {
-                        return (element === Object.keys(metaData[Object.keys(metaData)[i]])[j]);
+                        return (element === Object.keys(metaData[tree.leaves[i].label])[j]);
                     }) !== undefined) {
 
-                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] = (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]] || {};
+                        (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] = (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] || {};
 
-                        (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[Object.keys(metaData)[i]])[j]));
+                        (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j]));
 
                         if (document.getElementById("metadataSwitchDisplay").checked === true) {
 
-                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = Object.values(metaData[Object.keys(metaData)[i]])[j] || "No Data";
+                            (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["label"] = Object.values(metaData[tree.leaves[i].label])[j] || "No Data";
 
                         } else {
 
-                            (tree.leaves[i].data)[Object.keys(metaData[Object.keys(metaData)[i]])[j]]["label"] = "";
+                            (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["label"] = "";
 
                         }
 
@@ -644,4 +710,5 @@ function displayLabel (metaData, max) {
 
             tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
     }
+    })
 }

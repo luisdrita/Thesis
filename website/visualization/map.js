@@ -4,33 +4,15 @@ function geoMap(metaData) {
     let lat = "latitude";
     let long = "longitude";
 
-    //latitude
-    //longitude
-
     for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
 
-        let optionLatitude = document.createElement("OPTION");
-//        let optionLongitude = document.createElement("OPTION");
+        let optionMetadata = document.createElement("OPTION");
 
-        optionLatitude.id = "optionLatitude"+j;
-        optionLatitude.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
-        optionLatitude.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
-/*
-        optionLongitude.id = "optionLongitude"+j;
-        optionLongitude.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
-        optionLongitude.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
-*/
-        document.getElementById("selectLatitude").appendChild(optionLatitude);
-        //document.getElementById("selectLongitude").appendChild(optionLongitude);
+        optionMetadata.id = "optionMetadata"+j;
+        optionMetadata.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
+        optionMetadata.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
 
-        if (Object.keys(metaData[Object.keys(metaData)[0]])[j].search("lat") !== -1) {
-            lat = "latitude";
-        }
-/*
-        if (Object.keys(metaData[Object.keys(metaData)[0]])[j].search("long") !== -1) {
-            long = "longitude";
-        }
-*/
+        document.getElementById("selectMetadata").appendChild(optionMetadata);
     }
 /*
     document.getElementById("selectLatitude").addEventListener("change", function () {
@@ -43,76 +25,9 @@ function geoMap(metaData) {
 
             }
         }
-
-        if (lat !== "" && long !== "") {
-
-            // Select the svg area and add circles:
-            d3.select("#mapid")
-                .select("svg")
-                .selectAll("myCircles")
-                .data(markers)
-                .enter()
-                .append("circle")
-                .attr("cx", function (d) {
-                    return map.latLngToLayerPoint([d[lat], d[long]]).x
-                })
-                .attr("cy", function (d) {
-                    return map.latLngToLayerPoint([d[lat], d[long]]).y
-                })
-                .attr("r", function (d) {
-                    return label2number("Region", markers, d["Region"])*(document.getElementById("bubbleSize").value)
-                })
-                .style("fill", function (d) {
-                    return "#" + intToRGB(hashCode(d["vaccine_status"]))
-                })
-                //   .attr("stroke", "red")
-                .attr("stroke-width", 3)
-                .attr("fill-opacity", .3);
-
-        }
-
-    });
-
-    document.getElementById("selectLongitude").addEventListener("change", function () {
-
-        for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
-
-            if (document.getElementById("optionLongitude"+j).selected === true) {
-
-                long = Object.keys(metaData[Object.keys(metaData)[0]])[j];
-
-            }
-        }
-
-        if (lat !== "" && long !== "") {
-
-            // Select the svg area and add circles:
-            d3.select("#mapid")
-                .select("svg")
-                .selectAll("myCircles")
-                .data(markers)
-                .enter()
-                .append("circle")
-                .attr("cx", function (d) {
-                    return map.latLngToLayerPoint([d[lat], d[long]]).x
-                })
-                .attr("cy", function (d) {
-                    return map.latLngToLayerPoint([d[lat], d[long]]).y
-                })
-                .attr("r", function (d) {
-                    return label2number("Region", markers, d["Region"])*(document.getElementById("bubbleSize").value)
-                })
-                .style("fill", function (d) {
-                    return "#" + intToRGB(hashCode(d["vaccine_status"]))
-                })
-                //   .attr("stroke", "red")
-                .attr("stroke-width", 3)
-                .attr("fill-opacity", .3);
-
-        }
-
     });
 */
+
     // mapid is the id of the div where the map will appear
     let map = L
         .map('mapid')
@@ -153,6 +68,16 @@ function geoMap(metaData) {
         document.getElementById("mapButton").src = "../img/dark.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_white.png";
         document.getElementById("bubbleSizeLabel").style.color = "white";
+        document.getElementById("metadata").style.color = "white";
+
+        d3.selectAll("circle")
+            .style("fill", function (d) {
+
+                return "white"
+
+                //return "#" + intToRGB(hashCode(d["vaccine_status"]))
+            })
+
     });
 
     document.getElementById("Light").addEventListener("click", function () {
@@ -171,6 +96,15 @@ function geoMap(metaData) {
         document.getElementById("mapButton").src = "../img/light.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_black.png";
         document.getElementById("bubbleSizeLabel").style.color = "black";
+        document.getElementById("metadata").style.color = "black";
+
+        d3.selectAll("circle")
+            .style("fill", function (d) {
+
+                return "black"
+
+                //return "#" + intToRGB(hashCode(d["vaccine_status"]))
+            })
     });
 
     document.getElementById("Satellite").addEventListener("click", function () {
@@ -189,6 +123,15 @@ function geoMap(metaData) {
         document.getElementById("mapButton").src = "../img/satellite.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_white.png";
         document.getElementById("bubbleSizeLabel").style.color = "white";
+        document.getElementById("metadata").style.color = "white";
+
+        d3.selectAll("circle")
+            .style("fill", function (d) {
+
+                return "white"
+
+                //return "#" + intToRGB(hashCode(d["vaccine_status"]))
+            })
 
     });
 
@@ -198,8 +141,7 @@ function geoMap(metaData) {
     map.zoomControl.remove();
 
     let markers = Object.values(metaData);
-
-  //  if (lat !== "" && long !== "") {
+    let latlong = [];
 
     // Select the svg area and add circles:
     d3.select("#mapid")
@@ -210,7 +152,7 @@ function geoMap(metaData) {
         .append("circle")
         .attr("cx", function (d) {
 
-            if (isNaN(d[lat]) === false) {
+            if (isNaN(d[lat]) === false && isNaN(d[long]) === false && d[lat] !== "" && d[long] !== "") {
 
                 return map.latLngToLayerPoint([d[lat], d[long]]).x
 
@@ -222,7 +164,7 @@ function geoMap(metaData) {
         })
         .attr("cy", function (d) {
 
-            if (isNaN(d[long]) === false) {
+            if (isNaN(d[lat]) === false && isNaN(d[long]) === false && d[lat] !== "" && d[long] !== "") {
 
             return map.latLngToLayerPoint([d[lat], d[long]]).y
 
@@ -233,29 +175,34 @@ function geoMap(metaData) {
 
         })
         .attr("r", function (d) {
-            if (isNaN(d[long]) === false && isNaN(d[lat]) === false) {
+            if (isNaN(d[long]) === false && isNaN(d[lat]) === false && latlong.includes(d[lat].toString() + d[long].toString()) === false && d[lat] !== "" && d[long] !== "") {
 
-                return label2number("latitude", markers, d["latitude"])*((document.getElementById("bubbleSize").value)/10);
+                latlong.push(d[lat].toString() + d[long].toString());
+
+                return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
 
             } else {
 
-                return 0;
+                return "0";
 
             }
         })
-     /*   .style("fill", function (d) {
-            return "#" + intToRGB(hashCode(d["vaccine_status"]))
-        })*/
+        .style("fill", function (d) {
+
+            return "white"
+
+            //return "#" + intToRGB(hashCode(d["vaccine_status"]))
+
+        })
         //   .attr("stroke", "red")
         .attr("stroke-width", 3)
-        .attr("fill-opacity", .3);
-   // }
+        .attr("fill-opacity", .5);
 
     // Function that update circle position if something change
     function update() {
         d3.selectAll("circle")
             .attr("cx", function (d) {
-                if (isNaN(d[lat]) === false) {
+                if (isNaN(d[long]) === false && isNaN(d[lat]) === false) {
 
                     return map.latLngToLayerPoint([d[lat], d[long]]).x
 
@@ -266,7 +213,7 @@ function geoMap(metaData) {
                 }
             })
             .attr("cy", function (d) {
-                if (isNaN(d[long]) === false) {
+                if (isNaN(d[long]) === false && isNaN(d[lat]) === false) {
 
                     return map.latLngToLayerPoint([d[lat], d[long]]).y
 
@@ -282,9 +229,22 @@ function geoMap(metaData) {
 
     document.getElementById("bubbleSize").addEventListener("input", function () {
 
+        let latlong2 = [];
+
         d3.selectAll("circle")
             .attr("r", function (d) {
-                return label2number("Region", markers, d.Region)*(document.getElementById("bubbleSize").value)
+
+                if (isNaN(d[long]) === false && isNaN(d[lat]) === false && latlong2.includes(d[lat].toString() + d[long].toString()) === false && d[lat] !== "" && d[long] !== "") {
+
+                    latlong2.push(d[lat].toString() + d[long].toString());
+
+                    return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+
+                } else {
+
+                    return "0";
+
+                }
             });
 
         map.dragging.disable();
@@ -396,6 +356,10 @@ mapDivInside.style.bottom = "25px";
 mapDivInside.style.zIndex = "20";
 mapDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 mapDivInside.style.paddingBottom = "10px";
+mapDivInside.style.borderTopLeftRadius = "10px";
+mapDivInside.style.borderTopRightRadius = "10px";
+mapDivInside.style.borderBottomRightRadius = "10px";
+
 
 mapType1.id = "Dark";
 mapType1.style.cursor = "pointer";
@@ -464,6 +428,9 @@ styleDivInside.style.bottom = "25px";
 styleDivInside.style.zIndex = "20";
 styleDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 styleDivInside.style.paddingBottom = "10px";
+styleDivInside.style.borderTopLeftRadius = "10px";
+styleDivInside.style.borderTopRightRadius = "10px";
+styleDivInside.style.borderBottomRightRadius = "10px";
 
 bubbleSizeLabel.id = "bubbleSizeLabel";
 bubbleSizeLabel.innerHTML = "Bubble Size";
@@ -474,7 +441,7 @@ bubbleSizeLabel.style.color = "white";
 
 bubbleSize.id = "bubbleSize";
 bubbleSize.type = "range";
-bubbleSize.value = "10";
+bubbleSize.value = "50";
 bubbleSize.style.zIndex = "1000";
 bubbleSize.style.cursor = "pointer";
 bubbleSize.style.width = "100px";
@@ -494,11 +461,9 @@ let mapMetadataDiv = document.createElement("DIV");
 let mapMetadataButton = document.createElement("BUTTON");
 let mapMetadataDivInside = document.createElement("DIV");
 
-let latitude = document.createElement("P");
-//let longitude = document.createElement("P");
+let metadata = document.createElement("P");
 
-let selectLatitude = document.createElement("SELECT");
-//let selectLongitude = document.createElement("SELECT");
+let selectMetadata = document.createElement("SELECT");
 
 mapMetadataDiv.id = "mapMetadataDiv";
 mapMetadataDiv.classList.add("dropdown");
@@ -528,40 +493,29 @@ mapMetadataDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 mapMetadataDivInside.style.paddingBottom = "25px";
 mapMetadataDivInside.style.paddingLeft = "10px";
 mapMetadataDivInside.style.paddingRight = "10px";
+mapMetadataDivInside.style.borderTopLeftRadius = "10px";
+mapMetadataDivInside.style.borderTopRightRadius = "10px";
+mapMetadataDivInside.style.borderBottomRightRadius = "10px";
 
-latitude.id = "latitude";
-latitude.innerHTML = "Color According To";
-latitude.style.fontSize = "14px";
-latitude.style.zIndex = "1000";
-latitude.style.textAlign = "center";
-latitude.style.color = "white";
-/*
-longitude.id = "longitude";
-longitude.innerHTML = "Longitude";
-longitude.style.fontSize = "14px";
-longitude.style.zIndex = "1000";
-longitude.style.textAlign = "center";
-longitude.style.color = "white";
+metadata.id = "metadata";
+metadata.innerHTML = "Color According To";
+metadata.style.fontSize = "14px";
+metadata.style.zIndex = "1000";
+metadata.style.textAlign = "center";
+metadata.style.color = "white";
 
-selectLongitude.id = "selectLongitude";
-selectLongitude.style.zIndex = "1000";
-selectLatitude.style.display = "block";
-*/
-selectLatitude.id = "selectLatitude";
-selectLatitude.style.zIndex = "1000";
-selectLatitude.style.display = "block";
+selectMetadata.id = "selectMetadata";
+selectMetadata.style.zIndex = "1000";
+selectMetadata.style.display = "block";
 
 document.getElementById("mapBottomBar").appendChild(mapMetadataDiv);
 
 document.getElementById("mapMetadataDiv").appendChild(mapMetadataButton);
 document.getElementById("mapMetadataDiv").appendChild(mapMetadataDivInside);
 
-document.getElementById("mapMetadataDivInside").appendChild(latitude);
-document.getElementById("mapMetadataDivInside").appendChild(selectLatitude);
-/*
-document.getElementById("mapMetadataDivInside").appendChild(longitude);
-document.getElementById("mapMetadataDivInside").appendChild(selectLongitude);
-*/
+document.getElementById("mapMetadataDivInside").appendChild(metadata);
+document.getElementById("mapMetadataDivInside").appendChild(selectMetadata);
+
 // -------------------------------------- Button Dynamics --------------------------------------
 
 document.getElementById("mapDivInside").addEventListener("mouseover", function () {
