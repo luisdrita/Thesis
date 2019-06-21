@@ -14,19 +14,6 @@ function geoMap(metaData) {
 
         document.getElementById("selectMetadata").appendChild(optionMetadata);
     }
-/*
-    document.getElementById("selectLatitude").addEventListener("change", function () {
-
-        for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
-
-            if (document.getElementById("optionLatitude"+j).selected === true) {
-
-                lat = Object.keys(metaData[Object.keys(metaData)[0]])[j];
-
-            }
-        }
-    });
-*/
 
     // mapid is the id of the div where the map will appear
     let map = L
@@ -163,6 +150,8 @@ function geoMap(metaData) {
             }
         })
         .attr("cy", function (d) {
+
+            console.log(d[long]);
 
             if (isNaN(d[lat]) === false && isNaN(d[long]) === false && d[lat] !== "" && d[long] !== "") {
 
@@ -360,7 +349,6 @@ mapDivInside.style.borderTopLeftRadius = "10px";
 mapDivInside.style.borderTopRightRadius = "10px";
 mapDivInside.style.borderBottomRightRadius = "10px";
 
-
 mapType1.id = "Dark";
 mapType1.style.cursor = "pointer";
 mapType1.style.display = "block";
@@ -487,10 +475,8 @@ mapMetadataDivInside.id = "mapMetadataDivInside";
 mapMetadataDivInside.class = "dropdown-content";
 mapMetadataDivInside.style.display = "none";
 mapMetadataDivInside.style.position = "absolute";
-mapMetadataDivInside.style.bottom = "25px";
 mapMetadataDivInside.style.zIndex = "20";
 mapMetadataDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
-mapMetadataDivInside.style.paddingBottom = "25px";
 mapMetadataDivInside.style.paddingLeft = "10px";
 mapMetadataDivInside.style.paddingRight = "10px";
 mapMetadataDivInside.style.borderTopLeftRadius = "10px";

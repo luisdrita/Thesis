@@ -24,7 +24,7 @@ let tree = Phylocanvas.createTree('phylocanvas', {
     zoomFactor: 2,
     labelPadding: 5,
     showLabels: true,
-    lineWidth: 3,
+    //lineWidth: 1,
     alignLabels: true,
     //  highlightColour: "red",
     highlightSize: 1,
@@ -108,11 +108,12 @@ function phylTree(metaData, data_input) {
                     metadataSwitch.type = "checkbox";
                     metadataSwitch.style.zIndex = "2000";
                     metadataSwitch.style.cursor = "pointer";
+                    metadataSwitch.style.marginLeft = "10px";
 
                     document.getElementById("treeMetadataDivInside").appendChild(metadataSwitchLabel);
                     document.getElementById("metadataSwitchLabel"+j).appendChild(metadataSwitch);
             }
-console.log(Object.keys(Object.values(metaData)[0]).length);
+
             radioDetect(metaData, Object.keys(Object.values(metaData)[0]).length);
     });
 
@@ -178,26 +179,6 @@ treeToggleGear.style.cursor = "pointer";
 
 document.getElementById("phylocanvas").appendChild(treeToggleGear);
 
-// -------------------------------------- Bottom Bar --------------------------------------
-
-let treeBottomBar = document.createElement("DIV");
-
-treeBottomBar.id = "treeBottomBar";
-treeBottomBar.className = "toggle";
-treeBottomBar.style.display = "none";
-treeBottomBar.style.position = "absolute";
-treeBottomBar.style.left = "40%";
-treeBottomBar.style.bottom = "0";
-treeBottomBar.style.minWidth = "20%";
-treeBottomBar.style.minHeight = "8%";
-treeBottomBar.style.zIndex = "800";
-treeBottomBar.style.backgroundColor = "black";
-treeBottomBar.style.opacity = "1";
-treeBottomBar.style.borderTopLeftRadius = "10px";
-treeBottomBar.style.borderTopRightRadius = "10px";
-
-document.getElementById("phylocanvas").appendChild(treeBottomBar);
-
 // -------------------------------------- Tree --------------------------------------
 
 let treeDiv = document.createElement("DIV");
@@ -212,10 +193,12 @@ let treeType5 = document.createElement("IMG");
 
 treeDiv.id = "treeDiv";
 treeDiv.classList.add("dropdown");
+treeDiv.classList.add("toggle");
 treeDiv.style.position = "absolute";
-treeDiv.style.right = "10%";
-treeDiv.style.bottom = "4px";
 treeDiv.style.zIndex = "2000";
+treeDiv.style.right = "10px";
+treeDiv.style.bottom = "10px";
+treeDiv.style.display = "none";
 
 treeButton.id = "treeButton";
 treeButton.style.textAlign = "center";
@@ -228,12 +211,14 @@ treeDivInside.class = "dropdown-content";
 treeDivInside.style.display = "none";
 treeDivInside.style.position = "absolute";
 treeDivInside.style.bottom = "30px";
+treeDivInside.style.right = "0px";
 treeDivInside.style.zIndex = "700";
 treeDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeDivInside.style.backgroundColor = "black";
 treeDivInside.style.borderTopLeftRadius = "10px";
 treeDivInside.style.borderTopRightRadius = "10px";
 treeDivInside.style.borderBottomRightRadius = "10px";
+treeDivInside.style.borderBottomLeftRadius = "10px";
 
 treeType1.id = "radial";
 treeType1.style.cursor = "pointer";
@@ -276,7 +261,7 @@ treeType5.style.zIndex = "2";
 treeType5.src = "../img/hierarchical.png";
 treeType5.style.width = "30px";
 
-document.getElementById("treeBottomBar").appendChild(treeDiv);
+document.getElementById("phylocanvas").appendChild(treeDiv);
 
 document.getElementById("treeDiv").appendChild(treeButton);
 document.getElementById("treeDiv").appendChild(treeDivInside);
@@ -299,15 +284,20 @@ let nodeSize = document.createElement("INPUT");
 let textSizeLabel = document.createElement("P");
 let textSize = document.createElement("INPUT");
 
+let lineWidthLabel = document.createElement("P");
+let lineWidth = document.createElement("INPUT");
+
 let selectNodeColorLabel = document.createElement("P");
 let selectNodeColor = document.createElement("SELECT");
 
 treeStyleDiv.id = "treeStyleDiv";
 treeStyleDiv.classList.add("dropdown");
+treeStyleDiv.classList.add("toggle");
 treeStyleDiv.style.position = "absolute";
-treeStyleDiv.style.left = "10%";
-treeStyleDiv.style.bottom = "4px";
+treeStyleDiv.style.top = "10px";
+treeStyleDiv.style.left = "90px";
 treeStyleDiv.style.zIndex = "2000";
+treeStyleDiv.style.display = "none";
 
 treeStyleButton.id = "treeStyleButton";
 treeStyleButton.innerHTML = "Style";
@@ -324,7 +314,6 @@ treeStyleDivInside.id = "treeStyleDivInside";
 treeStyleDivInside.class = "dropdown-content";
 treeStyleDivInside.style.display = "none";
 treeStyleDivInside.style.position = "absolute";
-treeStyleDivInside.style.bottom = "25px";
 treeStyleDivInside.style.zIndex = "20";
 treeStyleDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeStyleDivInside.style.lineHeight = "5px";
@@ -336,6 +325,7 @@ treeStyleDivInside.style.backgroundColor = "black";
 treeStyleDivInside.style.borderTopLeftRadius = "10px";
 treeStyleDivInside.style.borderTopRightRadius = "10px";
 treeStyleDivInside.style.borderBottomRightRadius = "10px";
+treeStyleDivInside.style.borderBottomLeftRadius = "10px";
 
 nodeSizeLabel.id = "nodeSizeLabel";
 nodeSizeLabel.innerHTML = "Node Size";
@@ -367,6 +357,21 @@ textSize.style.width = "100px";
 textSize.style.display = "block";
 textSize.style.margin = "auto";
 
+lineWidthLabel.id = "lineWidthLabel";
+lineWidthLabel.innerHTML = "Line Width";
+lineWidthLabel.style.zIndex = "2";
+lineWidthLabel.style.textAlign = "center";
+lineWidthLabel.style.color = "white";
+
+lineWidth.id = "lineWidth";
+lineWidth.type = "range";
+lineWidth.value = "20";
+lineWidth.style.zIndex = "2";
+lineWidth.style.cursor = "pointer";
+lineWidth.style.width = "100px";
+lineWidth.style.display = "block";
+lineWidth.style.margin = "auto";
+
 selectNodeColorLabel.id = "selectNodeColorLabel";
 selectNodeColorLabel.innerHTML = "Color";
 selectNodeColorLabel.style.zIndex = "1000";
@@ -378,7 +383,7 @@ selectNodeColor.style.zIndex = "1000";
 selectNodeColor.style.display = "block";
 selectNodeColor.style.width = "100px";
 
-document.getElementById("treeBottomBar").appendChild(treeStyleDiv);
+document.getElementById("phylocanvas").appendChild(treeStyleDiv);
 
 document.getElementById("treeStyleDiv").appendChild(treeStyleButton);
 document.getElementById("treeStyleDiv").appendChild(treeStyleDivInside);
@@ -388,6 +393,9 @@ document.getElementById("treeStyleDivInside").appendChild(nodeSize);
 
 document.getElementById("treeStyleDivInside").appendChild(textSizeLabel);
 document.getElementById("treeStyleDivInside").appendChild(textSize);
+
+document.getElementById("treeStyleDivInside").appendChild(lineWidthLabel);
+document.getElementById("treeStyleDivInside").appendChild(lineWidth);
 
 document.getElementById("treeStyleDivInside").appendChild(selectNodeColorLabel);
 document.getElementById("treeStyleDivInside").appendChild(selectNodeColor);
@@ -406,10 +414,13 @@ let metadataSwitchDisplay = document.createElement("INPUT");
 
 treeMetadataDiv.id = "treeMetadataDiv";
 treeMetadataDiv.classList.add("dropdown");
+treeMetadataDiv.classList.add("toggle");
 treeMetadataDiv.style.position = "absolute";
-treeMetadataDiv.style.left = "40%";
+treeMetadataDiv.style.left = "10px";
+treeMetadataDiv.style.top = "10px";
 treeMetadataDiv.style.bottom = "4px";
 treeMetadataDiv.style.zIndex = "2000";
+treeMetadataDiv.style.display = "none";
 
 treeMetadataButton.id = "treeMetadataButton";
 treeMetadataButton.innerHTML = "Metadata";
@@ -426,21 +437,21 @@ treeMetadataDivInside.id = "treeMetadataDivInside";
 treeMetadataDivInside.class = "dropdown-content";
 treeMetadataDivInside.style.display = "none";
 treeMetadataDivInside.style.position = "absolute";
-treeMetadataDivInside.style.bottom = "25px";
 treeMetadataDivInside.style.zIndex = "20";
 treeMetadataDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeMetadataDivInside.style.fontSize = "12px";
 treeMetadataDivInside.style.height = "200px";
 treeMetadataDivInside.style.overflow = "scroll";
-treeMetadataDivInside.style.paddingBottom = "20px";
 treeMetadataDivInside.style.borderTopLeftRadius = "10px";
 treeMetadataDivInside.style.borderTopRightRadius = "10px";
 treeMetadataDivInside.style.borderBottomRightRadius = "10px";
+treeMetadataDivInside.style.borderBottomLeftRadius = "10px";
 treeMetadataDivInside.style.backgroundColor = "black";
 treeMetadataDivInside.style.color = "white";
+treeMetadataDivInside.style.minWidth = "150px";
 
 metadataSwitchLabel.id = "metadataSwitchLabel";
-metadataSwitchLabel.innerHTML = "Select All" + "&emsp;&emsp;";
+metadataSwitchLabel.innerHTML = "Select All";
 metadataSwitchLabel.style.display = "block";
 metadataSwitchLabel.style.paddingLeft = "10px";
 metadataSwitchLabel.style.paddingRight = "10px";
@@ -451,9 +462,10 @@ metadataSwitch.id = "metadataSwitch";
 metadataSwitch.type = "checkbox";
 metadataSwitch.style.zIndex = "2000";
 metadataSwitch.style.cursor = "pointer";
+metadataSwitch.style.marginLeft = "10px";
 
 metadataSwitchLabelDisplay.id = "metadataSwitchLabelDisplay";
-metadataSwitchLabelDisplay.innerHTML = "Metadata Labels" + "&emsp;&emsp;";
+metadataSwitchLabelDisplay.innerHTML = "Metadata Labels";
 metadataSwitchLabelDisplay.style.display = "block";
 metadataSwitchLabelDisplay.style.paddingLeft = "10px";
 metadataSwitchLabelDisplay.style.paddingRight = "10px";
@@ -464,8 +476,9 @@ metadataSwitchDisplay.id = "metadataSwitchDisplay";
 metadataSwitchDisplay.type = "checkbox";
 metadataSwitchDisplay.style.zIndex = "2000";
 metadataSwitchDisplay.style.cursor = "pointer";
+metadataSwitchDisplay.style.marginLeft = "10px";
 
-document.getElementById("treeBottomBar").appendChild(treeMetadataDiv);
+document.getElementById("phylocanvas").appendChild(treeMetadataDiv);
 
 document.getElementById("treeMetadataDiv").appendChild(treeMetadataButton);
 document.getElementById("treeMetadataDiv").appendChild(treeMetadataDivInside);
@@ -508,22 +521,6 @@ for (let i = 0; i < shapes.length; i++) {
         treeType = shapes[i];
 
     });
-/*
-    document.getElementById(shapes[i]).addEventListener("mouseout", function () {
-
-        document.getElementById(shapes[i]).style.backgroundColor = "white";
-        document.getElementById(shapes[i]).style.color = "black";
-
-    });
-
-    document.getElementById(shapes[i]).addEventListener("mouseover", function () {
-
-        document.getElementById(shapes[i]).style.backgroundColor = "black";
-        document.getElementById(shapes[i]).style.color = "white";
-
-    });
-
- */
 }
 
 document.getElementById("nodeSize").addEventListener("input", function () {
@@ -535,6 +532,14 @@ document.getElementById("nodeSize").addEventListener("input", function () {
 document.getElementById("textSize").addEventListener("input", function () {
 
     tree.setTextSize(document.getElementById("textSize").value);
+
+});
+
+document.getElementById("lineWidth").addEventListener("input", function () {
+
+    tree.lineWidth = document.getElementById("lineWidth").value/20;
+
+    tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
 
 });
 

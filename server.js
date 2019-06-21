@@ -116,7 +116,7 @@ function readFile(alg, gamma_var, cyto, net, mix, avg_deg) {
                 //ij++;
                 result["nodes"] = aux.nodify(community, 0);
                 result["links"] = result[mix + "_" + avg_deg]["links"];
-                console.log(gamma_var);
+                //console.log(gamma_var);
             }
 
             //if (net === "Staph") fs.writeFile("./metaStaph.txt", aux.printMeta(community, 5200));
@@ -366,7 +366,7 @@ downloadss["time"] = Array.from({length: (d.getDate() - 9)}, (v, k) => k);
                 downloadss[value + "SD"].push(0);
             })
             .on('end', function () {
-                console.log('done.');
+                //console.log('done.');
 
             });
     });
@@ -603,8 +603,6 @@ app.get('/insaflu_tree', function (req, res) {
 
         let tree_data = data.toString();
 
-        console.log(tree_data);
-
         res.send(tree_data);
     });
 });
@@ -617,12 +615,13 @@ app.get('/insaflu_sample', function (req, res) {
         if (err) throw err;
 
         let obj = {};
-        let split = data.toString().split("\n");
-        let metaTitles = split[0].split(";");
+        let split = data.toString().split("\r");
+        let metaTitles = split[0].split(",");
+        split = data.toString().split("\n");
 
         for (let i = 1; i < split.length; i++) {
 
-            let splitLine = split[i].split(";");
+            let splitLine = split[i].split(",");
 
             for (let j = 1; j < splitLine.length; j++) {
 
@@ -634,9 +633,6 @@ app.get('/insaflu_sample', function (req, res) {
         }
 
         res.send(obj);
-
-        console.log(obj);
-
     });
 });
 
