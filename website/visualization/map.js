@@ -13,6 +13,7 @@ function geoMap(metaData) {
         optionMetadata.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
 
         document.getElementById("selectMetadata").appendChild(optionMetadata);
+
     }
 
     // mapid is the id of the div where the map will appear
@@ -555,6 +556,7 @@ document.getElementById("styleButton").addEventListener("mouseout", function () 
 document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
 
     mapMetadataDivInside.style.display = "block";
+    console.log("hello");
 
 });
 
@@ -567,6 +569,7 @@ document.getElementById("mapMetadataDivInside").addEventListener("mouseout", fun
 document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
 
     mapMetadataDivInside.style.display = "block";
+    console.log("hello");
 
 });
 

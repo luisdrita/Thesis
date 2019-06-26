@@ -570,7 +570,6 @@ let obj_lfr_com = {};
 
 */
 // ---------------------------- GN
-
 /*
 
  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (rep) {
@@ -607,7 +606,6 @@ app.get('/insaflu_tree', function (req, res) {
     });
 });
 
-
 app.get('/insaflu_sample', function (req, res) {
 
     fs.readFile('./uploads/insaflu/Id_test.csv', 'utf8', function (err, data) {
@@ -615,7 +613,7 @@ app.get('/insaflu_sample', function (req, res) {
         if (err) throw err;
 
         let obj = {};
-        let split = data.toString().split("\n");
+        let split = data.toString().split("\n"); // change to \n for heroku server.
         let metaTitles = split[0].split(",");
         //split = data.toString().split("\n");
 
@@ -635,5 +633,3 @@ app.get('/insaflu_sample', function (req, res) {
         res.send(obj);
     });
 });
-
-

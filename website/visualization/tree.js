@@ -1,6 +1,7 @@
 document.getElementById("phylocanvas").style.overflow = "hidden";
 
 let treeType = "circular"; // Initial shape of the phylogenetic tree.
+let treeNodeSize = "10"; // Initial shape of the phylogenetic tree.
 
 // Setting initial tree properties.
 let tree = Phylocanvas.createTree('phylocanvas', {
@@ -45,7 +46,6 @@ function phylTree(metaData, data_input) {
             optionMetadataa.innerHTML= "None";
 
             document.getElementById("selectNodeColor").appendChild(optionMetadataa);
-
         }
 
         let optionMetadata = document.createElement("OPTION");
@@ -79,12 +79,16 @@ function phylTree(metaData, data_input) {
                 }
             }
         }
+
+        tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+        tree.setNodeSize(treeNodeSize);
+
     });
 
     document.getElementById("treeButton").src = "../img/" + treeType + ".png"; // Initializing the right tree button accordingly to the shape of the tree.
 
     tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-    tree.setNodeSize(document.getElementById("nodeSize").value); // Setting the node size accordingly to the value of the respective range element.
+    tree.setNodeSize(treeNodeSize); // Setting the node size accordingly to the value of the respective range element.
     //tree.setTextSize(document.getElementById("textSize").value);
 
     tree.on('beforeFirstDraw', function () {
@@ -158,6 +162,7 @@ function radioDetect (metaData, max) {
             }
 
             tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+            tree.setNodeSize(treeNodeSize);
 
         });
     }
@@ -441,14 +446,15 @@ treeMetadataDivInside.style.zIndex = "20";
 treeMetadataDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeMetadataDivInside.style.fontSize = "12px";
 treeMetadataDivInside.style.height = "200px";
-treeMetadataDivInside.style.overflow = "scroll";
+treeMetadataDivInside.style.overflow = "auto";
+treeMetadataDivInside.style.whiteSpace = "nowrap";
 treeMetadataDivInside.style.borderTopLeftRadius = "10px";
 treeMetadataDivInside.style.borderTopRightRadius = "10px";
 treeMetadataDivInside.style.borderBottomRightRadius = "10px";
 treeMetadataDivInside.style.borderBottomLeftRadius = "10px";
 treeMetadataDivInside.style.backgroundColor = "black";
 treeMetadataDivInside.style.color = "white";
-treeMetadataDivInside.style.minWidth = "150px";
+treeMetadataDivInside.style.width = "150px";
 
 metadataSwitchLabel.id = "metadataSwitchLabel";
 metadataSwitchLabel.innerHTML = "Select All";
@@ -517,6 +523,7 @@ for (let i = 0; i < shapes.length; i++) {
         document.getElementById("treeButton").src = "../img/" + shapes[i] + ".png";
 
         tree.setTreeType(shapes[i]); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+        tree.setNodeSize(treeNodeSize);
 
         treeType = shapes[i];
 
@@ -526,6 +533,7 @@ for (let i = 0; i < shapes.length; i++) {
 document.getElementById("nodeSize").addEventListener("input", function () {
 
     tree.setNodeSize(document.getElementById("nodeSize").value);
+    treeNodeSize = document.getElementById("nodeSize").value;
 
 });
 
@@ -647,6 +655,7 @@ function selectAlll (metaData, max) {
                         }
 
                     tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+                tree.setNodeSize(treeNodeSize);
             }
 
         } else {
@@ -665,6 +674,7 @@ function selectAlll (metaData, max) {
                 }
 
                 tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+            tree.setNodeSize(treeNodeSize);
 
         }
     });
@@ -708,12 +718,11 @@ function displayLabel (metaData, max) {
                             (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["label"] = "";
 
                         }
-
                     }
-
                 }
 
             tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+        tree.setNodeSize(treeNodeSize);
     }
     })
 }
