@@ -1,7 +1,6 @@
 document.getElementById("phylocanvas").style.overflow = "hidden";
 
 let treeType = "circular"; // Initial shape of the phylogenetic tree.
-let treeNodeSize = "10"; // Initial shape of the phylogenetic tree.
 
 // Setting initial tree properties.
 let tree = Phylocanvas.createTree('phylocanvas', {
@@ -21,7 +20,6 @@ let tree = Phylocanvas.createTree('phylocanvas', {
     padding: 5,
    // textSize: "25",
     font: "helvetica",
-   // root: "A_H3N2_reference_demo",
     zoomFactor: 2,
     labelPadding: 5,
     showLabels: true,
@@ -29,8 +27,9 @@ let tree = Phylocanvas.createTree('phylocanvas', {
     alignLabels: true,
     //  highlightColour: "red",
     highlightSize: 1,
-    highlightWidth: -1
+    highlightWidth: -1,
     //   showBranchLengthLabels: true
+    fillCanvas: true // Fits hierarchical and rectangular trees.
 });
 
 function phylTree(metaData, data_input) {
@@ -81,15 +80,16 @@ function phylTree(metaData, data_input) {
         }
 
         tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-        tree.setNodeSize(treeNodeSize);
+        tree.setNodeSize(document.getElementById("nodeSize").value);
+        tree.setTextSize(document.getElementById("textSize").value);
 
     });
 
     document.getElementById("treeButton").src = "../img/" + treeType + ".png"; // Initializing the right tree button accordingly to the shape of the tree.
 
     tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-    tree.setNodeSize(treeNodeSize); // Setting the node size accordingly to the value of the respective range element.
-    //tree.setTextSize(document.getElementById("textSize").value);
+    tree.setNodeSize(document.getElementById("nodeSize").value); // Setting the node size accordingly to the value of the respective range element.
+    tree.setTextSize(document.getElementById("textSize").value);
 
     tree.on('beforeFirstDraw', function () {
 
@@ -125,6 +125,64 @@ function phylTree(metaData, data_input) {
 
     selectAlll(metaData, Object.keys(Object.values(metaData)[0]).length);
     displayLabel(metaData, Object.keys(Object.values(metaData)[0]).length);
+
+    let meta = {};
+
+    for (let i = 0; i < Object.keys(Object.values(metaData)[0]).length; i++) { // Picking metadata type.
+
+        for (let j = 0; j < Object.keys(metaData).length; j++) { // Picking strain by name.
+
+            meta[Object.keys(Object.values(metaData)[0])[i]] = meta[Object.keys(Object.values(metaData)[0])[i]] || {};
+            meta[Object.keys(Object.values(metaData)[0])[i]][Object.values(metaData[Object.keys(metaData)[j]])[i]] = true;
+        }
+    }
+
+    // Generating legend field.
+    for (let i = 0; i < Object.keys(Object.values(metaData)[0]).length; i++) { // Picking metadata type.
+
+        let legendSwitchLabel = document.createElement("DIV"); // Metadata label.
+
+        legendSwitchLabel.id = "legendSwitchLabel"+i;
+        legendSwitchLabel.className = "legendSwitchLabel";
+        legendSwitchLabel.innerHTML = Object.keys(metaData[Object.keys(metaData)[0]])[i];
+        legendSwitchLabel.style.display = "block";
+        legendSwitchLabel.style.paddingLeft = "10px";
+        legendSwitchLabel.style.paddingRight = "10px";
+        legendSwitchLabel.style.opacity = "1";
+        legendSwitchLabel.style.backgroundColor = "white";
+        legendSwitchLabel.style.color = "black";
+        //legendSwitchLabel.style.textAlign = "center";
+        legendSwitchLabel.style.fontSize = "14px";
+        legendSwitchLabel.style.cursor = "pointer";
+
+        document.getElementById("treeLegendDivInside").appendChild(legendSwitchLabel);
+
+        for (let j = 0; j < Object.keys(meta[Object.keys(meta)[i]]).length; j++) {
+
+            let legendSwitchLabelCollapsible = document.createElement("LABEL"); // Metadata label.
+
+            legendSwitchLabelCollapsible.className = "legendSwitchLabelCollapsible"+i;
+            legendSwitchLabelCollapsible.innerHTML = Object.keys(meta[Object.keys(meta)[i]])[j];
+            legendSwitchLabelCollapsible.style.display = "block";
+            legendSwitchLabelCollapsible.style.paddingLeft = "10px";
+            legendSwitchLabelCollapsible.style.paddingRight = "10px";
+            legendSwitchLabelCollapsible.style.opacity = "1";
+            legendSwitchLabelCollapsible.style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j]));
+            legendSwitchLabelCollapsible.style.color = "white";
+
+            document.getElementById("treeLegendDivInside").appendChild(legendSwitchLabelCollapsible);
+        }
+    }
+
+    for (let i = 0; i < document.getElementsByClassName("legendSwitchLabel").length; i++) {
+
+        document.getElementById("legendSwitchLabel"+i).addEventListener("click", function () {
+
+            document.getElementsByClassName("legendSwitchLabelCollapsible" + i)[0].display = "block";
+
+        });
+    }
+
 }
 
 function radioDetect (metaData, max) {
@@ -162,8 +220,8 @@ function radioDetect (metaData, max) {
             }
 
             tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-            tree.setNodeSize(treeNodeSize);
-
+            tree.setNodeSize(document.getElementById("nodeSize").value);
+            tree.setTextSize(document.getElementById("textSize").value);
         });
     }
 }
@@ -220,10 +278,7 @@ treeDivInside.style.right = "0px";
 treeDivInside.style.zIndex = "700";
 treeDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeDivInside.style.backgroundColor = "black";
-treeDivInside.style.borderTopLeftRadius = "10px";
-treeDivInside.style.borderTopRightRadius = "10px";
-treeDivInside.style.borderBottomRightRadius = "10px";
-treeDivInside.style.borderBottomLeftRadius = "10px";
+treeDivInside.style.borderRadius = "10px";
 
 treeType1.id = "radial";
 treeType1.style.cursor = "pointer";
@@ -300,7 +355,7 @@ treeStyleDiv.classList.add("dropdown");
 treeStyleDiv.classList.add("toggle");
 treeStyleDiv.style.position = "absolute";
 treeStyleDiv.style.top = "10px";
-treeStyleDiv.style.left = "90px";
+treeStyleDiv.style.left = "170px";
 treeStyleDiv.style.zIndex = "2000";
 treeStyleDiv.style.display = "none";
 
@@ -327,10 +382,7 @@ treeStyleDivInside.style.paddingLeft = "10px";
 treeStyleDivInside.style.paddingRight = "10px";
 treeStyleDivInside.style.fontSize = "12px";
 treeStyleDivInside.style.backgroundColor = "black";
-treeStyleDivInside.style.borderTopLeftRadius = "10px";
-treeStyleDivInside.style.borderTopRightRadius = "10px";
-treeStyleDivInside.style.borderBottomRightRadius = "10px";
-treeStyleDivInside.style.borderBottomLeftRadius = "10px";
+treeStyleDivInside.style.borderRadius = "10px";
 
 nodeSizeLabel.id = "nodeSizeLabel";
 nodeSizeLabel.innerHTML = "Node Size";
@@ -355,7 +407,7 @@ textSizeLabel.style.color = "white";
 
 textSize.id = "textSize";
 textSize.type = "range";
-textSize.value = "12";
+textSize.value = "4";
 textSize.style.zIndex = "2";
 textSize.style.cursor = "pointer";
 textSize.style.width = "100px";
@@ -423,7 +475,6 @@ treeMetadataDiv.classList.add("toggle");
 treeMetadataDiv.style.position = "absolute";
 treeMetadataDiv.style.left = "10px";
 treeMetadataDiv.style.top = "10px";
-treeMetadataDiv.style.bottom = "4px";
 treeMetadataDiv.style.zIndex = "2000";
 treeMetadataDiv.style.display = "none";
 
@@ -448,10 +499,7 @@ treeMetadataDivInside.style.fontSize = "12px";
 treeMetadataDivInside.style.height = "200px";
 treeMetadataDivInside.style.overflow = "auto";
 treeMetadataDivInside.style.whiteSpace = "nowrap";
-treeMetadataDivInside.style.borderTopLeftRadius = "10px";
-treeMetadataDivInside.style.borderTopRightRadius = "10px";
-treeMetadataDivInside.style.borderBottomRightRadius = "10px";
-treeMetadataDivInside.style.borderBottomLeftRadius = "10px";
+treeMetadataDivInside.style.borderRadius = "10px";
 treeMetadataDivInside.style.backgroundColor = "black";
 treeMetadataDivInside.style.color = "white";
 treeMetadataDivInside.style.width = "150px";
@@ -495,6 +543,52 @@ document.getElementById("metadataSwitchLabelDisplay").appendChild(metadataSwitch
 document.getElementById("treeMetadataDivInside").appendChild(metadataSwitchLabel);
 document.getElementById("metadataSwitchLabel").appendChild(metadataSwitch);
 
+// -------------------------------------- Legend --------------------------------------
+
+let treeLegendDiv = document.createElement("DIV");
+let treeLegendButton = document.createElement("BUTTON");
+let treeLegendDivInside = document.createElement("DIV");
+
+treeLegendDiv.id = "treeLegendDiv";
+treeLegendDiv.classList.add("dropdown");
+treeLegendDiv.classList.add("toggle");
+treeLegendDiv.style.position = "absolute";
+treeLegendDiv.style.left = "90px";
+treeLegendDiv.style.top = "10px";
+treeLegendDiv.style.zIndex = "2000";
+treeLegendDiv.style.display = "none";
+
+treeLegendButton.id = "treeLegendButton";
+treeLegendButton.innerHTML = "Legend";
+treeLegendButton.style.textAlign = "center";
+treeLegendButton.style.width = "75px";
+treeLegendButton.style.height = "25px";
+treeLegendButton.style.cursor = "pointer";
+treeLegendButton.style.backgroundColor = "black";
+treeLegendButton.style.borderColor = "white";
+treeLegendButton.style.color = "white";
+treeLegendButton.style.borderRadius = "10px";
+
+treeLegendDivInside.id = "treeLegendDivInside";
+treeLegendDivInside.class = "dropdown-content";
+treeLegendDivInside.style.display = "none";
+treeLegendDivInside.style.position = "absolute";
+treeLegendDivInside.style.zIndex = "20";
+treeLegendDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
+treeLegendDivInside.style.fontSize = "12px";
+treeLegendDivInside.style.height = "200px";
+treeLegendDivInside.style.overflow = "auto";
+treeLegendDivInside.style.whiteSpace = "nowrap";
+treeLegendDivInside.style.borderRadius = "10px";
+treeLegendDivInside.style.backgroundColor = "black";
+treeLegendDivInside.style.color = "white";
+treeLegendDivInside.style.width = "150px";
+
+document.getElementById("phylocanvas").appendChild(treeLegendDiv);
+
+document.getElementById("treeLegendDiv").appendChild(treeLegendButton);
+document.getElementById("treeLegendDiv").appendChild(treeLegendDivInside);
+
 // -------------------------------------- Button Dynamics
 
 function toggle() {
@@ -523,24 +617,21 @@ for (let i = 0; i < shapes.length; i++) {
         document.getElementById("treeButton").src = "../img/" + shapes[i] + ".png";
 
         tree.setTreeType(shapes[i]); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-        tree.setNodeSize(treeNodeSize);
+        tree.setNodeSize(document.getElementById("nodeSize").value);
+        tree.setTextSize(document.getElementById("textSize").value);
 
         treeType = shapes[i];
-
     });
 }
 
 document.getElementById("nodeSize").addEventListener("input", function () {
 
     tree.setNodeSize(document.getElementById("nodeSize").value);
-    treeNodeSize = document.getElementById("nodeSize").value;
-
 });
 
 document.getElementById("textSize").addEventListener("input", function () {
 
     tree.setTextSize(document.getElementById("textSize").value);
-
 });
 
 document.getElementById("lineWidth").addEventListener("input", function () {
@@ -548,79 +639,88 @@ document.getElementById("lineWidth").addEventListener("input", function () {
     tree.lineWidth = document.getElementById("lineWidth").value/20;
 
     tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-
+    tree.setNodeSize(document.getElementById("nodeSize").value);
+    tree.setTextSize(document.getElementById("textSize").value);
 });
 
 document.getElementById("treeDivInside").addEventListener("mouseover", function () {
 
     treeDivInside.style.display = "block";
-
 });
 
 document.getElementById("treeDivInside").addEventListener("mouseout", function () {
 
     treeDivInside.style.display = "none";
-
 });
 
 document.getElementById("treeButton").addEventListener("mouseover", function () {
 
     treeDivInside.style.display = "block";
-
 });
 
 document.getElementById("treeButton").addEventListener("mouseout", function () {
 
     treeDivInside.style.display = "none";
-
 });
 
 document.getElementById("treeStyleDivInside").addEventListener("mouseover", function () {
 
     treeStyleDivInside.style.display = "block";
-
 });
 
 document.getElementById("treeStyleDivInside").addEventListener("mouseout", function () {
 
     treeStyleDivInside.style.display = "none";
-
 });
 
 document.getElementById("treeStyleButton").addEventListener("mouseover", function () {
 
     treeStyleDivInside.style.display = "block";
-
 });
 
 document.getElementById("treeStyleButton").addEventListener("mouseout", function () {
 
     treeStyleDivInside.style.display = "none";
-
 });
 
 document.getElementById("treeMetadataDivInside").addEventListener("mouseover", function () {
 
     treeMetadataDivInside.style.display = "block";
-
 });
 
 document.getElementById("treeMetadataDivInside").addEventListener("mouseout", function () {
 
     treeMetadataDivInside.style.display = "none";
-
 });
 
 document.getElementById("treeMetadataButton").addEventListener("mouseover", function () {
 
     treeMetadataDivInside.style.display = "block";
-
 });
 
 document.getElementById("treeMetadataButton").addEventListener("mouseout", function () {
 
     treeMetadataDivInside.style.display = "none";
+});
 
+document.getElementById("treeLegendDivInside").addEventListener("mouseover", function () {
+
+    treeLegendDivInside.style.display = "block";
+});
+
+document.getElementById("treeLegendDivInside").addEventListener("mouseout", function () {
+
+    treeLegendDivInside.style.display = "none";
+});
+
+document.getElementById("treeLegendButton").addEventListener("mouseover", function () {
+
+    treeLegendDivInside.style.display = "block";
+});
+
+document.getElementById("treeLegendButton").addEventListener("mouseout", function () {
+
+    treeLegendDivInside.style.display = "none";
 });
 
 function selectAlll (metaData, max) {
@@ -654,8 +754,9 @@ function selectAlll (metaData, max) {
                             }
                         }
 
-                    tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-                tree.setNodeSize(treeNodeSize);
+                        tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+                tree.setNodeSize(document.getElementById("nodeSize").value);
+                tree.setTextSize(document.getElementById("textSize").value);
             }
 
         } else {
@@ -674,7 +775,8 @@ function selectAlll (metaData, max) {
                 }
 
                 tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-            tree.setNodeSize(treeNodeSize);
+            tree.setNodeSize(document.getElementById("nodeSize").value);
+            tree.setTextSize(document.getElementById("textSize").value);
 
         }
     });
@@ -694,8 +796,6 @@ function displayLabel (metaData, max) {
 
         }
     }
-
-    console.log(metaLabels);
 
     for (let j = 0; j < max; j++) {
 
@@ -722,7 +822,8 @@ function displayLabel (metaData, max) {
                 }
 
             tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-        tree.setNodeSize(treeNodeSize);
+        tree.setNodeSize(document.getElementById("nodeSize").value);
+        tree.setTextSize(document.getElementById("textSize").value);
     }
     })
 }

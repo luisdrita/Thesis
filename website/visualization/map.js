@@ -1,8 +1,10 @@
 function geoMap(metaData) {
 
     let mapType;
+    let mapType2;
     let lat = "latitude";
     let long = "longitude";
+    let mapConfig = "dark";
 
     for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
 
@@ -21,16 +23,6 @@ function geoMap(metaData) {
         .map('mapid')
         .setView([38, 9], 5);   // center position + zoom
 
-    /*
-    MAPS CHOICE (URLs):
-    Dark (No Labels) - https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png
-    Dark (Labels) - https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png
-
-    Satellite (No Labels) - https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
-
-    Light (No Labels) - https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png
-    */
-
     // Add a tile to the map = a background. Comes from OpenStreetmap
     mapType = L.tileLayer(
         'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
@@ -45,26 +37,40 @@ function geoMap(metaData) {
         map.removeLayer(mapType);
 
         // Add a tile to the map = a background. Comes from OpenStreetmap
-        mapType = L.tileLayer(
-            'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                maxZoom: 10,
-                minZoom: 1
 
-            }).addTo(map);
+        if(document.getElementById("streets").checked) {
+            mapType = L.tileLayer(
+                'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                    maxZoom: 10,
+                    minZoom: 1
+
+                }).addTo(map);
+
+        } else {
+
+            mapType = L.tileLayer(
+                'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+                    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                    maxZoom: 10,
+                    minZoom: 1
+
+                }).addTo(map);
+        }
 
         document.getElementById("mapButton").src = "../img/dark.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_white.png";
         document.getElementById("bubbleSizeLabel").style.color = "white";
         document.getElementById("metadata").style.color = "white";
 
-        d3.selectAll("circle")
-            .style("fill", function (d) {
+        d3.selectAll("circle").style("fill", function (d) {
 
                 return "white"
 
                 //return "#" + intToRGB(hashCode(d["vaccine_status"]))
-            })
+            });
+
+        mapConfig = "dark";
 
     });
 
@@ -73,55 +79,204 @@ function geoMap(metaData) {
         map.removeLayer(mapType);
 
         // Add a tile to the map = a background. Comes from OpenStreetmap
-        mapType = L.tileLayer(
-            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
-                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                maxZoom: 19,
-                minZoom: 1
+        if(document.getElementById("streets").checked) {
+            mapType = L.tileLayer(
+                'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                    maxZoom: 19,
+                    minZoom: 1
 
-            }).addTo(map);
+                }).addTo(map);
+
+        } else {
+
+                mapType = L.tileLayer(
+                    'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+                        //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                        maxZoom: 19,
+                        minZoom: 1
+
+                    }).addTo(map);
+        }
 
         document.getElementById("mapButton").src = "../img/light.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_black.png";
         document.getElementById("bubbleSizeLabel").style.color = "black";
         document.getElementById("metadata").style.color = "black";
 
-        d3.selectAll("circle")
-            .style("fill", function (d) {
+        d3.selectAll("circle").style("fill", function (d) {
 
                 return "black"
 
                 //return "#" + intToRGB(hashCode(d["vaccine_status"]))
-            })
+            });
+
+        mapConfig = "light";
     });
 
     document.getElementById("Satellite").addEventListener("click", function () {
 
         map.removeLayer(mapType);
 
-        // Add a tile to the map = a background. Comes from OpenStreetmap
-        mapType = L.tileLayer(
-            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                maxZoom: 10,
-                minZoom: 1
+        if(document.getElementById("streets").checked) {
+            // Add a tile to the map = a background. Comes from OpenStreetmap
+            mapType = L.tileLayer(
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: 10,
+                    minZoom: 1
 
-            }).addTo(map);
+                }).addTo(map);
+
+            mapType2 = L.tileLayer(
+                'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}{r}.{ext}', {
+                    minZoom: 1,
+                    maxZoom: 10,
+                    ext: 'png'
+
+                }).addTo(map);
+
+        } else {
+
+            // Add a tile to the map = a background. Comes from OpenStreetmap
+            mapType = L.tileLayer(
+                'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    maxZoom: 10,
+                    minZoom: 1
+
+                }).addTo(map);
+        }
 
         document.getElementById("mapButton").src = "../img/satellite.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_white.png";
         document.getElementById("bubbleSizeLabel").style.color = "white";
         document.getElementById("metadata").style.color = "white";
 
-        d3.selectAll("circle")
-            .style("fill", function (d) {
+        d3.selectAll("circle").style("fill", function (d) {
 
                 return "white"
 
                 //return "#" + intToRGB(hashCode(d["vaccine_status"]))
-            })
+            });
 
+        mapConfig = "satellite";
     });
+
+    // -------------------------
+
+    // Listening to changes in the select element of node colors which will trigger tree update.
+    document.getElementById("streets").addEventListener("change", function () {
+
+            if (document.getElementById("streets").checked) {
+
+                switch (mapConfig) {
+
+                    case "dark":
+
+                        map.removeLayer(mapType);
+                        map.removeLayer(mapType2);
+
+                        // Add a tile to the map = a background. Comes from OpenStreetmap
+                        mapType = L.tileLayer(
+                            'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                                maxZoom: 10,
+                                minZoom: 1
+
+                            }).addTo(map);
+
+                        break;
+
+                    case "light":
+
+                        map.removeLayer(mapType);
+                        map.removeLayer(mapType2);
+
+                        // Add a tile to the map = a background. Comes from OpenStreetmap
+                        mapType = L.tileLayer(
+                            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                                maxZoom: 10,
+                                minZoom: 1
+
+                            }).addTo(map);
+
+                        break;
+
+                    case "satellite":
+
+                        map.removeLayer(mapType);
+
+                        // Add a tile to the map = a background. Comes from OpenStreetmap
+                        mapType = L.tileLayer(
+                            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                                maxZoom: 10,
+                                minZoom: 1
+
+                            }).addTo(map);
+
+                        mapType2 = L.tileLayer(
+                            'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}{r}.{ext}', {
+                                minZoom: 1,
+                                maxZoom: 10,
+                                ext: 'png'
+
+                            }).addTo(map);
+                }
+
+            } else {
+
+                switch (mapConfig) {
+
+                    case "dark":
+
+                        map.removeLayer(mapType);
+                        map.removeLayer(mapType2);
+
+                        // Add a tile to the map = a background. Comes from OpenStreetmap
+                        mapType = L.tileLayer(
+                            'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                                maxZoom: 10,
+                                minZoom: 1
+
+                            }).addTo(map);
+
+                        break;
+
+                    case "light":
+
+                        map.removeLayer(mapType);
+                        map.removeLayer(mapType2);
+
+                        // Add a tile to the map = a background. Comes from OpenStreetmap
+                        mapType = L.tileLayer(
+                            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+                                maxZoom: 10,
+                                minZoom: 1
+
+                            }).addTo(map);
+
+                        break;
+
+                    case "satellite":
+
+                        map.removeLayer(mapType);
+                        map.removeLayer(mapType2);
+
+                        // Add a tile to the map = a background. Comes from OpenStreetmap
+                        mapType = L.tileLayer(
+                            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                                maxZoom: 10,
+                                minZoom: 1
+
+                            }).addTo(map);
+
+                }
+            }
+    });
+
+    // -------------------------
 
     // Add a svg layer to the map
     L.svg().addTo(map);
@@ -151,8 +306,6 @@ function geoMap(metaData) {
             }
         })
         .attr("cy", function (d) {
-
-            console.log(d[long]);
 
             if (isNaN(d[lat]) === false && isNaN(d[long]) === false && d[lat] !== "" && d[long] !== "") {
 
@@ -290,26 +443,6 @@ mapToggleGear.style.cursor = "pointer";
 
 document.getElementById("mapid").appendChild(mapToggleGear);
 
-// -------------------------------------- Bottom Bar --------------------------------------
-
-let mapBottomBar = document.createElement("DIV");
-
-mapBottomBar.id = "mapBottomBar";
-mapBottomBar.className = "toggle2";
-mapBottomBar.style.display = "none";
-mapBottomBar.style.position = "absolute";
-mapBottomBar.style.left = "40%";
-mapBottomBar.style.bottom = "0";
-mapBottomBar.style.minWidth = "20%";
-mapBottomBar.style.minHeight = "8%";
-mapBottomBar.style.zIndex = "800";
-mapBottomBar.style.backgroundColor = "black"; // #BAD2EE
-mapBottomBar.style.opacity = "1";
-mapBottomBar.style.borderTopLeftRadius = "10px";
-mapBottomBar.style.borderTopRightRadius = "10px";
-
-document.getElementById("mapid").appendChild(mapBottomBar);
-
 // -------------------------------------- Map --------------------------------------
 
 let mapDiv = document.createElement("DIV");
@@ -320,12 +453,17 @@ let mapType1 = document.createElement("IMG");
 let mapType2 = document.createElement("IMG");
 let mapType3 = document.createElement("IMG");
 
+let streetsLabel = document.createElement("LABEL"); // Metadata label.
+let streets = document.createElement("INPUT"); // Checkbox input.
+
 mapDiv.id = "mapDiv";
 mapDiv.classList.add("dropdown");
+mapDiv.className = "toggle2";
 mapDiv.style.position = "absolute";
-mapDiv.style.right = "10%";
-mapDiv.style.bottom = "6px";
+mapDiv.style.left = "52%";
+mapDiv.style.bottom = "10px";
 mapDiv.style.zIndex = "2000";
+mapDiv.style.display = "none";
 
 mapButton.id = "mapButton";
 mapButton.innerHTML = "Map";
@@ -346,9 +484,8 @@ mapDivInside.style.bottom = "25px";
 mapDivInside.style.zIndex = "20";
 mapDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 mapDivInside.style.paddingBottom = "10px";
-mapDivInside.style.borderTopLeftRadius = "10px";
-mapDivInside.style.borderTopRightRadius = "10px";
-mapDivInside.style.borderBottomRightRadius = "10px";
+mapDivInside.style.borderRadius = "10px";
+mapDivInside.style.backgroundColor = "white";
 
 mapType1.id = "Dark";
 mapType1.style.cursor = "pointer";
@@ -374,13 +511,31 @@ mapType3.style.zIndex = "2";
 mapType3.src = "../img/satellite.png";
 mapType3.style.width = "100px";
 
-document.getElementById("mapBottomBar").appendChild(mapDiv);
+streetsLabel.id = "streetsLabel";
+streetsLabel.className = "streetsLabel";
+streetsLabel.innerHTML = "Labels";
+streetsLabel.style.display = "block";
+streetsLabel.style.paddingLeft = "10px";
+streetsLabel.style.paddingRight = "10px";
+streetsLabel.style.opacity = "1";
+
+streets.id = "streets";
+streets.className = "streets";
+streets.type = "checkbox";
+streets.style.zIndex = "2000";
+streets.style.cursor = "pointer";
+streets.style.marginLeft = "10px";
+
+document.getElementById("mapid").appendChild(mapDiv);
 document.getElementById("mapDiv").appendChild(mapButton);
 document.getElementById("mapDiv").appendChild(mapDivInside);
 
 document.getElementById("mapDivInside").appendChild(mapType1);
 document.getElementById("mapDivInside").appendChild(mapType2);
 document.getElementById("mapDivInside").appendChild(mapType3);
+
+document.getElementById("mapDivInside").appendChild(streetsLabel);
+document.getElementById("streetsLabel").appendChild(streets);
 
 // -------------------------------------- Style --------------------------------------
 
@@ -393,10 +548,12 @@ let bubbleSize = document.createElement("INPUT");
 
 styleDiv.id = "styleDiv";
 styleDiv.classList.add("dropdown");
+styleDiv.className = "toggle2";
 styleDiv.style.position = "absolute";
-styleDiv.style.left = "10%";
-styleDiv.style.bottom = "6px";
+styleDiv.style.bottom = "10px";
+styleDiv.style.left = "40%";
 styleDiv.style.zIndex = "2000";
+styleDiv.style.display = "none";
 
 styleButton.id = "styleButton";
 styleButton.innerHTML = "Style";
@@ -417,16 +574,16 @@ styleDivInside.style.bottom = "25px";
 styleDivInside.style.zIndex = "20";
 styleDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 styleDivInside.style.paddingBottom = "10px";
-styleDivInside.style.borderTopLeftRadius = "10px";
-styleDivInside.style.borderTopRightRadius = "10px";
-styleDivInside.style.borderBottomRightRadius = "10px";
+styleDivInside.style.borderRadius = "10px";
+styleDivInside.style.backgroundColor = "white";
+styleDivInside.style.lineHeight = "5px";
 
 bubbleSizeLabel.id = "bubbleSizeLabel";
 bubbleSizeLabel.innerHTML = "Bubble Size";
 bubbleSizeLabel.style.fontSize = "14px";
 bubbleSizeLabel.style.zIndex = "1000";
 bubbleSizeLabel.style.textAlign = "center";
-bubbleSizeLabel.style.color = "white";
+bubbleSizeLabel.style.color = "black";
 
 bubbleSize.id = "bubbleSize";
 bubbleSize.type = "range";
@@ -437,7 +594,7 @@ bubbleSize.style.width = "100px";
 bubbleSize.style.marginLeft = "10px";
 bubbleSize.style.marginRight = "10px";
 
-document.getElementById("mapBottomBar").appendChild(styleDiv);
+document.getElementById("mapid").appendChild(styleDiv);
 document.getElementById("styleDiv").appendChild(styleButton);
 document.getElementById("styleDiv").appendChild(styleDivInside);
 
@@ -456,10 +613,12 @@ let selectMetadata = document.createElement("SELECT");
 
 mapMetadataDiv.id = "mapMetadataDiv";
 mapMetadataDiv.classList.add("dropdown");
+mapMetadataDiv.classList.add("toggle2");
 mapMetadataDiv.style.position = "absolute";
-mapMetadataDiv.style.left = "37%";
-mapMetadataDiv.style.bottom = "6px";
+mapMetadataDiv.style.bottom = "10px";
+mapMetadataDiv.style.left = "45%";
 mapMetadataDiv.style.zIndex = "2000";
+mapMetadataDiv.style.display = "none";
 
 mapMetadataButton.id = "mapMetadataButton";
 mapMetadataButton.innerHTML = "Metadata";
@@ -476,26 +635,29 @@ mapMetadataDivInside.id = "mapMetadataDivInside";
 mapMetadataDivInside.class = "dropdown-content";
 mapMetadataDivInside.style.display = "none";
 mapMetadataDivInside.style.position = "absolute";
+mapMetadataDivInside.style.bottom = "25px";
 mapMetadataDivInside.style.zIndex = "20";
 mapMetadataDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
+mapMetadataDivInside.style.lineHeight = "5px";
+mapMetadataDivInside.style.paddingBottom = "15px";
 mapMetadataDivInside.style.paddingLeft = "10px";
 mapMetadataDivInside.style.paddingRight = "10px";
-mapMetadataDivInside.style.borderTopLeftRadius = "10px";
-mapMetadataDivInside.style.borderTopRightRadius = "10px";
-mapMetadataDivInside.style.borderBottomRightRadius = "10px";
+mapMetadataDivInside.style.fontSize = "12px";
+mapMetadataDivInside.style.borderRadius = "10px";
+mapMetadataDivInside.style.backgroundColor = "white";
 
 metadata.id = "metadata";
-metadata.innerHTML = "Color According To";
+metadata.innerHTML = "Color";
 metadata.style.fontSize = "14px";
 metadata.style.zIndex = "1000";
 metadata.style.textAlign = "center";
-metadata.style.color = "white";
+metadata.style.color = "black";
 
 selectMetadata.id = "selectMetadata";
 selectMetadata.style.zIndex = "1000";
 selectMetadata.style.display = "block";
 
-document.getElementById("mapBottomBar").appendChild(mapMetadataDiv);
+document.getElementById("mapid").appendChild(mapMetadataDiv);
 
 document.getElementById("mapMetadataDiv").appendChild(mapMetadataButton);
 document.getElementById("mapMetadataDiv").appendChild(mapMetadataDivInside);
@@ -556,7 +718,6 @@ document.getElementById("styleButton").addEventListener("mouseout", function () 
 document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
 
     mapMetadataDivInside.style.display = "block";
-    console.log("hello");
 
 });
 
@@ -569,7 +730,6 @@ document.getElementById("mapMetadataDivInside").addEventListener("mouseout", fun
 document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
 
     mapMetadataDivInside.style.display = "block";
-    console.log("hello");
 
 });
 
