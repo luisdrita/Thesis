@@ -42,7 +42,7 @@ GN Benchmark Network Generator, considering different mixing and average node de
 - [D3.js (Version 4 & Canvas)](https://bl.ocks.org/jodyphelan/5dc989637045a0f48418101423378fbd).
 
 ### Phyl
-Web application which integrates all the previous components. [Image](https://hub.docker.com/r/warcraft12321/thesis) available in Docker Hub.
+Web application which integrates all the previous components. [Image](https://hub.docker.com/r/warcraft12321/thesis) available in Docker Hub. Description video below.
 
 [![Phyl](http://img.youtube.com/vi/5QMJ66PVxLg/0.jpg)](http://www.youtube.com/watch?v=5QMJ66PVxLg "Phyl")
 
