@@ -71,7 +71,7 @@ function phylTree(metaData, data_input) {
                         //size: 3, // ratio of the base node size
                         leafStyle: {
                             //strokeStyle: '#0000ff',
-                            fillStyle: "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j])),
+                            fillStyle: "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j])),
                             //lineWidth: 2,
                         }
                     });
@@ -141,8 +141,9 @@ function phylTree(metaData, data_input) {
     for (let i = 0; i < Object.keys(Object.values(metaData)[0]).length; i++) { // Picking metadata type.
 
         let legendSwitchLabel = document.createElement("DIV"); // Metadata label.
+        let triangle = document.createElement("IMG"); // Metadata label.
 
-        legendSwitchLabel.id = "legendSwitchLabel"+i;
+        legendSwitchLabel.id = "legendSwitchLabel" + i;
         legendSwitchLabel.className = "legendSwitchLabel";
         legendSwitchLabel.innerHTML = Object.keys(metaData[Object.keys(metaData)[0]])[i];
         legendSwitchLabel.style.display = "block";
@@ -155,7 +156,17 @@ function phylTree(metaData, data_input) {
         legendSwitchLabel.style.fontSize = "14px";
         legendSwitchLabel.style.cursor = "pointer";
 
+        triangle.id = "triangle" + i;
+        triangle.style.display = "inline-block";
+        triangle.style.paddingLeft = "10px";
+        triangle.style.paddingRight = "10px";
+        triangle.style.opacity = "1";
+        triangle.style.cursor = "pointer";
+        triangle.style.width = "10px";
+        triangle.src = "../img/triangle_down.png";
+
         document.getElementById("treeLegendDivInside").appendChild(legendSwitchLabel);
+        document.getElementById("legendSwitchLabel" + i).appendChild(triangle);
 
         for (let j = 0; j < Object.keys(meta[Object.keys(meta)[i]]).length; j++) {
 
@@ -163,11 +174,11 @@ function phylTree(metaData, data_input) {
 
             legendSwitchLabelCollapsible.className = "legendSwitchLabelCollapsible"+i;
             legendSwitchLabelCollapsible.innerHTML = Object.keys(meta[Object.keys(meta)[i]])[j];
-            legendSwitchLabelCollapsible.style.display = "block";
+            legendSwitchLabelCollapsible.style.display = "none";
             legendSwitchLabelCollapsible.style.paddingLeft = "10px";
             legendSwitchLabelCollapsible.style.paddingRight = "10px";
             legendSwitchLabelCollapsible.style.opacity = "1";
-            legendSwitchLabelCollapsible.style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j]));
+            legendSwitchLabelCollapsible.style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j] + Object.keys(meta[Object.keys(meta)[i]])[j]));
             legendSwitchLabelCollapsible.style.color = "white";
 
             document.getElementById("treeLegendDivInside").appendChild(legendSwitchLabelCollapsible);
@@ -178,8 +189,20 @@ function phylTree(metaData, data_input) {
 
         document.getElementById("legendSwitchLabel"+i).addEventListener("click", function () {
 
-            document.getElementsByClassName("legendSwitchLabelCollapsible" + i)[0].display = "block";
+            for (let ii = 0; ii < document.getElementsByClassName("legendSwitchLabelCollapsible" + i).length; ii++) {
 
+                if (document.getElementsByClassName("legendSwitchLabelCollapsible" + i)[ii].style.display === "block") {
+
+                    document.getElementsByClassName("legendSwitchLabelCollapsible" + i)[ii].style.display = "none";
+                    document.getElementById("triangle" + i).src = "../img/triangle_down.png";
+
+                } else {
+
+                    document.getElementsByClassName("legendSwitchLabelCollapsible" + i)[ii].style.display = "block";
+                    document.getElementById("triangle" + i).src = "../img/triangle_up.png";
+
+                }
+            }
         });
     }
 
@@ -197,7 +220,7 @@ function radioDetect (metaData, max) {
 
                     (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] = (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] || {};
 
-                    (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j]));
+                    (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j]));
 
                     if (document.getElementById("metadataSwitchDisplay").checked === true) {
 
@@ -378,14 +401,13 @@ treeStyleDivInside.style.zIndex = "20";
 treeStyleDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeStyleDivInside.style.lineHeight = "5px";
 treeStyleDivInside.style.paddingBottom = "15px";
-treeStyleDivInside.style.paddingLeft = "10px";
-treeStyleDivInside.style.paddingRight = "10px";
 treeStyleDivInside.style.fontSize = "12px";
 treeStyleDivInside.style.backgroundColor = "black";
 treeStyleDivInside.style.borderRadius = "10px";
+treeStyleDivInside.style.width = "150px";
 
 nodeSizeLabel.id = "nodeSizeLabel";
-nodeSizeLabel.innerHTML = "Node Size";
+nodeSizeLabel.innerHTML = "Node Size: 10px";
 nodeSizeLabel.style.zIndex = "2";
 nodeSizeLabel.style.textAlign = "center";
 nodeSizeLabel.style.color = "white";
@@ -395,12 +417,12 @@ nodeSize.type = "range";
 nodeSize.value = "10";
 nodeSize.style.zIndex = "2";
 nodeSize.style.cursor = "pointer";
-nodeSize.style.width = "100px";
+nodeSize.style.width = "130px";
 nodeSize.style.display = "block";
 nodeSize.style.margin = "auto";
 
 textSizeLabel.id = "textSizeLabel";
-textSizeLabel.innerHTML = "Label Size";
+textSizeLabel.innerHTML = "Label Size: 4px";
 textSizeLabel.style.zIndex = "2";
 textSizeLabel.style.textAlign = "center";
 textSizeLabel.style.color = "white";
@@ -410,12 +432,12 @@ textSize.type = "range";
 textSize.value = "4";
 textSize.style.zIndex = "2";
 textSize.style.cursor = "pointer";
-textSize.style.width = "100px";
+textSize.style.width = "130px";
 textSize.style.display = "block";
 textSize.style.margin = "auto";
 
 lineWidthLabel.id = "lineWidthLabel";
-lineWidthLabel.innerHTML = "Line Width";
+lineWidthLabel.innerHTML = "Line Width: 1px";
 lineWidthLabel.style.zIndex = "2";
 lineWidthLabel.style.textAlign = "center";
 lineWidthLabel.style.color = "white";
@@ -425,7 +447,7 @@ lineWidth.type = "range";
 lineWidth.value = "20";
 lineWidth.style.zIndex = "2";
 lineWidth.style.cursor = "pointer";
-lineWidth.style.width = "100px";
+lineWidth.style.width = "130px";
 lineWidth.style.display = "block";
 lineWidth.style.margin = "auto";
 
@@ -438,7 +460,8 @@ selectNodeColorLabel.style.color = "white";
 selectNodeColor.id = "selectNodeColor";
 selectNodeColor.style.zIndex = "1000";
 selectNodeColor.style.display = "block";
-selectNodeColor.style.width = "100px";
+selectNodeColor.style.width = "130px";
+selectNodeColor.style.margin = "auto";
 
 document.getElementById("phylocanvas").appendChild(treeStyleDiv);
 
@@ -627,11 +650,14 @@ for (let i = 0; i < shapes.length; i++) {
 document.getElementById("nodeSize").addEventListener("input", function () {
 
     tree.setNodeSize(document.getElementById("nodeSize").value);
+    document.getElementById("nodeSizeLabel").innerHTML = "Node Size: " + document.getElementById("nodeSize").value + "px";
+
 });
 
 document.getElementById("textSize").addEventListener("input", function () {
 
     tree.setTextSize(document.getElementById("textSize").value);
+    document.getElementById("textSizeLabel").innerHTML = "Text Size: " + document.getElementById("textSize").value + "px";
 });
 
 document.getElementById("lineWidth").addEventListener("input", function () {
@@ -641,6 +667,9 @@ document.getElementById("lineWidth").addEventListener("input", function () {
     tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
     tree.setNodeSize(document.getElementById("nodeSize").value);
     tree.setTextSize(document.getElementById("textSize").value);
+
+    document.getElementById("lineWidthLabel").innerHTML = "Line Width: " + document.getElementById("lineWidth").value/20 + "px";
+
 });
 
 document.getElementById("treeDivInside").addEventListener("mouseover", function () {
@@ -741,7 +770,7 @@ function selectAlll (metaData, max) {
 
                             (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] = (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] || {};
 
-                            (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j]));
+                            (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j]));
 
                             if (document.getElementById("metadataSwitchDisplay").checked === true) {
 
@@ -807,7 +836,7 @@ function displayLabel (metaData, max) {
 
                         (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] = (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] || {};
 
-                        (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j]));
+                        (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]]["colour"] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j]));
 
                         if (document.getElementById("metadataSwitchDisplay").checked === true) {
 

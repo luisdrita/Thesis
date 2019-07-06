@@ -9,13 +9,18 @@ function geoMap(metaData) {
     for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
 
         let optionMetadata = document.createElement("OPTION");
+        let optionTime = document.createElement("OPTION");
 
         optionMetadata.id = "optionMetadata"+j;
         optionMetadata.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
         optionMetadata.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
 
-        document.getElementById("selectMetadata").appendChild(optionMetadata);
+        optionTime.id = "optionTime"+j;
+        optionTime.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[j];
+        optionTime.value = Object.keys(metaData[Object.keys(metaData)[0]])[j];
 
+        document.getElementById("selectMetadata").appendChild(optionMetadata);
+        document.getElementById("selectTime").appendChild(optionTime);
     }
 
     // mapid is the id of the div where the map will appear
@@ -276,7 +281,7 @@ function geoMap(metaData) {
             }
     });
 
-    // -------------------------
+    // ------------------------- Adding SVG Layer
 
     // Add a svg layer to the map
     L.svg().addTo(map);
@@ -665,6 +670,64 @@ document.getElementById("mapMetadataDiv").appendChild(mapMetadataDivInside);
 document.getElementById("mapMetadataDivInside").appendChild(metadata);
 document.getElementById("mapMetadataDivInside").appendChild(selectMetadata);
 
+// -------------------------------------- Timeline --------------------------------------
+
+let timelineDiv = document.createElement("DIV");
+let timelineLabel = document.createElement("P");
+let timeline = document.createElement("INPUT");
+
+let selectTime = document.createElement("SELECT");
+let play = document.createElement("IMG");
+
+timelineDiv.id = "timelineDiv";
+timelineDiv.classList.add("toggle2");
+timelineDiv.style.display = "none";
+timelineDiv.style.position = "absolute";
+timelineDiv.style.top = "0";
+timelineDiv.style.left = "45%";
+timelineDiv.style.zIndex = "2000";
+timelineDiv.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
+timelineDiv.style.paddingBottom = "10px";
+timelineDiv.style.borderRadius = "10px";
+timelineDiv.style.backgroundColor = "white";
+timelineDiv.style.lineHeight = "5px";
+
+timelineLabel.id = "timelineLabel";
+timelineLabel.innerHTML = "Timeline";
+timelineLabel.style.fontSize = "14px";
+timelineLabel.style.textAlign = "center";
+timelineLabel.style.color = "black";
+timelineLabel.style.display = "inline-block";
+
+timeline.id = "timeline";
+timeline.type = "range";
+timeline.value = "50";
+timeline.style.cursor = "pointer";
+timeline.style.width = "100px";
+timeline.style.marginLeft = "10px";
+timeline.style.marginRight = "10px";
+timeline.style.display = "inline-block";
+
+selectTime.id = "selectTime";
+selectTime.style.zIndex = "1000";
+selectTime.style.display = "inline-block";
+
+play.id = "play";
+play.style.display = "inline-block";
+play.style.paddingLeft = "10px";
+play.style.paddingRight = "10px";
+play.style.opacity = "1";
+play.style.cursor = "pointer";
+play.style.width = "10px";
+play.src = "../img/play.png";
+
+document.getElementById("mapid").appendChild(timelineDiv);
+
+document.getElementById("timelineDiv").appendChild(timelineLabel);
+document.getElementById("timelineDiv").appendChild(timeline);
+document.getElementById("timelineDiv").appendChild(selectTime);
+document.getElementById("timelineDiv").appendChild(play);
+
 // -------------------------------------- Button Dynamics --------------------------------------
 
 document.getElementById("mapDivInside").addEventListener("mouseover", function () {
@@ -736,6 +799,25 @@ document.getElementById("mapMetadataButton").addEventListener("mouseover", funct
 document.getElementById("mapMetadataButton").addEventListener("mouseout", function () {
 
     mapMetadataDivInside.style.display = "none";
+
+});
+
+document.getElementById("play").addEventListener("click", function () {
+
+    if ((document.getElementById("play").src).search("img/play.png") !== -1) {
+
+        document.getElementById("play").src = "../img/pause.png";
+
+    } else {
+        document.getElementById("play").src = "../img/play.png";
+    }
+});
+
+document.getElementById("selectTime").addEventListener("change", function () {
+
+    //document.getElementById("selectTime").min = ;
+    //document.getElementById("selectTime").max = ;
+    document.getElementById("timeline").step = 10;
 
 });
 

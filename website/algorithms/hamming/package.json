@@ -1,6 +1,6 @@
 {
   "name": "hamming-dist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Given 2 arrays, hamming distance is calculated between them.",
   "main": "hamming.js",
   "scripts": {

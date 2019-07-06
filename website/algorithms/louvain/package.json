@@ -1,6 +1,6 @@
 {
   "name": "louvain-algorithm",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Community finding algorithm.",
   "main": "louvain.js",
   "scripts": {

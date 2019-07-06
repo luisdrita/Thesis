@@ -3,11 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/file/abstract.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/website/file/abstract.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/file/thesis.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/website/file/thesis.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/girvan-newman/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/girvan-newman/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/hamming/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/hamming/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/hamming/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/hamming/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/infomap/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/infomap/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/infomap/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/llp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/llp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/llp/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/llp/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/louvain/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/louvain/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/louvain/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/louvain/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/nmi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/nmi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/algorithms/nmi/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/website/algorithms/nmi/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/visualization/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/map.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/visualization/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/tree.js" afterDir="false" />
     </list>
@@ -22,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1515">
-              <caret line="101" column="99" selection-start-line="101" selection-start-column="99" selection-end-line="101" selection-end-column="99" />
+            <state relative-caret-position="210">
+              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -185,11 +193,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="615" column="45" selection-start-line="615" selection-start-column="45" selection-end-line="615" selection-end-column="45" />
+            <state relative-caret-position="9255">
+              <caret line="617" column="8" selection-start-line="617" selection-start-column="8" selection-end-line="617" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -227,8 +235,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/visualization/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4620">
-              <caret line="308" selection-start-line="308" selection-end-line="308" />
+            <state relative-caret-position="12285">
+              <caret line="819" column="37" selection-start-line="819" selection-start-column="37" selection-end-line="819" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -236,20 +244,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/visualization/tree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="171" selection-start-line="171" selection-end-line="171" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/readme.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="489">
-                <caret line="46" column="105" selection-start-line="46" selection-start-column="105" selection-end-line="46" selection-end-column="105" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="6585">
+              <caret line="439" column="41" selection-start-line="439" selection-start-column="41" selection-end-line="439" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -267,13 +263,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>conso</find>
-      <find>metadataSwitch2</find>
-      <find>metadataSwitchDisplay</find>
-      <find>max</find>
-      <find>&quot;&quot;</find>
-      <find>no data</find>
-      <find>break</find>
       <find>steps</find>
       <find>Metadata</find>
       <find>overflow</find>
@@ -294,9 +283,16 @@
       <find>linewidth</find>
       <find>treeType</find>
       <find>treeNodeSize</find>
-      <find>change</find>
       <find>mapType</find>
       <find>console</find>
+      <find>legendSwitchLabelCollapsible</find>
+      <find>intTo</find>
+      <find>svg</find>
+      <find>src</find>
+      <find>style</find>
+      <find>myCircles</find>
+      <find>input</find>
+      <find>change</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -363,12 +359,6 @@
         <option value="$PROJECT_DIR$/website/algorithms/weightedLabelPropagation.js" />
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/girvan-newman.js" />
         <option value="$PROJECT_DIR$/website/pages/insaflu2.html" />
-        <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" />
-        <option value="$PROJECT_DIR$/website/algorithms/hamming/readme.md" />
-        <option value="$PROJECT_DIR$/website/algorithms/infomap/readme.md" />
-        <option value="$PROJECT_DIR$/website/algorithms/llp/readme.md" />
-        <option value="$PROJECT_DIR$/website/algorithms/louvain/readme.md" />
-        <option value="$PROJECT_DIR$/website/algorithms/nmi/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/louvain/louvain.js" />
         <option value="$PROJECT_DIR$/website/pages/abstract.html" />
         <option value="$PROJECT_DIR$/website/pages/aeicbas.html" />
@@ -381,15 +371,21 @@
         <option value="$PROJECT_DIR$/website/pages/insaflu.html" />
         <option value="$PROJECT_DIR$/website/index.html" />
         <option value="$PROJECT_DIR$/website/index.html" />
-        <option value="$PROJECT_DIR$/website/visualization/map.js" />
-        <option value="$PROJECT_DIR$/website/visualization/tree.js" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/hamming/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/nmi/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/infomap/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/llp/readme.md" />
+        <option value="$PROJECT_DIR$/website/algorithms/louvain/readme.md" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/visualization/tree.js" />
+        <option value="$PROJECT_DIR$/website/visualization/map.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -403,85 +399,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="girvan-newman" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="hamming" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="infomap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="llp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="louvain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithms" type="462c0819:PsiDirectoryNode" />
-              <item name="nmi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="benchmark_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="style" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cf" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cf" type="462c0819:PsiDirectoryNode" />
-              <item name="website" type="462c0819:PsiDirectoryNode" />
-              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+              <item name="thesis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thesis" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -501,7 +420,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="9.8.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/website/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -788,21 +707,11 @@
       <workItem from="1561894355341" duration="150000" />
       <workItem from="1561981090727" duration="12338000" />
       <workItem from="1562065687959" duration="9506000" />
-      <workItem from="1562243329191" duration="314000" />
-    </task>
-    <task id="LOCAL-00026" summary="Updated Guide">
-      <created>1551900654922</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1551900654922</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Added Benchmark Results">
-      <created>1552014115068</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1552014115068</updated>
+      <workItem from="1562243329191" duration="3977000" />
+      <workItem from="1562256850142" duration="2594000" />
+      <workItem from="1562324994977" duration="12539000" />
+      <workItem from="1562368098880" duration="705000" />
+      <workItem from="1562372196986" duration="112000" />
     </task>
     <task id="LOCAL-00028" summary="Added Benchmark Results">
       <created>1552014232175</created>
@@ -1133,11 +1042,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561560717118</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Phyl Video">
+      <created>1562244228723</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1562244228724</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Phyl Video">
+      <created>1562244327829</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1562244327829</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2119610000" />
+    <option name="totallyTimeSpent" value="2139223000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1150,8 +1073,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2671149" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28178483" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -1222,7 +1146,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="Overall Improvements" />
     <MESSAGE value="Algorithms NPM Submission" />
     <MESSAGE value="PDF Viewer Corrected" />
     <MESSAGE value="General Improvements" />
@@ -1247,41 +1170,11 @@
     <MESSAGE value="Bug Solved II" />
     <MESSAGE value="Bug Solved III" />
     <MESSAGE value="Bug Solved IV" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Solved IV" />
+    <MESSAGE value="Phyl Video" />
+    <option name="LAST_COMMIT_MESSAGE" value="Phyl Video" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/hi.txr" />
-    <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/hamming/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/infomap/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmd.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/express/lib/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1328,13 +1221,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/llp/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/hamming/hamming.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1353,66 +1239,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2850">
           <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="630">
-            <caret line="54" selection-start-line="54" selection-end-line="54" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="579">
-            <caret line="39" column="27" lean-forward="true" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/llp/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="630">
-            <caret line="52" selection-start-line="52" selection-end-line="52" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/hamming/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="630">
-            <caret line="46" selection-start-line="46" selection-end-line="46" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="630">
-            <caret line="53" selection-start-line="53" selection-end-line="53" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/infomap/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="630">
-            <caret line="47" selection-start-line="47" selection-end-line="47" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1546,13 +1372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/louvain.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="405" column="16" selection-start-line="405" selection-start-column="16" selection-end-line="405" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/algorithms/llp/layeredLabelPropagation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
@@ -1560,10 +1379,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/hamming/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="639">
+            <caret line="47" column="203" selection-start-line="47" selection-start-column="203" selection-end-line="47" selection-end-column="203" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/hamming/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/girvan-newman/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="639">
+            <caret line="49" column="203" selection-start-line="49" selection-start-column="203" selection-end-line="49" selection-end-column="203" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/louvain.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="405" column="16" selection-start-line="405" selection-start-column="16" selection-end-line="405" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="639">
+            <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/nmi/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/infomap/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="135">
+            <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/infomap/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/llp/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/llp/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="165">
+            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/algorithms/louvain/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="210">
+            <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="583">
+            <caret line="46" column="64" selection-start-line="46" selection-end-line="47" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1515">
-          <caret line="101" column="99" selection-start-line="101" selection-start-column="99" selection-end-line="101" selection-end-column="99" />
+        <state relative-caret-position="210">
+          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1721,6 +1655,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9255">
+          <caret line="617" column="8" selection-start-line="617" selection-start-column="8" selection-end-line="617" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/insaflu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2355">
@@ -1751,32 +1692,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/visualization/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4620">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        <state relative-caret-position="12285">
+          <caret line="819" column="37" selection-start-line="819" selection-start-column="37" selection-end-line="819" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/visualization/tree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="171" selection-start-line="171" selection-end-line="171" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="489">
-            <caret line="46" column="105" selection-start-line="46" selection-start-column="105" selection-end-line="46" selection-end-column="105" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="615" column="45" selection-start-line="615" selection-start-column="45" selection-end-line="615" selection-end-column="45" />
+        <state relative-caret-position="6585">
+          <caret line="439" column="41" selection-start-line="439" selection-start-column="41" selection-end-line="439" selection-end-column="41" />
         </state>
       </provider>
     </entry>

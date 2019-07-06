@@ -1,6 +1,6 @@
 {
   "name": "layered-label-propagation",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Layered Label Propagation is a semi-supervised machine learning algorithm that assigns labels to previously unlabeled data points. At the start of the algorithm, a (generally small) subset of the data points have labels (or classifications). These labels are propagated to the unlabeled points throughout the course of the algorithm.",
   "main": "layeredLabelPropagation.js",
   "scripts": {

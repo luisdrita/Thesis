@@ -1,6 +1,6 @@
 {
   "name": "girvan-newman-benchmark",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Generates a benchmark network upon input of a mix and average degree for each node in the graph.",
   "main": "girvan-newman.js",
   "scripts": {
