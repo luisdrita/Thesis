@@ -16,7 +16,7 @@ let tree = Phylocanvas.createTree('phylocanvas', {
         zIndex: -1000
     },
 
-   // baseNodeSize: 20,
+    //baseNodeSize: 200,
     padding: 5,
    // textSize: "25",
     font: "helvetica",
@@ -79,7 +79,6 @@ function phylTree(metaData, data_input) {
             }
         }
 
-        tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
         tree.setNodeSize(document.getElementById("nodeSize").value);
         tree.setTextSize(document.getElementById("textSize").value);
 
@@ -640,10 +639,9 @@ for (let i = 0; i < shapes.length; i++) {
         document.getElementById("treeButton").src = "../img/" + shapes[i] + ".png";
 
         tree.setTreeType(shapes[i]); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-        tree.setNodeSize(document.getElementById("nodeSize").value);
-        tree.setTextSize(document.getElementById("textSize").value);
 
         treeType = shapes[i];
+
     });
 }
 
@@ -664,7 +662,6 @@ document.getElementById("lineWidth").addEventListener("input", function () {
 
     tree.lineWidth = document.getElementById("lineWidth").value/20;
 
-    tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
     tree.setNodeSize(document.getElementById("nodeSize").value);
     tree.setTextSize(document.getElementById("textSize").value);
 
@@ -850,7 +847,6 @@ function displayLabel (metaData, max) {
                     }
                 }
 
-            tree.setTreeType(treeType); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
         tree.setNodeSize(document.getElementById("nodeSize").value);
         tree.setTextSize(document.getElementById("textSize").value);
     }

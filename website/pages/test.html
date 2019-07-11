@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <style>
+        body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+        #map{ width:100%; height:500px; }
+    </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<script>
+
+    var points = [
+        {latlng: [30.94110220488552, -238.14239501953122],  achieve: 0.34},
+        {latlng: [31.12819929911196, -238.24676513671875],  achieve: 0.67},
+        {latlng: [30.987027960280326, -238.46649169921875], achieve: 0.59},
+        {latlng: [31.230417393130743, -238.47747802734375], achieve: 0.32},
+        {latlng: [31.235114421248575, -238.63128662109375], achieve: 0.97},
+        {latlng: [31.340735782189476, -238.41979980468747], achieve: 0.82}
+    ];
+    var map = L.map("map", {
+        center: [31.240985378021307, -238.50466489791867],
+        minZoom: 8,
+        zoom: 10
+    });
+
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}").addTo(map);
+
+    map._initPathRoot();
+
+    var svg = d3.select("#map").select("svg").append("g"),
+        circles = svg.selectAll("g")
+            .data(points)
+            .enter()
+            .append("g")
+            .attr("transform", function(d){ return "translate(" + [
+                map.latLngToLayerPoint(L.latLng(d.latlng)).x,
+                map.latLngToLayerPoint(L.latLng(d.latlng)).y
+            ] + ")"; });
+
+    circles.each(function(){
+        d3.select(this).call(getPie);
+    });
+
+    update();
+    map.on("viewreset", update);
+
+    function update(){
+        circles.attr("transform", function(d){ return "translate(" + [
+            map.latLngToLayerPoint(L.latLng(d.latlng)).x,
+            map.latLngToLayerPoint(L.latLng(d.latlng)).y
+        ] + ")"; });
+    }
+
+    function getPie(s) {
+        var size = 70;
+        var arc = d3.svg.arc().outerRadius(size / 2).innerRadius(0), // size/3
+            pie = d3.layout.pie().sort(null);
+
+        s.selectAll("path")
+            .data(function(d){ return pie([d.achieve, 1 - d.achieve]); })
+            .enter()
+            .append("path")
+            .attr({
+                d: arc,
+                fill: function(d,i){ return i ? "gray" : "red"; }
+            });
+    }
+
+</script>
+</body>
