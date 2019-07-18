@@ -81,7 +81,6 @@ function phylTree(metaData, data_input) {
 
         tree.setNodeSize(document.getElementById("nodeSize").value);
         tree.setTextSize(document.getElementById("textSize").value);
-
     });
 
     document.getElementById("treeButton").src = "../img/" + treeType + ".png"; // Initializing the right tree button accordingly to the shape of the tree.
@@ -169,9 +168,22 @@ function phylTree(metaData, data_input) {
 
         for (let j = 0; j < Object.keys(meta[Object.keys(meta)[i]]).length; j++) {
 
+            let legendDiv = document.createElement("LABEL"); // Div containing label and p.
             let legendSwitchLabelCollapsible = document.createElement("LABEL"); // Metadata label.
+            let colorPicker = document.createElement("P");
+
+            legendDiv.className = "legendDiv"+i;
+            legendDiv.id = "legendDiv"+i+j;
+            legendDiv.style.opacity = "1";
+            legendDiv.style.color = "white";
+            legendDiv.style.border = "solid";
+            legendDiv.style.borderWidth = "1px";
+            legendDiv.style.borderRadius = "10px";
+            legendDiv.style.borderColor = "white";
+            legendDiv.style.backgroundColor = "black";
 
             legendSwitchLabelCollapsible.className = "legendSwitchLabelCollapsible"+i;
+            legendSwitchLabelCollapsible.id = "legendSwitchLabelCollapsible"+i+j;
             legendSwitchLabelCollapsible.innerHTML = Object.keys(meta[Object.keys(meta)[i]])[j];
             legendSwitchLabelCollapsible.style.display = "none";
             legendSwitchLabelCollapsible.style.paddingLeft = "10px";
@@ -180,7 +192,20 @@ function phylTree(metaData, data_input) {
             legendSwitchLabelCollapsible.style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j] + Object.keys(meta[Object.keys(meta)[i]])[j]));
             legendSwitchLabelCollapsible.style.color = "white";
 
-            document.getElementById("treeLegendDivInside").appendChild(legendSwitchLabelCollapsible);
+            colorPicker.className = "legendSwitchLabelCollapsible"+i;
+            colorPicker.innerHTML = "color";
+            colorPicker.style.width = "50px";
+            colorPicker.style.opacity = "1";
+            colorPicker.style.color = "white";
+            colorPicker.style.border = "solid";
+            colorPicker.style.borderWidth = "1px";
+            colorPicker.style.borderRadius = "10px";
+            colorPicker.style.borderColor = "white";
+            colorPicker.style.backgroundColor = "black";
+
+            document.getElementById("treeLegendDivInside").appendChild(legendDiv);
+            document.getElementById("legendDiv"+i+j).appendChild(legendSwitchLabelCollapsible);
+            document.getElementById("legendDiv"+i+j).appendChild(colorPicker);
         }
     }
 
@@ -277,7 +302,6 @@ let treeType4 = document.createElement("IMG");
 let treeType5 = document.createElement("IMG");
 
 treeDiv.id = "treeDiv";
-treeDiv.classList.add("dropdown");
 treeDiv.classList.add("toggle");
 treeDiv.style.position = "absolute";
 treeDiv.style.zIndex = "2000";
@@ -286,7 +310,6 @@ treeDiv.style.bottom = "10px";
 treeDiv.style.display = "none";
 
 treeButton.id = "treeButton";
-treeButton.style.textAlign = "center";
 treeButton.src = "../img/circular.png";
 treeButton.style.width = "30px";
 treeButton.style.cursor = "pointer";
@@ -297,7 +320,6 @@ treeDivInside.style.display = "none";
 treeDivInside.style.position = "absolute";
 treeDivInside.style.bottom = "30px";
 treeDivInside.style.right = "0px";
-treeDivInside.style.zIndex = "700";
 treeDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeDivInside.style.backgroundColor = "black";
 treeDivInside.style.borderRadius = "10px";
@@ -306,7 +328,6 @@ treeType1.id = "radial";
 treeType1.style.cursor = "pointer";
 treeType1.style.display = "block";
 treeType1.style.padding = "5px 10px";
-treeType1.style.zIndex = "2";
 treeType1.src = "../img/radial.png";
 treeType1.style.width = "30px";
 
@@ -314,7 +335,6 @@ treeType2.id = "rectangular";
 treeType2.style.cursor = "pointer";
 treeType2.style.display = "block";
 treeType2.style.padding = "5px 10px";
-treeType2.style.zIndex = "2";
 treeType2.src = "../img/rectangular.png";
 treeType2.style.width = "30px";
 
@@ -322,7 +342,6 @@ treeType3.id = "circular";
 treeType3.style.cursor = "pointer";
 treeType3.style.display = "block";
 treeType3.style.padding = "5px 10px";
-treeType3.style.zIndex = "2";
 treeType3.src = "../img/circular.png";
 treeType3.style.width = "30px";
 
@@ -330,7 +349,6 @@ treeType4.id = "diagonal";
 treeType4.style.cursor = "pointer";
 treeType4.style.display = "block";
 treeType4.style.padding = "5px 10px";
-treeType4.style.zIndex = "2";
 treeType4.src = "../img/diagonal.png";
 treeType4.style.width = "30px";
 
@@ -339,7 +357,6 @@ treeType5.style.cursor = "pointer";
 treeType5.style.display = "block";
 treeType5.style.padding = "5px 10px";
 treeType5.style.paddingBottom = "10px";
-treeType5.style.zIndex = "2";
 treeType5.src = "../img/hierarchical.png";
 treeType5.style.width = "30px";
 
@@ -373,7 +390,6 @@ let selectNodeColorLabel = document.createElement("P");
 let selectNodeColor = document.createElement("SELECT");
 
 treeStyleDiv.id = "treeStyleDiv";
-treeStyleDiv.classList.add("dropdown");
 treeStyleDiv.classList.add("toggle");
 treeStyleDiv.style.position = "absolute";
 treeStyleDiv.style.top = "10px";
@@ -383,7 +399,6 @@ treeStyleDiv.style.display = "none";
 
 treeStyleButton.id = "treeStyleButton";
 treeStyleButton.innerHTML = "Style";
-treeStyleButton.style.textAlign = "center";
 treeStyleButton.style.width = "50px";
 treeStyleButton.style.height = "25px";
 treeStyleButton.style.cursor = "pointer";
@@ -396,7 +411,6 @@ treeStyleDivInside.id = "treeStyleDivInside";
 treeStyleDivInside.class = "dropdown-content";
 treeStyleDivInside.style.display = "none";
 treeStyleDivInside.style.position = "absolute";
-treeStyleDivInside.style.zIndex = "20";
 treeStyleDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 treeStyleDivInside.style.lineHeight = "5px";
 treeStyleDivInside.style.paddingBottom = "15px";
@@ -407,29 +421,25 @@ treeStyleDivInside.style.width = "150px";
 
 nodeSizeLabel.id = "nodeSizeLabel";
 nodeSizeLabel.innerHTML = "Node Size: 10px";
-nodeSizeLabel.style.zIndex = "2";
 nodeSizeLabel.style.textAlign = "center";
 nodeSizeLabel.style.color = "white";
 
 nodeSize.id = "nodeSize";
 nodeSize.type = "range";
 nodeSize.value = "10";
-nodeSize.style.zIndex = "2";
 nodeSize.style.cursor = "pointer";
 nodeSize.style.width = "130px";
-nodeSize.style.display = "block";
 nodeSize.style.margin = "auto";
+nodeSize.style.display = "block";
 
 textSizeLabel.id = "textSizeLabel";
 textSizeLabel.innerHTML = "Label Size: 4px";
-textSizeLabel.style.zIndex = "2";
 textSizeLabel.style.textAlign = "center";
 textSizeLabel.style.color = "white";
 
 textSize.id = "textSize";
 textSize.type = "range";
 textSize.value = "4";
-textSize.style.zIndex = "2";
 textSize.style.cursor = "pointer";
 textSize.style.width = "130px";
 textSize.style.display = "block";
@@ -437,7 +447,6 @@ textSize.style.margin = "auto";
 
 lineWidthLabel.id = "lineWidthLabel";
 lineWidthLabel.innerHTML = "Line Width: 1px";
-lineWidthLabel.style.zIndex = "2";
 lineWidthLabel.style.textAlign = "center";
 lineWidthLabel.style.color = "white";
 
@@ -452,12 +461,10 @@ lineWidth.style.margin = "auto";
 
 selectNodeColorLabel.id = "selectNodeColorLabel";
 selectNodeColorLabel.innerHTML = "Color";
-selectNodeColorLabel.style.zIndex = "1000";
 selectNodeColorLabel.style.textAlign = "center";
 selectNodeColorLabel.style.color = "white";
 
 selectNodeColor.id = "selectNodeColor";
-selectNodeColor.style.zIndex = "1000";
 selectNodeColor.style.display = "block";
 selectNodeColor.style.width = "130px";
 selectNodeColor.style.margin = "auto";

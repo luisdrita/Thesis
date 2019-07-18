@@ -6,13 +6,13 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <style>
         body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
-        #map{ width:100%; height:500px; }
+        #mapid{ width:100%; height:500px; }
     </style>
 </head>
 
 <body>
 
-<div id="map"></div>
+<div id="mapid"></div>
 
 <script>
 
@@ -24,7 +24,7 @@
         {latlng: [31.235114421248575, -238.63128662109375], achieve: 0.97},
         {latlng: [31.340735782189476, -238.41979980468747], achieve: 0.82}
     ];
-    var map = L.map("map", {
+    var map = L.map("mapid", {
         center: [31.240985378021307, -238.50466489791867],
         minZoom: 8,
         zoom: 10
@@ -34,7 +34,7 @@
 
     map._initPathRoot();
 
-    var svg = d3.select("#map").select("svg").append("g"),
+    var svg = d3.select("#mapid").select("svg").append("g"),
         circles = svg.selectAll("g")
             .data(points)
             .enter()
@@ -51,7 +51,7 @@
     update();
     map.on("viewreset", update);
 
-    function update(){
+    function update() {
         circles.attr("transform", function(d){ return "translate(" + [
             map.latLngToLayerPoint(L.latLng(d.latlng)).x,
             map.latLngToLayerPoint(L.latLng(d.latlng)).y
@@ -74,4 +74,10 @@
     }
 
 </script>
+
+<div>
+    <label>hi</label>
+    <p style="display: inline-block">njn</p>
+</div>
+
 </body>

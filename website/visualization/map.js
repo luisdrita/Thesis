@@ -431,8 +431,6 @@ function geoMap(metaData) {
 
     document.getElementById("timeline").addEventListener("input", function () {
 
-        console.log(document.getElementById("timeline").value);
-
         document.getElementById("timelineLabel").innerHTML = Math.round(document.getElementById("timeline").value);
 
         let latlong2 = [];
@@ -477,121 +475,11 @@ function geoMap(metaData) {
 
     });
 
-    document.getElementById("toggle2").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        map.dragging.enable();
-
-    });
-
-    document.getElementById("mapButton").addEventListener("mouseover", function () {
-
-        map.doubleClickZoom.disable();
-        map.dragging.disable();
-
-    });
-
-    document.getElementById("mapButton").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        map.dragging.enable();
-
-    });
-
-    document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
-
-        map.doubleClickZoom.disable();
-        map.dragging.disable();
-
-    });
-
-    document.getElementById("mapMetadataButton").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        map.dragging.enable();
-
-    });
-
-    document.getElementById("styleButton").addEventListener("mouseover", function () {
-
-        map.doubleClickZoom.disable();
-        map.dragging.disable();
-
-    });
-
-    document.getElementById("styleButton").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        map.dragging.enable();
-
-    });
-
-    document.getElementById("styleDivInside").addEventListener("mouseover", function () {
-
-        map.doubleClickZoom.disable();
-        map.dragging.disable();
-
-    });
-
-    document.getElementById("styleDivInside").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        map.dragging.enable();
-
-    });
-
-    document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
-
-        map.doubleClickZoom.disable();
-        map.dragging.disable();
-
-    });
-
-    document.getElementById("mapMetadataDivInside").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        //map.scrollWheelZoom.enable();
-        map.dragging.enable();
-
-    });
-
-    document.getElementById("mapDivInside").addEventListener("mouseover", function () {
-
-        map.doubleClickZoom.disable();
-        map.dragging.disable();
-
-    });
-
-    document.getElementById("mapDivInside").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        map.dragging.enable();
-
-    });
-
-    document.getElementById("timelineDiv").addEventListener("mouseover", function () {
-
-        map.doubleClickZoom.disable();
-        map.dragging.disable();
-
-    });
-
-    document.getElementById("timelineDiv").addEventListener("mouseleave", function () {
-
-        map.doubleClickZoom.enable();
-        map.dragging.enable();
-
-    });
-
     document.getElementById("selectTime").addEventListener("change", function () {
-
-        console.log(document.getElementById("optionTime"+5));
 
         for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
 
             if (document.getElementById("optionTime"+j).selected) {
-
-                //console.log("optionTime"+j);
 
                 let remade = [];
 
@@ -601,27 +489,18 @@ function geoMap(metaData) {
 
                 });
 
-                console.log(remade);
-
                 minTime = Math.min.apply(null, remade);
                 maxTime = Math.max.apply(null, remade);
                 stepTime = (Math.max.apply(null, remade)-Math.min.apply(null, remade))/(Object.keys(meta[document.getElementById("optionTime"+j).innerText]).length);
 
                 document.getElementById("timeline").step = stepTime;
                 document.getElementById("timeline").min = minTime;
-                console.log(remade);
                 document.getElementById("timeline").max = maxTime;
-                console.log(Object.keys(meta[document.getElementById("optionTime"+j).innerText]).length);
                 break;
 
             }
         }
     });
-
-// ---------------------------------------- TEST ----------------------------------------
-
-
-
 }
 
 // -------------------------------------- Toggle Gear --------------------------------------
@@ -653,7 +532,6 @@ let streetsLabel = document.createElement("LABEL"); // Metadata label.
 let streets = document.createElement("INPUT"); // Checkbox input.
 
 mapDiv.id = "mapDiv";
-mapDiv.classList.add("dropdown");
 mapDiv.className = "toggle2";
 mapDiv.style.position = "absolute";
 mapDiv.style.left = "52%";
@@ -663,7 +541,6 @@ mapDiv.style.display = "none";
 
 mapButton.id = "mapButton";
 mapButton.innerHTML = "Map";
-mapButton.style.textAlign = "center";
 mapButton.style.width = "50px";
 mapButton.style.height = "25px";
 mapButton.style.cursor = "pointer";
@@ -677,7 +554,6 @@ mapDivInside.class = "dropdown-content";
 mapDivInside.style.display = "none";
 mapDivInside.style.position = "absolute";
 mapDivInside.style.bottom = "25px";
-mapDivInside.style.zIndex = "20";
 mapDivInside.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 mapDivInside.style.paddingBottom = "10px";
 mapDivInside.style.borderRadius = "10px";
@@ -685,25 +561,19 @@ mapDivInside.style.backgroundColor = "white";
 
 mapType1.id = "Dark";
 mapType1.style.cursor = "pointer";
-mapType1.style.display = "block";
 mapType1.style.padding = "5px 5px";
-mapType1.style.zIndex = "2";
 mapType1.src = "../img/dark.png";
 mapType1.style.width = "100px";
 
 mapType2.id = "Light";
 mapType2.style.cursor = "pointer";
-mapType2.style.display = "block";
 mapType2.style.padding = "5px 5px";
-mapType2.style.zIndex = "2";
 mapType2.src = "../img/light.png";
 mapType2.style.width = "100px";
 
 mapType3.id = "Satellite";
 mapType3.style.cursor = "pointer";
-mapType3.style.display = "block";
 mapType3.style.padding = "5px 5px";
-mapType3.style.zIndex = "2";
 mapType3.src = "../img/satellite.png";
 mapType3.style.width = "100px";
 
@@ -713,7 +583,6 @@ streetsLabel.innerHTML = "Labels";
 streetsLabel.style.display = "block";
 streetsLabel.style.paddingLeft = "10px";
 streetsLabel.style.paddingRight = "10px";
-streetsLabel.style.opacity = "1";
 
 streets.id = "streets";
 streets.className = "streets";
@@ -743,7 +612,6 @@ let bubbleSizeLabel = document.createElement("P");
 let bubbleSize = document.createElement("INPUT");
 
 styleDiv.id = "styleDiv";
-styleDiv.classList.add("dropdown");
 styleDiv.className = "toggle2";
 styleDiv.style.position = "absolute";
 styleDiv.style.bottom = "10px";
@@ -753,7 +621,6 @@ styleDiv.style.display = "none";
 
 styleButton.id = "styleButton";
 styleButton.innerHTML = "Style";
-styleButton.style.textAlign = "center";
 styleButton.style.width = "50px";
 styleButton.style.height = "25px";
 styleButton.style.cursor = "pointer";
@@ -779,7 +646,6 @@ bubbleSizeLabel.innerHTML = "Bubble Size";
 bubbleSizeLabel.style.fontSize = "14px";
 bubbleSizeLabel.style.zIndex = "1000";
 bubbleSizeLabel.style.textAlign = "center";
-bubbleSizeLabel.style.color = "black";
 
 bubbleSize.id = "bubbleSize";
 bubbleSize.type = "range";
@@ -808,7 +674,6 @@ let metadata = document.createElement("P");
 let selectMetadata = document.createElement("SELECT");
 
 mapMetadataDiv.id = "mapMetadataDiv";
-mapMetadataDiv.classList.add("dropdown");
 mapMetadataDiv.classList.add("toggle2");
 mapMetadataDiv.style.position = "absolute";
 mapMetadataDiv.style.bottom = "10px";
@@ -818,7 +683,6 @@ mapMetadataDiv.style.display = "none";
 
 mapMetadataButton.id = "mapMetadataButton";
 mapMetadataButton.innerHTML = "Metadata";
-mapMetadataButton.style.textAlign = "center";
 mapMetadataButton.style.width = "75px";
 mapMetadataButton.style.height = "25px";
 mapMetadataButton.style.cursor = "pointer";
@@ -847,11 +711,9 @@ metadata.innerHTML = "Color";
 metadata.style.fontSize = "14px";
 metadata.style.zIndex = "1000";
 metadata.style.textAlign = "center";
-metadata.style.color = "black";
 
 selectMetadata.id = "selectMetadata";
 selectMetadata.style.zIndex = "1000";
-selectMetadata.style.display = "block";
 
 document.getElementById("mapid").appendChild(mapMetadataDiv);
 
@@ -886,8 +748,6 @@ timelineDiv.style.lineHeight = "5px";
 timelineLabel.id = "timelineLabel";
 timelineLabel.innerHTML = "Timeline";
 timelineLabel.style.fontSize = "14px";
-timelineLabel.style.textAlign = "center";
-timelineLabel.style.color = "black";
 timelineLabel.style.display = "inline-block";
 
 timeline.id = "timeline";
@@ -900,14 +760,12 @@ timeline.style.marginRight = "10px";
 timeline.style.display = "inline-block";
 
 selectTime.id = "selectTime";
-selectTime.style.zIndex = "1000";
 selectTime.style.display = "inline-block";
 
 play.id = "play";
 play.style.display = "inline-block";
 play.style.paddingLeft = "10px";
 play.style.paddingRight = "10px";
-play.style.opacity = "1";
 play.style.cursor = "pointer";
 play.style.width = "10px";
 play.src = "../img/play.png";
@@ -919,7 +777,117 @@ document.getElementById("timelineDiv").appendChild(timeline);
 document.getElementById("timelineDiv").appendChild(selectTime);
 document.getElementById("timelineDiv").appendChild(play);
 
-// -------------------------------------- Button Dynamics --------------------------------------
+// -------------------------------------- Mouse Over Dynamics --------------------------------------
+
+// -------------------------------- Dragging & Zoom
+
+document.getElementById("toggle2").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+
+});
+
+document.getElementById("mapButton").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+
+});
+
+document.getElementById("mapButton").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+
+});
+
+document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+
+});
+
+document.getElementById("mapMetadataButton").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+
+});
+
+document.getElementById("styleButton").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+
+});
+
+document.getElementById("styleButton").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+
+});
+
+document.getElementById("styleDivInside").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+
+});
+
+document.getElementById("styleDivInside").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+
+});
+
+document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+
+});
+
+document.getElementById("mapMetadataDivInside").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    //map.scrollWheelZoom.enable();
+    map.dragging.enable();
+
+});
+
+document.getElementById("mapDivInside").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+
+});
+
+document.getElementById("mapDivInside").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+
+});
+
+document.getElementById("timelineDiv").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+
+});
+
+document.getElementById("timelineDiv").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+
+});
+
+// -------------------------------- Display
 
 document.getElementById("mapDivInside").addEventListener("mouseover", function () {
 
@@ -993,33 +961,32 @@ document.getElementById("mapMetadataButton").addEventListener("mouseout", functi
 
 });
 
+// -------------------------------------- Timeline --------------------------------------
+
 document.getElementById("play").addEventListener("click", function () {
 
     if ((document.getElementById("play").src).search("img/play.png") !== -1) {
 
         document.getElementById("play").src = "../img/pause.png";
-        //console.log(minTime);
-        document.getElementById("timeline").value = minTime;
 
         let time = minTime;
 
         let interval = setInterval(function () {
 
-            //console.log(stepTime);
-
             time = time + stepTime;
 
             document.getElementById("timeline").value = time;
-
-            //console.log(document.getElementById("timeline").value);
-
-            console.log(time);
-            console.log(maxTime);
 
             if (Math.abs(time - maxTime) < 0.1) {
                 clearInterval(interval);
                 document.getElementById("play").src = "../img/play.png";
             }
+
+            document.getElementById("play").addEventListener("click", function () {
+
+                clearInterval(interval);
+
+            });
 
             // ------------------------------- Update Circle Radius
 
@@ -1043,14 +1010,10 @@ document.getElementById("play").addEventListener("click", function () {
 
                 });
 
-            // -------------------------------
-
         }, 500)
 
     } else {
         document.getElementById("play").src = "../img/play.png";
-//console.log(maxTime);
-        document.getElementById("timeline").value = minTime;
     }
 });
 
@@ -1096,7 +1059,4 @@ let mouseleave = function(d) {
     Tooltip
         .style("opacity", 0);
 };
-
- */
-
-// ------------------------------------------- Auxiliary Functions -------------------------------------------
+*/
