@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/website/leaflet/images/layers-2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/images/layers.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/images/marker-icon-2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/images/marker-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/images/marker-shadow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/leaflet-src.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/leaflet-src.esm.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/leaflet-src.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/leaflet-src.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/leaflet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/leaflet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/leaflet/leaflet.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/pages/insaflu.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/insaflu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/visualization/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/map.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/visualization/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/tree.js" afterDir="false" />
     </list>
@@ -195,10 +182,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
+            <state relative-caret-position="9225">
               <caret line="615" column="45" selection-start-line="615" selection-start-column="45" selection-end-line="615" selection-end-column="45" />
             </state>
           </provider>
@@ -207,8 +194,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/pages/insaflu.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="490">
+              <caret line="112" column="24" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="24" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -237,17 +224,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/visualization/tree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1271">
-              <caret line="433" lean-forward="true" selection-start-line="433" selection-end-line="433" />
+            <state relative-caret-position="284">
+              <caret line="859" column="33" selection-start-line="859" selection-end-line="860" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/visualization/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14475">
-              <caret line="965" column="71" lean-forward="true" selection-start-line="965" selection-start-column="71" selection-end-line="965" selection-end-column="71" />
+            <state relative-caret-position="444">
+              <caret line="465" lean-forward="true" selection-start-line="465" selection-end-line="465" />
             </state>
           </provider>
         </entry>
@@ -255,7 +242,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/pages/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1215">
+            <state relative-caret-position="702">
               <caret line="81" selection-start-line="81" selection-end-line="81" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#!!top" expanded="true" />
@@ -270,43 +257,43 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package.json" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setTreeType</find>
+      <find>listening</find>
+      <find>none</find>
+      <find>[&quot;colo</find>
+      <find>flag</find>
+      <find>&quot;legendSwitchLabel&quot; + &quot;test&quot;</find>
       <find>triangle</find>
-      <find>shape</find>
-      <find>update</find>
-      <find>tree</find>
-      <find>aux</find>
-      <find>zoom</find>
-      <find>mapDivInside</find>
-      <find>range</find>
-      <find>console.</find>
-      <find>change</find>
-      <find>.selected</find>
-      <find>shapes</find>
-      <find>draw</find>
-      <find>optionTime</find>
-      <find>treeType</find>
-      <find>timeline</find>
-      <find>markers</find>
+      <find>lineWid</find>
+      <find>setTextSize</find>
+      <find>block</find>
+      <find>blockStyleButton</find>
+      <find>lineWidth</find>
       <find>input</find>
-      <find>latlong2</find>
-      <find>circle</find>
-      <find>svg</find>
-      <find>pie</find>
-      <find>meta</find>
-      <find>mapid</find>
-      <find>selectTime</find>
-      <find>map</find>
-      <find>radius</find>
-      <find>console</find>
-      <find>conso</find>
+      <find>toggle</find>
+      <find>rotate</find>
+      <find>selectNodeColor</find>
+      <find>None</find>
+      <find>expand all</find>
+      <find>collapse all</find>
+      <find>treetype</find>
+      <find>transform</find>
+      <find>reset</find>
+      <find>setNodeSize</find>
+      <find>tree</find>
+      <find>baseNodeSize</find>
+      <find>nodesize</find>
+      <find>load</find>
+      <find>drag</find>
+      <find>30</find>
+      <find>markers</find>
+      <find>legend r</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -345,7 +332,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/website/algorithms/louvain.js" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap.js" />
         <option value="$PROJECT_DIR$/website/algorithms/girvan-newman.js" />
         <option value="$PROJECT_DIR$/website/algorithms/infomap/package.json" />
@@ -391,15 +377,16 @@
         <option value="$PROJECT_DIR$/website/algorithms/infomap/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/llp/readme.md" />
         <option value="$PROJECT_DIR$/website/algorithms/louvain/readme.md" />
-        <option value="$PROJECT_DIR$/website/pages/insaflu.html" />
         <option value="$PROJECT_DIR$/website/pages/test.html" />
-        <option value="$PROJECT_DIR$/website/visualization/map.js" />
-        <option value="$PROJECT_DIR$/website/visualization/tree.js" />
+        <option value="$PROJECT_DIR$/website/visualization/auxiliar.js" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/website/pages/insaflu.html" />
+        <option value="$PROJECT_DIR$/website/visualization/tree.js" />
+        <option value="$PROJECT_DIR$/website/visualization/map.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -409,7 +396,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -428,10 +414,17 @@
               <item name="website" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Phyl" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Phyl" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="visualization" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -745,14 +738,12 @@
       <workItem from="1562670982446" duration="13405000" />
       <workItem from="1562758268041" duration="9288000" />
       <workItem from="1562842400490" duration="11325000" />
-      <workItem from="1563402996411" duration="7059000" />
-    </task>
-    <task id="LOCAL-00030" summary="Added Results">
-      <created>1552358730144</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1552358730144</updated>
+      <workItem from="1563402996411" duration="7090000" />
+      <workItem from="1563447941821" duration="26822000" />
+      <workItem from="1563534873554" duration="19785000" />
+      <workItem from="1563623272207" duration="6089000" />
+      <workItem from="1563714746258" duration="12669000" />
+      <workItem from="1563793613821" duration="16412000" />
     </task>
     <task id="LOCAL-00031" summary="PHYLOViZ Integration 1.0">
       <created>1552442808050</created>
@@ -1090,11 +1081,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562810810453</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="INSaFLU Updates">
+      <created>1563416476982</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1563416476984</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2194262000" />
+    <option name="totallyTimeSpent" value="2276070000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1108,7 +1106,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31540343" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27078238" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -1207,14 +1205,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="INSaFLU Updates" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cmd.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="364" column="13" selection-start-line="364" selection-start-column="13" selection-end-line="364" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/visualization/results.js" />
     <entry file="file://$PROJECT_DIR$/website/benchmark_data/data_visualized/json/labelPropagation_vs_mix_vs_k.json" />
     <entry file="file://$PROJECT_DIR$/website/visualization/d3_svg.js">
@@ -1526,6 +1516,10 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/visualization/auxiliar.js" />
+    <entry file="file://$PROJECT_DIR$/website/visualization/aux.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1687,10 +1681,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9225">
+          <caret line="615" column="45" selection-start-line="615" selection-start-column="45" selection-end-line="615" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/pages/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/pages/insaflu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="490">
+          <caret line="112" column="24" selection-start-line="112" selection-start-column="13" selection-end-line="112" selection-end-column="24" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1715,34 +1726,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/pages/test.html">
+    <entry file="file://$PROJECT_DIR$/website/visualization/tree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#1;n#body#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="284">
+          <caret line="859" column="33" selection-start-line="859" selection-end-line="860" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/visualization/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14475">
-          <caret line="965" column="71" lean-forward="true" selection-start-line="965" selection-start-column="71" selection-end-line="965" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/visualization/tree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1271">
-          <caret line="433" lean-forward="true" selection-start-line="433" selection-end-line="433" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="615" column="45" selection-start-line="615" selection-start-column="45" selection-end-line="615" selection-end-column="45" />
+        <state relative-caret-position="444">
+          <caret line="465" lean-forward="true" selection-start-line="465" selection-end-line="465" />
         </state>
       </provider>
     </entry>

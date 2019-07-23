@@ -1,15 +1,15 @@
-let minTime;
-let maxTime;
-let stepTime;
-let markers;
+let minTime, maxTime, stepTime, markers;
+
+// -------------------------------------- Metadata Dependent Operations --------------------------------------
 
 function geoMap(metaData) {
 
-    let mapType;
-    let mapType2;
+    let mapType, mapType2;
     let lat = "latitude";
     let long = "longitude";
     let mapConfig = "dark";
+
+    // -------------------------------- Creating Meta ({metadata: values, ...})
 
     let meta = {};
 
@@ -24,6 +24,8 @@ function geoMap(metaData) {
             }
         }
     }
+
+    // -------------------------------- Adding Selective Metadata Categories Timeline
 
     let include = {};
 
@@ -41,7 +43,6 @@ function geoMap(metaData) {
 
             if (j === Object.keys(meta[Object.keys(meta)[i]]).length - 1 && (Object.keys(metaData[Object.keys(metaData)[0]])[i] === "year" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "month" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "week")) {
 
-                //
                 include[Object.keys(metaData[Object.keys(metaData)[0]])[i]] = true;
 
             }
@@ -61,27 +62,26 @@ function geoMap(metaData) {
         .map('mapid')
         .setView([38, 9], 5);   // center position + zoom
 
-    // Add a tile to the map = a background. Comes from OpenStreetmap
     mapType = L.tileLayer(
         'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-            //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-            maxZoom: 10,
-            minZoom: 1
+            minZoom: 1,
+            maxZoom: 10
 
         }).addTo(map);
+
+    // -------------------------------- Listening Clicks Pick Map
+
+    // Dark Mode
 
     document.getElementById("Dark").addEventListener("click", function () {
 
         map.removeLayer(mapType);
 
-        // Add a tile to the map = a background. Comes from OpenStreetmap
-
         if(document.getElementById("streets").checked) {
             mapType = L.tileLayer(
                 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                    maxZoom: 10,
-                    minZoom: 1
+                    minZoom: 1,
+                    maxZoom: 10
 
                 }).addTo(map);
 
@@ -89,9 +89,8 @@ function geoMap(metaData) {
 
             mapType = L.tileLayer(
                 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-                    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                    maxZoom: 10,
-                    minZoom: 1
+                    minZoom: 1,
+                    maxZoom: 10
 
                 }).addTo(map);
         }
@@ -112,17 +111,17 @@ function geoMap(metaData) {
 
     });
 
+    // Light Mode
+
     document.getElementById("Light").addEventListener("click", function () {
 
         map.removeLayer(mapType);
 
-        // Add a tile to the map = a background. Comes from OpenStreetmap
         if(document.getElementById("streets").checked) {
             mapType = L.tileLayer(
                 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                    //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                    maxZoom: 19,
-                    minZoom: 1
+                    minZoom: 1,
+                    maxZoom: 19
 
                 }).addTo(map);
 
@@ -130,9 +129,8 @@ function geoMap(metaData) {
 
                 mapType = L.tileLayer(
                     'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
-                        //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                        maxZoom: 19,
-                        minZoom: 1
+                        minZoom: 1,
+                        maxZoom: 19
 
                     }).addTo(map);
         }
@@ -152,16 +150,17 @@ function geoMap(metaData) {
         mapConfig = "light";
     });
 
+    // Satellite Mode
+
     document.getElementById("Satellite").addEventListener("click", function () {
 
         map.removeLayer(mapType);
 
         if(document.getElementById("streets").checked) {
-            // Add a tile to the map = a background. Comes from OpenStreetmap
             mapType = L.tileLayer(
                 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                    maxZoom: 10,
-                    minZoom: 1
+                    minZoom: 1,
+                    maxZoom: 10
 
                 }).addTo(map);
 
@@ -169,17 +168,15 @@ function geoMap(metaData) {
                 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}{r}.{ext}', {
                     minZoom: 1,
                     maxZoom: 10,
-                    ext: 'png'
 
                 }).addTo(map);
 
         } else {
 
-            // Add a tile to the map = a background. Comes from OpenStreetmap
             mapType = L.tileLayer(
                 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                    maxZoom: 10,
-                    minZoom: 1
+                    minZoom: 1,
+                    maxZoom: 10
 
                 }).addTo(map);
         }
@@ -199,9 +196,8 @@ function geoMap(metaData) {
         mapConfig = "satellite";
     });
 
-    // -------------------------
+    // -------------------------------- Listening Changes Road Switch
 
-    // Listening to changes in the select element of node colors which will trigger tree update.
     document.getElementById("streets").addEventListener("change", function () {
 
             if (document.getElementById("streets").checked) {
@@ -213,12 +209,10 @@ function geoMap(metaData) {
                         map.removeLayer(mapType);
                         map.removeLayer(mapType2);
 
-                        // Add a tile to the map = a background. Comes from OpenStreetmap
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                                maxZoom: 10,
-                                minZoom: 1
+                                minZoom: 1,
+                                maxZoom: 10
 
                             }).addTo(map);
 
@@ -229,12 +223,10 @@ function geoMap(metaData) {
                         map.removeLayer(mapType);
                         map.removeLayer(mapType2);
 
-                        // Add a tile to the map = a background. Comes from OpenStreetmap
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                                maxZoom: 10,
-                                minZoom: 1
+                                minZoom: 1,
+                                maxZoom: 10
 
                             }).addTo(map);
 
@@ -244,11 +236,10 @@ function geoMap(metaData) {
 
                         map.removeLayer(mapType);
 
-                        // Add a tile to the map = a background. Comes from OpenStreetmap
                         mapType = L.tileLayer(
                             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                                maxZoom: 10,
-                                minZoom: 1
+                                minZoom: 1,
+                                maxZoom: 10
 
                             }).addTo(map);
 
@@ -256,7 +247,6 @@ function geoMap(metaData) {
                             'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}{r}.{ext}', {
                                 minZoom: 1,
                                 maxZoom: 10,
-                                ext: 'png'
 
                             }).addTo(map);
                 }
@@ -270,12 +260,10 @@ function geoMap(metaData) {
                         map.removeLayer(mapType);
                         map.removeLayer(mapType2);
 
-                        // Add a tile to the map = a background. Comes from OpenStreetmap
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                                maxZoom: 10,
-                                minZoom: 1
+                                minZoom: 1,
+                                maxZoom: 10
 
                             }).addTo(map);
 
@@ -286,12 +274,10 @@ function geoMap(metaData) {
                         map.removeLayer(mapType);
                         map.removeLayer(mapType2);
 
-                        // Add a tile to the map = a background. Comes from OpenStreetmap
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
-                                //   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
-                                maxZoom: 10,
-                                minZoom: 1
+                                minZoom: 1,
+                                maxZoom: 10
 
                             }).addTo(map);
 
@@ -302,19 +288,17 @@ function geoMap(metaData) {
                         map.removeLayer(mapType);
                         map.removeLayer(mapType2);
 
-                        // Add a tile to the map = a background. Comes from OpenStreetmap
                         mapType = L.tileLayer(
                             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                                maxZoom: 10,
-                                minZoom: 1
+                                minZoom: 1,
+                                maxZoom: 10
 
                             }).addTo(map);
-
                 }
             }
     });
 
-    // ------------------------- Adding SVG Layer
+    // ------------------------- Adding Circles As SVG Layer
 
     // Add a svg layer to the map
     L.svg().addTo(map);
@@ -322,6 +306,7 @@ function geoMap(metaData) {
     map.zoomControl.remove();
 
     markers = Object.values(metaData);
+    //console.log(Object.keys(metaData));
     let latlong = [];
 
     // Select the svg area and add circles:
@@ -379,7 +364,8 @@ function geoMap(metaData) {
         .attr("stroke-width", 3)
         .attr("fill-opacity", .5);
 
-    // Function that update circle position if something change
+    // ------------------------- Updating Circle Position (Drag or Zoom)
+
     function update() {
         d3.selectAll("circle")
             .attr("cx", function (d) {
@@ -405,8 +391,9 @@ function geoMap(metaData) {
             })
     }
 
-    // If the user change the map (zoom or drag), I update circle position:
     map.on("moveend", update);
+
+    // ------------------------- Listening Changes Bubble Size
 
     document.getElementById("bubbleSize").addEventListener("input", function () {
 
@@ -428,6 +415,74 @@ function geoMap(metaData) {
                 }
             });
     });
+
+    // ------------------------- Listening Logarithmic Bubble Size
+
+    document.getElementById("logButton").addEventListener("click", function () {
+
+        let latlong2 = [];
+
+        d3.selectAll("circle")
+            .attr("r", function (d) {
+
+                if (isNaN(d[long]) === false && isNaN(d[lat]) === false && latlong2.includes(d[lat].toString() + d[long].toString()) === false && d[lat] !== "" && d[long] !== "") {
+
+                    latlong2.push(d[lat].toString() + d[long].toString());
+
+                    if (document.getElementById("logButton").src.search("img/log_empty.png") !== -1) {
+
+                        return Math.log((label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
+
+                    } else {
+
+                        return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+
+                    }
+
+                } else {
+
+                    return "0";
+
+                }
+            });
+        document.getElementById("logButton").src = "../img/log_full.png";
+        document.getElementById("constButton").src = "../img/const_empty.png";
+    });
+
+    // ------------------------- Listening Constant Bubble Size
+
+    document.getElementById("constButton").addEventListener("click", function () {
+
+        let latlong2 = [];
+
+        d3.selectAll("circle")
+            .attr("r", function (d) {
+
+                if (isNaN(d[long]) === false && isNaN(d[lat]) === false && latlong2.includes(d[lat].toString() + d[long].toString()) === false && d[lat] !== "" && d[long] !== "") {
+
+                    latlong2.push(d[lat].toString() + d[long].toString());
+
+                    if (document.getElementById("constButton").src.search("img/const_empty.png") !== -1) {
+
+                        return document.getElementById("bubbleSize").value;
+
+                    } else {
+
+                        return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+
+                    }
+
+                } else {
+
+                    return "0";
+
+                }
+            });
+        document.getElementById("constButton").src = "../img/const_full.png";
+        document.getElementById("logButton").src = "../img/log_empty.png";
+    });
+
+    // ------------------------- Listening Changes Timeline
 
     document.getElementById("timeline").addEventListener("input", function () {
 
@@ -453,6 +508,8 @@ function geoMap(metaData) {
             });
     });
 
+    // ------------------------- Listening Clicks Toggle Button
+
     document.getElementById("toggle2").addEventListener("mousedown", function () {
 
         let x = document.getElementsByClassName("toggle2");
@@ -475,6 +532,8 @@ function geoMap(metaData) {
 
     });
 
+    // ------------------------- Listening Changes Timeline Metadata Picker
+
     document.getElementById("selectTime").addEventListener("change", function () {
 
         for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
@@ -491,7 +550,7 @@ function geoMap(metaData) {
 
                 minTime = Math.min.apply(null, remade);
                 maxTime = Math.max.apply(null, remade);
-                stepTime = (Math.max.apply(null, remade)-Math.min.apply(null, remade))/(Object.keys(meta[document.getElementById("optionTime"+j).innerText]).length);
+                stepTime = (Math.max.apply(null, remade) - Math.min.apply(null, remade))/(Object.keys(meta[document.getElementById("optionTime"+j).innerText]).length);
 
                 document.getElementById("timeline").step = stepTime;
                 document.getElementById("timeline").min = minTime;
@@ -611,6 +670,10 @@ let styleDivInside = document.createElement("DIV");
 let bubbleSizeLabel = document.createElement("P");
 let bubbleSize = document.createElement("INPUT");
 
+let logConstDiv = document.createElement("LABEL"); // Metadata label.
+let logButton = document.createElement("IMG"); // Metadata label.
+let constButton = document.createElement("IMG"); // Metadata label.
+
 styleDiv.id = "styleDiv";
 styleDiv.className = "toggle2";
 styleDiv.style.position = "absolute";
@@ -656,12 +719,41 @@ bubbleSize.style.width = "100px";
 bubbleSize.style.marginLeft = "10px";
 bubbleSize.style.marginRight = "10px";
 
+logConstDiv.id = "logConstDiv";
+logConstDiv.style.display = "block";
+logConstDiv.style.paddingLeft = "10px";
+logConstDiv.style.paddingRight = "10px";
+logConstDiv.style.backgroundColor = "white";
+logConstDiv.style.color = "black";
+logConstDiv.style.textAlign = "center";
+
+logButton.id = "logButton";
+logButton.style.display = "inline-block";
+logButton.style.paddingLeft = "10px";
+logButton.style.paddingRight = "10px";
+logButton.style.cursor = "pointer";
+logButton.style.width = "20px";
+logButton.src = "../img/log_empty.png";
+
+constButton.id = "constButton";
+constButton.style.display = "inline-block";
+constButton.style.paddingLeft = "10px";
+constButton.style.paddingRight = "10px";
+constButton.style.paddingBottom = "2px";
+constButton.style.cursor = "pointer";
+constButton.style.width = "30px";
+constButton.src = "../img/const_empty.png";
+
 document.getElementById("mapid").appendChild(styleDiv);
 document.getElementById("styleDiv").appendChild(styleButton);
 document.getElementById("styleDiv").appendChild(styleDivInside);
 
 document.getElementById("styleDivInside").appendChild(bubbleSizeLabel);
 document.getElementById("styleDivInside").appendChild(bubbleSize);
+document.getElementById("styleDivInside").appendChild(logConstDiv);
+
+document.getElementById("logConstDiv").appendChild(logButton);
+document.getElementById("logConstDiv").appendChild(constButton);
 
 // -------------------------------------- Metadata --------------------------------------
 
@@ -781,74 +873,80 @@ document.getElementById("timelineDiv").appendChild(play);
 
 // -------------------------------- Dragging & Zoom
 
-document.getElementById("toggle2").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-
-});
+// Mouse Over
 
 document.getElementById("mapButton").addEventListener("mouseover", function () {
 
     map.doubleClickZoom.disable();
     map.dragging.disable();
-
-});
-
-document.getElementById("mapButton").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-
 });
 
 document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
 
     map.doubleClickZoom.disable();
     map.dragging.disable();
-
-});
-
-document.getElementById("mapMetadataButton").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-
 });
 
 document.getElementById("styleButton").addEventListener("mouseover", function () {
 
     map.doubleClickZoom.disable();
     map.dragging.disable();
-
-});
-
-document.getElementById("styleButton").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-
 });
 
 document.getElementById("styleDivInside").addEventListener("mouseover", function () {
 
     map.doubleClickZoom.disable();
     map.dragging.disable();
-
-});
-
-document.getElementById("styleDivInside").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-
 });
 
 document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
 
     map.doubleClickZoom.disable();
     map.dragging.disable();
+});
 
+document.getElementById("mapDivInside").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+});
+
+document.getElementById("timelineDiv").addEventListener("mouseover", function () {
+
+    map.doubleClickZoom.disable();
+    map.dragging.disable();
+});
+
+// Mouse Leave
+
+document.getElementById("toggle2").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+});
+
+document.getElementById("mapButton").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+});
+
+document.getElementById("mapMetadataButton").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+});
+
+document.getElementById("styleButton").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
+});
+
+document.getElementById("styleDivInside").addEventListener("mouseleave", function () {
+
+    map.doubleClickZoom.enable();
+    map.dragging.enable();
 });
 
 document.getElementById("mapMetadataDivInside").addEventListener("mouseleave", function () {
@@ -856,109 +954,84 @@ document.getElementById("mapMetadataDivInside").addEventListener("mouseleave", f
     map.doubleClickZoom.enable();
     //map.scrollWheelZoom.enable();
     map.dragging.enable();
-
-});
-
-document.getElementById("mapDivInside").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-
 });
 
 document.getElementById("mapDivInside").addEventListener("mouseleave", function () {
 
     map.doubleClickZoom.enable();
     map.dragging.enable();
-
-});
-
-document.getElementById("timelineDiv").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-
 });
 
 document.getElementById("timelineDiv").addEventListener("mouseleave", function () {
 
     map.doubleClickZoom.enable();
     map.dragging.enable();
-
 });
 
 // -------------------------------- Display
 
+// Mouse Over
+
 document.getElementById("mapDivInside").addEventListener("mouseover", function () {
 
     mapDivInside.style.display = "block";
-
-});
-
-document.getElementById("mapDivInside").addEventListener("mouseout", function () {
-
-    mapDivInside.style.display = "none";
-
 });
 
 document.getElementById("mapButton").addEventListener("mouseover", function () {
 
     mapDivInside.style.display = "block";
-
-});
-
-document.getElementById("mapButton").addEventListener("mouseout", function () {
-
-    mapDivInside.style.display = "none";
-
 });
 
 document.getElementById("styleDivInside").addEventListener("mouseover", function () {
 
     styleDivInside.style.display = "block";
-
-});
-
-document.getElementById("styleDivInside").addEventListener("mouseout", function () {
-
-    styleDivInside.style.display = "none";
-
 });
 
 document.getElementById("styleButton").addEventListener("mouseover", function () {
 
     styleDivInside.style.display = "block";
-
-});
-
-document.getElementById("styleButton").addEventListener("mouseout", function () {
-
-    styleDivInside.style.display = "none";
-
 });
 
 document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
 
     mapMetadataDivInside.style.display = "block";
-
-});
-
-document.getElementById("mapMetadataDivInside").addEventListener("mouseout", function () {
-
-    mapMetadataDivInside.style.display = "none";
-
 });
 
 document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
 
     mapMetadataDivInside.style.display = "block";
+});
 
+// Mouse Out
+
+document.getElementById("mapDivInside").addEventListener("mouseout", function () {
+
+    mapDivInside.style.display = "none";
+});
+
+document.getElementById("mapButton").addEventListener("mouseout", function () {
+
+    mapDivInside.style.display = "none";
+});
+
+document.getElementById("styleDivInside").addEventListener("mouseout", function () {
+
+    styleDivInside.style.display = "none";
+});
+
+document.getElementById("styleButton").addEventListener("mouseout", function () {
+
+    styleDivInside.style.display = "none";
+});
+
+document.getElementById("mapMetadataDivInside").addEventListener("mouseout", function () {
+
+    mapMetadataDivInside.style.display = "none";
 });
 
 document.getElementById("mapMetadataButton").addEventListener("mouseout", function () {
 
     mapMetadataDivInside.style.display = "none";
-
 });
 
 // -------------------------------------- Timeline --------------------------------------
@@ -1060,3 +1133,28 @@ let mouseleave = function(d) {
         .style("opacity", 0);
 };
 */
+
+// -------------------------------------- Communication with Tree --------------------------------------
+
+document.getElementById("phylocanvas").addEventListener("click", function () {
+
+    d3.selectAll("circle")
+        .style("fill", function (d) {
+
+            for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
+                console.log((tree.getSelectedNodeIds()).length);
+                if (d["id"] === tree.getSelectedNodeIds()[i]) {
+
+                    return "grey";
+
+                }
+            }
+        });
+
+    console.log(tree.getSelectedNodeIds());
+
+});
+
+function f() {
+    
+}
