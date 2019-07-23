@@ -613,9 +613,9 @@ app.get('/insaflu_sample', function (req, res) {
         if (err) throw err;
 
         let obj = {};
-        let split = data.toString().split("\r"); // change to \n for heroku server.
+        let split = data.toString().split("\n"); // change to \n for heroku server.
         let metaTitles = split[0].split(",");
-        split = data.toString().split("\n");
+        //split = data.toString().split("\n");
 
         for (let i = 1; i < split.length; i++) {
 
