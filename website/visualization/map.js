@@ -7,7 +7,7 @@ function geoMap(metaData) {
     let mapType, mapType2;
     let lat = "latitude";
     let long = "longitude";
-    let mapConfig = "dark";
+    let mapConfig = "light";
 
     // -------------------------------- Creating Meta ({metadata: values, ...})
 
@@ -63,7 +63,7 @@ function geoMap(metaData) {
         .setView([38, 9], 5);   // center position + zoom
 
     mapType = L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
             minZoom: 1,
             maxZoom: 10
 
@@ -77,7 +77,9 @@ function geoMap(metaData) {
 
         map.removeLayer(mapType);
 
-        if(document.getElementById("streets").checked) {
+        if (mapType2 !== undefined) map.removeLayer(mapType2);
+
+        if((document.getElementById("streets").src).search("img/labels_full.png") !== -1) {
             mapType = L.tileLayer(
                 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
                     minZoom: 1,
@@ -97,14 +99,21 @@ function geoMap(metaData) {
 
         document.getElementById("mapButton").src = "../img/dark.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_white.png";
-        document.getElementById("bubbleSizeLabel").style.color = "white";
-        document.getElementById("metadata").style.color = "white";
 
         d3.selectAll("circle").style("fill", function (d) {
 
                 return "white"
 
                 //return "#" + intToRGB(hashCode(d["vaccine_status"]))
+            })
+            .attr("stroke", function (d) {
+
+                for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
+                    console.log((tree.getSelectedNodeIds()).length);
+                    if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
+                            return "white";
+                    }
+                }
             });
 
         mapConfig = "dark";
@@ -116,8 +125,9 @@ function geoMap(metaData) {
     document.getElementById("Light").addEventListener("click", function () {
 
         map.removeLayer(mapType);
+        if (mapType2 !== undefined) map.removeLayer(mapType2);
 
-        if(document.getElementById("streets").checked) {
+        if((document.getElementById("streets").src).search("img/labels_full.png") !== -1) {
             mapType = L.tileLayer(
                 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
                     minZoom: 1,
@@ -137,15 +147,22 @@ function geoMap(metaData) {
 
         document.getElementById("mapButton").src = "../img/light.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_black.png";
-        document.getElementById("bubbleSizeLabel").style.color = "black";
-        document.getElementById("metadata").style.color = "black";
 
         d3.selectAll("circle").style("fill", function (d) {
 
                 return "black"
 
                 //return "#" + intToRGB(hashCode(d["vaccine_status"]))
-            });
+            })
+            .attr("stroke", function (d) {
+
+            for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
+                console.log((tree.getSelectedNodeIds()).length);
+                if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
+                     return "black";
+                }
+            }
+        });
 
         mapConfig = "light";
     });
@@ -155,8 +172,9 @@ function geoMap(metaData) {
     document.getElementById("Satellite").addEventListener("click", function () {
 
         map.removeLayer(mapType);
+        if (mapType2 !== undefined) map.removeLayer(mapType2);
 
-        if(document.getElementById("streets").checked) {
+        if((document.getElementById("streets").src).search("img/labels_full.png") !== -1) {
             mapType = L.tileLayer(
                 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
                     minZoom: 1,
@@ -168,6 +186,7 @@ function geoMap(metaData) {
                 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}{r}.{ext}', {
                     minZoom: 1,
                     maxZoom: 10,
+                    ext: "png"
 
                 }).addTo(map);
 
@@ -183,31 +202,39 @@ function geoMap(metaData) {
 
         document.getElementById("mapButton").src = "../img/satellite.png";
         document.getElementById("toggle2").src = "../img/pixelmator/gear_white.png";
-        document.getElementById("bubbleSizeLabel").style.color = "white";
-        document.getElementById("metadata").style.color = "white";
 
         d3.selectAll("circle").style("fill", function (d) {
 
                 return "white"
 
                 //return "#" + intToRGB(hashCode(d["vaccine_status"]))
-            });
+            })
+            .attr("stroke", function (d) {
+
+            for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
+                console.log((tree.getSelectedNodeIds()).length);
+                if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
+                        return "white";
+                }
+            }
+        });
 
         mapConfig = "satellite";
     });
 
     // -------------------------------- Listening Changes Road Switch
 
-    document.getElementById("streets").addEventListener("change", function () {
+    document.getElementById("streets").addEventListener("click", function () {
 
-            if (document.getElementById("streets").checked) {
+            if ((document.getElementById("streets").src).search("img/labels_empty.png") !== -1) {
+
+                document.getElementById("streets").src = "../img/labels_full.png";
 
                 switch (mapConfig) {
 
                     case "dark":
 
                         map.removeLayer(mapType);
-                        map.removeLayer(mapType2);
 
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -221,7 +248,6 @@ function geoMap(metaData) {
                     case "light":
 
                         map.removeLayer(mapType);
-                        map.removeLayer(mapType2);
 
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
@@ -247,18 +273,20 @@ function geoMap(metaData) {
                             'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}{r}.{ext}', {
                                 minZoom: 1,
                                 maxZoom: 10,
+                                ext: "png"
 
                             }).addTo(map);
                 }
 
             } else {
 
+                document.getElementById("streets").src = "../img/labels_empty.png";
+
                 switch (mapConfig) {
 
                     case "dark":
 
                         map.removeLayer(mapType);
-                        map.removeLayer(mapType2);
 
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
@@ -272,7 +300,6 @@ function geoMap(metaData) {
                     case "light":
 
                         map.removeLayer(mapType);
-                        map.removeLayer(mapType2);
 
                         mapType = L.tileLayer(
                             'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
@@ -286,7 +313,6 @@ function geoMap(metaData) {
                     case "satellite":
 
                         map.removeLayer(mapType);
-                        map.removeLayer(mapType2);
 
                         mapType = L.tileLayer(
                             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -332,7 +358,7 @@ function geoMap(metaData) {
 
             if (isNaN(d[lat]) === false && isNaN(d[long]) === false && d[lat] !== "" && d[long] !== "") {
 
-            return map.latLngToLayerPoint([d[lat], d[long]]).y
+                return map.latLngToLayerPoint([d[lat], d[long]]).y
 
             } else {
 
@@ -355,7 +381,7 @@ function geoMap(metaData) {
         })
         .style("fill", function (d) {
 
-            return "white"
+            return "black"
 
             //return "#" + intToRGB(hashCode(d["vaccine_status"]))
 
@@ -406,7 +432,19 @@ function geoMap(metaData) {
 
                     latlong2.push(d[lat].toString() + d[long].toString());
 
-                    return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+                    if (document.getElementById("logButton").src.search("img/log_full.png") !== -1) {
+
+                        return Math.log(1 + (label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
+
+                    } else if (document.getElementById("constButton").src.search("img/const_full.png") !== -1) {
+
+                        return document.getElementById("bubbleSize").value;
+
+                    } else {
+
+                        return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+
+                    }
 
                 } else {
 
@@ -431,7 +469,9 @@ function geoMap(metaData) {
 
                     if (document.getElementById("logButton").src.search("img/log_empty.png") !== -1) {
 
-                        return Math.log((label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
+                        //console.log((label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
+
+                        return Math.log(1 + (label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
 
                     } else {
 
@@ -445,8 +485,18 @@ function geoMap(metaData) {
 
                 }
             });
-        document.getElementById("logButton").src = "../img/log_full.png";
-        document.getElementById("constButton").src = "../img/const_empty.png";
+
+        if (document.getElementById("logButton").src.search("img/log_empty.png") !== -1) {
+
+            document.getElementById("logButton").src = "../img/log_full.png";
+            document.getElementById("constButton").src = "../img/const_empty.png";
+
+        } else {
+
+            document.getElementById("logButton").src = "../img/log_empty.png";
+            document.getElementById("constButton").src = "../img/const_empty.png";
+
+        }
     });
 
     // ------------------------- Listening Constant Bubble Size
@@ -478,8 +528,18 @@ function geoMap(metaData) {
 
                 }
             });
-        document.getElementById("constButton").src = "../img/const_full.png";
-        document.getElementById("logButton").src = "../img/log_empty.png";
+
+        if (document.getElementById("constButton").src.search("img/const_empty.png") !== -1) {
+
+            document.getElementById("constButton").src = "../img/const_full.png";
+            document.getElementById("logButton").src = "../img/log_empty.png";
+
+        } else {
+
+            document.getElementById("constButton").src = "../img/const_empty.png";
+            document.getElementById("logButton").src = "../img/log_empty.png";
+
+        }
     });
 
     // ------------------------- Listening Changes Timeline
@@ -560,6 +620,195 @@ function geoMap(metaData) {
             }
         }
     });
+
+    // -------------------------------------- Mouse Over Dynamics --------------------------------------
+
+// -------------------------------- Dragging & Zoom
+
+// Mouse Over
+
+    document.getElementById("mapButton").addEventListener("mouseover", function () {
+
+        map.doubleClickZoom.disable();
+        map.dragging.disable();
+    });
+
+    document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
+
+        map.doubleClickZoom.disable();
+        map.dragging.disable();
+    });
+
+    document.getElementById("styleButton").addEventListener("mouseover", function () {
+
+        map.doubleClickZoom.disable();
+        map.dragging.disable();
+    });
+
+    document.getElementById("styleDivInside").addEventListener("mouseover", function () {
+
+        map.doubleClickZoom.disable();
+        map.dragging.disable();
+    });
+
+    document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
+
+        map.doubleClickZoom.disable();
+        map.dragging.disable();
+    });
+
+    document.getElementById("mapDivInside").addEventListener("mouseover", function () {
+
+        map.doubleClickZoom.disable();
+        map.dragging.disable();
+    });
+
+    document.getElementById("timelineDiv").addEventListener("mouseover", function () {
+
+        map.doubleClickZoom.disable();
+        map.dragging.disable();
+    });
+
+// Mouse Leave
+
+    document.getElementById("toggle2").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        map.dragging.enable();
+    });
+
+    document.getElementById("mapButton").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        map.dragging.enable();
+    });
+
+    document.getElementById("mapMetadataButton").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        map.dragging.enable();
+    });
+
+    document.getElementById("styleButton").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        map.dragging.enable();
+    });
+
+    document.getElementById("styleDivInside").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        map.dragging.enable();
+    });
+
+    document.getElementById("mapMetadataDivInside").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        //map.scrollWheelZoom.enable();
+        map.dragging.enable();
+    });
+
+    document.getElementById("mapDivInside").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        map.dragging.enable();
+    });
+
+    document.getElementById("timelineDiv").addEventListener("mouseleave", function () {
+
+        map.doubleClickZoom.enable();
+        map.dragging.enable();
+    });
+
+// -------------------------------- Display
+
+// Mouse Over
+
+    document.getElementById("mapDivInside").addEventListener("mouseover", function () {
+
+        mapDivInside.style.display = "block";
+    });
+
+    document.getElementById("mapButton").addEventListener("mouseover", function () {
+
+        mapDivInside.style.display = "block";
+    });
+
+    document.getElementById("styleDivInside").addEventListener("mouseover", function () {
+
+        styleDivInside.style.display = "block";
+    });
+
+    document.getElementById("styleButton").addEventListener("mouseover", function () {
+
+        styleDivInside.style.display = "block";
+    });
+
+    document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
+
+        mapMetadataDivInside.style.display = "block";
+    });
+
+    document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
+
+        mapMetadataDivInside.style.display = "block";
+    });
+
+    // Mouse Out
+
+    document.getElementById("mapDivInside").addEventListener("mouseout", function () {
+
+        mapDivInside.style.display = "none";
+    });
+
+    document.getElementById("mapButton").addEventListener("mouseout", function () {
+
+        mapDivInside.style.display = "none";
+    });
+
+    document.getElementById("styleDivInside").addEventListener("mouseout", function () {
+
+        styleDivInside.style.display = "none";
+    });
+
+    document.getElementById("styleButton").addEventListener("mouseout", function () {
+
+        styleDivInside.style.display = "none";
+    });
+
+    document.getElementById("mapMetadataDivInside").addEventListener("mouseout", function () {
+
+        mapMetadataDivInside.style.display = "none";
+    });
+
+    document.getElementById("mapMetadataButton").addEventListener("mouseout", function () {
+
+        mapMetadataDivInside.style.display = "none";
+    });
+
+    // -------------------------------------- Communication with Tree --------------------------------------
+
+    document.getElementById("phylocanvas").addEventListener("click", function () {
+
+        d3.selectAll("circle")
+            .attr("stroke", function (d) {
+
+                for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
+                    console.log((tree.getSelectedNodeIds()).length);
+                    if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
+
+                        if (mapConfig === "light") {
+                            return "black";
+                        } else {
+                            return "white";
+                        }
+                    }
+                }
+            });
+
+        console.log(tree.getSelectedNodeIds());
+
+    });
 }
 
 // -------------------------------------- Toggle Gear --------------------------------------
@@ -571,7 +820,7 @@ mapToggleGear.style.position = "absolute";
 mapToggleGear.style.right = "10px";
 mapToggleGear.style.top = "10px";
 mapToggleGear.style.zIndex = "1000";
-mapToggleGear.src = "../img/pixelmator/gear_white.png";
+mapToggleGear.src = "../img/pixelmator/gear_black.png";
 mapToggleGear.style.width = "25px";
 mapToggleGear.style.cursor = "pointer";
 
@@ -588,7 +837,7 @@ let mapType2 = document.createElement("IMG");
 let mapType3 = document.createElement("IMG");
 
 let streetsLabel = document.createElement("LABEL"); // Metadata label.
-let streets = document.createElement("INPUT"); // Checkbox input.
+let streets = document.createElement("IMG"); // Checkbox input.
 
 mapDiv.id = "mapDiv";
 mapDiv.className = "toggle2";
@@ -638,17 +887,15 @@ mapType3.style.width = "100px";
 
 streetsLabel.id = "streetsLabel";
 streetsLabel.className = "streetsLabel";
-streetsLabel.innerHTML = "Labels";
 streetsLabel.style.display = "block";
-streetsLabel.style.paddingLeft = "10px";
-streetsLabel.style.paddingRight = "10px";
+streetsLabel.style.textAlign = "center";
 
 streets.id = "streets";
 streets.className = "streets";
-streets.type = "checkbox";
 streets.style.zIndex = "2000";
 streets.style.cursor = "pointer";
-streets.style.marginLeft = "10px";
+streets.src = "../img/labels_empty.png";
+streets.style.width = "40px";
 
 document.getElementById("mapid").appendChild(mapDiv);
 document.getElementById("mapDiv").appendChild(mapButton);
@@ -828,14 +1075,16 @@ timelineDiv.id = "timelineDiv";
 timelineDiv.classList.add("toggle2");
 timelineDiv.style.display = "none";
 timelineDiv.style.position = "absolute";
-timelineDiv.style.top = "0";
+timelineDiv.style.top = "10px";
 timelineDiv.style.left = "45%";
 timelineDiv.style.zIndex = "2000";
-timelineDiv.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
+//timelineDiv.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 timelineDiv.style.paddingBottom = "10px";
 timelineDiv.style.borderRadius = "10px";
 timelineDiv.style.backgroundColor = "white";
 timelineDiv.style.lineHeight = "5px";
+timelineDiv.style.border = "solid";
+timelineDiv.style.borderWidth = "2px";
 
 timelineLabel.id = "timelineLabel";
 timelineLabel.innerHTML = "Timeline";
@@ -868,171 +1117,6 @@ document.getElementById("timelineDiv").appendChild(timelineLabel);
 document.getElementById("timelineDiv").appendChild(timeline);
 document.getElementById("timelineDiv").appendChild(selectTime);
 document.getElementById("timelineDiv").appendChild(play);
-
-// -------------------------------------- Mouse Over Dynamics --------------------------------------
-
-// -------------------------------- Dragging & Zoom
-
-// Mouse Over
-
-document.getElementById("mapButton").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-});
-
-document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-});
-
-document.getElementById("styleButton").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-});
-
-document.getElementById("styleDivInside").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-});
-
-document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-});
-
-document.getElementById("mapDivInside").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-});
-
-document.getElementById("timelineDiv").addEventListener("mouseover", function () {
-
-    map.doubleClickZoom.disable();
-    map.dragging.disable();
-});
-
-// Mouse Leave
-
-document.getElementById("toggle2").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-});
-
-document.getElementById("mapButton").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-});
-
-document.getElementById("mapMetadataButton").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-});
-
-document.getElementById("styleButton").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-});
-
-document.getElementById("styleDivInside").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-});
-
-document.getElementById("mapMetadataDivInside").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    //map.scrollWheelZoom.enable();
-    map.dragging.enable();
-});
-
-document.getElementById("mapDivInside").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-});
-
-document.getElementById("timelineDiv").addEventListener("mouseleave", function () {
-
-    map.doubleClickZoom.enable();
-    map.dragging.enable();
-});
-
-// -------------------------------- Display
-
-// Mouse Over
-
-document.getElementById("mapDivInside").addEventListener("mouseover", function () {
-
-    mapDivInside.style.display = "block";
-});
-
-document.getElementById("mapButton").addEventListener("mouseover", function () {
-
-    mapDivInside.style.display = "block";
-});
-
-document.getElementById("styleDivInside").addEventListener("mouseover", function () {
-
-    styleDivInside.style.display = "block";
-});
-
-document.getElementById("styleButton").addEventListener("mouseover", function () {
-
-    styleDivInside.style.display = "block";
-});
-
-document.getElementById("mapMetadataDivInside").addEventListener("mouseover", function () {
-
-    mapMetadataDivInside.style.display = "block";
-});
-
-document.getElementById("mapMetadataButton").addEventListener("mouseover", function () {
-
-    mapMetadataDivInside.style.display = "block";
-});
-
-// Mouse Out
-
-document.getElementById("mapDivInside").addEventListener("mouseout", function () {
-
-    mapDivInside.style.display = "none";
-});
-
-document.getElementById("mapButton").addEventListener("mouseout", function () {
-
-    mapDivInside.style.display = "none";
-});
-
-document.getElementById("styleDivInside").addEventListener("mouseout", function () {
-
-    styleDivInside.style.display = "none";
-});
-
-document.getElementById("styleButton").addEventListener("mouseout", function () {
-
-    styleDivInside.style.display = "none";
-});
-
-document.getElementById("mapMetadataDivInside").addEventListener("mouseout", function () {
-
-    mapMetadataDivInside.style.display = "none";
-});
-
-document.getElementById("mapMetadataButton").addEventListener("mouseout", function () {
-
-    mapMetadataDivInside.style.display = "none";
-});
 
 // -------------------------------------- Timeline --------------------------------------
 
@@ -1133,28 +1217,3 @@ let mouseleave = function(d) {
         .style("opacity", 0);
 };
 */
-
-// -------------------------------------- Communication with Tree --------------------------------------
-
-document.getElementById("phylocanvas").addEventListener("click", function () {
-
-    d3.selectAll("circle")
-        .style("fill", function (d) {
-
-            for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
-                console.log((tree.getSelectedNodeIds()).length);
-                if (d["id"] === tree.getSelectedNodeIds()[i]) {
-
-                    return "grey";
-
-                }
-            }
-        });
-
-    console.log(tree.getSelectedNodeIds());
-
-});
-
-function f() {
-    
-}
