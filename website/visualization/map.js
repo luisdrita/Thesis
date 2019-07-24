@@ -37,13 +37,15 @@ function geoMap(metaData) {
         optionTime.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[i];
         optionTime.value = Object.keys(metaData[Object.keys(metaData)[0]])[i];
 
-        document.getElementById("selectTime").appendChild(optionTime); // Swap
+
 
         for (let j = 0; j < Object.keys(meta[Object.keys(meta)[i]]).length; j++) {
 
             if (j === Object.keys(meta[Object.keys(meta)[i]]).length - 1 && (Object.keys(metaData[Object.keys(metaData)[0]])[i] === "year" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "month" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "week")) {
 
                 include[Object.keys(metaData[Object.keys(metaData)[0]])[i]] = true;
+
+                document.getElementById("selectTime").appendChild(optionTime); // Swap
 
             }
         }
@@ -56,6 +58,8 @@ function geoMap(metaData) {
 
         document.getElementById("selectMetadata").appendChild(optionMetadata);
     }
+
+    // -------------------------------- Setting Initial Map Properties
 
     // mapid is the id of the div where the map will appear
     let map = L
@@ -1079,7 +1083,6 @@ timelineDiv.style.top = "10px";
 timelineDiv.style.left = "45%";
 timelineDiv.style.zIndex = "2000";
 //timelineDiv.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
-timelineDiv.style.paddingBottom = "10px";
 timelineDiv.style.borderRadius = "10px";
 timelineDiv.style.backgroundColor = "white";
 timelineDiv.style.lineHeight = "5px";

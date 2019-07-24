@@ -304,12 +304,18 @@ function phylTree(metaData, data_input) {
                     color[Object.values(metaData[tree.leaves[ij].label])[i]] = document.getElementById("colorPicker" + i + "-" + j).value;
 
                 }
-                            tree.leaves[ij].setDisplay({
 
-                                leafStyle: {
-                                    fillStyle: color[Object.values(metaData[tree.leaves[ij].label])[i]] // 2nd option input color value
-                                }
-                            });
+                if (document.getElementById("selectNodeColor").value === document.getElementById("optionMetadata" + i).innerText) {
+
+                    tree.leaves[ij].setDisplay({
+
+                        leafStyle: {
+                            fillStyle: color[Object.values(metaData[tree.leaves[ij].label])[i]] // 2nd option input color value
+                        }
+                    });
+
+                }
+
                     metaNumber = i;
 
                     if (document.getElementById("metadataSwitch"+i).checked === true) {
@@ -330,7 +336,7 @@ function phylTree(metaData, data_input) {
                     }
                 }
 
-                    document.getElementById("selectNodeColor").value = document.getElementById("optionMetadata" + i).innerText;
+                    //document.getElementById("selectNodeColor").value = document.getElementById("optionMetadata" + i).innerText;
 
                     tree.setNodeSize(document.getElementById("nodeSize").value);
                     tree.setTextSize(document.getElementById("textSize").value);

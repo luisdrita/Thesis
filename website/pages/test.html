@@ -24,13 +24,18 @@
         {latlng: [31.235114421248575, -238.63128662109375], achieve: 0.97},
         {latlng: [31.340735782189476, -238.41979980468747], achieve: 0.82}
     ];
-    var map = L.map("mapid", {
-        center: [31.240985378021307, -238.50466489791867],
-        minZoom: 8,
-        zoom: 10
-    });
 
-    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}").addTo(map);
+    // mapid is the id of the div where the map will appear
+    let map = L
+        .map('mapid')
+        .setView([38, 9], 5);   // center position + zoom
+
+    mapType = L.tileLayer(
+        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+            minZoom: 1,
+            maxZoom: 10
+
+        }).addTo(map);
 
     map._initPathRoot();
 
