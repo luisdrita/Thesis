@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
-    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+    <script src="https://d3js.org/d3.v3.js"></script> <!-- d3v3 is also ok -->
+
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
     <style>
         body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
         #mapid{ width:100%; height:500px; }
@@ -25,22 +29,19 @@
         {latlng: [31.340735782189476, -238.41979980468747], achieve: 0.82}
     ];
 
-    // mapid is the id of the div where the map will appear
-    let map = L
-        .map('mapid')
-        .setView([38, 9], 5);   // center position + zoom
+    var map = L.map("mapid", {
+        center: [31.240985378021307, -238.50466489791867],
+        minZoom: 8,
+        zoom: 10
+    });
 
-    mapType = L.tileLayer(
-        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
-            minZoom: 1,
-            maxZoom: 10
-
-        }).addTo(map);
+    L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}").addTo(map);
 
     map._initPathRoot();
 
-    var svg = d3.select("#mapid").select("svg").append("g"),
-        circles = svg.selectAll("g")
+    var svg = d3.select("#mapid").select("svg").append("g");
+
+    var circles = svg.selectAll("g")
             .data(points)
             .enter()
             .append("g")
@@ -53,20 +54,12 @@
         d3.select(this).call(getPie);
     });
 
-    update();
-    map.on("viewreset", update);
-
-    function update() {
-        circles.attr("transform", function(d){ return "translate(" + [
-            map.latLngToLayerPoint(L.latLng(d.latlng)).x,
-            map.latLngToLayerPoint(L.latLng(d.latlng)).y
-        ] + ")"; });
-    }
-
     function getPie(s) {
         var size = 70;
-        var arc = d3.svg.arc().outerRadius(size / 2).innerRadius(0), // size/3
-            pie = d3.layout.pie().sort(null);
+
+        var arc = d3.svg.arc().outerRadius(size / 2).innerRadius(0); // size/3
+
+        var pie = d3.layout.pie().sort(null);
 
         s.selectAll("path")
             .data(function(d){ return pie([d.achieve, 1 - d.achieve]); })

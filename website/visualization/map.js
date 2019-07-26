@@ -20,10 +20,23 @@ function geoMap(metaData) {
             if (Number.isInteger(parseInt(Object.values(metaData[Object.keys(metaData)[j]])[i]))) {
 
                 meta[Object.keys(Object.values(metaData)[0])[i]] = meta[Object.keys(Object.values(metaData)[0])[i]] || {};
-                meta[Object.keys(Object.values(metaData)[0])[i]][Object.values(metaData[Object.keys(metaData)[j]])[i]] = true;
+
+                if (Object.keys(metaData[Object.keys(metaData)[0]])[i] === "onset date" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "collection date" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "lab reception date") {
+
+                    meta[Object.keys(Object.values(metaData)[0])[i]][(Object.values(metaData[Object.keys(metaData)[j]])[i]).split('-').join('')] = true;
+                    //console.log((Object.values(metaData[Object.keys(metaData)[j]])[i]).split('-').join(''));
+
+                } else {
+
+                    meta[Object.keys(Object.values(metaData)[0])[i]][Object.values(metaData[Object.keys(metaData)[j]])[i]] = true;
+                }
+
+
             }
         }
     }
+
+    console.log(meta);
 
     // -------------------------------- Adding Selective Metadata Categories Timeline
 
@@ -31,22 +44,32 @@ function geoMap(metaData) {
 
     for (let i = 0; i < Object.keys(Object.values(metaData)[0]).length; i++) {
 
+        if (i === 0) {
+
+            let optionTimee = document.createElement("OPTION");
+
+            optionTimee.id = "optionTimee";
+            optionTimee.innerHTML= "None";
+
+            document.getElementById("selectTime").appendChild(optionTimee);
+        }
+
         let optionTime = document.createElement("OPTION");
 
-        optionTime.id = "optionTime"+i;
-        optionTime.innerHTML= Object.keys(metaData[Object.keys(metaData)[0]])[i];
+        optionTime.id = "optionTime" + i;
+        optionTime.style.display = "none";
+
         optionTime.value = Object.keys(metaData[Object.keys(metaData)[0]])[i];
 
-
+        document.getElementById("selectTime").appendChild(optionTime); // Swap
 
         for (let j = 0; j < Object.keys(meta[Object.keys(meta)[i]]).length; j++) {
 
-            if (j === Object.keys(meta[Object.keys(meta)[i]]).length - 1 && (Object.keys(metaData[Object.keys(metaData)[0]])[i] === "year" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "month" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "week")) {
+            if (j === Object.keys(meta[Object.keys(meta)[i]]).length - 1 && (Object.keys(metaData[Object.keys(metaData)[0]])[i] === "onset date" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "collection date" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "lab reception date" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "year" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "date")) {
 
                 include[Object.keys(metaData[Object.keys(metaData)[0]])[i]] = true;
-
-                document.getElementById("selectTime").appendChild(optionTime); // Swap
-
+                optionTime.style.display = "block";
+                optionTime.innerHTML = Object.keys(metaData[Object.keys(metaData)[0]])[i];
             }
         }
 
@@ -58,6 +81,10 @@ function geoMap(metaData) {
 
         document.getElementById("selectMetadata").appendChild(optionMetadata);
     }
+
+
+
+    console.log(include);
 
     // -------------------------------- Setting Initial Map Properties
 
@@ -550,7 +577,9 @@ function geoMap(metaData) {
 
     document.getElementById("timeline").addEventListener("input", function () {
 
-        document.getElementById("timelineLabel").innerHTML = Math.round(document.getElementById("timeline").value);
+        document.getElementById("timelineLabel").innerHTML = convertTime((Math.round(document.getElementById("timeline").value)).toString());
+
+        document.getElementById("timeline").step = stepTime;
 
         let latlong2 = [];
 
@@ -560,7 +589,7 @@ function geoMap(metaData) {
                 if (isNaN(d["longitude"]) === false && isNaN(d["latitude"]) === false && latlong2.includes(d["latitude"].toString() + d["longitude"].toString()) === false && d["latitude"] !== "" && d["longitude"] !== "") {
 
                     latlong2.push(d["latitude"].toString() + d["longitude"].toString());
-                    document.getElementById("timelineLabel").innerHTML = Math.round(document.getElementById("timeline").value);
+                    document.getElementById("timelineLabel").innerHTML = convertTime((Math.round(document.getElementById("timeline").value)).toString());
 
                     return document.getElementById("timeline").value*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers)*maxTime);
 
@@ -593,14 +622,13 @@ function geoMap(metaData) {
 
         map.doubleClickZoom.disable();
         map.dragging.disable();
-
     });
 
     // ------------------------- Listening Changes Timeline Metadata Picker
 
     document.getElementById("selectTime").addEventListener("change", function () {
 
-        for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
+        for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) { // Iterating over metadata categories.
 
             if (document.getElementById("optionTime"+j).selected) {
 
@@ -612,6 +640,8 @@ function geoMap(metaData) {
 
                 });
 
+                console.log(remade);
+
                 minTime = Math.min.apply(null, remade);
                 maxTime = Math.max.apply(null, remade);
                 stepTime = (Math.max.apply(null, remade) - Math.min.apply(null, remade))/(Object.keys(meta[document.getElementById("optionTime"+j).innerText]).length);
@@ -619,8 +649,11 @@ function geoMap(metaData) {
                 document.getElementById("timeline").step = stepTime;
                 document.getElementById("timeline").min = minTime;
                 document.getElementById("timeline").max = maxTime;
-                break;
 
+                document.getElementById("timelineLabel").innerHTML = convertTime(maxTime.toString());
+                document.getElementById("timeline").value = maxTime;
+
+                break;
             }
         }
     });
@@ -811,6 +844,8 @@ function geoMap(metaData) {
             });
 
         console.log(tree.getSelectedNodeIds());
+
+        //console.log(tree.getNodeAtMousePosition(click));
 
     });
 }
@@ -1080,7 +1115,7 @@ timelineDiv.classList.add("toggle2");
 timelineDiv.style.display = "none";
 timelineDiv.style.position = "absolute";
 timelineDiv.style.top = "10px";
-timelineDiv.style.left = "45%";
+timelineDiv.style.left = "37%";
 timelineDiv.style.zIndex = "2000";
 //timelineDiv.style.boxShadow = "0 8px 16px 0 rgba(0,0,0,0.9)";
 timelineDiv.style.borderRadius = "10px";
@@ -1088,6 +1123,8 @@ timelineDiv.style.backgroundColor = "white";
 timelineDiv.style.lineHeight = "5px";
 timelineDiv.style.border = "solid";
 timelineDiv.style.borderWidth = "2px";
+timelineDiv.style.paddingLeft = "10px";
+timelineDiv.style.paddingRight = "10px";
 
 timelineLabel.id = "timelineLabel";
 timelineLabel.innerHTML = "Timeline";
@@ -1109,7 +1146,6 @@ selectTime.style.display = "inline-block";
 play.id = "play";
 play.style.display = "inline-block";
 play.style.paddingLeft = "10px";
-play.style.paddingRight = "10px";
 play.style.cursor = "pointer";
 play.style.width = "10px";
 play.src = "../img/play.png";
@@ -1129,11 +1165,11 @@ document.getElementById("play").addEventListener("click", function () {
 
         document.getElementById("play").src = "../img/pause.png";
 
+        //console.log()
+
         let time = minTime;
 
         let interval = setInterval(function () {
-
-            time = time + stepTime;
 
             document.getElementById("timeline").value = time;
 
@@ -1145,7 +1181,6 @@ document.getElementById("play").addEventListener("click", function () {
             document.getElementById("play").addEventListener("click", function () {
 
                 clearInterval(interval);
-
             });
 
             // ------------------------------- Update Circle Radius
@@ -1158,7 +1193,7 @@ document.getElementById("play").addEventListener("click", function () {
                     if (isNaN(d["longitude"]) === false && isNaN(d["latitude"]) === false && latlong2.includes(d["latitude"].toString() + d["longitude"].toString()) === false && d["latitude"] !== "" && d["longitude"] !== "") {
 
                         latlong2.push(d["latitude"].toString() + d["longitude"].toString());
-                        document.getElementById("timelineLabel").innerHTML = Math.round(time);
+                        document.getElementById("timelineLabel").innerHTML = convertTime((Math.round(time)).toString());
 
                         return time*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers)*maxTime);
 
@@ -1170,6 +1205,8 @@ document.getElementById("play").addEventListener("click", function () {
 
                 });
 
+            time = time + stepTime;
+
         }, 500)
 
     } else {
@@ -1177,46 +1214,16 @@ document.getElementById("play").addEventListener("click", function () {
     }
 });
 
-// -------------------------------------- Tooltip --------------------------------------
-/*
-// create a tooltip
-let Tooltip = d3.select('#mapid')
-    .append("div")
-    .style("position", "absolute")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "2px")
-    .style("border-radius", "5px")
-    .style("padding", "5px");
+function convertTime(number) {
 
-// Three function that change the tooltip when user hover / move / leave a cell
-let mouseover = function(d) {
+    let renew = number.split('');
 
-    Tooltip
-        .style("opacity", 1);
-};
+    renew.forEach(function (value, index) {
 
-let mousemove = function(d) {
+        if ((index === 3 || index === 5) && renew.length !== 4) {
+            renew[index] = renew[index] + "-";
+        }
+    });
 
-    let number = svg_input.split("g")[1];
-
-    if(number%2 !== 0) {
-        Tooltip
-            .html(d.value + " ± " + d.error)
-            .style("left", (d3.mouse(this)[0] + margin.left + 15) + "px")
-            .style("top", (d3.mouse(this)[1] + margin.top + 70) + "px")
-    } else {
-        Tooltip
-            .html(d.value + " ± " + d.error)
-            .style("left", (d3.mouse(this)[0] + margin.left + 775) + "px")
-            .style("top", (d3.mouse(this)[1] + margin.top + 70) + "px")
-    }
-};
-
-let mouseleave = function(d) {
-    Tooltip
-        .style("opacity", 0);
-};
-*/
+    return renew.join('');
+}

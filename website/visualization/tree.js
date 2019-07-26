@@ -5,28 +5,21 @@ let metaNumber;
 // -------------------------------------- Initial Tree Properties --------------------------------------
 
 let tree = Phylocanvas.createTree('phylocanvas', {
-    /*
-            metadata: {
-
-                padding: 300
-
-            }, */
 
     history: {
         parent: document.getElementById("mapid"),
         zIndex: -1000
     },
 
-    //baseNodeSize: 2,
+    baseNodeSize: 2,
     padding: 5,
-   // textSize: "25",
+    //textSize: 2,
     font: "helvetica",
     zoomFactor: 2,
     labelPadding: 5,
     showLabels: true,
     //lineWidth: 1,
     alignLabels: true,
-    //  highlightColour: "red",
     highlightSize: 1,
     highlightWidth: -1,
     //   showBranchLengthLabels: true
@@ -803,6 +796,17 @@ blockStyleButton.style.cursor = "pointer";
 blockStyleButton.style.width = "10px";
 blockStyleButton.src = "../img/non_block.png";
 
+selectNodeColorLabel.id = "selectNodeColorLabel";
+selectNodeColorLabel.innerHTML = "Node Color";
+selectNodeColorLabel.style.textAlign = "center";
+selectNodeColorLabel.style.color = "white";
+selectNodeColorLabel.style.lineHeight = "5px";
+
+selectNodeColor.id = "selectNodeColor";
+selectNodeColor.style.display = "block";
+selectNodeColor.style.width = "130px";
+selectNodeColor.style.margin = "auto";
+
 nodeSizeLabel.id = "nodeSizeLabel";
 nodeSizeLabel.innerHTML = "Node Size: 10px";
 nodeSizeLabel.style.textAlign = "center";
@@ -845,18 +849,7 @@ lineWidth.style.cursor = "pointer";
 lineWidth.style.width = "130px";
 lineWidth.style.display = "block";
 lineWidth.style.margin = "auto";
-
-selectNodeColorLabel.id = "selectNodeColorLabel";
-selectNodeColorLabel.innerHTML = "Color";
-selectNodeColorLabel.style.textAlign = "center";
-selectNodeColorLabel.style.color = "white";
-selectNodeColorLabel.style.lineHeight = "5px";
-
-selectNodeColor.id = "selectNodeColor";
-selectNodeColor.style.display = "block";
-selectNodeColor.style.width = "130px";
-selectNodeColor.style.margin = "auto";
-selectNodeColor.style.marginBottom = "10px";
+lineWidth.style.marginBottom = "10px";
 
 document.getElementById("phylocanvas").appendChild(treeStyleDiv);
 
@@ -868,6 +861,9 @@ document.getElementById("treeStyleDivInside").appendChild(propertiesStyleDiv);
 document.getElementById("propertiesStyleDiv").appendChild(resetStyleButton);
 document.getElementById("propertiesStyleDiv").appendChild(blockStyleButton);
 
+document.getElementById("treeStyleDivInside").appendChild(selectNodeColorLabel);
+document.getElementById("treeStyleDivInside").appendChild(selectNodeColor);
+
 document.getElementById("treeStyleDivInside").appendChild(nodeSizeLabel);
 document.getElementById("treeStyleDivInside").appendChild(nodeSize);
 
@@ -876,9 +872,6 @@ document.getElementById("treeStyleDivInside").appendChild(textSize);
 
 document.getElementById("treeStyleDivInside").appendChild(lineWidthLabel);
 document.getElementById("treeStyleDivInside").appendChild(lineWidth);
-
-document.getElementById("treeStyleDivInside").appendChild(selectNodeColorLabel);
-document.getElementById("treeStyleDivInside").appendChild(selectNodeColor);
 
 // -------------------------------------- Metadata --------------------------------------
 
@@ -1032,13 +1025,21 @@ for (let i = 0; i < shapes.length; i++) {
 
     document.getElementById(shapes[i]).addEventListener("click", function () {
 
-        document.getElementById("treeButton").src = "../img/" + shapes[i] + ".png";
+        //tree.setRoot("x_247");
+//console.log(tree.originalTree);
 
-        tree.setTreeType(shapes[i]); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-        tree.setNodeSize(document.getElementById("nodeSize").value); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-        //tree.draw();
+            document.getElementById("treeButton").src = "../img/" + shapes[i] + ".png";
 
-        treeType = shapes[i];
+            //tree.resetTree();
+            tree.baseNodeSize = "2";
+
+            tree.setTreeType(shapes[i]); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
+         tree.setTextSize(document.getElementById("textSize").value);
+        tree.setNodeSize(document.getElementById("nodeSize").value);
+            //tree.draw();
+
+            treeType = shapes[i];
+
     });
 }
 
@@ -1047,22 +1048,54 @@ for (let i = 0; i < shapes.length; i++) {
 // -------------------------------- Node Size
 
 document.getElementById("nodeSize").addEventListener("input", function () {
-
+    tree.baseNodeSize = "2";
     tree.setNodeSize(document.getElementById("nodeSize").value);
     document.getElementById("nodeSizeLabel").innerHTML = "Node Size: " + document.getElementById("nodeSize").value + "px";
     document.getElementById("resetStyleButton").style.transform = "rotate(0deg)";
-
 });
 
-// -------------------------------- Text Size
+// -------------------------------- Label Size
 
 document.getElementById("textSize").addEventListener("input", function () {
 
+    //tree.draw();
+    //tree.setTreeType(treeType);
     tree.setTextSize(document.getElementById("textSize").value);
-    document.getElementById("textSizeLabel").innerHTML = "Text Size: " + document.getElementById("textSize").value + "px";
+    document.getElementById("textSizeLabel").innerHTML = "Label Size: " + document.getElementById("textSize").value + "px";
     document.getElementById("resetStyleButton").style.transform = "rotate(0deg)";
 });
+/*
+document.getElementById("textSize").addEventListener("mousedown", function () {
+    //tree.draw();
+    //tree.resetTree();
 
+    for (let i = 0; i < Object.keys(Object.values(metaData)[0]).length; i++) {
+
+                for (let ij = 0; ij < tree.leaves.length; ij++) { // Iterates along all the strains.
+
+                    if (document.getElementById("metadataSwitch"+i).checked === true) {
+
+                        (tree.leaves[ij].data)[Object.keys(metaData[tree.leaves[ij].label])[i]] = (tree.leaves[ij].data)[Object.keys(metaData[tree.leaves[ij].label])[i]] || {};
+
+                        (tree.leaves[ij].data)[Object.keys(metaData[tree.leaves[ij].label])[i]]["colour"] = color[Object.values(metaData[tree.leaves[ij].label])[i]];
+
+                        if (document.getElementById("metadataSwitchDisplay").checked === true) {
+
+                            (tree.leaves[ij].data)[Object.keys(metaData[tree.leaves[ij].label])[i]]["label"] = Object.values(metaData[tree.leaves[ij].label])[i] || "No Data";
+
+                        } else {
+
+                            (tree.leaves[ij].data)[Object.keys(metaData[tree.leaves[ij].label])[i]]["label"] = "";
+
+                        }
+                    }
+                }
+
+                tree.setNodeSize(document.getElementById("nodeSize").value);
+                tree.setTextSize(document.getElementById("textSize").value);
+    }
+});
+*/
 // -------------------------------- Line Width
 
 document.getElementById("lineWidth").addEventListener("input", function () {

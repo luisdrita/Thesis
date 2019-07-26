@@ -1,0 +1,68 @@
+<script src="https://d3js.org/d3.v4.js"></script> <!-- d3v3 is also ok -->
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+<!-- Load Leaflet -->
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+
+<div id="map" style="width: 600px; height: 600px"></div>
+
+<script>
+    var map = L.map('map').setView([51.505548, -0.075316], 16);
+    mapLink = L.tileLayer(
+        'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
+            minZoom: 1,
+            maxZoom: 15
+
+        }).addTo(map);
+
+    var svgLayer = L.svg();
+    svgLayer.addTo(map);
+
+    var svg = d3.select("#map").select("svg");
+    var g = svg.select('g');
+
+    d3.json("london.json", function(pointsOfInterest) {
+
+        pointsOfInterest.forEach(function(d) {
+            d.latLong = new L.LatLng(d.coordinate[0], d.coordinate[1]);
+        });
+
+        var feature = g.selectAll("circle")
+            .data(pointsOfInterest)
+            .enter().append("circle")
+            .style("stroke", "black")
+            .style("opacity", .4)
+            .style("fill", "blue")
+            .attr("r", 20);
+
+        feature.each(function(){
+            d3.select(this).call(getPie);
+        });
+
+        function getPie(s) {
+            var size = 70;
+
+            var arc = d3.svg.arc().outerRadius(size / 2).innerRadius(0); // size/3
+
+            var pie = d3.layout.pie().sort(null);
+
+            s.selectAll("path")
+                .data(function(d){ return pie([0.25, 0.75]); })
+                .enter()
+                .append("path")
+                .attr({
+                    d: arc,
+                    fill: function(d,i){ return i ? "gray" : "red"; }
+                });
+        }
+
+    });
+
+</script>
