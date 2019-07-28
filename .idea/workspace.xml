@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="INSaFLU Beta 2.2 Version">
+    <list default="true" id="04a9c448-fe5d-4cf4-9ae1-170b95b5f91b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uploads/insaflu/Id_test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/uploads/insaflu/Id_test.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" beforeDir="false" afterPath="$PROJECT_DIR$/website/benchmark_data/npm_stats/stats.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/insaflu.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/insaflu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/pages/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/pages/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/visualization/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/map.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/visualization/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/website/visualization/tree.js" afterDir="false" />
     </list>
@@ -387,14 +384,8 @@
       <workItem from="1563966055888" duration="3867000" />
       <workItem from="1564052073616" duration="14143000" />
       <workItem from="1564087952797" duration="3762000" />
-      <workItem from="1564141195444" duration="11781000" />
-    </task>
-    <task id="LOCAL-00035" summary="Interface Enhancements 2">
-      <created>1552567470503</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1552567470503</updated>
+      <workItem from="1564141195444" duration="16391000" />
+      <workItem from="1564225757958" duration="15771000" />
     </task>
     <task id="LOCAL-00036" summary="Staphylococcus">
       <created>1552876750559</created>
@@ -732,7 +723,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563930163876</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="INSaFLU Beta 2.3 Version">
+      <created>1564162665949</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1564162665950</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TodoView">
@@ -779,7 +777,6 @@
       <path value="$PROJECT_DIR$/emsdk" />
       <path value="$PROJECT_DIR$/node-cmd" />
     </ignored-roots>
-    <MESSAGE value="General Improvements 4" />
     <MESSAGE value="Extended Abstract Added" />
     <MESSAGE value="Almost Thesis Final Version" />
     <MESSAGE value="INSaFLU Visualization Draft" />
@@ -804,16 +801,37 @@
     <MESSAGE value="INSaFLU Beta 2.0 Version" />
     <MESSAGE value="INSaFLU Beta 2.1 Version" />
     <MESSAGE value="INSaFLU Beta 2.2 Version" />
-    <option name="LAST_COMMIT_MESSAGE" value="INSaFLU Beta 2.2 Version" />
+    <MESSAGE value="INSaFLU Beta 2.3 Version" />
+    <option name="LAST_COMMIT_MESSAGE" value="INSaFLU Beta 2.3 Version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/website/visualization/map.js</url>
-          <line>648</line>
-          <properties lambdaOrdinal="-1" />
+          <line>664</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/website/visualization/tree.js</url>
+          <line>327</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/website/visualization/tree.js</url>
+          <line>592</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/website/visualization/tree.js</url>
+          <line>291</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/website/visualization/map.js</url>
+          <line>474</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

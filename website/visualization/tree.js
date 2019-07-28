@@ -133,7 +133,7 @@ function phylTree(metaData, data_input) {
 
             meta[Object.keys(Object.values(metaData)[0])[i]] = meta[Object.keys(Object.values(metaData)[0])[i]] || {};
 
-            if (Object.values(metaData[Object.keys(metaData)[j]])[i] === "") {
+            if (Object.values(metaData[Object.keys(metaData)[j]])[i] === "" || Object.values(metaData[Object.keys(metaData)[j]])[i] === undefined || Object.values(metaData[Object.keys(metaData)[j]])[i] === " ") {
 
                 meta[Object.keys(Object.values(metaData)[0])[i]]["No Data"] = true;
 
@@ -234,13 +234,21 @@ function phylTree(metaData, data_input) {
                 legendSwitchLabelCollapsible.style.paddingLeft = "10px";
                 legendSwitchLabelCollapsible.style.paddingRight = "10px";
                 legendSwitchLabelCollapsible.style.opacity = "1";
-                legendSwitchLabelCollapsible.style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j] + Object.keys(meta[Object.keys(meta)[i]])[j]));
+                if (Object.keys(meta[Object.keys(meta)[i]])[j] === "No Data") {
+                    legendSwitchLabelCollapsible.style.backgroundColor = "black";
+                } else {
+                    legendSwitchLabelCollapsible.style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j] + Object.keys(meta[Object.keys(meta)[i]])[j]));
+                }
                 legendSwitchLabelCollapsible.style.color = "white";
 
                 colorPicker.className = "colorPicker";
                 colorPicker.id = "colorPicker"+i+"-"+j;
                 colorPicker.type = "color";
-                colorPicker.value = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j] + Object.keys(meta[Object.keys(meta)[i]])[j]));
+                if (Object.keys(meta[Object.keys(meta)[i]])[j] === "No Data") {
+                    colorPicker.value = "black";
+                } else {
+                    colorPicker.value = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j] + Object.keys(meta[Object.keys(meta)[i]])[j]));
+                }
                 colorPicker.style.display = "inline-block";
                 colorPicker.style.textAlign = "center";
                 colorPicker.style.width = "30px";
@@ -275,7 +283,6 @@ function phylTree(metaData, data_input) {
                     treeLegendDivInside.style.display = "block";
 
                 });
-
             })
         }
     }
@@ -292,10 +299,14 @@ function phylTree(metaData, data_input) {
 
                 for (let ij = 0; ij < tree.leaves.length; ij++) { // Iterates along all the strains.
 
-                if (Object.values(metaData[tree.leaves[ij].label])[i] === document.getElementById("legendSwitchLabelCollapsible" + i + "-" + j).innerText) {
+                    console.log(document.getElementById("legendSwitchLabelCollapsible" + i + "-" + j).innerText);
+                    console.log(Object.values(metaData[tree.leaves[ij].label])[i]);
+
+                if (Object.values(metaData[tree.leaves[ij].label])[i] === document.getElementById("legendSwitchLabelCollapsible" + i + "-" + j).innerText || (Object.values(metaData[tree.leaves[ij].label])[i] === "" && document.getElementById("legendSwitchLabelCollapsible" + i + "-" + j).innerText === "No Data")) {
 
                     color[Object.values(metaData[tree.leaves[ij].label])[i]] = document.getElementById("colorPicker" + i + "-" + j).value;
-
+                    console.log(Object.values(metaData[tree.leaves[ij].label])[i]);
+                    console.log(document.getElementById("colorPicker" + i + "-" + j).value);
                 }
 
                 if (document.getElementById("selectNodeColor").value === document.getElementById("optionMetadata" + i).innerText) {
@@ -306,7 +317,6 @@ function phylTree(metaData, data_input) {
                             fillStyle: color[Object.values(metaData[tree.leaves[ij].label])[i]] // 2nd option input color value
                         }
                     });
-
                 }
 
                     metaNumber = i;
@@ -353,7 +363,12 @@ function phylTree(metaData, data_input) {
 
                         for (let i = 0; i < Object.keys(metaData).length; i++) {
 
-                            color[Object.values(metaData[tree.leaves[i].label])[j]] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j]));
+                            if (Object.values(metaData[tree.leaves[i].label])[j] !== "") {
+                                color[Object.values(metaData[tree.leaves[i].label])[j]] = "#" + intToRGB(hashCode(Object.values(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j]));
+                            } else {
+                                color[Object.values(metaData[tree.leaves[i].label])[j]] = "black";
+                                //color["No Data"] = "black";
+                            }
                         }
 
                         if (document.getElementById("metadataSwitch"+j).checked === true) {
@@ -381,9 +396,13 @@ function phylTree(metaData, data_input) {
                         // Metadata Category Values
                         for (let jj = 0; jj < Object.keys(meta[Object.keys(meta)[j]]).length; jj++) {
 
-                            document.getElementById("legendSwitchLabelCollapsible"+j+"-"+jj).style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[j]])[jj] + Object.keys(meta[Object.keys(meta)[j]])[jj]));
-                            document.getElementById("colorPicker"+j+"-"+jj).value = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[j]])[jj] + Object.keys(meta[Object.keys(meta)[j]])[jj]));
-
+                            if (Object.keys(meta[Object.keys(meta)[j]])[jj] === "No Data") {
+                                document.getElementById("legendSwitchLabelCollapsible"+j+"-"+jj).style.backgroundColor = "black";
+                                document.getElementById("colorPicker"+j+"-"+jj).value = "black";
+                            } else {
+                                document.getElementById("legendSwitchLabelCollapsible"+j+"-"+jj).style.backgroundColor = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[j]])[jj] + Object.keys(meta[Object.keys(meta)[j]])[jj]));
+                                document.getElementById("colorPicker"+j+"-"+jj).value = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[j]])[jj] + Object.keys(meta[Object.keys(meta)[j]])[jj]));
+                            }
                         }
                     }
 
@@ -568,7 +587,8 @@ function radioDetect (metaData, max) {
 
                 if (Object.values(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j] === "") {
 
-                    color[Object.values(metaData[tree.leaves[i].label])[j]] = "#" + intToRGB(hashCode("No Data"));
+                    //color[Object.values(metaData[tree.leaves[i].label])[j]] = "#" + intToRGB(hashCode("No Data"));
+                    color[Object.values(metaData[tree.leaves[i].label])[j]] = "black";
 
                 } else {
 
@@ -1034,7 +1054,7 @@ for (let i = 0; i < shapes.length; i++) {
             tree.baseNodeSize = "2";
 
             tree.setTreeType(shapes[i]); // Choosing type of tree: takes radial, rectangular, circular, diagonal and hierarchy.
-         tree.setTextSize(document.getElementById("textSize").value);
+        tree.setTextSize(document.getElementById("textSize").value);
         tree.setNodeSize(document.getElementById("nodeSize").value);
             //tree.draw();
 
