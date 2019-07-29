@@ -25,7 +25,6 @@ function geoMap(metaData) {
                 if (Object.keys(metaData[Object.keys(metaData)[0]])[i] === "onset date" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "collection date" || Object.keys(metaData[Object.keys(metaData)[0]])[i] === "lab reception date") {
 
                     meta[Object.keys(Object.values(metaData)[0])[i]][(Object.values(metaData[Object.keys(metaData)[j]])[i]).split('-').join('')] = true;
-                    //console.log((Object.values(metaData[Object.keys(metaData)[j]])[i]).split('-').join(''));
 
                 } else {
 
@@ -36,8 +35,6 @@ function geoMap(metaData) {
             }
         }
     }
-
-    console.log(meta);
 
     // -------------------------------- Adding Selective Metadata Categories Timeline
 
@@ -82,10 +79,6 @@ function geoMap(metaData) {
 
         document.getElementById("selectMetadata").appendChild(optionMetadata);
     }
-
-
-
-    console.log(include);
 
     // -------------------------------- Setting Initial Map Properties
 
@@ -141,7 +134,6 @@ function geoMap(metaData) {
             .attr("stroke", function (d) {
 
                 for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
-                    console.log((tree.getSelectedNodeIds()).length);
                     if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
                             return "white";
                     }
@@ -189,7 +181,6 @@ function geoMap(metaData) {
             .attr("stroke", function (d) {
 
             for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
-                console.log((tree.getSelectedNodeIds()).length);
                 if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
                      return "black";
                 }
@@ -244,7 +235,6 @@ function geoMap(metaData) {
             .attr("stroke", function (d) {
 
             for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
-                console.log((tree.getSelectedNodeIds()).length);
                 if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
                         return "white";
                 }
@@ -364,7 +354,6 @@ function geoMap(metaData) {
     map.zoomControl.remove();
 
     markers = Object.values(metaData);
-    //console.log(Object.keys(metaData));
     let latlong = [];
 
     // Select the svg area and add circles:
@@ -472,9 +461,11 @@ function geoMap(metaData) {
 
                         return document.getElementById("bubbleSize").value;
 
-                    } else {
+                    } else if (document.getElementById("optionTimee").selected) {
 
-                        //return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+                        return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+
+                    } else {
 
                         if ((remade[0].toString().toString()).split('').length === 4) {
                             return (document.getElementById("timeline").value-minTime)*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
@@ -505,8 +496,6 @@ function geoMap(metaData) {
                     latlong2.push(d[lat].toString() + d[long].toString());
 
                     if (document.getElementById("logButton").src.search("img/log_empty.png") !== -1) {
-
-                        //console.log((label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
 
                         return Math.log(1 + (label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
 
@@ -582,7 +571,6 @@ function geoMap(metaData) {
     // ------------------------- Listening Changes Timeline
 
     document.getElementById("timeline").addEventListener("input", function () {
-console.log((document.getElementById("timeline").value - minTime)/stepTime);
         //document.getElementById("timelineLabel").innerHTML = convertTime((Math.round(document.getElementById("timeline").value)).toString());
         document.getElementById("timelineLabel").innerHTML = convertTime((remade[Math.round((document.getElementById("timeline").value - minTime)/stepTime)]).toString());
 
@@ -596,7 +584,6 @@ console.log((document.getElementById("timeline").value - minTime)/stepTime);
                 if (isNaN(d["longitude"]) === false && isNaN(d["latitude"]) === false && latlong2.includes(d["latitude"].toString() + d["longitude"].toString()) === false && d["latitude"] !== "" && d["longitude"] !== "") {
 
                     latlong2.push(d["latitude"].toString() + d["longitude"].toString());
-                    console.log(document.getElementById("timeline").value);
                     document.getElementById("timelineLabel").innerHTML = convertTime((remade[Math.round((document.getElementById("timeline").value - minTime)/stepTime)]).toString());
 
                     if ((remade[0].toString()).split('').length === 4) {
@@ -640,8 +627,11 @@ console.log((document.getElementById("timeline").value - minTime)/stepTime);
 
     document.getElementById("selectTime").addEventListener("change", function () {
 
+        document.getElementById("timeline").disabled = false;
+
         if (document.getElementById("optionTimee").selected) {
             document.getElementById("timelineLabel").innerHTML = "Timeline";
+            document.getElementById("timeline").disabled = true;
         }
 
         for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) { // Iterating over metadata categories.
@@ -655,8 +645,6 @@ console.log((document.getElementById("timeline").value - minTime)/stepTime);
                     remade.push(parseInt(value));
 
                 });
-
-                console.log(remade);
 
                 minTime = Math.min.apply(null, remade);
                 maxTime = Math.max.apply(null, remade);
@@ -847,7 +835,6 @@ console.log((document.getElementById("timeline").value - minTime)/stepTime);
             .attr("stroke", function (d) {
 
                 for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
-                    console.log((tree.getSelectedNodeIds()).length);
                     if (d[lat] === metaData[tree.getSelectedNodeIds()[i]][lat]) {
 
                         if (mapConfig === "light") {
@@ -858,7 +845,6 @@ console.log((document.getElementById("timeline").value - minTime)/stepTime);
                     }
                 }
             });
-        console.log(tree.getSelectedNodeIds());
     });
 }
 
@@ -1152,6 +1138,7 @@ timeline.style.width = "100px";
 timeline.style.marginLeft = "10px";
 timeline.style.marginRight = "10px";
 timeline.style.display = "inline-block";
+timeline.disabled = true;
 
 selectTime.id = "selectTime";
 selectTime.style.display = "inline-block";
