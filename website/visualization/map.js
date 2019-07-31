@@ -1,4 +1,4 @@
-let minTime, maxTime, stepTime, markers;
+let minTime, maxTime, stepTime, markers, metaaa;
 let remade = [];
 
 // -------------------------------------- Metadata Dependent Operations --------------------------------------
@@ -35,6 +35,8 @@ function geoMap(metaData) {
             }
         }
     }
+
+    console.log(meta);
 
     // -------------------------------- Adding Selective Metadata Categories Timeline
 
@@ -175,9 +177,7 @@ function geoMap(metaData) {
         d3.selectAll("circle").style("fill", function (d) {
 
                 return "black"
-
-                //return "#" + intToRGB(hashCode(d["vaccine_status"]))
-            })
+         })
             .attr("stroke", function (d) {
 
             for (let i = 0; i < (tree.getSelectedNodeIds()).length; i++) {
@@ -230,7 +230,6 @@ function geoMap(metaData) {
 
                 return "white"
 
-                //return "#" + intToRGB(hashCode(d["vaccine_status"]))
             })
             .attr("stroke", function (d) {
 
@@ -352,8 +351,8 @@ function geoMap(metaData) {
     L.svg().addTo(map);
 
     map.zoomControl.remove();
-
     markers = Object.values(metaData);
+
     let latlong = [];
 
     // Select the svg area and add circles:
@@ -392,7 +391,7 @@ function geoMap(metaData) {
 
                 latlong.push(d[lat].toString() + d[long].toString());
 
-                return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+                return label2number("latitude", "longitude", maxTime, metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa);
 
             } else {
 
@@ -403,8 +402,6 @@ function geoMap(metaData) {
         .style("fill", function (d) {
 
             return "black"
-
-            //return "#" + intToRGB(hashCode(d["vaccine_status"]))
 
         })
         //   .attr("stroke", "red")
@@ -455,25 +452,16 @@ function geoMap(metaData) {
 
                     if (document.getElementById("logButton").src.search("img/log_full.png") !== -1) {
 
-                        return Math.log(1 + (label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
+                        return Math.log(1 + label2number("latitude", "longitude", maxTime, metaaa, markers, d["latitude"] + d["longitude"]) * (document.getElementById("bubbleSize").value) / numberNonEmpty("latitude", "longitude", markers, metaaa));
 
                     } else if (document.getElementById("constButton").src.search("img/const_full.png") !== -1) {
 
                         return document.getElementById("bubbleSize").value;
 
-                    } else if (document.getElementById("optionTimee").selected) {
-
-                        return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
-
                     } else {
 
-                        if ((remade[0].toString().toString()).split('').length === 4) {
-                            return (document.getElementById("timeline").value-minTime)*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
-                        } else {
-                            return 1000000*(document.getElementById("timeline").value-minTime)*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers)*minTime);
-                        }
+                            return label2number("latitude", "longitude", maxTime, metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa);
                     }
-                    //document.getElementById("timelineLabel").innerHTML
                 } else {
 
                     return "0";
@@ -497,11 +485,11 @@ function geoMap(metaData) {
 
                     if (document.getElementById("logButton").src.search("img/log_empty.png") !== -1) {
 
-                        return Math.log(1 + (label2number("latitude", markers, d["latitude"])) * (document.getElementById("bubbleSize").value) / (numberNonEmpty("latitude", markers)));
+                        return Math.log(1 + label2number("latitude", "longitude", maxTime, metaaa, markers, d["latitude"] + d["longitude"]) * (document.getElementById("bubbleSize").value) / numberNonEmpty("latitude", "longitude", markers, metaaa));
 
                     } else {
 
-                        return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+                        return label2number("latitude", "longitude", maxTime, metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa);
 
                     }
 
@@ -516,6 +504,9 @@ function geoMap(metaData) {
 
             document.getElementById("logButton").src = "../img/log_full.png";
             document.getElementById("constButton").src = "../img/const_empty.png";
+            document.getElementById("optionTimee").selected = true;
+            document.getElementById("timelineLabel").innerText = "Timeline";
+            document.getElementById("selectSpeed").value = 1;
 
         } else {
 
@@ -544,7 +535,7 @@ function geoMap(metaData) {
 
                     } else {
 
-                        return (label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
+                        return label2number("latitude", "longitude", maxTime, metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa);
 
                     }
 
@@ -559,19 +550,21 @@ function geoMap(metaData) {
 
             document.getElementById("constButton").src = "../img/const_full.png";
             document.getElementById("logButton").src = "../img/log_empty.png";
+            document.getElementById("optionTimee").selected = true;
+            document.getElementById("timelineLabel").innerText = "Timeline";
+            document.getElementById("selectSpeed").value = 1;
 
         } else {
 
             document.getElementById("constButton").src = "../img/const_empty.png";
             document.getElementById("logButton").src = "../img/log_empty.png";
-
         }
     });
 
     // ------------------------- Listening Changes Timeline
 
     document.getElementById("timeline").addEventListener("input", function () {
-        //document.getElementById("timelineLabel").innerHTML = convertTime((Math.round(document.getElementById("timeline").value)).toString());
+
         document.getElementById("timelineLabel").innerHTML = convertTime((remade[Math.round((document.getElementById("timeline").value - minTime)/stepTime)]).toString());
 
         document.getElementById("timeline").step = stepTime;
@@ -584,18 +577,12 @@ function geoMap(metaData) {
                 if (isNaN(d["longitude"]) === false && isNaN(d["latitude"]) === false && latlong2.includes(d["latitude"].toString() + d["longitude"].toString()) === false && d["latitude"] !== "" && d["longitude"] !== "") {
 
                     latlong2.push(d["latitude"].toString() + d["longitude"].toString());
-                    document.getElementById("timelineLabel").innerHTML = convertTime((remade[Math.round((document.getElementById("timeline").value - minTime)/stepTime)]).toString());
 
-                    if ((remade[0].toString()).split('').length === 4) {
-                        return (document.getElementById("timeline").value-minTime)*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
-                    } else {
-                        return 1000000*(document.getElementById("timeline").value-minTime)*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers)*minTime);
-                    }
+                    return label2number("latitude", "longitude", (document.getElementById("timelineLabel").innerText).split('-').join(''), metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa);
 
                 } else {
 
-                    return "0";
-
+                    return 0;
                 }
             });
     });
@@ -610,7 +597,6 @@ function geoMap(metaData) {
             if (x[i].style.display === "none") {
                 x[i].style.display = "block";
                 map.zoomControl.addTo(map);
-                // document.getElementById("shape").style.display = "block";
                 document.getElementById("toggle2").style.transform = "rotate(-15deg)";
             } else {
                 x[i].style.display = "none";
@@ -627,6 +613,15 @@ function geoMap(metaData) {
 
     document.getElementById("selectTime").addEventListener("change", function () {
 
+        document.getElementById("logButton").src = "../img/log_empty.png";
+        document.getElementById("constButton").src = "../img/const_empty.png";
+
+        if ((document.getElementById("play").src).search("img/pause.png") !== -1) {
+
+            document.getElementById("play").src = "../img/play.png";
+
+        }
+
         document.getElementById("timeline").disabled = false;
 
         if (document.getElementById("optionTimee").selected) {
@@ -638,17 +633,23 @@ function geoMap(metaData) {
 
             if (document.getElementById("optionTime"+j).selected) {
 
+                metaaa = document.getElementById("optionTime"+j).innerText;
+
                 remade = [];
 
                 Object.keys(meta[document.getElementById("optionTime"+j).innerText]).forEach(function (value, index) {
 
-                    remade.push(parseInt(value));
-
+                    for (let j = 0; j < Object.keys(metaData).length; j++) {
+                        if (((metaData[Object.keys(metaData)[j]][metaaa]).toString()).split('-').join('') === (parseInt(value)).toString() && isNaN(metaData[Object.keys(metaData)[j]]["latitude"]) === false && isNaN(metaData[Object.keys(metaData)[j]]["longitude"]) === false) {
+                            remade.push(parseInt(value));
+                            break;
+                        }
+                    }
                 });
 
                 minTime = Math.min.apply(null, remade);
                 maxTime = Math.max.apply(null, remade);
-                stepTime = (Math.max.apply(null, remade) - Math.min.apply(null, remade))/(remade.length - 1);
+                stepTime = (maxTime - minTime)/(remade.length - 1);
 
                 document.getElementById("timeline").step = stepTime;
                 document.getElementById("timeline").min = minTime;
@@ -660,13 +661,34 @@ function geoMap(metaData) {
                 break;
             }
         }
+/*
+        let latlong2 = [];
+
+        d3.selectAll("circle")
+            .attr("r", function (d) {
+
+                if (isNaN(d["longitude"]) === false && isNaN(d["latitude"]) === false && latlong2.includes(d["latitude"].toString() + d["longitude"].toString()) === false && d["latitude"] !== "" && d["longitude"] !== "") {
+
+console.log(label2number("latitude", "longitude", maxTime.toString().split('-').join(''), metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa));
+
+                    latlong2.push(d["latitude"].toString() + d["longitude"].toString());
+
+                    return label2number("latitude", "longitude", maxTime.toString().split('-').join(''), metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa);
+
+                } else {
+
+                    return 0;
+
+                }
+            });
+        */
     });
 
     // -------------------------------------- Mouse Over Dynamics --------------------------------------
-
-// -------------------------------- Dragging & Zoom
-
-// Mouse Over
+    //
+    // -------------------------------- Dragging & Zoom
+    //
+    // Mouse Over
 
     document.getElementById("mapButton").addEventListener("mouseover", function () {
 
@@ -710,7 +732,7 @@ function geoMap(metaData) {
         map.dragging.disable();
     });
 
-// Mouse Leave
+    // Mouse Leave
 
     document.getElementById("toggle2").addEventListener("mouseleave", function () {
 
@@ -1174,9 +1196,6 @@ document.getElementById("timelineDiv").appendChild(play);
 
 document.getElementById("play").addEventListener("click", function () {
 
-    document.getElementById("logButton").src = "../img/log_empty.png";
-    document.getElementById("constButton").src = "../img/const_empty.png";
-
     if ((document.getElementById("play").src).search("img/play.png") !== -1 && document.getElementById("optionTimee").selected === false) {
 
         document.getElementById("play").src = "../img/pause.png";
@@ -1198,6 +1217,29 @@ document.getElementById("play").addEventListener("click", function () {
                 clearInterval(interval);
             });
 
+            document.getElementById("selectTime").addEventListener("change", function () {
+
+                clearInterval(interval);
+            });
+
+            document.getElementById("constButton").addEventListener("click", function () {
+
+                clearInterval(interval);
+                document.getElementById("play").src = "../img/play.png";
+                document.getElementById("optionTimee").selected = true;
+                document.getElementById("selectSpeed").value = 1;
+                document.getElementById("timeline").disabled = true;
+            });
+
+            document.getElementById("logButton").addEventListener("click", function () {
+
+                clearInterval(interval);
+                document.getElementById("play").src = "../img/play.png";
+                document.getElementById("optionTimee").selected = true;
+                document.getElementById("selectSpeed").value = 1;
+                document.getElementById("timeline").disabled = true;
+            });
+
             // ------------------------------- Update Circle Radius
 
             let latlong2 = [];
@@ -1208,41 +1250,26 @@ document.getElementById("play").addEventListener("click", function () {
                     if (isNaN(d["longitude"]) === false && isNaN(d["latitude"]) === false && latlong2.includes(d["latitude"].toString() + d["longitude"].toString()) === false && d["latitude"] !== "" && d["longitude"] !== "") {
 
                         latlong2.push(d["latitude"].toString() + d["longitude"].toString());
-                        //document.getElementById("timelineLabel").innerHTML = convertTime((Math.round(time)).toString());
+
+                        console.log(label2number("latitude", "longitude", remade[timeAux], metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa));
+
                         document.getElementById("timelineLabel").innerHTML = convertTime((remade[timeAux]).toString());
 
-                        if ((remade[0].toString().toString()).split('').length === 4) {
-                            return (time-minTime)*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers));
-                        } else {
-                            return 1000000*(time-minTime)*(label2number("latitude", markers, d["latitude"]))*(document.getElementById("bubbleSize").value)/(numberNonEmpty("latitude", markers)*minTime);
-                        }
+                        return label2number("latitude", "longitude", remade[timeAux], metaaa, markers, d["latitude"] + d["longitude"])*(document.getElementById("bubbleSize").value)/numberNonEmpty("latitude", "longitude", markers, metaaa);
 
                     } else {
 
                         return "0";
                     }
                 });
-
             time = time + stepTime;
             if (timeAux < remade.length - 1) timeAux = timeAux + 1;
 
         }, 1000/document.getElementById("selectSpeed").value - 500)
 
-    } else if (document.getElementById("optionTimee").selected === false){
+    } else if (document.getElementById("optionTimee").selected === false) {
+
         document.getElementById("play").src = "../img/play.png";
+
     }
 });
-
-function convertTime(number) {
-
-    let renew = number.split('');
-
-    renew.forEach(function (value, index) {
-
-        if ((index === 3 || index === 5) && renew.length !== 4) {
-            renew[index] = renew[index] + "-";
-        }
-    });
-
-    return renew.join('');
-}

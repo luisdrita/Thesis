@@ -13,16 +13,13 @@ let tree = Phylocanvas.createTree('phylocanvas', {
 
     baseNodeSize: 2,
     padding: 5,
-    //textSize: 2,
     font: "helvetica",
     zoomFactor: 2,
     labelPadding: 5,
     showLabels: true,
-    //lineWidth: 1,
     alignLabels: true,
     highlightSize: 1,
     highlightWidth: -1,
-    //   showBranchLengthLabels: true
     fillCanvas: true // Fits hierarchical and rectangular trees.
 });
 
@@ -62,16 +59,13 @@ function phylTree(metaData, data_input) {
 
             if (document.getElementById("optionMetadata"+j).selected) {
 
-                for (let i = 0; i < tree.leaves.length; i++) {
+                for (let i = 0; i < (tree.leaves).length; i++) {
 
                     tree.leaves[i].setDisplay({
-                        //colour: 'red',
-                        //shape: 'circle', // or square, triangle, star
-                        //size: 3, // ratio of the base node size
+
                         leafStyle: {
-                            //strokeStyle: '#0000ff',
+
                             fillStyle: color[Object.keys(metaData[tree.leaves[i].label])[j] + Object.values(metaData[tree.leaves[i].label])[j]]
-                            //lineWidth: 2,
                         }
                     });
                 }
@@ -80,7 +74,7 @@ function phylTree(metaData, data_input) {
 
         if (document.getElementById("optionMetadataa").selected) {
 
-            for (let i = 0; i < tree.leaves.length; i++) {
+            for (let i = 0; i < (tree.leaves).length; i++) {
 
                 tree.leaves[i].setDisplay({
                     //colour: 'red',
@@ -112,6 +106,7 @@ function phylTree(metaData, data_input) {
         metadataSwitchLabel.style.display = "block";
         metadataSwitchLabel.style.paddingLeft = "10px";
         metadataSwitchLabel.style.paddingRight = "10px";
+        metadataSwitchLabel.style.cursor = "pointer";
 
         metadataSwitch.id = "metadataSwitch"+j;
         metadataSwitch.className = "metadataSwitch";
@@ -234,6 +229,7 @@ function phylTree(metaData, data_input) {
                 legendSwitchLabelCollapsible.style.paddingLeft = "10px";
                 legendSwitchLabelCollapsible.style.paddingRight = "10px";
                 legendSwitchLabelCollapsible.style.opacity = "1";
+                legendSwitchLabelCollapsible.style.cursor = "pointer";
                 if (Object.keys(meta[Object.keys(meta)[i]])[j] === "No Data") {
                     legendSwitchLabelCollapsible.style.backgroundColor = "white";
                     legendSwitchLabelCollapsible.style.color = "black";
@@ -250,7 +246,7 @@ function phylTree(metaData, data_input) {
                 } else {
                     colorPicker.value = "#" + intToRGB(hashCode(Object.keys(meta[Object.keys(meta)[i]])[j] + Object.keys(meta[Object.keys(meta)[i]])[j]));
                 }
-                colorPicker.style.display = "inline-block";
+                colorPicker.style.display = "none";
                 colorPicker.style.textAlign = "center";
                 colorPicker.style.width = "30px";
                 colorPicker.style.height = "15px";
@@ -281,7 +277,6 @@ function phylTree(metaData, data_input) {
                 document.getElementById("treeLegendDivInside").addEventListener("mouseout", function () {
 
                     treeLegendDivInside.style.display = "block";
-
                 });
             })
         }
@@ -298,7 +293,7 @@ function phylTree(metaData, data_input) {
                 document.getElementById("legendSwitchLabelCollapsible"+i+"-"+j).style.backgroundColor = document.getElementById("colorPicker"+i+"-"+j).value;
                 document.getElementById("legendSwitchLabelCollapsible"+i+"-"+j).style.color = "white";
 
-                for (let ij = 0; ij < tree.leaves.length; ij++) { // Iterates along all the strains.
+                for (let ij = 0; ij < (tree.leaves).length; ij++) { // Iterates along all the strains.
 
                 if (Object.values(metaData[tree.leaves[ij].label])[i] === document.getElementById("legendSwitchLabelCollapsible" + i + "-" + j).innerText || (Object.values(metaData[tree.leaves[ij].label])[i] === "" && document.getElementById("legendSwitchLabelCollapsible" + i + "-" + j).innerText === "No Data")) {
 
@@ -371,7 +366,7 @@ function phylTree(metaData, data_input) {
                         // Color Metadata Blocks Update
                         if (document.getElementById("metadataSwitch"+j).checked === true) {
 
-                            for (let ii = 0; ii < tree.leaves.length; ii++) {
+                            for (let ii = 0; ii < (tree.leaves).length; ii++) {
 
                                 (tree.leaves[ii].data)[Object.keys(metaData[tree.leaves[ii].label])[j]] = (tree.leaves[ii].data)[Object.keys(metaData[tree.leaves[ii].label])[j]] || {};
 
@@ -600,7 +595,7 @@ function radioDetect (metaData, max) {
 
         for (let j = 0; j < Object.keys(Object.values(metaData)[0]).length; j++) {
 
-            for (let i = 0; i < Object.keys(metaData).length; i++) {
+            for (let i = 0; i < (tree.leaves).length; i++) {
 
                 if (Object.values(metaData[tree.leaves[i].label])[j] === "" || Object.values(metaData[tree.leaves[i].label])[j] === " " || Object.values(metaData[tree.leaves[i].label])[j] === undefined) {
 
@@ -622,7 +617,7 @@ function radioDetect (metaData, max) {
 
             if (document.getElementById("metadataSwitch"+j).checked === true) {
 
-                for (let i = 0; i < tree.leaves.length; i++) {
+                for (let i = 0; i < (tree.leaves).length; i++) {
 
                     (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] = (tree.leaves[i].data)[Object.keys(metaData[tree.leaves[i].label])[j]] || {};
 
@@ -841,6 +836,7 @@ selectNodeColor.id = "selectNodeColor";
 selectNodeColor.style.display = "block";
 selectNodeColor.style.width = "130px";
 selectNodeColor.style.margin = "auto";
+selectNodeColor.style.cursor = "pointer";
 
 nodeSizeLabel.id = "nodeSizeLabel";
 nodeSizeLabel.innerHTML = "Node Size: 10px";
@@ -959,6 +955,7 @@ metadataSwitchLabel.style.paddingLeft = "10px";
 metadataSwitchLabel.style.paddingRight = "10px";
 metadataSwitchLabel.style.backgroundColor = "white";
 metadataSwitchLabel.style.color = "black";
+metadataSwitchLabel.style.cursor = "pointer";
 
 metadataSwitch.id = "metadataSwitch";
 metadataSwitch.type = "checkbox";
@@ -972,6 +969,7 @@ metadataSwitchLabelDisplay.style.paddingLeft = "10px";
 metadataSwitchLabelDisplay.style.paddingRight = "10px";
 metadataSwitchLabelDisplay.style.backgroundColor = "white";
 metadataSwitchLabelDisplay.style.color = "black";
+metadataSwitchLabelDisplay.style.cursor = "pointer";
 
 metadataSwitchDisplay.id = "metadataSwitchDisplay";
 metadataSwitchDisplay.type = "checkbox";
@@ -1302,6 +1300,7 @@ function displayLabel (metaData, max) {
                     }
                 }
 
+        tree.setTreeType(treeType);
         tree.setNodeSize(document.getElementById("nodeSize").value);
         tree.setTextSize(document.getElementById("textSize").value);
     }
